@@ -1,4 +1,12 @@
 selenium
 beautifulsoup4
 pandas
+flask
+flask-cors
 webdriver-manager
+PyPDF2>=3.0.0
+numpy>=1.24.0
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+spacy>=3.7.0
+google-generativeai>=0.3.0
