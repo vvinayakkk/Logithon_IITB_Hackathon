@@ -3,13 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
+import ItemImageCompliancePage from './pages/ItemImageCompliancePage'
+import GlobeVisualization from './components/Globe'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <Routes>
-      <Route path='/' element={<h1>Hello</h1>} /> 
+      <Route path='/' element={<ItemImageCompliancePage/>} /> 
+      <Route path='/globe' element={<GlobeVisualization/>} />
     </Routes>
   )
 }
