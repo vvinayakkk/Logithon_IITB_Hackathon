@@ -55,31 +55,42 @@ def get_nlp_model():
     return _nlp
 
 def extract_text_from_pdf(pdf_path):
-    """Extract text from PDF file."""
+    """Extract text from PDF file with better error handling."""
     text = ""
-    with open(pdf_path, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        for page_num in range(len(reader.pages)):
-            page = reader.pages[page_num]
-            text += page.extract_text() + "\n"
+    try:
+        with open(pdf_path, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            for page in reader.pages:
+                try:
+                    text += page.extract_text() + "\n"
+                except Exception as e:
+                    print(f"Error extracting text from page: {e}")
+                    continue
+    except Exception as e:
+        print(f"Error reading PDF file: {e}")
+        return ""
     return text
 
 def parse_country_data(text):
-    """Parse the text to extract country data."""
+    """Parse the text with improved pattern matching."""
     lines = text.split('\n')
     countries_data = {}
     current_country = None
     current_items = []
     
-    country_pattern = re.compile(r'^([A-Za-z\s]+)\s*Import\s*Prohibitions$')
-    item_pattern = re.compile(r'^\s*[•\-*]\s*(.+)$')
+    # Improved patterns to catch more variations
+    country_pattern = re.compile(r'^([A-Za-z\s\-\']+)(?:\s+Import\s+Prohibitions|\s+Prohibitions)$', re.IGNORECASE)
+    item_pattern = re.compile(r'^\s*[•\-*◦○●■]\s*(.+)$')
     
     for line in lines:
         line = line.strip()
+        if not line:
+            continue
+            
         country_match = country_pattern.match(line)
         if country_match:
             if current_country and current_items:
-                countries_data[current_country] = current_items
+                countries_data[current_country] = list(set(current_items))  # Remove duplicates
             current_country = country_match.group(1).strip()
             current_items = []
             continue
@@ -87,13 +98,27 @@ def parse_country_data(text):
         item_match = item_pattern.match(line)
         if item_match and current_country:
             item_text = item_match.group(1).strip()
-            if item_text and not item_text.startswith('See') and not item_text.startswith('Current as of'):
+            if (item_text and 
+                not item_text.lower().startswith('see') and 
+                not item_text.lower().startswith('current as of') and
+                len(item_text) > 3):
                 current_items.append(item_text)
     
+    # Don't forget the last country
     if current_country and current_items:
-        countries_data[current_country] = current_items
+        countries_data[current_country] = list(set(current_items))
     
-    return countries_data
+    # Clean country names
+    cleaned_data = {}
+    for country, items in countries_data.items():
+        country_clean = re.sub(r'\s+', ' ', country).strip()
+        if country_clean in cleaned_data:
+            cleaned_data[country_clean].extend(items)
+            cleaned_data[country_clean] = list(set(cleaned_data[country_clean]))
+        else:
+            cleaned_data[country_clean] = items
+    
+    return cleaned_data
 
 def process_fedex_pdf(pdf_path, output_path):
     """Process the PDF and save country restrictions as JSON."""
@@ -116,33 +141,45 @@ def process_fedex_pdf(pdf_path, output_path):
     return cleaned_data, f"Processed {len(cleaned_data)} countries. Data saved to {output_path}"
 
 def fix_malformed_countries(json_file):
-    """Fix any malformed country names in the JSON file."""
-    with open(json_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    fixed_data = {}
-    for country, items in data.items():
-        if '\\n' in country:
-            parts = country.split('\\n')
-            country_name = next((part.strip() for part in reversed(parts) if part.strip()), country)
-            if parts[0].strip() and len(parts) > 1:
-                prev_countries = list(fixed_data.keys())
-                if prev_countries:
-                    fixed_data[prev_countries[-1]].append(parts[0].strip())
+    """Enhanced country name fixing function."""
+    try:
+        with open(json_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        fixed_data = {}
+        for country, items in data.items():
+            # Remove any special characters and normalize whitespace
+            country_clean = re.sub(r'[^\w\s\-\']', ' ', country)
+            country_clean = re.sub(r'\s+', ' ', country_clean).strip()
+            
+            # Handle newlines and splits
+            if '\\n' in country_clean or '\n' in country_clean:
+                parts = re.split(r'\\n|\n', country_clean)
+                country_name = next((part.strip() for part in reversed(parts) if part.strip()), country_clean)
+                
+                # Merge any orphaned items
+                if len(parts) > 1 and parts[0].strip():
+                    prev_countries = list(fixed_data.keys())
+                    if prev_countries:
+                        fixed_data[prev_countries[-1]] = list(set(fixed_data[prev_countries[-1]] + [parts[0].strip()]))
+            else:
+                country_name = country_clean
+            
+            # Merge items for same country
             if country_name in fixed_data:
                 fixed_data[country_name].extend(items)
+                fixed_data[country_name] = list(set(fixed_data[country_name]))
             else:
                 fixed_data[country_name] = items
-        else:
-            if country in fixed_data:
-                fixed_data[country].extend(items)
-            else:
-                fixed_data[country] = items
+        
+        # Save the fixed data
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(fixed_data, f, indent=2, ensure_ascii=False)
+        
+        return fixed_data, f"Fixed malformed country names. Now contains {len(fixed_data)} countries."
     
-    with open(json_file, 'w', encoding='utf-8') as f:
-        json.dump(fixed_data, f, indent=2, ensure_ascii=False)
-    
-    return fixed_data, f"Fixed malformed country names. Now contains {len(fixed_data)} countries."
+    except Exception as e:
+        return None, f"Error fixing country names: {str(e)}"
 
 def create_vector_database(data, output_dir=DB_DIR):
     """Create a vector database from the country items data."""
@@ -291,16 +328,16 @@ def extract_entities(text):
     return {"countries": countries, "items": items}
 
 def chatbot_response(query):
-    """Generate a human-like response using Gemini API and RAG."""
+    """Generate a professional, official-style response using Gemini API and RAG."""
     entities = extract_entities(query)
     countries = entities["countries"]
     items = entities["items"]
     
     success, message = initialize_system()
     if not success:
-        return "Hmm, it looks like I can't access the database right now. Could you try again later?"
+        return "We apologize, but our database is currently unavailable. Please try again later."
     
-    model = genai.GenerativeModel('gemini-1.5-flash')  # Use a suitable Gemini model
+    model = genai.GenerativeModel('gemini-1.5-flash')
     
     # Case 1: Specific country and item
     if countries and items:
@@ -309,22 +346,48 @@ def chatbot_response(query):
         result = get_prohibited_items_for_country(country)
         
         if "error" in result:
-            prompt = f"The user asked: '{query}'. I couldn't find {country} in the database. Suggest a response indicating this and offer help."
+            prompt = f"""As an official customs and import regulations expert:
+                The user inquired about: '{query}'
+                We could not locate {country} in our database. Please provide a formal response explaining this and offering assistance with finding the correct country name."""
             response = model.generate_content(prompt)
             return response.text
         
         matched_items = [i for i in result["items"] if any(word.lower() in i.lower() for word in items)]
-        context = f"In {country}, prohibited items include: {', '.join(result['items'][:5])}. The user asked about '{item}'."
+        items_preview = "\n• " + "\n• ".join(result["items"][:5])
+        context = f"""According to our records for {country}:
+                     Prohibited items include: {items_preview}
+                     Query item: '{item}'"""
+        
         if matched_items:
-            prompt = f"Using this context: '{context}', respond in a friendly, human-like way confirming that '{item}' is prohibited in {country}."
+            prompt = f"""As an official customs and import regulations expert:
+                Based on this information: '{context}'
+                Please provide a formal response that:
+                1. Confirms '{item}' is prohibited in {country}
+                2. Lists relevant restrictions as bullet points
+                3. Advises on compliance with import regulations
+                4. Includes a professional closing statement"""
         else:
             search_results = search_prohibited_items(item, top_k=5)
             if search_results and not isinstance(search_results, dict):
                 countries_with_item = [r["country"] for r in search_results if any(score > 0.6 for score in r["scores"])]
-                context += f" Other countries prohibiting similar items: {', '.join(countries_with_item[:3])}."
-                prompt = f"Using this context: '{context}', respond in a friendly way saying '{item}' isn't prohibited in {country} but is in {', '.join(countries_with_item[:3])}."
-            else:
-                prompt = f"Using this context: '{context}', respond in a friendly way saying '{item}' isn't explicitly prohibited in {country}."
+                if countries_with_item:
+                    other_countries = "\n• " + "\n• ".join(countries_with_item[:3])
+                    context += f"\nNote: Similar restrictions exist in: {other_countries}"
+                    prompt = f"""As an official customs and import regulations expert:
+                        Based on this information: '{context}'
+                        Please provide a formal response that:
+                        1. Clarifies '{item}' is not explicitly prohibited in {country}
+                        2. Lists countries where similar items are prohibited
+                        3. Recommends verifying with local customs authorities
+                        4. Includes a professional closing statement"""
+                else:
+                    prompt = f"""As an official customs and import regulations expert:
+                        Based on this information: '{context}'
+                        Please provide a formal response that:
+                        1. States '{item}' is not listed as prohibited in {country}
+                        2. Advises on general import precautions
+                        3. Recommends verifying with local customs authorities
+                        4. Includes a professional closing statement"""
         
         response = model.generate_content(prompt)
         return response.text
@@ -335,16 +398,33 @@ def chatbot_response(query):
         results = search_prohibited_items(item, top_k=10)
         
         if isinstance(results, dict) and "error" in results:
-            return "Oops, something went wrong with my search. Try again?"
+            return "We apologize for the inconvenience. Our search system is currently experiencing technical difficulties. Please try your query again later."
         
         if results:
             countries_with_item = [r["country"] for r in results if any(score > 0.6 for score in r["scores"])]
-            context = f"Countries prohibiting '{item}' or similar: {', '.join(countries_with_item[:5])}. Total found: {len(countries_with_item)}."
-            prompt = f"Using this context: '{context}', respond in a friendly, human-like way listing some countries where '{item}' is prohibited."
+            countries_list = "\n• " + "\n• ".join(countries_with_item[:5])
+            context = f"""Regarding '{item}':
+                         Countries with relevant import prohibitions: {countries_list}
+                         Total jurisdictions with restrictions: {len(countries_with_item)}"""
+            
+            prompt = f"""As an official customs and import regulations expert:
+                Based on this information: '{context}'
+                Please provide a formal response that:
+                1. Lists countries where '{item}' is prohibited
+                2. Explains the significance of these restrictions
+                3. Provides general guidance on international shipping
+                4. Includes a professional closing statement"""
             response = model.generate_content(prompt)
             return response.text
         else:
-            prompt = f"The user asked: '{query}'. No exact matches for '{item}' were found. Respond in a friendly way suggesting it might not be widely prohibited."
+            prompt = f"""As an official customs and import regulations expert:
+                Regarding the query: '{query}'
+                Please provide a formal response that:
+                1. Indicates no exact matches were found for '{item}'
+                2. Explains possible reasons for this
+                3. Advises on general import considerations
+                4. Recommends consulting specific customs authorities
+                5. Includes a professional closing statement"""
             response = model.generate_content(prompt)
             return response.text
     
@@ -354,18 +434,39 @@ def chatbot_response(query):
         result = get_prohibited_items_for_country(country)
         
         if "error" in result:
-            prompt = f"The user asked: '{query}'. I couldn't find {country} in the database. Respond in a friendly way with this info: {result['error'].split('.')[1]}."
+            prompt = f"""As an official customs and import regulations expert:
+                Regarding the query: '{query}'
+                We could not locate {country} in our database. 
+                {result['error'].split('.')[1] if '.' in result['error'] else result['error']}
+                Please provide a formal response offering assistance with country verification."""
             response = model.generate_content(prompt)
             return response.text
         
-        context = f"In {country}, prohibited items include: {', '.join(result['items'][:5])}. Total count: {result['count']}."
-        prompt = f"Using this context: '{context}', respond in a friendly, human-like way listing some prohibited items in {country} and asking what specific item the user is curious about."
+        items_list = "\n• " + "\n• ".join(result["items"][:5])
+        context = f"""Import Prohibitions for {country}:
+                     Key restricted items: {items_list}
+                     Total prohibited items: {result['count']}"""
+        
+        prompt = f"""As an official customs and import regulations expert:
+            Based on this information: '{context}'
+            Please provide a formal response that:
+            1. Lists key prohibited items for {country}
+            2. Explains the significance of these restrictions
+            3. Advises on import compliance
+            4. Offers to provide specific item information
+            5. Includes a professional closing statement"""
         response = model.generate_content(prompt)
         return response.text
     
     # Case 4: No entities detected
     else:
-        prompt = f"The user asked: '{query}'. I couldn't detect a specific item or country. Respond in a friendly way asking for clarification, like 'Is alcohol prohibited in Japan?' or 'What countries ban weapons?'."
+        prompt = f"""As an official customs and import regulations expert:
+            Regarding the query: '{query}'
+            Please provide a formal response that:
+            1. Acknowledges the need for clarification
+            2. Provides examples of specific queries (e.g., "Are firearms prohibited in Japan?")
+            3. Explains how to ask about specific items or countries
+            4. Includes a professional closing statement"""
         response = model.generate_content(prompt)
         return response.text
 
@@ -378,7 +479,6 @@ def home():
 @app.route('/api/status', methods=['GET'])
 def check_status():
     db_exists = all(os.path.exists(os.path.join(DB_DIR, fname)) for fname in ["items_index.faiss", "items.pkl", "country_map.pkl", "country_data.json"])
-    
     if db_exists:
         success, message = initialize_system()
         return jsonify({"status": "ready" if success else "error", "message": message})
