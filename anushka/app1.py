@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import re
 import json
@@ -6,22 +6,20 @@ import PyPDF2
 import numpy as np
 import faiss
 from pathlib import Path
+from sentence_transformers import SentenceTransformer
 import pickle
 import os
 import time
 import spacy
 import google.generativeai as genai
-from sentence_transformers import SentenceTransformer
+import logging
 
-app = Flask(__name__)
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+app = Flask(__name__, static_folder='../frontend/build')
 CORS(app)  # Enable CORS for all routes
-app.secret_key = "fedex_prohibited_items_search_key"  # Required for session
-
-# Directory setup
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
-DB_DIR = os.path.join(DATA_DIR, "vector_db")
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(DB_DIR, exist_ok=True)
 
 # Global variables to keep resources loaded
 _model = None
@@ -31,66 +29,63 @@ _country_map = None
 _country_data = None
 _nlp = None
 
+# Paths configuration
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
+VECTOR_DB_DIR = os.path.join(DATA_DIR, 'vector_db')
+PDF_PATH = os.path.join(DATA_DIR, 'fedex-international-connect-country-region-specific-prohibited-and-restricted-items.pdf')
+JSON_OUTPUT_PATH = os.path.join(DATA_DIR, 'fedex_country_restrictions.json')
+
 # Gemini API Configuration
-GEMINI_API_KEY = "AIzaSyDqMg4cv_n04wbxo16Bpovc01LXAa96h_I"  # Replace with your actual Gemini API key
+GEMINI_API_KEY = "AIzaSyDqMg4cv_n04wbxo16Bpovc01LXAa96h_I"
 genai.configure(api_key=GEMINI_API_KEY)
 
 def get_embedding_model():
     """Load the embedding model only once and reuse it."""
     global _model
     if _model is None:
+        logger.info("Loading embedding model...")
         _model = SentenceTransformer('all-MiniLM-L6-v2')
     return _model
 
 def get_nlp_model():
     """Load the spaCy NLP model for natural language processing."""
     global _nlp
-    if (_nlp is None):
+    if _nlp is None:
+        logger.info("Loading NLP model...")
         try:
             _nlp = spacy.load("en_core_web_sm")
         except:
-            print("Installing spaCy model...")
+            logger.warning("Installing spaCy model...")
             os.system("python -m spacy download en_core_web_sm")
             _nlp = spacy.load("en_core_web_sm")
     return _nlp
 
 def extract_text_from_pdf(pdf_path):
-    """Extract text from PDF file with better error handling."""
+    """Extract text from PDF file."""
     text = ""
-    try:
-        with open(pdf_path, 'rb') as file:
-            reader = PyPDF2.PdfReader(file)
-            for page in reader.pages:
-                try:
-                    text += page.extract_text() + "\n"
-                except Exception as e:
-                    print(f"Error extracting text from page: {e}")
-                    continue
-    except Exception as e:
-        print(f"Error reading PDF file: {e}")
-        return ""
+    with open(pdf_path, 'rb') as file:
+        reader = PyPDF2.PdfReader(file)
+        for page_num in range(len(reader.pages)):
+            page = reader.pages[page_num]
+            text += page.extract_text() + "\n"
     return text
 
 def parse_country_data(text):
-    """Parse the text with improved pattern matching."""
+    """Parse the text to extract country data."""
     lines = text.split('\n')
     countries_data = {}
     current_country = None
     current_items = []
     
-    # Improved patterns to catch more variations
-    country_pattern = re.compile(r'^([A-Za-z\s\-\']+)(?:\s+Import\s+Prohibitions|\s+Prohibitions)$', re.IGNORECASE)
-    item_pattern = re.compile(r'^\s*[•\-*◦○●■]\s*(.+)$')
+    country_pattern = re.compile(r'^([A-Za-z\s]+)\s*Import\s*Prohibitions$')
+    item_pattern = re.compile(r'^\s*[•\-*]\s*(.+)$')
     
     for line in lines:
         line = line.strip()
-        if not line:
-            continue
-            
         country_match = country_pattern.match(line)
         if country_match:
             if current_country and current_items:
-                countries_data[current_country] = list(set(current_items))  # Remove duplicates
+                countries_data[current_country] = current_items
             current_country = country_match.group(1).strip()
             current_items = []
             continue
@@ -98,30 +93,17 @@ def parse_country_data(text):
         item_match = item_pattern.match(line)
         if item_match and current_country:
             item_text = item_match.group(1).strip()
-            if (item_text and 
-                not item_text.lower().startswith('see') and 
-                not item_text.lower().startswith('current as of') and
-                len(item_text) > 3):
+            if item_text and not item_text.startswith('See') and not item_text.startswith('Current as of'):
                 current_items.append(item_text)
     
-    # Don't forget the last country
     if current_country and current_items:
-        countries_data[current_country] = list(set(current_items))
+        countries_data[current_country] = current_items
     
-    # Clean country names
-    cleaned_data = {}
-    for country, items in countries_data.items():
-        country_clean = re.sub(r'\s+', ' ', country).strip()
-        if country_clean in cleaned_data:
-            cleaned_data[country_clean].extend(items)
-            cleaned_data[country_clean] = list(set(cleaned_data[country_clean]))
-        else:
-            cleaned_data[country_clean] = items
-    
-    return cleaned_data
+    return countries_data
 
 def process_fedex_pdf(pdf_path, output_path):
     """Process the PDF and save country restrictions as JSON."""
+    logger.info(f"Processing PDF from {pdf_path}")
     text = extract_text_from_pdf(pdf_path)
     countries_data = parse_country_data(text)
     cleaned_data = {}
@@ -135,54 +117,47 @@ def process_fedex_pdf(pdf_path, output_path):
         else:
             cleaned_data[country_clean].extend(items)
     
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(cleaned_data, f, indent=2, ensure_ascii=False)
     
-    return cleaned_data, f"Processed {len(cleaned_data)} countries. Data saved to {output_path}"
+    logger.info(f"Processed {len(cleaned_data)} countries. Data saved to {output_path}")
+    return cleaned_data
 
 def fix_malformed_countries(json_file):
-    """Enhanced country name fixing function."""
-    try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        fixed_data = {}
-        for country, items in data.items():
-            # Remove any special characters and normalize whitespace
-            country_clean = re.sub(r'[^\w\s\-\']', ' ', country)
-            country_clean = re.sub(r'\s+', ' ', country_clean).strip()
-            
-            # Handle newlines and splits
-            if '\\n' in country_clean or '\n' in country_clean:
-                parts = re.split(r'\\n|\n', country_clean)
-                country_name = next((part.strip() for part in reversed(parts) if part.strip()), country_clean)
-                
-                # Merge any orphaned items
-                if len(parts) > 1 and parts[0].strip():
-                    prev_countries = list(fixed_data.keys())
-                    if prev_countries:
-                        fixed_data[prev_countries[-1]] = list(set(fixed_data[prev_countries[-1]] + [parts[0].strip()]))
-            else:
-                country_name = country_clean
-            
-            # Merge items for same country
+    """Fix any malformed country names in the JSON file."""
+    logger.info(f"Fixing malformed country names in {json_file}")
+    with open(json_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    fixed_data = {}
+    for country, items in data.items():
+        if '\\n' in country:
+            parts = country.split('\\n')
+            country_name = next((part.strip() for part in reversed(parts) if part.strip()), country)
+            if parts[0].strip() and len(parts) > 1:
+                prev_countries = list(fixed_data.keys())
+                if prev_countries:
+                    fixed_data[prev_countries[-1]].append(parts[0].strip())
             if country_name in fixed_data:
                 fixed_data[country_name].extend(items)
-                fixed_data[country_name] = list(set(fixed_data[country_name]))
             else:
                 fixed_data[country_name] = items
-        
-        # Save the fixed data
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(fixed_data, f, indent=2, ensure_ascii=False)
-        
-        return fixed_data, f"Fixed malformed country names. Now contains {len(fixed_data)} countries."
+        else:
+            if country in fixed_data:
+                fixed_data[country].extend(items)
+            else:
+                fixed_data[country] = items
     
-    except Exception as e:
-        return None, f"Error fixing country names: {str(e)}"
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump(fixed_data, f, indent=2, ensure_ascii=False)
+    
+    logger.info(f"Fixed malformed country names. Now contains {len(fixed_data)} countries.")
+    return fixed_data
 
-def create_vector_database(data, output_dir=DB_DIR):
+def create_vector_database(data, output_dir=VECTOR_DB_DIR):
     """Create a vector database from the country items data."""
+    logger.info(f"Creating vector database in {output_dir}")
     os.makedirs(output_dir, exist_ok=True)
     model = get_embedding_model()
     all_items = []
@@ -193,6 +168,7 @@ def create_vector_database(data, output_dir=DB_DIR):
             all_items.append(item)
             country_map.append(country)
     
+    logger.info(f"Creating embeddings for {len(all_items)} items...")
     batch_size = 32
     embeddings_list = []
     for i in range(0, len(all_items), batch_size):
@@ -214,28 +190,33 @@ def create_vector_database(data, output_dir=DB_DIR):
     with open(os.path.join(output_dir, "country_data.json"), "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    return f"Vector database created in {output_dir} with {len(all_items)} items from {len(data)} countries"
+    logger.info(f"Vector database created in {output_dir}")
+    return True
 
-def initialize_system(db_dir=DB_DIR, force_reload=False):
+def initialize_system(force_reload=False):
     """Initialize the system by loading all required components once."""
     global _model, _index, _all_items, _country_map, _country_data, _nlp
     
     if _model is None or force_reload:
+        logger.info("Loading embedding model...")
         _model = get_embedding_model()
     
     if _nlp is None or force_reload:
+        logger.info("Loading NLP model...")
         _nlp = get_nlp_model()
     
-    index_path = os.path.join(db_dir, "items_index.faiss")
-    items_path = os.path.join(db_dir, "items.pkl")
-    country_map_path = os.path.join(db_dir, "country_map.pkl")
-    country_data_path = os.path.join(db_dir, "country_data.json")
+    index_path = os.path.join(VECTOR_DB_DIR, "items_index.faiss")
+    items_path = os.path.join(VECTOR_DB_DIR, "items.pkl")
+    country_map_path = os.path.join(VECTOR_DB_DIR, "country_map.pkl")
+    country_data_path = os.path.join(VECTOR_DB_DIR, "country_data.json")
     
     if not all(os.path.exists(path) for path in [index_path, items_path, country_map_path, country_data_path]):
-        return False, "Vector database files not found. Please process the PDF first."
+        logger.error(f"Vector database files not found in {VECTOR_DB_DIR}")
+        return False
     
     if _index is None or _all_items is None or _country_map is None or _country_data is None or force_reload:
         try:
+            logger.info("Loading vector database components...")
             _index = faiss.read_index(index_path)
             with open(items_path, "rb") as f:
                 _all_items = pickle.load(f)
@@ -243,18 +224,19 @@ def initialize_system(db_dir=DB_DIR, force_reload=False):
                 _country_map = pickle.load(f)
             with open(country_data_path, "r", encoding="utf-8") as f:
                 _country_data = json.load(f)
-            return True, f"System initialized successfully with {len(_all_items)} items from {len(_country_data)} countries"
+            logger.info(f"System initialized with {len(_all_items)} items from {len(_country_data)} countries")
+            return True
         except Exception as e:
-            return False, f"Error initializing system: {e}"
-    return True, "System already initialized"
+            logger.error(f"Error initializing system: {e}")
+            return False
+    return True
 
 def query_vector_database(query, top_k=10):
     """Query the vector database for similar items."""
     global _model, _index, _all_items, _country_map
     
-    success, message = initialize_system()
-    if not success:
-        return {"error": message}
+    if not initialize_system():
+        return {"error": "Failed to initialize the system"}
     
     query_embedding = _model.encode([query])
     faiss.normalize_L2(query_embedding)
@@ -274,17 +256,19 @@ def get_prohibited_items_for_country(country):
     """Get all prohibited items for a specific country."""
     global _country_data
     
-    success, message = initialize_system()
-    if not success:
-        return {"error": message}
+    if not initialize_system():
+        return {"error": "Failed to initialize the system"}
     
+    # Try exact match first
     for name, items in _country_data.items():
         if name.lower() == country.lower():
             return {"country": name, "items": items, "count": len(items)}
     
+    # Try partial matching for better country recognition
     partial_matches = [name for name in _country_data.keys() if country.lower() in name.lower()]
     if partial_matches:
-        return {"error": f"Country '{country}' not found. Did you mean: {', '.join(partial_matches)}?"}
+        best_match = partial_matches[0]
+        return {"country": best_match, "items": _country_data[best_match], "count": len(_country_data[best_match])}
     
     return {"error": f"Country '{country}' not found in the database."}
 
@@ -305,12 +289,17 @@ def search_prohibited_items(query, top_k=20):
     
     response = []
     for country, items in countries.items():
+        # Sort items by score in descending order
+        items.sort(key=lambda x: x["score"], reverse=True)
         response.append({
             "country": country,
             "items": [item["item"] for item in items],
             "scores": [item["score"] for item in items],
             "count": len(items)
         })
+    
+    # Sort countries by highest scoring item
+    response.sort(key=lambda x: max(x["scores"]) if x["scores"] else 0, reverse=True)
     
     return response
 
@@ -327,287 +316,301 @@ def extract_entities(text):
     
     return {"countries": countries, "items": items}
 
-def chatbot_response(query):
-    """Generate a professional, official-style response using Gemini API and RAG."""
+def chatbot_response(query, chat_history):
+    """Generate a human-like response using Gemini API and RAG with memory of previous chat."""
     entities = extract_entities(query)
     countries = entities["countries"]
     items = entities["items"]
     
-    success, message = initialize_system()
-    if not success:
-        return "We apologize, but our database is currently unavailable. Please try again later."
+    if not initialize_system():
+        return "Hmm, it looks like I can't access the database right now. Could you try again later?"
     
     model = genai.GenerativeModel('gemini-1.5-flash')
     
+    # First get country data if available
+    country_data = None
+    if countries:
+        country = countries[0]
+        result = get_prohibited_items_for_country(country)
+        if "error" not in result:
+            country_data = result
+
+    # Create chat history context for the model
+    history_context = ""
+    if chat_history and len(chat_history) > 0:
+        history_context = "Previous conversation:\n"
+        for msg in chat_history[-3:]:  # Use the last 3 messages as context
+            role = "User" if msg["role"] == "user" else "Assistant"
+            history_context += f"{role}: {msg['content']}\n"
+        history_context += "\n"
+
     # Case 1: Specific country and item
     if countries and items:
-        country = countries[0]
+        if not country_data:
+            return ("• The specified country is not found in our database.\n"
+                   "• Please verify the country name and try again.\n"
+                   "• For assistance, you may provide the country's full name.")
+        
         item = " ".join(items)
-        result = get_prohibited_items_for_country(country)
+        all_prohibited = country_data["items"]
+        matched_items = [i for i in all_prohibited if any(word.lower() in i.lower() for word in items)]
         
-        if "error" in result:
-            prompt = f"""As an official customs and import regulations expert:
-                The user inquired about: '{query}'
-                We could not locate {country} in our database. Please provide a formal response explaining this and offering assistance with finding the correct country name."""
-            response = model.generate_content(prompt)
-            return response.text
+        context = (
+            f"{history_context}"
+            f"Official Import Restrictions Database\n"
+            f"Country: {country}\n\n"
+            f"Total Restricted Items: {len(all_prohibited)}\n\n"
+            "Complete List of Import Prohibitions:\n" +
+            "\n".join(f"• {item}" for item in all_prohibited) +
+            f"\n\nQuery Analysis for: {item}\n" +
+            "Relevant Restrictions:\n" +
+            ("\n".join(f"• {item}" for item in matched_items) if matched_items else "• No direct matches found") +
+            "\n\nCreate an official response that includes:\n"
+            "• A clear declaration of the item's import status\n"
+            "• Complete list of relevant restrictions\n"
+            "• Related categories of prohibited items\n"
+            "• Standard regulatory disclaimer\n"
+            "Format as a formal bulletin with bullet points\n"
+            "Maintain authoritative tone throughout"
+        )
         
-        matched_items = [i for i in result["items"] if any(word.lower() in i.lower() for word in items)]
-        items_preview = "\n• " + "\n• ".join(result["items"][:5])
-        context = f"""According to our records for {country}:
-                     Prohibited items include: {items_preview}
-                     Query item: '{item}'"""
-        
-        if matched_items:
-            prompt = f"""As an official customs and import regulations expert:
-                Based on this information: '{context}'
-                Please provide a formal response that:
-                1. Confirms '{item}' is prohibited in {country}
-                2. Lists relevant restrictions as bullet points
-                3. Advises on compliance with import regulations
-                4. Includes a professional closing statement"""
-        else:
-            search_results = search_prohibited_items(item, top_k=5)
-            if search_results and not isinstance(search_results, dict):
-                countries_with_item = [r["country"] for r in search_results if any(score > 0.6 for score in r["scores"])]
-                if countries_with_item:
-                    other_countries = "\n• " + "\n• ".join(countries_with_item[:3])
-                    context += f"\nNote: Similar restrictions exist in: {other_countries}"
-                    prompt = f"""As an official customs and import regulations expert:
-                        Based on this information: '{context}'
-                        Please provide a formal response that:
-                        1. Clarifies '{item}' is not explicitly prohibited in {country}
-                        2. Lists countries where similar items are prohibited
-                        3. Recommends verifying with local customs authorities
-                        4. Includes a professional closing statement"""
-                else:
-                    prompt = f"""As an official customs and import regulations expert:
-                        Based on this information: '{context}'
-                        Please provide a formal response that:
-                        1. States '{item}' is not listed as prohibited in {country}
-                        2. Advises on general import precautions
-                        3. Recommends verifying with local customs authorities
-                        4. Includes a professional closing statement"""
-        
-        response = model.generate_content(prompt)
+        response = model.generate_content(context)
         return response.text
-    
+
     # Case 2: Item only
     elif items and not countries:
         item = " ".join(items)
-        results = search_prohibited_items(item, top_k=10)
+        results = search_prohibited_items(item, top_k=100)
         
         if isinstance(results, dict) and "error" in results:
-            return "We apologize for the inconvenience. Our search system is currently experiencing technical difficulties. Please try your query again later."
+            return ("• System Notice: Unable to process database query\n"
+                   "• Please rephrase your inquiry or try again later")
         
         if results:
-            countries_with_item = [r["country"] for r in results if any(score > 0.6 for score in r["scores"])]
-            countries_list = "\n• " + "\n• ".join(countries_with_item[:5])
-            context = f"""Regarding '{item}':
-                         Countries with relevant import prohibitions: {countries_list}
-                         Total jurisdictions with restrictions: {len(countries_with_item)}"""
-            
-            prompt = f"""As an official customs and import regulations expert:
-                Based on this information: '{context}'
-                Please provide a formal response that:
-                1. Lists countries where '{item}' is prohibited
-                2. Explains the significance of these restrictions
-                3. Provides general guidance on international shipping
-                4. Includes a professional closing statement"""
-            response = model.generate_content(prompt)
+            countries_with_item = [r for r in results if any(score > 0.5 for score in r["scores"])]
+            context = (
+                f"{history_context}"
+                "INTERNATIONAL IMPORT RESTRICTIONS BULLETIN\n\n"
+                f"Subject: {item.upper()}\n\n" +
+                "\n\n".join(
+                    f"JURISDICTION: {r['country']}\nPROHIBITED ITEMS AND CATEGORIES:\n" +
+                    "\n".join(f"• {item}" for item in r['items'])
+                    for r in countries_with_item
+                ) +
+                "\n\nGenerate formal advisory that includes:\n"
+                "• Official notification of jurisdictions with restrictions\n"
+                "• Comprehensive list of affected territories\n"
+                "• Complete itemization of related restrictions\n"
+                "• Standard regulatory notice\n"
+                "Use formal, authoritative language\n"
+                "Format as official bulletin"
+            )
+            response = model.generate_content(context)
             return response.text
-        else:
-            prompt = f"""As an official customs and import regulations expert:
-                Regarding the query: '{query}'
-                Please provide a formal response that:
-                1. Indicates no exact matches were found for '{item}'
-                2. Explains possible reasons for this
-                3. Advises on general import considerations
-                4. Recommends consulting specific customs authorities
-                5. Includes a professional closing statement"""
-            response = model.generate_content(prompt)
-            return response.text
-    
+        return ("OFFICIAL NOTICE:\n"
+                "• No specific import restrictions found for this item\n"
+                "• Importers must verify requirements with relevant authorities\n"
+                "• Additional regulations may apply")
+
     # Case 3: Country only
-    elif countries and not items:
-        country = countries[0]
-        result = get_prohibited_items_for_country(country)
+    elif country_data:
+        country = country_data['country']
+        items = country_data['items']
         
-        if "error" in result:
-            prompt = f"""As an official customs and import regulations expert:
-                Regarding the query: '{query}'
-                We could not locate {country} in our database. 
-                {result['error'].split('.')[1] if '.' in result['error'] else result['error']}
-                Please provide a formal response offering assistance with country verification."""
-            response = model.generate_content(prompt)
-            return response.text
+        response = [
+            f"OFFICIAL IMPORT RESTRICTIONS - {country.upper()}",
+            f"Number of Restricted Items: {len(items)}",
+            "\nPROHIBITED ITEMS AND MATERIALS:",
+        ]
         
-        items_list = "\n• " + "\n• ".join(result["items"][:5])
-        context = f"""Import Prohibitions for {country}:
-                     Key restricted items: {items_list}
-                     Total prohibited items: {result['count']}"""
+        for item in items:
+            response.append(f"• {item}")
         
-        prompt = f"""As an official customs and import regulations expert:
-            Based on this information: '{context}'
-            Please provide a formal response that:
-            1. Lists key prohibited items for {country}
-            2. Explains the significance of these restrictions
-            3. Advises on import compliance
-            4. Offers to provide specific item information
-            5. Includes a professional closing statement"""
-        response = model.generate_content(prompt)
-        return response.text
-    
-    # Case 4: No entities detected
-    else:
-        prompt = f"""As an official customs and import regulations expert:
-            Regarding the query: '{query}'
-            Please provide a formal response that:
-            1. Acknowledges the need for clarification
-            2. Provides examples of specific queries (e.g., "Are firearms prohibited in Japan?")
-            3. Explains how to ask about specific items or countries
-            4. Includes a professional closing statement"""
-        response = model.generate_content(prompt)
-        return response.text
-
-# Route for the home page
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-# API route for checking system status
-@app.route('/api/status', methods=['GET'])
-def check_status():
-    db_exists = all(os.path.exists(os.path.join(DB_DIR, fname)) for fname in ["items_index.faiss", "items.pkl", "country_map.pkl", "country_data.json"])
-    if db_exists:
-        success, message = initialize_system()
-        return jsonify({"status": "ready" if success else "error", "message": message})
-    else:
-        return jsonify({"status": "not_initialized", "message": "Vector database not found. You'll need to process the PDF first."})
-
-# API route for processing the PDF
-@app.route('/api/process_pdf', methods=['POST'])
-def api_process_pdf():
-    data = request.get_json()
-    pdf_file = os.path.join(DATA_DIR, data.get('pdf_file', 'fedex-international-connect-country-region-specific-prohibited-and-restricted-items.pdf'))
-    output_file = os.path.join(DATA_DIR, data.get('output_file', 'fedex_country_restrictions.json'))
-    
-    if not Path(pdf_file).exists():
-        return jsonify({"status": "error", "message": f"PDF file '{pdf_file}' not found."})
-    
-    try:
-        _, message1 = process_fedex_pdf(pdf_file, output_file)
-        fixed_data, message2 = fix_malformed_countries(output_file)
-        message3 = create_vector_database(fixed_data)
-        success, message4 = initialize_system(force_reload=True)
+        response.extend([
+            "\nIMPORTANT NOTICE:",
+            "• This list represents current import prohibitions",
+            "• Additional restrictions may apply",
+            "• Verify requirements with customs authorities"
+        ])
         
-        return jsonify({
-            "status": "success" if success else "error",
-            "messages": [message1, message2, message3, message4]
-        })
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
+        return "\n".join(response)
 
-# API route for searching prohibited items by country
-@app.route('/api/search_by_country', methods=['POST'])
-def api_search_by_country():
-    data = request.get_json()
-    country = data.get('country', '')
-    
-    if not country:
-        return jsonify({"status": "error", "message": "Country name is required"})
-    
-    start_time = time.time()
-    result = get_prohibited_items_for_country(country)
-    query_time = time.time() - start_time
-    
-    if "error" in result:
-        return jsonify({"status": "error", "message": result["error"]})
+    # Case 4: No entities detected - Check memory for context
     else:
-        return jsonify({
-            "status": "success",
-            "country": result["country"],
-            "items": result["items"],
-            "count": result["count"],
-            "query_time": query_time
-        })
+        # Check if we can use chat history to get context
+        if chat_history and len(chat_history) > 0:
+            # Extract countries and items from recent chat history
+            recent_countries = []
+            recent_items = []
+            
+            # Look at the last 3 messages to extract context
+            for msg in chat_history[-3:]:
+                if msg["role"] == "user":
+                    entities = extract_entities(msg["content"])
+                    if entities["countries"] and not recent_countries:
+                        recent_countries = entities["countries"]
+                    if entities["items"] and not recent_items:
+                        recent_items = entities["items"]
+            
+            # If we found context from history, use it
+            if recent_countries:
+                country = recent_countries[0]
+                result = get_prohibited_items_for_country(country)
+                if "error" not in result:
+                    context = (
+                        f"{history_context}"
+                        f"The user previously asked about {country}. Based on that context:\n\n"
+                        f"Query: {query}\n\n"
+                        "Please provide a helpful response about prohibited items in this country, "
+                        "referencing the previous conversation and addressing the user's new query."
+                    )
+                    response = model.generate_content(context)
+                    return response.text.replace("FedEx", "").replace("fedex", "")
+            
+            # General response with memory
+            context = (
+                f"{history_context}"
+                f"User's new query: {query}\n\n"
+                "Based on the conversation history, provide a helpful response about prohibited shipping items. "
+                "If you can't determine what the user is asking about, prompt them for more specific information."
+            )
+            response = model.generate_content(context)
+            return response.text.replace("FedEx", "").replace("fedex", "")
+        
+        # No history context available
+        return ("• I need more specific information to help you\n"
+                "• Try asking about:\n"
+                "  • A specific country (e.g., 'What items are prohibited in Japan?')\n"
+                "  • A specific item (e.g., 'Which countries prohibit electronics?')\n"
+                "  • Or both (e.g., 'Can I ship alcohol to France?')")
 
-# API route for searching countries by prohibited item
-@app.route('/api/search_by_item', methods=['POST'])
-def api_search_by_item():
-    data = request.get_json()
-    query = data.get('query', '')
-    top_k = data.get('top_k', 20)
-    
-    if not query:
-        return jsonify({"status": "error", "message": "Query is required"})
-    
-    start_time = time.time()
-    results = search_prohibited_items(query, top_k)
-    query_time = time.time() - start_time
-    
-    if isinstance(results, dict) and "error" in results:
-        return jsonify({"status": "error", "message": results["error"]})
-    else:
-        return jsonify({
-            "status": "success",
-            "results": results,
-            "count": len(results),
-            "query_time": query_time
-        })
-
-# API route for chat
-@app.route('/api/chat', methods=['POST'])
-def api_chat():
-    data = request.get_json()
-    user_input = data.get('message', '')
-    
-    if not user_input:
-        return jsonify({"status": "error", "message": "Message is required"})
-    
-    # Initialize chat history if not exists
-    if 'chat_history' not in session:
-        session['chat_history'] = []
-    
-    # Add user message to history
-    session['chat_history'].append({"role": "user", "content": user_input})
-    
-    # Get assistant response
-    try:
-        response = chatbot_response(user_input)
-        session['chat_history'].append({"role": "assistant", "content": response})
-        return jsonify({
-            "status": "success",
-            "response": response,
-            "history": session['chat_history']
-        })
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
-
-# Route to get chat history
-@app.route('/api/chat_history', methods=['GET'])
-def get_chat_history():
+# API Routes
+@app.route('/api/check-database', methods=['GET'])
+def check_database():
+    """Check if the vector database exists and is ready to use."""
+    db_exists = all(os.path.exists(os.path.join(VECTOR_DB_DIR, fname)) 
+                   for fname in ["items_index.faiss", "items.pkl", "country_map.pkl", "country_data.json"])
     return jsonify({
-        "status": "success",
-        "history": session.get('chat_history', [])
+        "exists": db_exists, 
+        "path": VECTOR_DB_DIR
     })
 
-# Route to clear chat history
-@app.route('/api/clear_chat', methods=['POST'])
-def clear_chat():
-    session['chat_history'] = []
-    return jsonify({"status": "success", "message": "Chat history cleared"})
+@app.route('/api/process-pdf', methods=['POST'])
+def api_process_pdf():
+    """API endpoint to process the PDF and create the vector database."""
+    try:
+        # Make sure the data directory exists
+        os.makedirs(DATA_DIR, exist_ok=True)
+        
+        # Check if the PDF file exists
+        if not os.path.exists(PDF_PATH):
+            return jsonify({"error": f"PDF file not found at {PDF_PATH}"}), 404
+        
+        # Process the PDF
+        data = process_fedex_pdf(PDF_PATH, JSON_OUTPUT_PATH)
+        
+        # Fix any malformed country names
+        data = fix_malformed_countries(JSON_OUTPUT_PATH)
+        
+        # Create the vector database
+        create_vector_database(data, VECTOR_DB_DIR)
+        
+        # Initialize the system
+        success = initialize_system(force_reload=True)
+        
+        if success:
+            return jsonify({
+                "success": True,
+                "message": f"Processed {len(data)} countries and created vector database",
+                "country_count": len(data)
+            })
+        else:
+            return jsonify({
+                "success": False,
+                "error": "Failed to initialize the system after processing"
+            }), 500
+    except Exception as e:
+        logger.error(f"Error processing PDF: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
-if __name__ == "__main__":
-    # Create templates directory if it doesn't exist
-    templates_dir = os.path.join(os.path.dirname(__file__), "templates")
-    os.makedirs(templates_dir, exist_ok=True)
+@app.route('/api/countries', methods=['GET'])
+def get_countries():
+    """Get a list of all available countries."""
+    if not initialize_system():
+        return jsonify({"error": "Failed to initialize the system"}), 500
     
-    # Create static directory for CSS, JS files
-    static_dir = os.path.join(os.path.dirname(__file__), "static")
-    css_dir = os.path.join(static_dir, "css")
-    js_dir = os.path.join(static_dir, "js")
-    os.makedirs(css_dir, exist_ok=True)
-    os.makedirs(js_dir, exist_ok=True)
+    return jsonify({
+        "countries": sorted(list(_country_data.keys()))
+    })
+
+@app.route('/api/country/<country>', methods=['GET'])
+def get_country_items(country):
+    """Get prohibited items for a specific country."""
+    if not initialize_system():
+        return jsonify({"error": "Failed to initialize the system"}), 500
     
+    result = get_prohibited_items_for_country(country)
+    return jsonify(result)
+
+@app.route('/api/search-item', methods=['GET'])
+def search_item():
+    """Search for countries that prohibit a specific item."""
+    if not initialize_system():
+        return jsonify({"error": "Failed to initialize the system"}), 500
+    
+    query = request.args.get('query', '')
+    top_k = int(request.args.get('top_k', 20))
+    
+    if not query:
+        return jsonify({"error": "No query provided"}), 400
+    
+    results = search_prohibited_items(query, top_k)
+    return jsonify({"results": results})
+
+@app.route('/api/chat', methods=['POST'])
+def chat():
+    """Chat with the AI assistant about prohibited items."""
+    if not initialize_system():
+        return jsonify({"error": "Failed to initialize the system"}), 500
+    
+    data = request.json
+    query = data.get('query', '')
+    chat_history = data.get('chat_history', [])
+    
+    if not query:
+        return jsonify({"error": "No query provided"}), 400
+    
+    response = chatbot_response(query, chat_history)
+    return jsonify({
+        "response": response,
+        "entities": extract_entities(query)
+    })
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    """Serve the React frontend."""
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+
+if __name__ == '__main__':
+    # Check if the vector database exists, if not try to create it
+    db_exists = all(os.path.exists(os.path.join(VECTOR_DB_DIR, fname)) 
+                   for fname in ["items_index.faiss", "items.pkl", "country_map.pkl", "country_data.json"])
+    
+    if not db_exists and os.path.exists(PDF_PATH):
+        try:
+            logger.info("Vector database not found. Attempting to create it...")
+            data = process_fedex_pdf(PDF_PATH, JSON_OUTPUT_PATH)
+            data = fix_malformed_countries(JSON_OUTPUT_PATH)
+            create_vector_database(data, VECTOR_DB_DIR)
+        except Exception as e:
+            logger.error(f"Failed to create vector database automatically: {str(e)}")
+    
+    # Initialize the system
+    initialize_system()
+    
+    # Run the Flask app
     app.run(host='0.0.0.0', port=5000, debug=True)

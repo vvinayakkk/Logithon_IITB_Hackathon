@@ -5,6 +5,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import ItemImageCompliancePage from './pages/ItemImageCompliancePage'
 import GlobeVisualization from './components/Globe'
+import Restrictions from './pages/restrictions'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<ItemImageCompliancePage/>} /> 
-      <Route path='/globe' element={<GlobeVisualization/>} />
+      <Route path='/restrictions' element={<Restrictions/>} />
     </Routes>
   )
 }
