@@ -32,6 +32,17 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen 
+          name="ItemImageCompliance" 
+          options={{ 
+            headerShown: true,
+            title: "Compliance Check",
+            headerStyle: {
+              backgroundColor: '#172554',
+            },
+            headerTintColor: '#fff',
+          }} 
+        />
+        <Stack.Screen 
           name="ShowRegulationsPageNative" 
           options={{ 
             headerShown: false,

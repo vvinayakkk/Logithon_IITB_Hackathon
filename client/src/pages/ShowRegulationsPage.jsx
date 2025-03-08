@@ -18,11 +18,24 @@ const ShowRegulations = () => {
   const [userInput, setUserInput] = useState('');
   const [chatId, setChatId] = useState(null); // Add this new state
 
+  const formatCountryName = (name) => {
+    return name
+      .toLowerCase()
+      .replace(/%20/g, '_')  // Replace %20 with underscore
+      .replace(/\s+/g, '_'); // Replace spaces with underscore
+  };
   useEffect(() => {
+
     const fetchRegulations = async () => {
       try {
         // Format the JSON filename according to source_to_destination.json
-        const fileName = `${source.toLowerCase()}_to_${destination.toLowerCase()}.json`;
+      const formattedSource = formatCountryName(source);
+      const formattedDestination = formatCountryName(destination);
+      
+      // Create the filename
+      const fileName = `${formattedSource}_to_${formattedDestination}.json`;
+      // console.log('Fetching file:', fileName);
+      
         const response = await fetch(`/${fileName}`);
         
         if (!response.ok) {

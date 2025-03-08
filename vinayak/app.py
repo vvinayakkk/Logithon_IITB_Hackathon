@@ -833,10 +833,6 @@ def get_exchange_rate_and_taxes(source_country, destination_country, amount_usd)
             'calculation_successful': False,
             'error': str(e)
         }
-    
-
-
-
 
 
 
