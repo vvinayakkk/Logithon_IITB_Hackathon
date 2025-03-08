@@ -321,6 +321,269 @@ def check_all_compliance():
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
 
+
+
+
+@app.route('/api/check_bulk', methods=['POST'])
+def check_bulk_compliance():
+    try:
+        # Check if the file was uploaded
+        if 'file' not in request.files:
+            return jsonify({"error": "No file uploaded"}), 400
+            
+        file = request.files['file']
+        
+        # Check if the file is a CSV
+        if file.filename == '' or not file.filename.endswith('.csv'):
+            return jsonify({"error": "Please upload a valid CSV file"}), 400
+            
+        # Process the CSV file
+        import csv
+        import io
+        
+        # Read the CSV data
+        csv_data = []
+        csv_stream = io.StringIO(file.stream.read().decode("utf-8"), newline='')
+        csv_reader = csv.DictReader(csv_stream)
+        
+        # Verify required fields in CSV
+        required_fields = ['source', 'destination']
+        if not all(field in csv_reader.fieldnames for field in required_fields):
+            return jsonify({"error": f"CSV must contain the following fields: {', '.join(required_fields)}"}), 400
+            
+        # Store all rows from CSV
+        for row in csv_reader:
+            csv_data.append(row)
+            
+        if not csv_data:
+            return jsonify({"error": "CSV file is empty"}), 400
+        
+        # Determine how many API keys we have
+        num_api_keys = len(GEMINI_KEYS)
+        print(f"Using {num_api_keys} Gemini API keys for parallel processing")
+        
+        # Process all shipments in parallel, using different API keys
+        results = []
+        
+        # Create a lock for thread-safe API key selection
+        api_key_lock = threading.Lock()
+        key_index = [0]  # Mutable container for the current key index
+        
+        def get_next_api_key():
+            with api_key_lock:
+                key = GEMINI_KEYS[key_index[0]]
+                key_index[0] = (key_index[0] + 1) % num_api_keys
+                return key
+        
+        def process_with_dedicated_key(row):
+            # Each thread gets its own API key from the pool
+            api_key = get_next_api_key()
+            return process_single_shipment(row, api_key)
+        
+        # Use as many workers as we have rows or a reasonable limit
+        max_workers = min(len(csv_data), num_api_keys * 2, 20)
+        print(f"Starting parallel processing with {max_workers} workers")
+        
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {executor.submit(process_with_dedicated_key, row): row for row in csv_data}
+            for future in futures:
+                try:
+                    result = future.result()
+                    results.append(result)
+                except Exception as e:
+                    row = futures[future]
+                    results.append({
+                        "source": row.get('source', 'unknown'),
+                        "destination": row.get('destination', 'unknown'),
+                        "error": str(e),
+                        "status": "failed"
+                    })
+                
+        return jsonify({
+            "total_shipments": len(csv_data),
+            "processed": len(results),
+            "results": results
+        })
+        
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+def process_single_shipment(shipment_row, api_key):
+    """Process a single shipment from CSV with one Gemini call, using the provided API key."""
+    source = shipment_row.get('source')
+    destination = shipment_row.get('destination')
+    
+    if not source or not destination:
+        return {
+            "source": source or "missing",
+            "destination": destination or "missing",
+            "error": "Source and destination are required",
+            "status": "failed"
+        }
+    
+    # Get regulation file path
+    file_path = get_regulation_file(source, destination)
+    if not file_path:
+        return {
+            "source": source,
+            "destination": destination,
+            "error": f"No regulations found for {source} to {destination}",
+            "status": "failed"
+        }
+    
+    # Load regulation data
+    regulation_data = load_regulation_data(file_path)
+    if not regulation_data:
+        return {
+            "source": source,
+            "destination": destination,
+            "error": "Failed to load regulation data",
+            "status": "failed"
+        }
+    
+    # Extract all sections and their simplified forms
+    all_sections_data = []
+    for item in regulation_data:
+        if isinstance(item, dict) and "Section" in item:
+            section_data = {
+                "section_name": item.get("Section", ""),
+                "content": item.get("Content", ""),
+                "simplified_form": item.get("Simplified Form", [])
+            }
+            all_sections_data.append(section_data)
+    
+    # Use the provided API key for this specific shipment
+    compliance_result = check_all_compliance_with_gemini(all_sections_data, shipment_row, api_key)
+    
+    return {
+        "source": source,
+        "destination": destination,
+        "shipment_id": shipment_row.get('shipment_id', 'unknown'),
+        "compliance_result": compliance_result,
+        "status": "processed"
+    }
+
+def check_all_compliance_with_gemini(all_sections_data, shipment_details, api_key):
+    """Check compliance for all sections in a single Gemini call."""
+    gemini_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent"
+    headers = {
+        "Content-Type": "application/json",
+        "x-goog-api-key": api_key
+    }
+    
+    # Construct comprehensive prompt for all sections
+    sections_json = json.dumps(all_sections_data, indent=2)
+    shipment_json = json.dumps(shipment_details, indent=2)
+    
+    prompt = f"""
+    You are a UPS Senior International Compliance Officer with 15+ years of experience in global shipping regulations.
+    Analyze this shipment against ALL regulatory requirements with extreme attention to detail.
+    
+    REGULATORY FRAMEWORKS AND COMPLIANCE CHECKLISTS:
+    {sections_json}
+    
+    SHIPMENT DETAILS FOR INSPECTION:
+    {shipment_json}
+    
+    TASK: Conduct a thorough, critical compliance analysis of the shipment across ALL sections.
+    
+    Format your response as a JSON object with the following structure:
+    {{
+        "overall_compliance": {{
+            "compliant": boolean,  // true if fully compliant with ALL sections, false otherwise
+            "overall_compliance_score": number,  // Overall compliance score from 0-100
+            "overall_risk_level": string,  // "High", "Medium", "Low", or "None"
+            "critical_violations_count": number,  // Count of critical violations
+            "summary": string  // Brief summary of overall compliance status
+        }},
+        "section_results": [
+            {{
+                "section_name": string,  // Name of the regulatory section
+                "compliant": boolean,  // true if compliant with this section, false otherwise
+                "compliance_score": number,  // Section compliance score from 0-100
+                "risk_level": string,  // "High", "Medium", "Low", or "None" for this section
+                "reasons": [
+                    // Specific compliance findings for this section
+                ],
+                "violations": [
+                    // Specific rules violated in this section, if any
+                ],
+                "suggestions": [
+                    // Recommendations to resolve violations in this section
+                ]
+            }},
+            // Additional section results...
+        ],
+        "additional_requirements": [
+            // Any additional permits, forms or documentation needed
+        ],
+        "officer_notes": string  // Professional insight from your experience
+    }}
+    
+    Ensure your analysis is thorough, strict, and identifies ALL potential compliance issues across ALL sections.
+    """
+    
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.2,
+            "topK": 40,
+            "topP": 0.95,
+            "maxOutputTokens": 4000
+        }
+    }
+    
+    try:
+        response = requests.post(gemini_url, headers=headers, json=payload)
+        response_data = response.json()
+        
+        # Extract the text response and parse it as JSON
+        if "candidates" in response_data and len(response_data["candidates"]) > 0:
+            text_response = response_data["candidates"][0]["content"]["parts"][0]["text"]
+            # Find JSON in the response
+            try:
+                import re
+                json_match = re.search(r'({.*})', text_response, re.DOTALL)
+                if json_match:
+                    return json.loads(json_match.group(1))
+            except Exception as parse_error:
+                print(f"JSON parsing error: {str(parse_error)}")
+                # Fallback if JSON parsing fails
+                return {
+                    "error": "Failed to parse Gemini response",
+                    "error_details": str(parse_error),
+                    "overall_compliance": {
+                        "compliant": None,
+                        "overall_compliance_score": 0,
+                        "overall_risk_level": "Unknown",
+                        "critical_violations_count": 0,
+                        "summary": "Technical error occurred during compliance evaluation."
+                    }
+                }
+                
+        return {
+            "error": "Failed to get a valid response from Gemini",
+            "overall_compliance": {
+                "compliant": None,
+                "overall_compliance_score": 0,
+                "overall_risk_level": "Unknown",
+                "critical_violations_count": 0,
+                "summary": "System couldn't complete the compliance evaluation."
+            }
+        }
+    except Exception as e:
+        print(f"Error calling Gemini API: {str(e)}")
+        return {
+            "error": f"API error: {str(e)}",
+            "overall_compliance": {
+                "compliant": None,
+                "overall_compliance_score": 0,
+                "overall_risk_level": "Unknown",
+                "critical_violations_count": 0,
+                "summary": "Technical difficulties encountered during evaluation process."
+            }
+        }
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
