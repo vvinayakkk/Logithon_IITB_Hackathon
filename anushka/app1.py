@@ -991,6 +991,41 @@ def serve(path):
         return send_from_directory(app.static_folder, path)
     else:
         return send_from_directory(app.static_folder, 'index.html')
+    
+
+
+
+from flask import Flask, request, jsonify
+import google.generativeai as genai
+from dotenv import load_dotenv
+GOOGLE_API_KEY = "AIzaSyAWalRIQgdh5JU31vN88y9F8KdrovC6QOo"
+genai.configure(api_key=GOOGLE_API_KEY)
+@app.route('/generate', methods=['POST'])
+def generate_text():
+    try:
+        # Get data from request
+        data = request.json
+        prompt = data.get('prompt')
+        
+        if not prompt:
+            return jsonify({"error": "No prompt provided"}), 400
+        
+        # Configure the model
+        model = genai.GenerativeModel('gemini-1.5-pro')
+        
+        # Generate content
+        response = model.generate_content(prompt)
+        
+        # Return the response
+        return jsonify({
+            "response": response.text,
+            "model": "gemini-1.5-pro"
+        })
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 
 if __name__ == '__main__':
     # Check if the vector database exists, if not try to create it
