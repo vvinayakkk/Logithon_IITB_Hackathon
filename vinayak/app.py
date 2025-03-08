@@ -279,16 +279,22 @@ def check_section_compliance(section_name):
 # Route to check compliance for all sections in parallel
 @app.route('/api/check_financial_all', methods=['POST'])
 def check_all_compliance():
-    try:
+    try:        
+        print("hi")
         data = request.json
+        print("data", data)
         source = data.get('source')
+        print("source", source)
         destination = data.get('destination')
+        print("destination", destination)
         user_data = data.get('shipment_details', {})
+        print("user_data", user_data)
         user_data['source'] = source
         user_data['destination'] = destination
+        print("yo")
         if not source or not destination:
             return jsonify({"error": "Source and destination are required"}), 400
-        
+        print("hello")
         file_path = get_regulation_file(source, destination)
         print("regulation file path", file_path)
         if not file_path:
@@ -439,7 +445,7 @@ def process_single_shipment(shipment_row, api_key):
             "status": "failed"
         }
     
-    # Get regulation file path
+    # Get regulation file path and load regulation data
     file_path = get_regulation_file(source, destination)
     if not file_path:
         return {
@@ -449,7 +455,6 @@ def process_single_shipment(shipment_row, api_key):
             "status": "failed"
         }
     
-    # Load regulation data
     regulation_data = load_regulation_data(file_path)
     if not regulation_data:
         return {
@@ -470,28 +475,40 @@ def process_single_shipment(shipment_row, api_key):
             }
             all_sections_data.append(section_data)
     
-    # Use the provided API key for this specific shipment
-    compliance_result = check_all_compliance_with_gemini(all_sections_data, shipment_row, api_key)
-    
-    # Add financial analysis
+    # Calculate financial analysis first
     shipment_value = float(shipment_row.get('shipment_value_usd', 0.0))
     cost_info = get_exchange_rate_and_taxes(source, destination, shipment_value)
-    compliance_result['financial_analysis'] = cost_info if cost_info else {
-        "exchange_rate": 0,
-        "source_currency": "",
-        "dest_currency": "",
-        "converted_amount": 0,
-        "tariff_rate": 0,
-        "tariff_amount": 0,
-        "total_with_tariff": 0,
-        "tax_compliance_notes": "Financial analysis not available"
+    
+    # Create standardized financial analysis structure
+    financial_analysis = {
+        "exchange_rate": cost_info.get('exchange_rate', 0),
+        "source_currency": cost_info.get('source_currency', 'USD'),
+        "dest_currency": cost_info.get('dest_currency', ''),
+        "original_amount": shipment_value,
+        "converted_amount": cost_info.get('converted_amount', 0),
+        "tariff_rate": cost_info.get('tariff_rate', 0),
+        "tariff_amount": cost_info.get('tariff_amount', 0),
+        "total_with_tariff": cost_info.get('total_with_tariff', 0),
+        "calculation_successful": cost_info.get('calculation_successful', False),
+        "tax_compliance_notes": (
+            f"Shipment value of {shipment_value} USD converted to "
+            f"{cost_info.get('converted_amount', 0)} {cost_info.get('dest_currency', '')} "
+            f"with tariff of {cost_info.get('tariff_rate', 0)*100}%"
+        )
     }
+    
+    # Use the provided API key for compliance check
+    compliance_result = check_all_compliance_with_gemini(all_sections_data, shipment_row, api_key)
+    
+    # Add financial analysis to the compliance result
+    compliance_result['financial_analysis'] = financial_analysis
     
     return {
         "source": source,
         "destination": destination,
         "shipment_id": shipment_row.get('shipment_id', 'unknown'),
         "compliance_result": compliance_result,
+        "financial_analysis": financial_analysis,  # Add it at top level too for easy access
         "status": "processed"
     }
 

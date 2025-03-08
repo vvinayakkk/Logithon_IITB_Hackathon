@@ -10,13 +10,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # for session management
-CORS(app, resources={
-    r"/api/*": {
-        "origins": "*",
-        "methods": ["POST", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"]
-    }
-})
+CORS(app)
 
 # Store chat histories with a TTL (time to live)
 chat_histories = {}

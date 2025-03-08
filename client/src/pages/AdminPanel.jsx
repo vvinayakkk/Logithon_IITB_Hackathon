@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Header from '../components/header';
 
 function AdminPanel() {
   const [rules, setRules] = useState([]);
@@ -136,33 +138,46 @@ function AdminPanel() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-200">
+    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-blue-950 to-gray-900">
       {/* Header */}
-      <div className="bg-blue-900 shadow-lg border-b border-blue-700">
+      <Header />
+      <div className="bg-gradient-to-r from-blue-900 to-gray-900 shadow-lg border-b border-blue-800">
         <div className="container mx-auto px-4 py-6 flex items-center">
           <div className="mr-4">
             <svg className="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" />
+              <path d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5Z" />
             </svg>
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">Admin Panel</h1>
-            <p className="text-blue-300 text-sm">Add Custom Rules for Cross Border Shipment</p>
+            <h1 className="text-2xl font-bold text-blue-300">Admin Panel</h1>
+            <p className="text-blue-400 text-sm">Add Custom Rules for Cross Border Shipment</p>
           </div>
         </div>
       </div>
       
       <div className="container mx-auto py-8 px-4">
         {message && (
-          <div className={`p-4 mb-6 rounded ${message.includes('success') ? 'bg-blue-900 text-blue-200 border border-blue-700' : 'bg-red-900 text-red-200 border border-red-700'}`}>
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`p-4 mb-6 rounded ${
+              message.includes('success') 
+                ? 'bg-blue-900/30 text-blue-200 border border-blue-700' 
+                : 'bg-red-900/30 text-red-200 border border-red-700'
+            }`}
+          >
             {message}
-          </div>
+          </motion.div>
         )}
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Add New Rule Form */}
-          <div className="bg-gray-800 rounded-lg shadow-lg border border-blue-900 p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-6 text-blue-400 border-b border-blue-900 pb-2 flex items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gray-900 rounded-lg shadow-lg border border-blue-800 p-6 mb-6"
+          >
+            <h2 className="text-xl font-semibold mb-6 text-blue-300 border-b border-blue-800 pb-2 flex items-center">
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
               </svg>
@@ -176,7 +191,7 @@ function AdminPanel() {
                   name="source"
                   value={newRule.source}
                   onChange={handleInputChange}
-                  className="w-full p-2 bg-gray-700 border border-blue-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white"
+                  className="w-full p-2 bg-gray-800 border border-blue-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-blue-100"
                   required
                 >
                   <option value="">Select Source Country</option>
@@ -198,7 +213,7 @@ function AdminPanel() {
                   name="destination"
                   value={newRule.destination}
                   onChange={handleInputChange}
-                  className="w-full p-2 bg-gray-700 border border-blue-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white"
+                  className="w-full p-2 bg-gray-800 border border-blue-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-blue-100"
                   required
                 >
                   <option value="">Select Destination Country</option>
@@ -224,16 +239,18 @@ function AdminPanel() {
                   name="rule"
                   value={newRule.rule}
                   onChange={handleInputChange}
-                  className="w-full p-2 bg-gray-700 border border-blue-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white"
+                  className="w-full p-2 bg-gray-800 border border-blue-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-blue-100"
                   rows="3"
                   placeholder="Enter compliance rule (e.g., 'All electronics require detailed component lists')"
                   required
                 ></textarea>
               </div>
               
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200 flex items-center"
+                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200 flex items-center"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -252,13 +269,18 @@ function AdminPanel() {
                     Add Rule
                   </>
                 )}
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
           
           {/* Routes List */}
-          <div className="bg-gray-800 rounded-lg shadow-lg border border-blue-900 p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-6 text-blue-400 border-b border-blue-900 pb-2 flex items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-gray-900 rounded-lg shadow-lg border border-blue-800 p-6 mb-6"
+          >
+            <h2 className="text-xl font-semibold mb-6 text-blue-300 border-b border-blue-800 pb-2 flex items-center">
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M15,19L9,16.89V5L15,7.11V19M20.5,3C20.78,3 21,3.22 21,3.5V20.5C21,20.78 20.78,21 20.5,21H3.5C3.22,21 3,20.78 3,20.5V3.5C3,3.22 3.22,3 3.5,3H20.5Z" />
               </svg>
@@ -266,14 +288,14 @@ function AdminPanel() {
             </h2>
             
             {routes.length === 0 ? (
-              <div className="flex items-center justify-center p-8 bg-gray-700 rounded border border-blue-900 text-gray-400">
+              <div className="flex items-center justify-center p-8 bg-gray-800 rounded border border-blue-800 text-gray-400">
                 <svg className="w-5 h-5 mr-2 opacity-70" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
                 </svg>
                 No routes defined yet. Add your first rule to create a route.
               </div>
             ) : (
-              <ul className="divide-y divide-blue-900">
+              <ul className="divide-y divide-blue-800">
                 {routes.map((route, index) => (
                   <li key={index} className="py-2">
                     <button
@@ -305,13 +327,17 @@ function AdminPanel() {
                 ))}
               </ul>
             )}
-          </div>
+          </motion.div>
         </div>
         
         {/* Selected Route Rules */}
         {selectedRoute && (
-          <div className="bg-gray-800 rounded-lg shadow-lg border border-blue-900 p-6 mt-4">
-            <h2 className="text-xl font-semibold mb-6 text-blue-400 border-b border-blue-900 pb-2 flex items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gray-900 rounded-lg shadow-lg border border-blue-800 p-6 mt-4"
+          >
+            <h2 className="text-xl font-semibold mb-6 text-blue-300 border-b border-blue-800 pb-2 flex items-center">
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3,4H21V8H3V4M3,10H21V14H3V10M3,16H21V20H3V16Z" />
               </svg>
@@ -319,16 +345,16 @@ function AdminPanel() {
             </h2>
             
             {selectedRoute.rules.length === 0 ? (
-              <div className="flex items-center justify-center p-8 bg-gray-700 rounded border border-blue-900 text-gray-400">
+              <div className="flex items-center justify-center p-8 bg-gray-800 rounded border border-blue-800 text-gray-400">
                 <svg className="w-5 h-5 mr-2 opacity-70" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
                 </svg>
                 No rules for this route.
               </div>
             ) : (
-              <ul className="divide-y divide-blue-900">
+              <ul className="divide-y divide-blue-800">
                 {selectedRoute.rules.map((rule, index) => (
-                  <li key={index} className="py-3 flex justify-between items-center hover:bg-gray-700 rounded px-3">
+                  <li key={index} className="py-3 flex justify-between items-center hover:bg-gray-800 rounded px-3">
                     <span className="text-gray-300 flex items-center">
                       <svg className="w-4 h-4 mr-2 text-blue-400 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
@@ -348,12 +374,17 @@ function AdminPanel() {
                 ))}
               </ul>
             )}
-          </div>
+          </motion.div>
         )}
         
         {/* All Rules Table */}
-        <div className="bg-gray-800 rounded-lg shadow-lg border border-blue-900 p-6 mt-6">
-          <h2 className="text-xl font-semibold mb-6 text-blue-400 border-b border-blue-900 pb-2 flex items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="bg-gray-900 rounded-lg shadow-lg border border-blue-800 p-6 mt-6"
+        >
+          <h2 className="text-xl font-semibold mb-6 text-blue-300 border-b border-blue-800 pb-2 flex items-center">
             <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3,5H21V7H3V5M3,9H21V11H3V9M3,13H21V15H3V13M3,17H21V19H3V17Z" />
             </svg>
@@ -361,15 +392,15 @@ function AdminPanel() {
           </h2>
           
           {rules.length === 0 ? (
-            <div className="flex items-center justify-center p-8 bg-gray-700 rounded border border-blue-900 text-gray-400">
+            <div className="flex items-center justify-center p-8 bg-gray-800 rounded border border-blue-800 text-gray-400">
               <svg className="w-5 h-5 mr-2 opacity-70" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
               </svg>
               No compliance rules defined yet.
             </div>
           ) : (
-            <div className="overflow-x-auto rounded border border-blue-900">
-              <table className="min-w-full divide-y divide-blue-900">
+            <div className="overflow-x-auto rounded border border-blue-800">
+              <table className="min-w-full divide-y divide-blue-800">
                 <thead className="bg-blue-900 bg-opacity-50">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-blue-300 uppercase tracking-wider">
@@ -386,9 +417,9 @@ function AdminPanel() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-gray-800 divide-y divide-blue-900">
+                <tbody className="bg-gray-900 divide-y divide-blue-800">
                   {rules.map((rule, index) => (
-                    <tr key={index} className="hover:bg-gray-700">
+                    <tr key={index} className="hover:bg-gray-800">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-300">
                         {rule.source.toUpperCase()}
                       </td>
@@ -415,13 +446,13 @@ function AdminPanel() {
               </table>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
       
       {/* Footer */}
-      <div className="mt-8 py-4 border-t border-blue-900 text-center text-blue-500 text-sm">
+      <footer className="mt-8 py-4 border-t border-blue-800 text-center text-blue-400 text-sm bg-gray-900">
         <p>International Shipping Compliance Tool • Version 1.1.0 • Last Updated: March 2025</p>
-      </div>
+      </footer>
     </div>
   );
 }
