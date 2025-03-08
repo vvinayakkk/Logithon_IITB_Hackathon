@@ -5,6 +5,9 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import ItemImageCompliancePage from './pages/ItemImageCompliancePage'
 import GlobeVisualization from './components/Globe'
+import RegulationsSearch from './pages/RegulationsSearchPage'
+import ShowRegulations from './pages/ShowRegulationsPage'
+import ComplianceFormPage from './pages/ComplianceFormPage'
 import Restrictions from './pages/restrictions'
 
 function App() {
@@ -14,6 +17,9 @@ function App() {
     <Routes>
       <Route path='/' element={<ItemImageCompliancePage/>} /> 
       <Route path='/restrictions' element={<Restrictions/>} />
+      <Route path="/regulations" element={<RegulationsSearch />} />
+      <Route path="/regulations/:source/:destination" element={<ShowRegulations />} />
+      <Route path="/compliance" element={<ComplianceFormPage/>} />
     </Routes>
   )
 }
