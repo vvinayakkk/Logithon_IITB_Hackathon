@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+/* 
+body {
+    font-family: 'Inter', sans-serif;
+    @apply text-gray-800;
+  }
+  
+  .prose {
+    @apply text-gray-800 leading-relaxed;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply font-semibold mb-4 text-gray-900;
+  }
+  
+  .prose p {
+    @apply mb-4;
+  }
+  
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .prose li {
+    @apply mb-1;
+  } */

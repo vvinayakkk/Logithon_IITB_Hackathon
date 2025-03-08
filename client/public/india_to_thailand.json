@@ -1,0 +1,153 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Import License\nFDA-regulated items (pharma, food, cosmetics, medical, drugs) need an import permit before arrival—10% duty penalty or max THB 20,000 if missing.\nCITES Certificate\nSend via Express for clearance.\nPacking List\nRequired for formal entry (>THB 40,000) with 2+ packages.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need MSDS—advisable for UAE transits; include in shipment and upload to IDIS.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into Thailand.",
+        "Simplified Form": [
+            "- *Import License*: FDA items (food, drugs, cosmetics) need permit pre-arrival—or face 10% duty or THB 20K fine.",
+            "- *CITES*: Send certificate via Express for endangered species.",
+            "- *Packing List*: Needed for >THB 40,000 shipments with 2+ packages.",
+            "- *MSDS*: Batteries need MSDS—add for UAE transits to avoid delays."
+        ]
+    },
+    {
+        "Section": "Export Documentation",
+        "Content": "Customs Clearance Process\nNew Customs Act B.E. 2560 (2017) effective Nov 10, 2017, requires shipping marks & numbers on packages and invoice—up to THB 50,000 fine if missing. Include shipper, consignee, address, invoice/PO number, weight, dimensions, carton count.",
+        "Info About Section Header": "This section covers documents required when sending goods out of Thailand.",
+        "Simplified Form": [
+            "- *Shipping Marks*: Add shipper, consignee, address, invoice/PO, weight, size, carton count on package and invoice—or face THB 50K fine."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Customs Clearance Process\nFour categories: 1) Non-dutiable docs; 2) VAT (7% on THB 1-1,500, from July 5, 2024); 3) Dutiable ≤THB 40,000; 4) Formal entry (>THB 40,000 or restricted). Categories 2-3 use highest tariff rate unless cleared as Category 4. Category 4 incurs extra fees.\nPost Office Boxes\nFull address, phone, and exact name match to ID required—no P.O. Boxes.\nClearance Comments\n>THB 40,000 needs formal entry, may take 2 days.\nPayment by Credit Card\nAccepted on delivery—check with UPS Thailand.",
+        "Info About Section Header": "This section provides details on customs processes in Thailand.",
+        "Simplified Form": [
+            "- *Categories*: 1) Docs free; 2) 7% VAT on THB 1-1,500; 3) Duty ≤THB 40,000; 4) Formal >THB 40,000 or restricted.",
+            "- *Tariff*: 2-3 use highest rate—opt for 4 for actual rates.",
+            "- *Category 4 Fees*: Handling, storage (THB 428+), overtime.",
+            "- *Address*: Full details, phone, exact ID name—no P.O. Boxes.",
+            "- *High Value*: >THB 40,000 takes 2 days.",
+            "- *Payment*: Credit card okay—confirm with UPS Thailand."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to certain cities.\nFull address, phone, and exact ID name required—no P.O. Boxes.\nRest Days: Sunday, holidays.\nGMT: +0700\nLanguage: Thai\nCurrency: Baht (THB)",
+        "Info About Section Header": "This section lists shipping locations in Thailand.",
+        "Simplified Form": [
+            "- *Coverage*: Select cities.",
+            "- *Address*: Full details, phone, ID name—no P.O. Boxes.",
+            "- *Rest Days*: Off Sundays, Thai holidays.",
+            "- *Time Zone*: GMT +0700.",
+            "- *Language & Money*: Thai; pay in Baht (THB)."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—surcharge if outside Thailand.\nShipping Charges\nBill to shipper, receiver, or third party—needs account number.\nPayment Methods\nOnly shipper pays by card, check, or cash.\nSplit Duty And VAT\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic can’t bill outside Thailand unless payor has VAT ID.",
+        "Info About Section Header": "This section explains payment options for shipping to Thailand.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—extra fee if outside Thailand.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account.",
+            "- *Payment*: Shipper only for card, check, cash.",
+            "- *Split Billing*: Freight/duties one party, taxes another—surcharge applies.",
+            "- *Third-Party*: Thailand-to-Thailand can’t bill outside without VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nPPE B2C banned; B2B needs FDA license.\nMask Protection\n>200 needs FDA license; ≤200 can apply for exemption.\nVeterinary Products\nNeeds Livestock Dept license.\nDental Instruments/Vitamins/Pharmaceuticals/Drugs\nNeeds FDA/Ministry of Health license—B2C banned.\nWood\nNeeds Agriculture Dept license.\nCoffee\n>5 kg needs FDA license; ≤5 kg can apply for exemption.\nToys\nB2C >6 needs TISI license; ≤6 or B2B can apply for exemption.\nTelecom Equipment\nNeeds NBTC license—phones need model/brand/origin.\nNutritional Supplements\nNeeds FDA license—B2C banned.\nEye Wear\nNeeds FDA license.\nUsed Items\nElectricals need Industrial Factory Dept license.\nDairy\nNeeds FDA license—≤4L/4kg can apply for exemption.\nFood\nNeeds FDA license—samples limited (e.g., 1.5 kg chocolate).",
+        "Info About Section Header": "This section lists special rules for shipping goods to Thailand.",
+        "Simplified Form": [
+            "- *Medical/PPE*: B2C banned; B2B needs FDA license.",
+            "- *Masks*: >200 needs FDA; ≤200 can get exemption.",
+            "- *Vet Products*: Livestock Dept license.",
+            "- *Dental/Vitamins/Drugs*: FDA/Ministry license—B2C banned.",
+            "- *Wood*: Agriculture Dept license.",
+            "- *Coffee*: >5 kg needs FDA; ≤5 kg can get exemption.",
+            "- *Toys*: B2C >6 needs TISI; ≤6 or B2B can get exemption.",
+            "- *Telecom*: NBTC license—phones need details.",
+            "- *Supplements*: FDA license—B2C banned.",
+            "- *Eye Wear*: FDA license.",
+            "- *Used Items*: Electricals need Industrial license.",
+            "- *Dairy*: FDA license—≤4L/4kg can get exemption.",
+            "- *Food*: FDA license—samples limited (e.g., 1.5 kg chocolate)."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Value: 0 THB\nType: No gift exemption\nRule: All shipments pay duty/tax",
+        "Info About Section Header": "This section explains gift tax exemptions in Thailand.",
+        "Simplified Form": [
+            "- *No Exemption*: All shipments pay duty/tax—no gift breaks."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports, available for exports.\nInvoice\nNon-documents need 1 original + 2 copies with consignee phone/fax.",
+        "Info About Section Header": "This section details invoice requirements for Thailand.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports, available for exports.",
+            "- *Invoice*: 1 original + 2 copies—add phone/fax."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Cash letters, checks (≤5 kg), blueprints (≤5 kg), brochures (≤5 kg), etc., count as documents.",
+        "Info About Section Header": "This section lists items treated as documents for Thailand.",
+        "Simplified Form": [
+            "- *Documents*: Checks, blueprints, etc. (≤5 kg)—no invoice needed."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Jewelry\nNeeds license; ≤$500 okay—gold controlled.\nGambling Devices\nReligious Material\nNeeds Fine Arts license.\nPlants\nNeeds Agriculture license + phyto cert.\nPersonal Effects\nNo excisable goods; needs customs exemption.\nArtwork\nNeeds ISC + Fine Arts cert.\nE-Cigs\nBanned.\nAlcohol\nNeeds ISC + Excise license.\nLithium Batteries\nLimited types need TISI license.",
+        "Info About Section Header": "This section lists banned or restricted items in Thailand.",
+        "Simplified Form": [
+            "- *Jewelry*: License needed; ≤$500 okay—gold restricted.",
+            "- *Gambling*: Banned.",
+            "- *Religious*: Fine Arts license.",
+            "- *Plants*: Agriculture license + phyto cert.",
+            "- *Personal Effects*: No alcohol/tobacco; needs exemption.",
+            "- *Artwork*: ISC + Fine Arts cert.",
+            "- *E-Cigs*: Banned.",
+            "- *Alcohol*: ISC + Excise license.",
+            "- *Batteries*: Specific lithium needs TISI license."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to Thailand\nExpress Freight, Expedited, Express, Express Saver",
+        "Info About Section Header": "This section lists shipping services from India to Thailand.",
+        "Simplified Form": [
+            "- *India to Thailand*: Pick Express Freight, Expedited, Express, or Saver—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Solid Wood Packing Material\nISPM 15 applies—cert for raw wood >6mm.",
+        "Info About Section Header": "This section covers special rules for Thailand shipments.",
+        "Simplified Form": [
+            "- *Wood Packing*: Raw >6mm needs ISPM 15 cert."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: THB 1,500—duty/tax-free below.\nExports >$1,000 USD need formal clearance from India.",
+        "Info About Section Header": "This section states value thresholds for Thailand.",
+        "Simplified Form": [
+            "- *Low Value*: ≤THB 1,500—duty/tax-free.",
+            "- *High Exports*: >$1,000 USD from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 274 cm (107.9 in.)\nMax dimensions: 419.1 cm (165 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for Thailand.",
+        "Simplified Form": [
+            "- *Weight*: 70 kg (150 lbs.) max.",
+            "- *Size*: Max length 274 cm (107.9 in.), length + girth 419.1 cm (165 in.)."
+        ]
+    }
+]

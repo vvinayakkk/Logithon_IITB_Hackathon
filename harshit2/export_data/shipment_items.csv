@@ -1,0 +1,146 @@
+item_id,shipment_id,description,hs_code,quantity,unit_value,total_value,weight,restricted,clearance_required,origin_country,destination_country
+67cbe38544314efee589cb0d,67cbe38544314efee589cb0c,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,7,292.0643731584641,2044.4506121092486,23.78514259313884,No,No,United States,United Arab Emirates
+67cbe38544314efee589cb0e,67cbe38544314efee589cb0c,"Television reception apparatus, color",8528.72,9,486.1652437699518,4375.487193929566,39.56232102744245,No,No,United States,United Arab Emirates
+67cbe38544314efee589cb0f,67cbe38544314efee589cb0c,Video game consoles and machines,9504.50,10,472.992778009857,4729.92778009857,18.436161916501625,No,No,United States,United Arab Emirates
+67cbe38644314efee589cb19,67cbe38644314efee589cb18,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,10,446.70837941740933,4467.083794174094,16.6950193254023,No,No,Germany,Canada
+67cbe38644314efee589cb21,67cbe38644314efee589cb20,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,5,435.56364492874707,2177.8182246437354,21.405190855347897,No,No,Germany,Brazil
+67cbe38644314efee589cb22,67cbe38644314efee589cb20,Chocolate and other food preparations containing cocoa,1806.90,6,329.6717352891036,1978.0304117346216,29.847324624435434,No,No,Germany,Brazil
+67cbe38644314efee589cb23,67cbe38644314efee589cb20,Chocolate and other food preparations containing cocoa,1806.90,3,209.91663032294167,629.749890968825,14.352688763016118,No,No,Germany,Brazil
+67cbe38644314efee589cb24,67cbe38644314efee589cb20,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,10,76.79707841748159,767.9707841748159,6.44455051768359,No,No,Germany,Brazil
+67cbe38644314efee589cb25,67cbe38644314efee589cb20,Mobile phones and smartphones,8517.12,2,261.0695964371959,522.1391928743918,9.430169299616228,No,No,Germany,Brazil
+67cbe38644314efee589cb31,67cbe38644314efee589cb30,Chocolate and other food preparations containing cocoa,1806.90,5,281.3785225494729,1406.8926127473646,22.097686943302257,No,No,Germany,China
+67cbe38644314efee589cb32,67cbe38644314efee589cb30,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,1,300.65388707408937,300.65388707408937,3.145359407970425,No,No,Germany,China
+67cbe38644314efee589cb33,67cbe38644314efee589cb30,Beauty or make-up preparations and preparations for skin care,3304.99,6,51.04601185752971,306.27607114517826,26.15121516315689,No,No,Germany,China
+67cbe38644314efee589cb34,67cbe38644314efee589cb30,Other articles of plastics,3926.90,7,398.083562679419,2786.584938755933,31.08374366407802,No,No,Germany,China
+67cbe38744314efee589cb45,67cbe38744314efee589cb44,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,7,274.4632314423203,1921.2426200962423,12.25792697798992,No,No,United States,United Arab Emirates
+67cbe38744314efee589cb46,67cbe38744314efee589cb44,Microwave ovens,8516.50,2,293.73638392498543,587.4727678499709,6.80410378407903,No,No,United States,United Arab Emirates
+67cbe38744314efee589cb47,67cbe38744314efee589cb44,"Personal weighing machines, including baby scales; household scales",8423.10,9,171.06267536150935,1539.564078253584,9.621515754155158,No,No,United States,United Arab Emirates
+67cbe38744314efee589cb51,67cbe38744314efee589cb50,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,10,271.7904571611873,2717.904571611873,9.6439746246377,No,No,Germany,China
+67cbe38744314efee589cb52,67cbe38744314efee589cb50,Other articles of plastics,3926.90,7,152.517953075823,1067.6256715307609,15.46496143678231,No,No,Germany,China
+67cbe38744314efee589cb53,67cbe38744314efee589cb50,Microwave ovens,8516.50,8,104.53465201642533,836.2772161314026,15.493532010783534,No,No,Germany,China
+67cbe38744314efee589cb54,67cbe38744314efee589cb50,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,7,162.9174239217214,1140.4219674520498,34.26659722920178,Yes,Yes,Germany,China
+67cbe38844314efee589cb5f,67cbe38844314efee589cb5e,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,8,317.1534008254224,2537.2272066033793,29.017824113483446,No,No,Germany,France
+67cbe38844314efee589cb67,67cbe38844314efee589cb66,"Sweaters, pullovers, sweatshirts, waistcoats (vests) of cotton",6110.20,9,24.40455309464626,219.64097785181633,10.214669496452412,No,No,Germany,France
+67cbe38844314efee589cb6d,67cbe38844314efee589cb6c,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,9,362.10577905637325,3258.952011507359,3.5318107307485187,No,No,Germany,United Arab Emirates
+67cbe38844314efee589cb6e,67cbe38844314efee589cb6c,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,10,147.9735797627651,1479.735797627651,19.046948876127594,No,No,Germany,United Arab Emirates
+67cbe38944314efee589cb77,67cbe38944314efee589cb76,Video game consoles and machines,9504.50,6,282.77757034987303,1696.6654220992382,3.342915573641551,No,No,Germany,China
+67cbe38944314efee589cb78,67cbe38944314efee589cb76,Medical instruments and appliances,9018.90,2,271.8199128144648,543.6398256289295,0.5253583604712146,Yes,Yes,Germany,China
+67cbe38944314efee589cb79,67cbe38944314efee589cb76,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,9,457.34625944340496,4116.116334990645,31.29118224067262,No,No,Germany,China
+67cbe38944314efee589cb7a,67cbe38944314efee589cb76,"Television reception apparatus, color",8528.72,1,47.06983969567518,47.06983969567518,4.900313109792633,No,No,Germany,China
+67cbe38944314efee589cb85,67cbe38944314efee589cb84,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,4,445.06561660356215,1780.2624664142486,2.0694091999134323,No,No,Germany,China
+67cbe38944314efee589cb86,67cbe38944314efee589cb84,Microwave ovens,8516.50,7,58.62516582643656,410.3761607850559,23.52654045176409,No,No,Germany,China
+67cbe38944314efee589cb87,67cbe38944314efee589cb84,Whiskies,2208.30,1,418.1598688099718,418.1598688099718,2.2777192000609046,No,No,Germany,China
+67cbe38944314efee589cb88,67cbe38944314efee589cb84,"Sweaters, pullovers, sweatshirts, waistcoats (vests) of cotton",6110.20,8,270.53675941176255,2164.2940752941004,3.5027290340797137,No,No,Germany,China
+67cbe38944314efee589cb89,67cbe38944314efee589cb84,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,10,207.80740681514953,2078.0740681514953,20.771156592514444,No,No,Germany,China
+67cbe38944314efee589cb95,67cbe38944314efee589cb94,Whiskies,2208.30,4,75.61708855860788,302.4683542344315,11.774399183930562,Yes,Yes,United States,France
+67cbe38a44314efee589cb9d,67cbe38a44314efee589cb9c,Mobile phones and smartphones,8517.12,8,414.42791177253537,3315.423294180283,3.862200728321854,No,No,Germany,United Arab Emirates
+67cbe38a44314efee589cb9e,67cbe38a44314efee589cb9c,"Personal weighing machines, including baby scales; household scales",8423.10,2,399.134520210317,798.269040420634,6.542638267667923,No,No,Germany,United Arab Emirates
+67cbe38a44314efee589cb9f,67cbe38a44314efee589cb9c,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,5,437.2843936344645,2186.4219681723225,8.260841506516401,No,No,Germany,United Arab Emirates
+67cbe38a44314efee589cba9,67cbe38a44314efee589cba8,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,9,303.37028043106665,2730.3325238795996,6.871276474030424,No,No,Germany,Australia
+67cbe38a44314efee589cbaa,67cbe38a44314efee589cba8,"Personal weighing machines, including baby scales; household scales",8423.10,1,486.315413705422,486.315413705422,3.090276112755566,No,No,Germany,Australia
+67cbe38a44314efee589cbb3,67cbe38a44314efee589cbb2,"Sweaters, pullovers, sweatshirts, waistcoats (vests) of cotton",6110.20,8,497.6358599590671,3981.0868796725367,3.724777030043361,No,No,Germany,Canada
+67cbe38b44314efee589cbbb,67cbe38b44314efee589cbba,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,8,395.62984945114783,3165.0387956091827,18.435265768656866,No,No,Germany,United Kingdom
+67cbe38b44314efee589cbbc,67cbe38b44314efee589cbba,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,3,368.6671343940281,1106.0014031820842,1.6149236721659328,No,No,Germany,United Kingdom
+67cbe38b44314efee589cbbd,67cbe38b44314efee589cbba,Other articles of plastics,3926.90,6,289.6899100371191,1738.1394602227147,0.8331394247470261,No,No,Germany,United Kingdom
+67cbe38b44314efee589cbbe,67cbe38b44314efee589cbba,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,7,183.2246398575123,1282.572479002586,5.04886016318266,No,No,Germany,United Kingdom
+67cbe38b44314efee589cbc9,67cbe38b44314efee589cbc8,Mobile phones and smartphones,8517.12,2,13.04975631999971,26.09951263999942,3.9323864639581045,No,No,Germany,France
+67cbe38b44314efee589cbca,67cbe38b44314efee589cbc8,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,9,494.64090721059983,4451.7681648953985,27.36640476887953,No,No,Germany,France
+67cbe38b44314efee589cbcb,67cbe38b44314efee589cbc8,Whiskies,2208.30,1,232.37889588358092,232.37889588358092,4.228380181876126,Yes,Yes,Germany,France
+67cbe38b44314efee589cbd5,67cbe38b44314efee589cbd4,Mobile phones and smartphones,8517.12,9,287.10350206928183,2583.9315186235362,8.91679202889729,No,No,Germany,United States
+67cbe38c44314efee589cbdd,67cbe38c44314efee589cbdc,Microwave ovens,8516.50,2,143.6980436112462,287.3960872224924,1.943885658012114,No,No,Germany,Canada
+67cbe38c44314efee589cbde,67cbe38c44314efee589cbdc,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,2,399.3188012763053,798.6376025526106,5.776009316060344,No,No,Germany,Canada
+67cbe38c44314efee589cbe5,67cbe38c44314efee589cbe4,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,7,86.59128973491617,606.1390281444133,27.099719128556377,No,No,Germany,United States
+67cbe38c44314efee589cbe6,67cbe38c44314efee589cbe4,"Television reception apparatus, color",8528.72,4,15.58062055966559,62.32248223866236,10.431553512690224,No,No,Germany,United States
+67cbe38c44314efee589cbed,67cbe38c44314efee589cbec,Beauty or make-up preparations and preparations for skin care,3304.99,3,263.1304693407983,789.3914080223949,4.678890961896192,No,No,Germany,United Kingdom
+67cbe38c44314efee589cbee,67cbe38c44314efee589cbec,"Trunks, suitcases, with outer surface of plastics or textile materials",4202.12,10,76.7985229981001,767.985229981001,13.837410802389256,No,No,Germany,United Kingdom
+67cbe38c44314efee589cbef,67cbe38c44314efee589cbec,Chocolate and other food preparations containing cocoa,1806.90,1,41.82066251773704,41.82066251773704,2.6119424059215848,No,No,Germany,United Kingdom
+67cbe38c44314efee589cbf9,67cbe38c44314efee589cbf8,Chocolate and other food preparations containing cocoa,1806.90,4,348.3885582081289,1393.5542328325157,6.48741404305236,No,No,Germany,United States
+67cbe38c44314efee589cbfa,67cbe38c44314efee589cbf8,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,7,89.97574704676983,629.8302293273888,26.216724167968177,No,No,Germany,United States
+67cbe38c44314efee589cbfb,67cbe38c44314efee589cbf8,Medical instruments and appliances,9018.90,2,238.07777910244437,476.15555820488873,1.0129336728324416,Yes,Yes,Germany,United States
+67cbe38c44314efee589cbfc,67cbe38c44314efee589cbf8,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,3,380.70861882353466,1142.125856470604,10.38851162520141,No,No,Germany,United States
+67cbe38d44314efee589cc07,67cbe38d44314efee589cc06,Microwave ovens,8516.50,7,445.8802851882036,3121.161996317425,11.291888727553005,No,No,Germany,Canada
+67cbe38d44314efee589cc08,67cbe38d44314efee589cc06,"Trunks, suitcases, with outer surface of plastics or textile materials",4202.12,3,197.36990945718054,592.1097283715417,1.6216729924739204,No,No,Germany,Canada
+67cbe38d44314efee589cc09,67cbe38d44314efee589cc06,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,4,12.668965306233979,50.675861224935915,8.553790108650995,No,No,Germany,Canada
+67cbe38d44314efee589cc0a,67cbe38d44314efee589cc06,Medical instruments and appliances,9018.90,10,184.5409827875836,1845.409827875836,28.563802838567355,No,No,Germany,Canada
+67cbe38d44314efee589cc15,67cbe38d44314efee589cc14,Medical instruments and appliances,9018.90,1,323.2902788832544,323.2902788832544,2.6622346284277882,Yes,Yes,United States,Germany
+67cbe38d44314efee589cc16,67cbe38d44314efee589cc14,Mobile phones and smartphones,8517.12,3,179.0440908809351,537.1322726428053,6.184929154696237,No,No,United States,Germany
+67cbe38d44314efee589cc17,67cbe38d44314efee589cc14,"Portable automatic data processing machines, weighing not more than 10 kg",8471.30,10,314.2117698659421,3142.117698659421,4.82583429581148,No,No,United States,Germany
+67cbe38d44314efee589cc21,67cbe38d44314efee589cc20,Mobile phones and smartphones,8517.12,3,414.85065746067147,1244.5519723820144,14.346488424384145,No,No,United States,Germany
+67cbe38d44314efee589cc22,67cbe38d44314efee589cc20,"Television reception apparatus, color",8528.72,9,422.02088674430354,3798.1879806987317,5.386966908209179,No,No,United States,Germany
+67cbe38d44314efee589cc23,67cbe38d44314efee589cc20,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,9,85.94168184552527,773.4751366097274,25.544401835026758,No,No,United States,Germany
+67cbe38e44314efee589cc2d,67cbe38e44314efee589cc2c,"Personal weighing machines, including baby scales; household scales",8423.10,7,458.4573422618319,3209.2013958328234,26.169832192585716,No,No,Germany,Japan
+67cbe38e44314efee589cc2e,67cbe38e44314efee589cc2c,"Personal weighing machines, including baby scales; household scales",8423.10,3,85.92811825622216,257.7843547686665,4.046751378582653,No,No,Germany,Japan
+67cbe38e44314efee589cc2f,67cbe38e44314efee589cc2c,Other articles of plastics,3926.90,9,396.89360010364004,3572.0424009327603,38.69801977636456,No,No,Germany,Japan
+67cbe38e44314efee589cc30,67cbe38e44314efee589cc2c,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,1,219.0025159756927,219.0025159756927,4.691430270693028,No,No,Germany,Japan
+67cbe38e44314efee589cc43,67cbe38e44314efee589cc42,Microwave ovens,8516.50,2,302.0881355514514,604.1762711029028,0.35708082029616145,No,No,Germany,Canada
+67cbe38e44314efee589cc49,67cbe38e44314efee589cc48,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,7,25.107869030409567,175.75508321286696,15.999718542328752,No,No,Germany,Australia
+67cbe38e44314efee589cc4a,67cbe38e44314efee589cc48,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,2,312.135269136098,624.270538272196,9.192378447542925,No,No,Germany,Australia
+67cbe38e44314efee589cc4b,67cbe38e44314efee589cc48,Chocolate and other food preparations containing cocoa,1806.90,5,199.60143227640756,998.0071613820378,8.543236533261343,No,No,Germany,Australia
+67cbe38e44314efee589cc4c,67cbe38e44314efee589cc48,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,5,170.800529565335,854.002647826675,12.273711880776421,No,No,Germany,Australia
+67cbe38e44314efee589cc4d,67cbe38e44314efee589cc48,"Trunks, suitcases, with outer surface of plastics or textile materials",4202.12,9,273.8451423975739,2464.606281578165,29.379703945109053,No,No,Germany,Australia
+67cbe38f44314efee589cc59,67cbe38f44314efee589cc58,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,2,493.5673569658671,987.1347139317342,1.3188209148881023,Yes,Yes,Germany,China
+67cbe38f44314efee589cc5a,67cbe38f44314efee589cc58,Other articles of plastics,3926.90,4,304.44657454429256,1217.7862981771702,18.763301063412108,No,No,Germany,China
+67cbe38f44314efee589cc5b,67cbe38f44314efee589cc58,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,7,250.6376516242732,1754.4635613699124,32.32445286194381,No,No,Germany,China
+67cbe38f44314efee589cc5c,67cbe38f44314efee589cc58,Beauty or make-up preparations and preparations for skin care,3304.99,6,473.14480488416194,2838.8688293049718,2.2466696879916332,No,No,Germany,China
+67cbe38f44314efee589cc5d,67cbe38f44314efee589cc58,"Coffee, roasted, not decaffeinated",0901.21,9,93.82558929412616,844.4303036471355,43.97841198238645,No,No,Germany,China
+67cbe38f44314efee589cc69,67cbe38f44314efee589cc68,Whiskies,2208.30,5,80.74653156865202,403.7326578432601,20.256990847902443,Yes,Yes,United States,United Arab Emirates
+67cbe38f44314efee589cc6a,67cbe38f44314efee589cc68,"Television reception apparatus, color",8528.72,8,92.68318760329903,741.4655008263923,22.493995144299188,No,No,United States,United Arab Emirates
+67cbe38f44314efee589cc73,67cbe38f44314efee589cc72,Mobile phones and smartphones,8517.12,2,130.32640256866938,260.65280513733876,7.4269715657987385,No,No,United States,Canada
+67cbe38f44314efee589cc74,67cbe38f44314efee589cc72,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,1,244.87888775700662,244.87888775700662,1.1957772316799191,No,No,United States,Canada
+67cbe38f44314efee589cc75,67cbe38f44314efee589cc72,Medical instruments and appliances,9018.90,7,335.144278497359,2346.009949481513,14.852214822725692,No,No,United States,Canada
+67cbe38f44314efee589cc76,67cbe38f44314efee589cc72,Mobile phones and smartphones,8517.12,1,407.88453809526726,407.88453809526726,2.082739264576096,No,No,United States,Canada
+67cbe39044314efee589cc81,67cbe39044314efee589cc80,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,7,228.88613204966003,1602.2029243476202,16.881899230458163,No,No,Germany,France
+67cbe39044314efee589cc89,67cbe39044314efee589cc88,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,3,228.86251708650374,686.5875512595112,13.620995147665596,No,No,Germany,France
+67cbe39044314efee589cc8a,67cbe39044314efee589cc88,Video game consoles and machines,9504.50,4,266.2866655554778,1065.1466622219111,6.771633353475775,No,No,Germany,France
+67cbe39044314efee589cc8b,67cbe39044314efee589cc88,Chocolate and other food preparations containing cocoa,1806.90,8,378.2768885280121,3026.2151082240966,25.71918339463155,No,No,Germany,France
+67cbe39044314efee589cc8c,67cbe39044314efee589cc88,"Trunks, suitcases, with outer surface of plastics or textile materials",4202.12,7,278.9277443148982,1952.4942102042874,2.721893343720126,No,No,Germany,France
+67cbe39044314efee589cc8d,67cbe39044314efee589cc88,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,8,337.19750639178346,2697.5800511342677,22.796806160095535,No,No,Germany,France
+67cbe39044314efee589cc99,67cbe39044314efee589cc98,"Coffee, roasted, not decaffeinated",0901.21,8,232.5156265690444,1860.1250125523552,31.59758531661786,Yes,Yes,United States,Japan
+67cbe39044314efee589cc9a,67cbe39044314efee589cc98,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,5,234.5732432831545,1172.8662164157727,1.9725095694547556,No,No,United States,Japan
+67cbe39044314efee589cc9b,67cbe39044314efee589cc98,"Toys; tricycles, scooters, pedal cars and similar wheeled toys",9503.00,7,78.4729794814463,549.3108563701242,32.94045690047895,No,No,United States,Japan
+67cbe39044314efee589cc9c,67cbe39044314efee589cc98,Video game consoles and machines,9504.50,3,53.32000837539123,159.9600251261737,14.956217589793152,No,No,United States,Japan
+67cbe39144314efee589cca7,67cbe39144314efee589cca6,Chocolate and other food preparations containing cocoa,1806.90,1,498.8038123037756,498.8038123037756,4.632346883734501,No,No,United States,United Kingdom
+67cbe39144314efee589ccb7,67cbe39144314efee589ccb6,Medical instruments and appliances,9018.90,3,417.39336816284305,1252.1801044885292,2.136620962220517,Yes,Yes,Germany,United Kingdom
+67cbe39244314efee589ccbf,67cbe39244314efee589ccbe,"Personal weighing machines, including baby scales; household scales",8423.10,10,300.21594379716845,3002.1594379716844,30.32267482237852,No,No,Germany,Brazil
+67cbe39244314efee589ccc0,67cbe39244314efee589ccbe,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,7,340.99557235536554,2386.9690064875585,5.330521987773773,No,No,Germany,Brazil
+67cbe39244314efee589ccc1,67cbe39244314efee589ccbe,Beauty or make-up preparations and preparations for skin care,3304.99,3,179.06332118120915,537.1899635436274,6.984049360789696,No,No,Germany,Brazil
+67cbe39244314efee589ccc2,67cbe39244314efee589ccbe,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,4,73.1560887426014,292.6243549704056,11.9642678496429,No,No,Germany,Brazil
+67cbe39244314efee589cccd,67cbe39244314efee589cccc,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,7,335.2460278901301,2346.722195230911,2.001995963749916,No,No,Germany,China
+67cbe39244314efee589ccce,67cbe39244314efee589cccc,Beauty or make-up preparations and preparations for skin care,3304.99,10,127.8211960296065,1278.211960296065,47.00778503155429,No,No,Germany,China
+67cbe39244314efee589cccf,67cbe39244314efee589cccc,Medical instruments and appliances,9018.90,3,339.1455467808924,1017.4366403426773,10.082560597739404,Yes,Yes,Germany,China
+67cbe39244314efee589ccd0,67cbe39244314efee589cccc,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,7,112.67633930978428,788.73437516849,30.534306172082786,No,No,Germany,China
+67cbe39244314efee589ccdb,67cbe39244314efee589ccda,Microwave ovens,8516.50,3,221.7567208893286,665.2701626679858,8.27661868279624,No,No,Germany,Brazil
+67cbe39244314efee589ccdc,67cbe39244314efee589ccda,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,7,32.623678335374365,228.36574834762055,16.361722059072225,No,No,Germany,Brazil
+67cbe39244314efee589ccdd,67cbe39244314efee589ccda,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,10,498.02535702774355,4980.253570277436,11.600660906179654,No,No,Germany,Brazil
+67cbe39244314efee589ccde,67cbe39244314efee589ccda,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,5,498.5836161665309,2492.9180808326546,3.7609582722861408,No,No,Germany,Brazil
+67cbe39244314efee589ccdf,67cbe39244314efee589ccda,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,3,191.72696551944682,575.1808965583405,10.95548184172215,No,No,Germany,Brazil
+67cbe39344314efee589cceb,67cbe39344314efee589ccea,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,6,332.69544941902683,1996.172696514161,20.773852553686673,No,No,Germany,Australia
+67cbe39344314efee589ccf3,67cbe39344314efee589ccf2,Chocolate and other food preparations containing cocoa,1806.90,5,63.402208299952875,317.01104149976436,4.55313554349349,No,No,Germany,United Arab Emirates
+67cbe39344314efee589ccf4,67cbe39344314efee589ccf2,"Portable automatic data processing machines, weighing not more than 10 kg",8471.30,1,383.03095573043527,383.03095573043527,2.472854269630627,No,No,Germany,United Arab Emirates
+67cbe39344314efee589ccf5,67cbe39344314efee589ccf2,Beauty or make-up preparations and preparations for skin care,3304.99,1,251.70288080891729,251.70288080891729,3.2834295900771284,No,No,Germany,United Arab Emirates
+67cbe39444314efee589cd07,67cbe39444314efee589cd06,Mobile phones and smartphones,8517.12,10,398.1295105539252,3981.295105539252,9.122148642788519,No,No,Germany,Canada
+67cbe39444314efee589cd08,67cbe39444314efee589cd06,"Wine of fresh grapes, in containers holding 2 liters or less",2204.21,10,101.67066242172119,1016.7066242172119,24.491273083803623,No,No,Germany,Canada
+67cbe39444314efee589cd09,67cbe39444314efee589cd06,Other articles of plastics,3926.90,2,209.02865381267557,418.05730762535114,8.898299297684739,No,No,Germany,Canada
+67cbe39444314efee589cd0a,67cbe39444314efee589cd06,"Personal weighing machines, including baby scales; household scales",8423.10,8,185.11141305146057,1480.8913044116846,21.13128309791527,No,No,Germany,Canada
+67cbe39444314efee589cd15,67cbe39444314efee589cd14,"Trunks, suitcases, with outer surface of plastics or textile materials",4202.12,9,277.2878027102497,2495.5902243922474,19.140340006899386,No,No,United States,United Kingdom
+67cbe39444314efee589cd16,67cbe39444314efee589cd14,"Television reception apparatus, color",8528.72,6,230.64729694829376,1383.8837816897626,19.466481118812215,No,No,United States,United Kingdom
+67cbe39444314efee589cd1f,67cbe39444314efee589cd1e,Mobile phones and smartphones,8517.12,4,237.50593938237154,950.0237575294861,18.969479175311985,No,No,Germany,United Kingdom
+67cbe39444314efee589cd20,67cbe39444314efee589cd1e,Beauty or make-up preparations and preparations for skin care,3304.99,5,98.9637357251758,494.818678625879,18.8121620308699,No,No,Germany,United Kingdom
+67cbe39444314efee589cd21,67cbe39444314efee589cd1e,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,7,183.7309474304936,1286.116632013455,15.543844836762258,No,No,Germany,United Kingdom
+67cbe39444314efee589cd22,67cbe39444314efee589cd1e,"Combined refrigerator-freezers, fitted with separate external doors",8418.10,6,207.09549267800966,1242.572956068058,20.77593915756461,No,No,Germany,United Kingdom
+67cbe39444314efee589cd23,67cbe39444314efee589cd1e,Medical instruments and appliances,9018.90,6,128.82207265575283,772.932435934517,13.602093012022202,Yes,Yes,Germany,United Kingdom
+67cbe39544314efee589cd2f,67cbe39544314efee589cd2e,"Television reception apparatus, color",8528.72,9,373.1828273271856,3358.6454459446704,15.179897947097956,No,No,Germany,United Arab Emirates
+67cbe39544314efee589cd30,67cbe39544314efee589cd2e,Beauty or make-up preparations and preparations for skin care,3304.99,4,342.9147271672137,1371.6589086688548,19.629637067498848,No,No,Germany,United Arab Emirates
+67cbe39544314efee589cd31,67cbe39544314efee589cd2e,Mobile phones and smartphones,8517.12,6,479.93262393661166,2879.59574361967,15.698809949386053,No,No,Germany,United Arab Emirates
+67cbe39544314efee589cd32,67cbe39544314efee589cd2e,"Coffee, roasted, not decaffeinated",0901.21,7,184.733172221352,1293.1322055494638,9.751379475541041,No,No,Germany,United Arab Emirates
+67cbe39544314efee589cd3d,67cbe39544314efee589cd3c,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,4,138.08960557589344,552.3584223035738,4.733762322277175,No,No,Germany,United States
+67cbe39544314efee589cd3e,67cbe39544314efee589cd3c,"Television reception apparatus, color",8528.72,1,220.05450313066802,220.05450313066802,3.96679855686262,No,No,Germany,United States
+67cbe39544314efee589cd3f,67cbe39544314efee589cd3c,Medical instruments and appliances,9018.90,10,122.19836000206229,1221.9836000206228,15.42672195759117,Yes,Yes,Germany,United States
+67cbe39544314efee589cd49,67cbe39544314efee589cd48,"Women's or girls' jackets and blazers, of synthetic fibers",6204.33,2,121.73109219387013,243.46218438774025,9.997612574648771,No,No,Germany,Brazil
+67cbe39644314efee589cd51,67cbe39644314efee589cd50,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,8,197.04979125442512,1576.398330035401,27.916260677780713,No,No,Germany,United Arab Emirates
+67cbe39644314efee589cd59,67cbe39644314efee589cd58,"Sweaters, pullovers, sweatshirts, waistcoats (vests) of cotton",6110.20,3,489.7496485498309,1469.2489456494927,9.003841149058928,No,No,United States,United Arab Emirates
+67cbe39644314efee589cd5a,67cbe39644314efee589cd58,Other articles of plastics,3926.90,8,149.43227113059416,1195.4581690447533,25.25807452170222,No,No,United States,United Arab Emirates
+67cbe39644314efee589cd5b,67cbe39644314efee589cd58,"Footwear with outer soles of rubber, plastics or composition leather",6403.99,3,375.6850511765913,1127.0551535297739,7.892140596932412,No,No,United States,United Arab Emirates
+67cbe39644314efee589cd5c,67cbe39644314efee589cd58,"Machines which perform two or more of the functions of printing, copying or facsimile transmission",8443.31,10,31.484293541704666,314.84293541704665,21.75150889833331,No,No,United States,United Arab Emirates
+67cbe39644314efee589cd5d,67cbe39644314efee589cd58,"Trunks, suitcases, with outer surface of plastics or textile materials",4202.12,2,455.4350388545266,910.8700777090532,4.648613278066315,No,No,United States,United Arab Emirates
+67cbe39644314efee589cd69,67cbe39644314efee589cd68,Chocolate and other food preparations containing cocoa,1806.90,10,103.08581637119762,1030.8581637119762,32.72815653061806,No,No,United States,Germany

@@ -1,0 +1,195 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nFor shipments from France to India involving endangered species (e.g., ivory, exotic leather), send a CITES Certificate via Express service to clear Indian customs.\nKnow Your Customer and POA\nFrench exporters must ensure Indian importers provide Know Your Customer (KYC) documents (e.g., PAN card) and a Power of Attorney (POA) to UPS before clearance. This is mandatory for all non-document shipments to India, regardless of value.\nMSDS-NON DG\nGoods under IATA Special Provisions A67 (e.g., certain chemicals) need a Material Safety Data Sheet (MSDS). While not always required, shipments transiting via the UAE may be delayed without an MSDS or Non-Dangerous Goods (NON DG) declaration—include these and upload to IDIS.\nPacking List\nFor multi-package shipments from France, attach a packing list to the invoice or combine them into one document with full details.",
+        "Info About Section Header": "Paperwork needed for shipping from France to India.",
+        "Simplified Form": [
+            "- **CITES Certificate**: For wildlife goods, send a CITES Certificate via Express from France.",
+            "- **KYC and POA**: Ensure your Indian buyer gives UPS their ID (KYC) and signed permission (POA)—mandatory for all non-documents.",
+            "- **MSDS/NON DG**: Include an MSDS for chemicals; add a NON DG letter if via UAE—upload to IDIS.",
+            "- **Packing List**: Multi-package shipments need a list with the invoice or combined."
+        ]
+    },
+    {
+        "Section": "Export Documentation",
+        "Content": "SED (New Electronic Export System)\nFor exports from France to India, submit an electronic export declaration to French customs via UPS or your agent. Customs issues an Export Accompanying Document (EAD) with a Movement Reference Number (MRN), which must travel with the shipment. UPS handles EU exit clearance.\nInformal Declarations\nShipments up to EUR 1,000 can use an informal declaration based on the invoice, unless restricted (e.g., embargoed goods). UPS clears these at the EU exit point.\nUPS Service\nUPS prepares formal declarations for free if over EUR 1,000—contact UPS France for assistance.",
+        "Info About Section Header": "Documents required for exporting from France to India.",
+        "Simplified Form": [
+            "- **SED**: File an electronic declaration in France; get an EAD with MRN to include with your shipment—UPS handles EU exit.",
+            "- **Informal**: Under EUR 1,000, use the invoice for clearance—UPS manages it unless restricted.",
+            "- **UPS Help**: Over EUR 1,000? UPS does formal declarations for free—call UPS France."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nUPS can’t deliver to P.O. Boxes in India—provide a full street address and phone number (mandatory for non-documents) for KYC.\nClearance Comments\nFrom France, only documents go in a Docs Bag—non-documents (e.g., CDs, tokens) need a Non-DOC Bag, or Indian customs may fine you.\nMaster Air Waybill (MAWB)\nChemicals or valuables (e.g., diamond powder) from France need an MAWB for cargo clearance in India.\nAirfreight Routing\nShipments land in Mumbai, then move to Calcutta (East), Bangalore (Karnataka), Delhi (North), Chennai/Hyderabad/Cochin (South), or stay in Mumbai—consignee can clear at transit.\nCargo Arrival Notice (CAN)\nUPS India sends a CAN on arrival—consignee picks their broker or UPS’s.\nDuty and Taxes\nNon-refundable—if the Indian receiver refuses, costs bill back to France.\nCustoms Clearance Process\nConsignees need an IEC and GST number for commercial goods. Non-documents must clear within 30 days, or they’re abandoned.\nE-Way Bill\nGoods over INR 50,000 (~EUR 550) moving across Indian states need an E-Way Bill—importers provide it, UPS France assists.\nBureau of Indian Standards (BIS)\nSome French goods (e.g., electronics) need BIS certification—check https://bis.gov.in.\nCustom Requirements\nUpload a valid air waybill to IDIS with the invoice—missing docs delay clearance.\nMRP Labeling\nRetail goods from France must show MRP, product name, import date, importer details, and quantity.\nGifts & Samples\nLabel ‘Gift’ or ‘Sample’—samples under INR 10,000 (~EUR 110) may be duty-free; gifts face duties since Dec 2019.",
+        "Info About Section Header": "Clearance rules for France-to-India shipments.",
+        "Simplified Form": [
+            "- **No P.O. Boxes**: Give a full address and phone for KYC.",
+            "- **Docs Only**: Use Docs Bag for papers—non-documents in NonkeepersDOC Bag or face fines.",
+            "- **MAWB**: Chemicals/valuable need an MAWB for cargo.",
+            "- **Routing**: Lands in Mumbai, then to regional airports—or clear at transit.",
+            "- **CAN**: UPS notifies arrival—choose a broker.",
+            "- **Duties**: Receiver skips payment? You pay in France—no refunds.",
+            "- **IEC/GST**: Needed for commercial; clear in 30 days.",
+            "- **E-Way Bill**: Over EUR 550 across states? Importer needs it—UPS France helps.",
+            "- **BIS**: Check if your goods need certification.",
+            "- **Air Waybill**: Upload to IDIS with invoice—or expect delays.",
+            "- **MRP**: Retail items need price, name, date, and importer info.",
+            "- **Gifts/Samples**: Mark them—samples under EUR 110 may skip duty, gifts don’t."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service from France to India covers select cities—check INTLDI Time in Transit with Indian postal codes. No service to Andaman and Nicobar Islands or Lakshadweep. Provide a full address and phone (mandatory for non-documents). Rest days: Sundays and Indian holidays. Time zone: GMT +5:50. Language: English. Currency: INR.",
+        "Info About Section Header": "Indian areas served from France.",
+        "Simplified Form": [
+            "- **Coverage**: Ships to select cities—verify with INTLDI.",
+            "- **No Service**: Andaman, Nicobar, Lakshadweep excluded.",
+            "- **Address**: Full details and phone required.",
+            "- **Rest Days**: Sundays and holidays off.",
+            "- **Time Zone**: GMT +5:50.",
+            "- **Language & Currency**: English, INR."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to France, India, or a third party (needs name, country, account). Outside India adds a Duty and Tax Forwarding surcharge.\nShipping Charges\nBill to France, India (with account), or a third party (details needed). No COD—use Free Domicile (F/D) terms.\nPayment Methods\nCard, check, or cash bills only France.\nSplit Duty and VAT (SDV)\nFreight/duties to France or third party, taxes to India or third party—surcharge applies.\nThird-Party Billing\nIndia-only shipments can’t bill to France unless EU-based with VAT ID.",
+        "Info About Section Header": "Payment options for France-to-India shipping.",
+        "Simplified Form": [
+            "- **Duties/Taxes**: Bill to France, India, or third party—outside India adds a fee.",
+            "- **Shipping**: Bill to France, India (needs account), or third party—no COD, use F/D.",
+            "- **Payment**: Card/check/cash only to France.",
+            "- **Split Billing**: Freight to France, taxes to India—extra charge.",
+            "- **Third-Party**: India-only can’t bill France unless EU with VAT."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nFrench medical goods need a Health Department NOC on arrival—personal use too. UPS India helps with docs; expect 2-3 day delays. Lab equipment needs a catalog.\nRadios\nRequire an Indian Wireless Planning Wing license.\nTelevisions\nColor TVs need a DGFT license, Cargo mode only.\nJewelry\nGold/silver up to USD 2,500 ships via Cargo with MAWB—Courier banned. Non-precious jewelry (e.g., brass) is fine.\nLeather Goods\nNeed a Wildlife NOC and origin certificate.\nVitamins\nRequire an Assistant Drug Controller NOC—use scientific names on invoices.\nToys\nNeed safety certificates (e.g., ASTM F963)—tested by NABL labs.\nTelecom Equipment\nPhones need IMEI on device and invoice, DOT-registered.\nSatellite Equipment\nNeeds a Wireless Planning Wing license and NOC.\nChemicals\nInclude MSDS and analysis—customs may test.\nClothing\nNeeds a dye test certificate from France—EU exempt from Azo dye tests.\nNutritional Supplements\nRequire a Drug Controller NOC.\nDrugs/Medicine\nNeed an Assistant Drug Controller NOC—use scientific names.\nPhones\nIMEI mandatory on device and invoice.\nBrochures\nWith samples? They’re dutiable.\nCatalogs\nAlways dutiable—not samples.\nRSA Tokens\nDutiable—show real value.\nSIM Cards\nResale needs a DOT NOC.\nTapes\nFilms need a synopsis—expect duties.\nFood\nNeeds an FSSAI NOC—personal use requires passport.\nPersonal Imports\nC2C: 77% duty; B2C: 43% with proof.\nTextiles\nNeed a dye certificate from France or India.\nPakistan Goods\n200% duty if routed via France.",
+        "Info About Section Header": "Special rules for goods from France to India.",
+        "Simplified Form": [
+            "- **Medical**: NOC needed—UPS aids, delays 2-3 days. Lab gear needs catalog.",
+            "- **Radios**: Wireless license required.",
+            "- **TVs**: DGFT license, Cargo only.",
+            "- **Jewelry**: Up to USD 2,500 via Cargo—non-precious OK.",
+            "- **Leather**: Wildlife NOC and origin cert.",
+            "- **Vitamins**: NOC required—scientific names.",
+            "- **Toys**: Safety certs—tested in India.",
+            "- **Telecom**: IMEI on phone and invoice.",
+            "- **Satellite**: License and NOC needed.",
+            "- **Chemicals**: MSDS required—may be tested.",
+            "- **Clothing**: Dye cert—EU skips Azo test.",
+            "- **Supplements**: Drug Controller NOC.",
+            "- **Medicine**: NOC—use scientific names.",
+            "- **Phones**: IMEI mandatory.",
+            "- **Brochures**: Samples make them dutiable.",
+            "- **Catalogs**: Dutiable—not samples.",
+            "- **Tokens**: Show value—dutiable.",
+            "- **SIMs**: Resale needs DOT NOC.",
+            "- **Tapes**: Synopsis needed—dutiable.",
+            "- **Food**: FSSAI NOC—personal needs passport.",
+            "- **Personal**: C2C 77%; B2C 43% with proof.",
+            "- **Textiles**: Dye cert required.",
+            "- **Pakistan**: 200% duty."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "No gift exemption from France to India—duties apply at 0 INR. Banned gifts: perishables, plants, precious stones, gold, silver, supplements, drugs, cosmetics, confectionery, fruits, veggies, spices, honey, chocolate, tinned food, meat, milk, commercial meds. Personal use needs customs approval. Duty: 77% on assessable value (invoice + freight + insurance).",
+        "Info About Section Header": "Gift rules for France-to-India shipments.",
+        "Simplified Form": [
+            "- **No Exemption**: All gifts face duties.",
+            "- **Banned**: No perishables, plants, gold, supplements, drugs, candy, fruits, spices, honey, chocolate, tinned food, meat, milk, meds.",
+            "- **Personal**: Needs customs OK.",
+            "- **Duty**: 77% on total value."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Imports\nIndia accepts UPS Paperless Invoice for small packages from France.\nInvoice Details\nInclude: French exporter’s name/address/contact, Indian importer’s name (matching KYC), phone, email, address, invoice number/date, goods description, HS Code, origin (France), quantity, price, total, Incoterms (e.g., CIF), purpose, and costs.\nPaperless Invoice - Exports\nAvailable for small package exports from France.",
+        "Info About Section Header": "Invoice needs for France-to-India shipping.",
+        "Simplified Form": [
+            "- **Paperless Imports**: India OKs it for small packages.",
+            "- **Details**: List French sender, Indian receiver (per KYC), phone, email, address, invoice info, HS Code, France origin, prices, Incoterms, purpose, costs.",
+            "- **Paperless Exports**: Available from France."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "From France, up to 2 kg: bonds, cash letters, manuscripts, tickets, blank forms, blueprints, charts, intercompany mail, proposals, seismic data, spec sheets, visa apps (to embassies), graphs, Mylars, print-outs, price lists, used traveler’s checks, reports, bids. Blank checks restricted. UPS France offers forms online/print.",
+        "Info About Section Header": "Documents from France to India.",
+        "Simplified Form": [
+            "- **Documents**: Up to 2 kg—bonds, letters, manuscripts, tickets, forms, blueprints, charts, mail, proposals, seismic, specs, visas (embassies), graphs, Mylars, print-outs, prices, used checks, reports, bids.",
+            "- **Restricted**: No blank checks.",
+            "- **Forms**: Get from UPS France online or print."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Samples\nMax 5 pieces from France—Mumbai bans duty-free clearance; Bangalore/Delhi may allow it.\nProhibited Gifts\nNo perishables, plants, stones, gold, silver, supplements, drugs, cosmetics, confectionery, fruits, veggies, spices, honey, chocolate, tinned food, meat, milk, meds—personal use needs approval.\nComputers\nLaptops/PCs (HSN 8741) need a Restricted Import License.\nSeeds\nNeed a Plant Quarantine NOC—Cargo only.\nPrecious Items\nStones, gold, silver via Cargo only.\nAnimals/Plants\nBanned.\nPersonal Effects\nCargo only with passport, visa, ticket, 6-month travel history.\nUsed Items\nBanned without SIL.\nPerishables\nCargo only with NOCs (e.g., FSSAI).\nGuns\nBanned—exceptions for licensed shooters or film with MHA NOC.\nE-Cigarettes\nFully banned.\nMaps\nIncorrect India borders banned.\nUsed Electronics\nNeed MOEF NOC.\nDrones\nBanned unless with DGCA clearance, airworthiness cert, SIL.\nAntiques/Artwork\nRestricted from France—needs ISC contract; art must be recent, appraised.\nLithium Batteries\nUN3480 banned by airlines; metal batteries restricted.\nPlastics\nSingle-use banned since July 2022 (e.g., straws).",
+        "Info About Section Header": "Banned or restricted items from France to India.",
+        "Simplified Form": [
+            "- **Samples**: Max 5—Mumbai dutiable, others may not be.",
+            "- **Banned Gifts**: No perishables, plants, gold, supplements, drugs, candy, fruits, spices, honey, chocolate, tinned, meat, milk, meds.",
+            "- **Computers**: License for laptops/PCs.",
+            "- **Seeds**: NOC—Cargo only.",
+            "- **Precious**: Cargo only.",
+            "- **Animals/Plants**: Banned.",
+            "- **Personal**: Cargo with travel docs.",
+            "- **Used**: Needs SIL.",
+            "- **Perishables**: Cargo with NOCs.",
+            "- **Guns**: Banned—exceptions with licenses.",
+            "- **E-Cigs**: Fully banned.",
+            "- **Maps**: Wrong borders banned.",
+            "- **Electronics**: Used needs NOC.",
+            "- **Drones**: Banned without DGCA docs.",
+            "- **Antiques/Art**: ISC needed—art must be recent.",
+            "- **Batteries**: UN3480 and metal restricted.",
+            "- **Plastics**: No single-use items."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "Check Calculate Time and Cost for France-to-India service details. Options: UPS Worldwide Express Saver, Expedited, Express Freight, Freight Midday, Economy DDU, Economy DDP, Express Plus, Express. Not all reach every Indian address.",
+        "Info About Section Header": "Shipping services from France to India.",
+        "Simplified Form": [
+            "- **Check Tool**: Use Calculate Time and Cost.",
+            "- **Options**: Express Saver, Expedited, Freight, Freight Midday, Economy DDU/DDP, Express Plus, Express.",
+            "- **Limits**: Not all areas covered."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Ata Carnet\nTemporary exhibition goods from France—re-export in 6 months.\nTriptyque\nVehicles duty-free for 6 months (extendable) with auto club membership.\nRaw Materials\nDuty-free from France for processing—claim drawback on re-export.\nWood Packing\nUse ISPM 15-treated wood over 6mm.\nRepair and Return\nInvoices need details, origin (France), value, ‘Repair and Return’—duty on repair costs.\nPersonal Shipments\nC2C: 35% duty (10% with proof); B2C: 10% with proof, 35% without (77.28% for gifts).\nGifts\nAll dutiable.\nSamples\nUnder INR 10,000 (~EUR 110), mark ‘SAMPLES – FREE OF COST’ for duty-free.",
+        "Info About Section Header": "Special rules for France-to-India shipments.",
+        "Simplified Form": [
+            "- **Ata Carnet**: Exhibit goods—re-export in 6 months.",
+            "- **Triptyque**: Vehicles 6 months duty-free with club.",
+            "- **Raw Materials**: Duty-free for processing—reclaim later.",
+            "- **Wood**: ISPM 15-treated only.",
+            "- **Repairs**: List details—duty on repairs.",
+            "- **Personal**: C2C 35% (10% with proof); B2C 10% with proof, 35% without (77% for gifts).",
+            "- **Gifts**: Always dutiable.",
+            "- **Samples**: Under EUR 110, label ‘FREE’ for no duty."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "No de minimis value from France to India—duties apply at 0 INR.",
+        "Info About Section Header": "Duty thresholds for France-to-India.",
+        "Simplified Form": [
+            "- **No Minimum**: Duties from 0 INR."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs). Max length: 274 cm (107.9 in). Max dimensions: 400 cm (157.5 in) combined (length + girth).",
+        "Info About Section Header": "Package limits for France-to-India.",
+        "Simplified Form": [
+            "- **Weight**: Up to 70 kg.",
+            "- **Length**: Up to 274 cm.",
+            "- **Total**: 400 cm with girth."
+        ]
+    }
+]

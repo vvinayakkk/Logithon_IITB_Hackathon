@@ -1,0 +1,163 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Import License\nCustoms may require from Department for Business Innovation and Skills—depends on HS code and origin.\nProduct Safety\nDeclaration of Conformity (DoC) needed on request—must list manufacturer, product details, and signature.\nFree Trade Agreements\nPreferential treatment needs proof of origin (e.g., Form A or statement)—check Chamber of Commerce.\nImport Control System 2 (ICS2)\nSince March 1, 2023, needs 6-digit HS code, detailed description, and EORI for EU/UK transit—mandatory shipper/recipient details.\nCertificate of Origin\nNot required for textiles but origin must be on invoice—customs may ask for proof.\nForm A\nValid for GSP countries—needs customs-issued certificate for duty relief.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need MSDS—advisable for UAE transits.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into the UK.",
+        "Simplified Form": [
+            "- *Import License*: May need from BIS—check HS code/origin.",
+            "- *DoC*: Product safety proof—name, details, signed.",
+            "- *Trade Agreements*: Lower duty with origin proof (e.g., Form A).",
+            "- *ICS2*: Since March 2023, needs HS code, description, EORI for EU/UK transit.",
+            "- *Origin*: On invoice—customs may want certificate.",
+            "- *Form A*: GSP duty relief—customs certificate required.",
+            "- *MSDS*: Batteries need MSDS—add for UAE transits."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nNeeds full address and phone—no P.O. Boxes.\nDuty and Taxes\nIncludes freight + fees—formal entry >£15 GBP.\nClearance Comments\n>£15 needs imaged invoice pre-arrival—email ukbrokerage@ups.com.\nTURN Number\nReplaced by EORI—needs for ≥£600; <£600 can use temp VAT.\nPayment by Credit Card\nAccepted on delivery—check with UPS UK.",
+        "Info About Section Header": "This section provides details on customs processes in the UK.",
+        "Simplified Form": [
+            "- *Address*: Full details + phone—no P.O. Boxes.",
+            "- *Duty/Tax*: Covers freight—formal entry >£15.",
+            "- *Process*: >£15 needs invoice pre-flight—email ukbrokerage@ups.com.",
+            "- *EORI*: Required ≥£600; temp VAT okay <£600.",
+            "- *Payment*: Credit card on delivery—confirm with UPS UK."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to every address including Isle of Man.\nNeeds full address and phone—no P.O. Boxes.\nRest Days: Saturday, Sunday, holidays.\nGMT: Spring +0100 / Fall +0000\nLanguage: English\nCurrency: British Pound (GBP)",
+        "Info About Section Header": "This section lists shipping locations in the UK.",
+        "Simplified Form": [
+            "- *Coverage*: All UK + Isle of Man.",
+            "- *Address*: Full details + phone—no P.O. Boxes.",
+            "- *Rest Days*: Off Sat, Sun, UK holidays.",
+            "- *Time Zone*: GMT +0100 (Spring) / +0000 (Fall).",
+            "- *Language & Money*: English; pay in GBP."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—surcharge if outside UK.\nShipping Charges\nBill to shipper, receiver, or third party—needs account number.\nPayment Methods\nOnly shipper pays by card, check, or cash.\nSplit Duty And VAT\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic can bill outside UK if payor has VAT ID.",
+        "Info About Section Header": "This section explains payment options for shipping to the UK.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—extra fee if outside UK.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account.",
+            "- *Payment*: Shipper only for card, check, cash.",
+            "- *Split Billing*: Freight/duties one party, taxes another—surcharge applies.",
+            "- *Third-Party*: UK-to-UK can bill outside with VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Samples\nNeeds marking/defacing for duty relief—business only.\nShoes\nDetailed description (type, material, user) required.\nAntiques\n>100 years = 0% duty, standard VAT.\nAnimal Products\nNeeds health certificate, vet inspection—ISC contract only.\nDairy/Petfood/Protein\nAnimal-origin needs certificate or DEFRA license—RTS if non-compliant.\nCredit Cards\nTreated as goods—duty-free <£15.\nArt/Event Tickets/USB\nNeeds realistic value, specific details.\nTest Reagent\nAntibody-based needs origin, quantity—IVD exempt with CE mark.\nFood\nNo frozen—some (e.g., Japan) need DPE checks, not via UPS.\nHoney/Fruit\nNeeds health/phyto certificate—vet inspection for honey.",
+        "Info About Section Header": "This section lists special rules for shipping goods to the UK.",
+        "Simplified Form": [
+            "- *Samples*: Mark/deface for duty relief—business only.",
+            "- *Shoes*: List type, material, user.",
+            "- *Antiques*: >100 years = 0% duty, normal VAT.",
+            "- *Animal Products*: Health cert + vet check—ISC only.",
+            "- *Dairy/Petfood*: Cert or DEFRA license—RTS if not met.",
+            "- *Credit Cards*: Goods, free <£15.",
+            "- *Art/Tickets/USB*: Real value, clear details.",
+            "- *Reagents*: Antibody details—IVD okay with CE.",
+            "- *Food*: No frozen—some need DPE, not UPS.",
+            "- *Honey/Fruit*: Cert required—honey needs vet check."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Value: £39 GBP\nType: Individual-to-individual\nRule: Per person—mark 'gift shipment'; no excise goods",
+        "Info About Section Header": "This section explains gift tax exemptions in the UK.",
+        "Simplified Form": [
+            "- *Gifts*: ≤£39 per person—mark 'gift'; no alcohol/tobacco."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAvailable for exports.\nInvoice\n1 original + 2 copies—needs phone >£18; detailed description mandatory.",
+        "Info About Section Header": "This section details invoice requirements for the UK.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for exports.",
+            "- *Invoice*: 1 original + 2 copies—add phone >£18, full details."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Airline tickets, checks, passports, etc.—must be no value, ≤20 kg for exams.",
+        "Info About Section Header": "This section lists items treated as documents for the UK.",
+        "Simplified Form": [
+            "- *Documents*: Tickets, passports—zero value; ≤20 kg for exams."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Alcohol\nISC only—excise duty, age check.\nSeeds/Plants\nNeeds phyto cert—some banned (e.g., India).\nBladed/Corrosive\nAdult signature required—corrosives to businesses only.\nFurs/Veg Matter\nRestricted/banned.\nWine\nISC only—excise + EU labeling.\nBeef Jerky/CITES\nBanned—CITES needs cert.\nMedicine\nEEA only—private from outside banned.\nRough Diamonds\nKimberley cert required.\nSamurai Swords\n≤50 cm curved—else seized.\nPlastic Kitchenware\nChina/HK needs declaration—UPS can’t handle.\nE-Cigs\nMax 2 ml tank, 10 ml liquid, 20 mg/ml nicotine.\nIron/Steel from Russia\nBanned since Sept 2023—needs origin proof.",
+        "Info About Section Header": "This section lists banned or restricted items in the UK.",
+        "Simplified Form": [
+            "- *Alcohol*: ISC only—pay excise, check age.",
+            "- *Seeds/Plants*: Phyto cert—some banned.",
+            "- *Blades/Corrosives*: Adult signature—corrosives business only.",
+            "- *Furs/Veg*: Restricted/banned.",
+            "- *Wine*: ISC only—excise + EU rules.",
+            "- *Jerky/CITES*: Banned—CITES needs cert.",
+            "- *Meds*: EEA only—outside banned for private.",
+            "- *Diamonds*: Kimberley cert.",
+            "- *Swords*: ≤50 cm curved—else seized.",
+            "- *Kitchenware*: China/HK needs declaration—UPS can’t ship.",
+            "- *E-Cigs*: Max 2 ml, 10 ml, 20 mg/ml.",
+            "- *Iron/Steel*: Russia banned—prove origin."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nNot available in all areas—check transit system.",
+        "Info About Section Header": "This section indicates Saturday delivery availability.",
+        "Simplified Form": [
+            "- *Saturday*: Yes—check availability."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to UK\nExpress Saver, Express Freight, Freight Midday, Express Plus, Express, Expedited",
+        "Info About Section Header": "This section lists shipping services from India to the UK.",
+        "Simplified Form": [
+            "- *India to UK*: Pick Express Saver, Freight, Midday, Plus, Express, or Expedited—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nNeeds security deposit—state purpose on invoice.\nMilitary Shipments\nNot via UPS—use Royal Mail for BFPO.\nReturned Goods\nDuty-free if <2 years—list export details.\nSamples\nMark/deface for relief—business only.\nWEEE/RoHS\nNo docs needed for compliant electronics.\nOutward Processing\nRepaired goods need export proof—list values.\nInward Processing\nFor repair—re-export or pay duty.\nSolid Wood\nISPM 15 cert for raw >6mm.\nPersonal Shipments\nTOR01 form for household effects.",
+        "Info About Section Header": "This section covers special rules for UK shipments.",
+        "Simplified Form": [
+            "- *Temp Import*: Deposit required—note purpose.",
+            "- *Military*: Use Royal Mail, not UPS.",
+            "- *Returns*: Duty-free <2 years—add export info.",
+            "- *Samples*: Mark/deface—business only.",
+            "- *Electronics*: RoHS/WEEE compliant—no docs.",
+            "- *Repaired Out*: Export proof—list values.",
+            "- *Repaired In*: Re-export or pay duty.",
+            "- *Wood*: >6mm needs ISPM 15.",
+            "- *Personal*: File TOR01 pre-shipment."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: £135 GBP—duty-free, VAT >£15.\nExports >$1,000 USD need formal clearance from India.",
+        "Info About Section Header": "This section states value thresholds for the UK.",
+        "Simplified Form": [
+            "- *Low Value*: ≤£135 duty-free, VAT >£15.",
+            "- *High Exports*: >$1,000 USD from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 274 cm (107.9 in.)\nMax dimensions: 400 cm (157.5 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for the UK.",
+        "Simplified Form": [
+            "- *Weight*: 70 kg (150 lbs.) max.",
+            "- *Size*: Max length 274 cm (107.9 in.), length + girth 400 cm (157.5 in.)."
+        ]
+    }
+]

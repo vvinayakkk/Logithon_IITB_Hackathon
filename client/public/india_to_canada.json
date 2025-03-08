@@ -1,0 +1,156 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Health Certificate and Declaration\nFor medicines, Health Canada requires an invoice with drug identification number (DIN), generic/scientific name, ingredients, manufacturer’s name and address. Attach prescription to avoid delays.\nMSDS-NON DG\nGoods under IATA Special Provisions A67 (e.g., batteries) need an MSDS or NON DG declaration—upload to IDIS, especially via UAE, to prevent holds.",
+        "Info About Section Header": "Paperwork needed for shipping from India to Canada.",
+        "Simplified Form": [
+            "- **Medicines**: Invoice needs DIN, generic/scientific name, ingredients, manufacturer details—attach prescription.",
+            "- **MSDS**: Batteries need MSDS or NON DG—upload to IDIS, key via UAE."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nNo P.O. Box delivery—full address and phone required.\nClearance Comments\nImporter of Record (IOR) is the Canadian buyer paying duties/taxes. Over CAD 2,500 or controlled goods need a business number (BN)—broker’s BN for casual imports. ‘Sold To’ is IOR if different from ‘Ship To.’ Non-resident IORs exempt. Broker needs power of attorney; third-party brokers handle docs.\nUndeliverable Packages\nRefused/undeliverable packages held—shipper contacted for instructions.\nPayment by Credit Card\nAccepted for freight/import charges—check cards with UPS Canada. Restrictions may apply from India—confirm with UPS India.\nGifts & Samples\nGifts from India dutiable since Dec 2019—samples follow standard rules.",
+        "Info About Section Header": "Clearance rules for India-to-Canada shipments.",
+        "Simplified Form": [
+            "- **No P.O. Boxes**: Full address, phone needed.",
+            "- **IOR**: Buyer pays—over CAD 2,500 or controlled needs BN; broker BN for casual. ‘Sold To’ is IOR.",
+            "- **Undeliverable**: Held, shipper contacted.",
+            "- **Credit Card**: OK for charges—check with UPS Canada/India.",
+            "- **Gifts**: Taxed since 2019—samples standard."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service from India to select Canadian cities. Subcontractors handle remote areas in Alberta, Ontario, Quebec, Manitoba, Saskatchewan, British Columbia, and all of New Brunswick, Newfoundland, Nova Scotia, PEI, Yukon, NWT, Nunavut—may require pickup at central location. No P.O. Boxes—full address, phone required. Rest days: Sat, Sun, holidays. Time zone: GMT -4 (Spring), -5 (Fall). Language: English, French. Currency: CAD.",
+        "Info About Section Header": "Canadian areas served from India.",
+        "Simplified Form": [
+            "- **Coverage**: Select cities—subcontractors in remote areas, may need pickup.",
+            "- **No P.O. Boxes**: Full address, phone.",
+            "- **Rest Days**: Sat, Sun, holidays.",
+            "- **Time Zone**: GMT -4/-5.",
+            "- **Language & Currency**: English/French, CAD."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to India, Canada, or third party (needs name, country, account)—outside Canada adds surcharge.\nShipping Charges\nBill to India, Canada (with account), or third party.\nPayment Methods\nCard, check, cash bills only India.\nSplit Duty And VAT (SDV)\nFreight/duties to India/third party, taxes to Canada/third party—surcharge applies.\nThird-Party Billing\nCanada-only shipments can’t bill India unless EU-based with VAT ID.",
+        "Info About Section Header": "Payment options for India-to-Canada shipping.",
+        "Simplified Form": [
+            "- **Duties/Taxes**: India, Canada, or third party—outside Canada adds fee.",
+            "- **Shipping**: India, Canada (account), or third party.",
+            "- **Payment**: Card/check/cash to India only.",
+            "- **SDV**: Freight/duties to India/third, taxes to Canada/third—extra fee.",
+            "- **Third-Party**: Canada-only can’t bill India unless EU with VAT."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Videos/CDs/Films/Tapes\nInvoice must list titles.\nVehicles\nAdmissibility varies by make, model, age—check http://www.tc.gc.ca/roadsafety/rsimp_e.htm.\nBooks\nCustoms may request titles.\nFood Supplements\nRestricted ingredients (e.g., Vitamin K) may be detained—see http://laws.justice.gc.ca/eng/regulations/c.r.c._c_870/.\nCheese\nQuota holders: normal duty; non-holders: over 200%. Casual: CAD 20/20 kg exempt, else high rate.\nCut Flowers\nNo soil: just invoice; with soil: add Phytosanitary Cert.\nFood\nPermits may be needed—CFIA review adds OGD fee. Homemade not exempt.\nTextiles\nNo export license from India; permits only for US-sewn non-NAFTA goods.\nMedicine/Drugs\nInvoice needs generic/scientific name, ingredients, manufacturer—attach prescription. Needs Health Canada approval. Personal: 3-month supply, pharmacy-packed; others restricted—see http://laws.justice.gc.ca/en/F-27/C.R.C.-c.870/.",
+        "Info About Section Header": "Special rules for goods from India to Canada.",
+        "Simplified Form": [
+            "- **Videos/CDs/Films/Tapes**: List titles on invoice.",
+            "- **Vehicles**: Check make/model/age at tc.gc.ca.",
+            "- **Books**: Titles may be requested.",
+            "- **Supplements**: Restricted ingredients held—check laws.justice.gc.ca.",
+            "- **Cheese**: Quota: normal duty; no quota: 200%+. Casual: CAD 20/20 kg free.",
+            "- **Flowers**: No soil: invoice; soil: add Phytosanitary.",
+            "- **Food**: Permits possible—CFIA fee, no homemade exemption.",
+            "- **Textiles**: No India license; US-sewn non-NAFTA needs permit.",
+            "- **Medicine/Drugs**: List details, prescription—Health Canada OK needed. Personal: 3 months, packaged."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Individual-to-individual gifts up to CAD 60 per item duty/tax-free—mark ‘gift’ or ‘unsolicited gift’ on invoice/AWB. Multiple gifts OK if each ≤ CAD 60, described (e.g., ‘watch’). Commercial shippers add giver’s name, address, phone.",
+        "Info About Section Header": "Gift rules for India-to-Canada shipments.",
+        "Simplified Form": [
+            "- **Gifts**: Up to CAD 60 each free—mark ‘gift,’ describe items.",
+            "- **Commercial**: Add giver’s name, address, phone."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports to Canada and exports from India.\nInvoice\nNon-docs need 1 original, 2 copies—include shipper/consignee phone, full description, value, origin (India), commodity specifics. Docs in UPS Express Letter need no invoice.",
+        "Info About Section Header": "Invoice needs for India-to-Canada shipping.",
+        "Simplified Form": [
+            "- **Paperless**: OK for imports/exports.",
+            "- **Invoice**: 1 orig, 2 copies—phone, description, value, India origin, specifics. Express Letter docs exempt."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "In UPS Express/Next Day Air Letter: cash letters, manuscripts, tickets, reports (no ads), bids, checks (company/personal), print-outs, credit cards, intercompany mail, manuals, seismic data, traveler’s checks, graphs (interoffice), newsletters, newspapers, passports, periodicals, proposals, specs, price lists (‘non-resale’ on invoice), visa apps, drawings—no invoice needed if flexible (no CDs). Other packaging needs invoice.",
+        "Info About Section Header": "Documents from India to Canada.",
+        "Simplified Form": [
+            "- **Docs**: In Express Letter—cash letters, manuscripts, tickets, reports, bids, checks, print-outs, cards, mail, manuals, seismic, checks, graphs, newsletters, papers, passports, periodicals, proposals, specs, price lists (‘non-resale’), visas, drawings—no invoice if flexible."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Alcohol\nVia ISC only—B2B through liquor boards. Personal: Alberta (air, 45L/90 days, AGLC over 6L), BC (ground/air, 45L/day, BCLCB), Quebec (air, 45L/day, SAQ permit over 0.5%), Manitoba (air, no limit), Ontario (ground/air, 45L/day, LCBO)—levies apply, no other goods.\nCITES\nNeeds scientific name, CITES cert—email UPS contacts.\nSeeds/Plants\nStandard/air—Phytosanitary Cert may be needed, check India Dept of Ag.\nPersonal Effects\nBanned.\nBaby Walkers\nBanned (not strollers).\nPaintball/Air Soft\nISC-approved commercial only—non-firearm (<152.4 m/s, <5.7 joules), non-replica. CBSA may inspect.\nE-Cigarettes\nPersonal: <66 mg/ml nicotine, 90-day supply. Commercial: no health claims OK under TVPA; claims need FDA auth.\nMarijuana\nNeeds Health Canada permit—medical/scientific only.\nWood\nHigh-risk (bark, raw) needs pre-treatment—commercial usually OK.\nMasks/Ventilators\nProhibited (HS 3926, 9018, 5603).",
+        "Info About Section Header": "Banned or restricted items from India to Canada.",
+        "Simplified Form": [
+            "- **Alcohol**: ISC—B2B via boards; personal varies by province (45L limits, levies).",
+            "- **CITES**: Scientific name, cert—email UPS.",
+            "- **Seeds/Plants**: Cert may be needed—check India Ag.",
+            "- **Personal**: Banned.",
+            "- **Baby Walkers**: Banned.",
+            "- **Paintball**: ISC commercial, non-firearm, non-replica—CBSA check.",
+            "- **E-Cigs**: Personal: <66 mg/ml, 90 days; commercial: no claims OK, else FDA.",
+            "- **Marijuana**: Health Canada permit only.",
+            "- **Wood**: High-risk treated—commercial fine.",
+            "- **Masks/Vents**: Banned."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nSelect postal codes via Express Plus/Express on Friday—no delays from customs/OGDs.",
+        "Info About Section Header": "Saturday delivery option for India-to-Canada.",
+        "Simplified Form": [
+            "- **Saturday**: Yes, select codes—Express on Fri, no holds."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "Check Calculate Time and Cost for India-to-Canada details. Options: UPS Worldwide Express Saver, Express Freight, Freight Midday, Express Plus, Express, Expedited. Not all reach every address.",
+        "Info About Section Header": "Shipping services from India to Canada.",
+        "Simplified Form": [
+            "- **Check Tool**: Use Calculate Time and Cost.",
+            "- **Options**: Saver, Freight, Midday, Plus, Express, Expedited.",
+            "- **Limits**: Not all areas covered."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Repaired Goods\nNon-warranty: duties/GST on repair value, invoice with original + repair amounts, brokerage fee. Warranty: duty-free, GST-free, ‘warranty’ on invoice, brokerage fee.\nWarranty Shipments\nRepairs: duty/GST-free, ‘warranty’ needed. Replacements: dutiable, GST-free—brokerage fees apply.\nWood Packing\nISPM 15-treated over 6mm—check India authority.\nOther\nIndia bans diagnostic kits (HS 3822) export since April 2020.",
+        "Info About Section Header": "Special rules for India-to-Canada shipments.",
+        "Simplified Form": [
+            "- **Repaired**: Non-warranty: tax on repair, list values, fee. Warranty: no tax, ‘warranty,’ fee.",
+            "- **Warranty**: Repairs: tax-free, ‘warranty.’ Replacements: duty only, fee.",
+            "- **Wood**: ISPM 15-treated.",
+            "- **Other**: No diagnostic kits from India."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "De minimis: CAD 20—duty/tax-free (private/commercial), subject to CBSA checks. LVS: CAD 20.01-3,300—exceptions (e.g., alcohol, drugs) need HVS. HVS: CAD 3,300+ or exceptions—formal clearance. Exports from India over USD 1,000 need formal clearance (1 day), jewelry over USD 500/piece needs waiver.",
+        "Info About Section Header": "Duty thresholds for India-to-Canada.",
+        "Simplified Form": [
+            "- **De minimis**: CAD 20 free—CBSA may check.",
+            "- **LVS**: CAD 20.01-3,300—exceptions to HVS.",
+            "- **HVS**: CAD 3,300+ or exceptions—formal.",
+            "- **Exports**: Over USD 1,000 formal, 1 day—jewelry over USD 500 needs waiver."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Maximum weight: 70 kg (150 lbs) per package. Maximum length: 274 cm (107.9 in) per package. Maximum dimensions: 400 cm (157.5 in) combined (length + girth).",
+        "Info About Section Header": "Package limits for India-to-Canada.",
+        "Simplified Form": [
+            "- **Weight**: Up to 70 kg.",
+            "- **Length**: Up to 274 cm.",
+            "- **Total**: 400 cm with girth."
+        ]
+    }
+]

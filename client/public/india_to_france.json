@@ -1,0 +1,154 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Import License\nFor shipments from India to France, customs may require an import license depending on the product's harmonized tariff code (HS code). The importer in France must obtain this license from the French Ministry of Foreign Trade, based on India as the country of origin. Contact the French Chamber of Commerce for details.\nDeclaration of Conformity (CE Marking)\nGoods entering France from India must meet EU safety standards if covered by CE marking directives (e.g., toys, medical devices, electronics). The Indian exporter must ensure the product complies before shipping, and the French importer provides a Declaration of Conformity (DoC) with technical test details. A notified body in the EU must issue the DoC. Check the EU website for covered products: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C:2022:247:TOC\nResponsibilities\nThe Indian manufacturer designs and tests the product to EU standards. They can appoint an EU-based representative to handle compliance. The French importer must provide the DoC and safety info to French customs if requested.\nConformity Assessment\nProducts like toys or machinery need testing per EU rules. The Indian exporter prepares the DoC with test results, and if approved, applies the CE mark. For details on notified bodies, visit: https://europa.eu/youreurope/business/product-requirements/compliance/conformity-assessment/index_en.htm\nProduct Safety\nFrench customs perform market surveillance. The DoC must be available on request.\nImport Control System 2 (ICS2)\nSince March 1, 2023, shipments from India to France by air require a 6-digit HS code per item, detailed descriptions, and the French importer’s EORI number on the invoice. Missing details delay clearance. Visit the European Commission site for ICS2 rules.\nCertificate of Origin\nNot required for textiles from India, but the invoice must list India as the origin per item. Customs may request a Certificate of Origin if doubtful.",
+        "Info About Section Header": "This section explains the paperwork needed when shipping goods from India to France, including certificates and permits.",
+        "Simplified Form": [
+            "- *Import License*: For some goods from India, French customs may ask for a license. The French importer gets it from their Ministry of Foreign Trade—check with the French Chamber of Commerce.",
+            "- *CE Marking*: Toys, electronics, or medical devices from India need EU safety approval. Include a Declaration of Conformity (DoC) with test details, signed by an EU notified body.",
+            "- *Exporter’s Job*: Indian manufacturers must test products to EU standards and can use an EU rep to manage paperwork.",
+            "- *Importer’s Job*: The French importer keeps the DoC ready for customs—missing it means delays.",
+            "- *ICS2 Rules*: Since March 2023, air shipments from India to France need a 6-digit HS code per item, a clear description, and the importer’s EORI number. No shortcuts, or it’s held up.",
+            "- *Origin Proof*: Textiles don’t need a Certificate of Origin, but every invoice line must say ‘Made in India.’ Customs might ask for extra proof if suspicious."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "VAT Clearance\nSince January 2022, B2B shipments from India entering the EU via France need a French VAT number for postponed VAT accounting. Without it, French customs won’t release the shipment. Apply via a tax rep in France.\nCustoms Clearance Process\nThe French importer’s EORI number is mandatory for every customs declaration. Companies in France use a SIRET-based EORI—register at the PAE by phone or email. No EORI, no clearance.\nPost Office Boxes\nUPS won’t deliver to P.O. Boxes in France. Provide the consignee’s full street address, contact name, and phone number.\nDuty and Taxes\nDuty and VAT are calculated on the goods’ value, freight charges, and other fees from India to France.\nGifts & Samples\nSince December 2019, gift shipments from India to France attract duties and taxes, regardless of value.\nClearance Comments\nShipments must clear French customs within 19 days, or they’re returned to India (shipper’s approval needed).",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments from India through French customs.",
+        "Simplified Form": [
+            "- *VAT Number*: B2B shipments from India via France need a French VAT number since 2022. No number, no release—get it through a French tax rep.",
+            "- *EORI Number*: Every shipment needs the French importer’s EORI (SIRET-based). Register at PAE—without it, customs says no.",
+            "- *No P.O. Boxes*: UPS needs a full street address, contact name, and phone in France—P.O. Boxes don’t work.",
+            "- *Duty & Taxes*: Calculated on goods value, shipping cost from India, and extra fees—plan for it.",
+            "- *Gifts*: Since 2019, gifts from India to France aren’t duty-free—taxes apply no matter the value.",
+            "- *19-Day Rule*: Clear customs in France within 19 days, or it’s sent back to India (shipper must agree)."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service is provided from India to certain cities in France.\nIn Corsica, UPS uses agents ROCCA and SNCM for delivery.\nFor Belle-Île-en-Mer (postcodes 56360: Bangor, Le Palais, Sauzon, Locmaria, etc.), packages are collected at Magasin Ecomiam, Route de Sauzon, Le Palais.\nNo P.O. Box deliveries—full address and phone required.\nRest Days: Saturday, Sunday, and French holidays.\nTime Zone: Spring +0200 / Fall +0100\nLanguage: French\nCurrency: Euro (EUR)",
+        "Info About Section Header": "This section lists the locations in France where shipping from India is available, with time zones and holidays.",
+        "Simplified Form": [
+            "- *Cities Covered*: UPS ships from India to select French cities—check availability.",
+            "- *Corsica*: Deliveries handled by agents ROCCA and SNCM.",
+            "- *Belle-Île-en-Mer*: Pick up shipments at Magasin Ecomiam, Le Palais (postcode 56360)—covers Bangor, Sauzon, etc.",
+            "- *No P.O. Boxes*: Give a full address and phone number for delivery in France.",
+            "- *Rest Days*: No service on Saturdays, Sundays, or French holidays.",
+            "- *Time Zone*: Spring +0200, Fall +0100—plan your timing from India."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nFrom India to France, duties and taxes can be billed to the Indian shipper, French receiver, or a third party (name, country, and account number needed). A surcharge applies if billed outside France.\nShipping Charges\nShipping costs can go to the shipper, receiver, or third party. Receiver billing needs an account number.\nPayment Methods\nCredit card, check, or cash payments are shipper-only.\nSplit Duty and VAT (SDV)\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic French shipments can’t bill to India or other countries, but EU-to-EU can bill to India if the payor has a VAT ID.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes from India to France can be paid.",
+        "Simplified Form": [
+            "- *Duties & Taxes*: Bill to Indian shipper, French receiver, or a third party (give name, country, account)—extra fee if not France.",
+            "- *Shipping Costs*: Charge the shipper, receiver, or third party—receiver needs an account number.",
+            "- *Payment*: Credit card, check, or cash? Shipper pays only.",
+            "- *Split Billing*: Freight/duties to shipper or third party, taxes to receiver or third party—adds a fee.",
+            "- *Third-Party Rules*: Can’t bill France-to-France to India, but France-to-France can bill India with a VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Samples\nSmall, mutilated samples from India (e.g., garments) can enter France duty-free if marked as such on the invoice.\nCarpets\nCarpets from India need an extra clearance day—invoice must show square meters and material.\nSafety Headgear\nBicycle/motorcycle helmets from India need a CE-marked Certificate of Conformity.\nVideo Games\nVideo games from India require epilepsy warning labels inside and outside the package.\nShoes\nDetailed shoe info (leather type, sole material, intended wearer) must be on the invoice.\nAntiques\nAntiques over 100 years old from India get 0% duty and lower VAT with proof.\nVitamins\nList all ingredients and amounts—may be classified as medicine.\nToys\nToys from India need a CE mark and Certificate of Conformity, or they’re seized.\nAnimal Products\nRequire vet inspection at Cologne—special ISC contract needed.",
+        "Info About Section Header": "This section lists special rules for shipping certain goods from India to France.",
+        "Simplified Form": [
+            "- *Samples*: Small, torn garment samples from India are duty-free—mark ‘mutilated’ on the invoice.",
+            "- *Carpets*: Add a day for clearance—list square meters and materials on the invoice.",
+            "- *Helmets*: Bike helmets need a CE-marked Certificate of Conformity from India.",
+            "- *Video Games*: Epilepsy warnings go inside and outside the package.",
+            "- *Shoes*: Detail leather, soles, and wearer (e.g., men’s boots) on the invoice.",
+            "- *Antiques*: Over 100 years old? Prove it for 0% duty and less VAT.",
+            "- *Vitamins*: List ingredients—might count as medicine, so be clear.",
+            "- *Toys*: CE mark and certificate required, or French customs will destroy them.",
+            "- *Animal Products*: Vet check in Cologne—needs a special UPS contract."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment value: Up to 45 EUR\nType: Individual-to-individual from India to France\nRule: Duty-free per shipment, but VAT applies above 22 EUR.\nAdd ‘gift shipment’ on the invoice and UPS Waybill.\nLimits: 50 cigarettes, 1L spirits (>22%), 2L wine, 50g perfume.",
+        "Info About Section Header": "This section explains if gifts from India to France can avoid taxes or duties.",
+        "Simplified Form": [
+            "- *Gift Limit*: Up to 45 EUR from India to France, person-to-person—duty-free, but VAT kicks in over 22 EUR.",
+            "- *Label It*: Write ‘gift shipment’ on the invoice and UPS Waybill.",
+            "- *Allowed Amounts*: Max 50 cigarettes, 1L strong spirits, 2L wine, 50g perfume—more than that, full taxes apply."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Non-document shipments from India to France need 1 original and 2 copies of the invoice. Include the consignee’s phone if value > 22 EUR. Customs value includes goods price, freight, and insurance—show freight separately. Avoid vague terms like ‘apparel’—use ‘men’s cotton shirts.’ UPS offers paperless invoicing.",
+        "Info About Section Header": "This section details what must be on an invoice for shipping from India to France.",
+        "Simplified Form": [
+            "- *Invoice Copies*: Send 1 original + 2 copies for goods from India to France.",
+            "- *Phone Number*: Add the French consignee’s phone if over 22 EUR.",
+            "- *Value Details*: List goods cost, freight, and insurance—break out freight clearly.",
+            "- *Be Specific*: Say ‘women’s silk sarees,’ not just ‘clothes’—vague terms delay clearance.",
+            "- *Paperless Option*: Use UPS paperless invoicing to skip physical copies."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Documents from India to France with no commercial value (e.g., annual reports, bids) are duty-free up to 20 kg. Above 20 kg, a detailed description and formal declaration may be needed, with possible duty/VAT.",
+        "Info About Section Header": "This section lists items treated as documents for shipping from India to France.",
+        "Simplified Form": [
+            "- *Documents*: Papers like reports or bids from India to France are duty-free up to 20 kg.",
+            "- *Over 20 kg*: Add a full description—might need a formal declaration and pay duty/VAT."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Alcoholic Beverages\nMax 10L spirits, 90L wine per consignee—special ISC contract required.\nKnives\nOver 15 cm, double-edged knives need Ministry of Defense approval.\nJewelry\nDetail weight and stones—can’t clear via simplified process.\nMelatonin\nProhibited from India to France.\nPlants\nCertain Indian plants (e.g., mango) are banned.",
+        "Info About Section Header": "This section lists items that can’t be shipped from India to France or have strict rules.",
+        "Simplified Form": [
+            "- *Alcohol*: Up to 10L spirits or 90L wine per person—needs a special UPS contract.",
+            "- *Knives*: Big, double-edged ones (over 15 cm) need French Ministry approval.",
+            "- *Jewelry*: List weight and stones—no fast clearance, expect delays.",
+            "- *Melatonin*: Banned from India to France—don’t ship it.",
+            "- *Plants*: Mango plants and similar from India? Not allowed."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nNot in all French areas—check UPS transit system.",
+        "Simplified Form": [
+            "- *Saturday Option*: Available from India to some French spots—confirm with UPS."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to France options: UPS Worldwide Express Saver, Expedited, Express Freight, Express Plus.",
+        "Info About Section Header": "This section lists shipping services from India to France.",
+        "Simplified Form": [
+            "- *Services*: Pick from Express Saver, Expedited, Freight, or Express Plus for India to France—check UPS for details."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Samples\nGarment samples from India must be mutilated and marked as such on the invoice.\nSolid Wood Packing\nWood packaging from India must follow ISPM 15—heat-treated and stamped.",
+        "Info About Section Header": "This section covers unique rules for shipping from India to France.",
+        "Simplified Form": [
+            "- *Samples*: Tear garment samples from India and note ‘mutilated’ on the invoice.",
+            "- *Wood Packing*: Use heat-treated wood (ISPM 15) with a stamp—raw wood won’t do."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: 150 EUR—duty-free but VAT applies above 22 EUR.\nHigh Value Exports: Over USD 1,000 from India needs formal clearance.",
+        "Info About Section Header": "This section states value thresholds for shipments from India to France.",
+        "Simplified Form": [
+            "- *Low Value*: Up to 150 EUR from India? Duty-free, but VAT starts at 22 EUR.",
+            "- *High Value*: Over USD 1,000 export from India needs official customs papers—adds a day."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg per package\nMax length: 274 cm\nMax dimensions: 400 cm (length + girth combined)",
+        "Info About Section Header": "This section specifies max weight and size for packages from India to France.",
+        "Simplified Form": [
+            "- *Weight*: Max 70 kg per package from India to France.",
+            "- *Size*: Max 274 cm long, or 400 cm total (length + girth)."
+        ]
+    }
+]

@@ -1,0 +1,144 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nFor Indian shipments to Malaysia containing endangered species products (e.g., HS 4103 for turtle leather bags), a CITES Certificate is required under the Convention on International Trade in Endangered Species. Issued by India’s Ministry of Environment, Forest and Climate Change, it must detail the species (e.g., Chelonia mydas), legal sourcing, and quantity (e.g., ‘5 bags’). Send the original via express service (e.g., UPS Worldwide Express) ahead of arrival at Kuala Lumpur (KUL) to avoid seizure or return—e.g., a MYR 1,000 cost for a 5 kg shipment. Clearance delays 2-4 days without it, per Malaysia’s Department of Wildlife and National Parks (PERHILITAN).\n\nPacking List\nAll non-document shipments from India to Malaysia (e.g., HS 6204 kurtas) require a packing list alongside the commercial invoice. It should list items (e.g., ‘cotton shirts, 20 pcs’), quantities, weights (e.g., ‘10 kg total, 0.5 kg each’), and package count—e.g., ‘2 boxes’. Submit it in English to Royal Malaysian Customs Service (RMCS) via UPS—missing lists delay clearance at Johor Bahru by 1-3 days, risking MYR 200-500 fines.\n\nStandards and Industrial Institute of Malaysia (SIRIM)\nSIRIM, established in 1996, oversees quality standards for Malaysian imports. Indian goods like communication devices (e.g., HS 8517 for Wi-Fi routers), telecom equipment (e.g., HS 8518 for headsets), computers (e.g., HS 8471 for laptops), tablets (e.g., HS 8471 for iPads), or items with communication modules (e.g., HS 9503 for smart toys) need SIRIM certification. The Malaysian importer must apply for an import permit pre-arrival via SIRIM’s portal (https://www.sirim.my/), providing product specs and test reports—e.g., a Delhi exporter’s router needs SIRIM approval before shipping. UPS Malaysia Brokerage offers SIRIM contact info but doesn’t process permits—delays of 3-7 days apply without it.\n\nMSDS-NON DG\nIndian goods under IATA Special Provisions A67 (e.g., HS 3401 for non-hazardous soaps) require a Material Safety Data Sheet (MSDS) or Non-Dangerous Goods (NON DG) declaration. Though not mandatory for all shipments, UAE authorities—often a transit point from India to Malaysia—may hold shipments at Dubai (DXB) without these, causing 2-4 day delays. For a 10 kg soap shipment, include an MSDS stating ‘non-flammable, safe for air transport’ and upload copies to UPS’s IDIS system—avoids MYR 300-600 in penalties and ensures delivery to Penang.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into a country, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *CITES*: Indian endangered items need certificate—send express.",
+            "- *Packing List*: Mandatory for non-docs—list items, weights.",
+            "- *SIRIM*: Tech goods from India need permit—apply pre-arrival.",
+            "- *MSDS*: Non-DG via UAE—include MSDS to skip holds."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Clearance Comments\nFor Indian dutiable shipments to Malaysia with FOB value over MYR 10,000 (e.g., MYR 15,000 for HS 7113 jewelry), the consignee must submit a Supplementary Customs Form No. 1A via EDI to RMCS, detailing valuation—e.g., ‘gold necklaces, 5 pcs, MYR 3,000 each’. Duties (e.g., 10% = MYR 1,500) and sales tax (6% = MYR 990) apply, payable at clearance in Port Klang. Non-dutiable shipments up to MYR 2,000 (e.g., MYR 1,800 spices) clear instantly unless restricted—e.g., no Form 1A for HS 0904 turmeric—saving 1-2 days.\n\nPayment by Credit Card\nMalaysia accepts credit card payments for freight and import charges upon delivery—e.g., MYR 2,000 for a Mumbai-to-KL shipment. Contact UPS Malaysia (1-800-88-787) for accepted cards (e.g., Visa, Mastercard). Freight collect from India may face restrictions—confirm with UPS India (1-800-102-7171) pre-shipment to avoid MYR 100-200 surcharges.\n\nGifts & Samples\nSince December 12, 2019, gifts imported into India attract duties, but for India-to-Malaysia, see ‘Gift Exemptions’. Samples (e.g., HS 3304 perfume testers) under MYR 500 clear duty-free if marked ‘Samples—No Commercial Value’—e.g., 10 vials avoid MYR 50 duty—otherwise, 1-2 day delays apply.\n\nPost Office Boxes\nUPS doesn’t deliver Indian shipments to P.O. Boxes in Malaysia—e.g., no ‘P.O. Box 456, KL’. Use a full address (e.g., ‘12 Jalan Ampang, 50450 Kuala Lumpur’), consignee name (e.g., ‘Ahmad Bin Ismail’), and phone (e.g., ‘+60 3-1234-5678’)—missing info risks MYR 200-300 return fees or 2-3 day delays.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through customs, including addresses and contact info requirements.",
+        "Simplified Form": [
+            "- *Over MYR 10,000*: Form 1A needed—duties/taxes apply.",
+            "- *Under MYR 2,000*: Clears fast—unless restricted.",
+            "- *Credit Card*: Accepted on delivery—check cards with UPS.",
+            "- *Gifts*: India-to-Malaysia per exemptions—samples mark ‘no value’.",
+            "- *P.O. Boxes*: Full address, name, phone—no boxes."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "UPS serves select Malaysian cities from India—e.g., Kuala Lumpur, Penang, Johor Bahru—but not all rural areas. No P.O. Box delivery—provide a full address (e.g., ‘5 Jalan Bukit Bintang, 55100 KL’), consignee name (e.g., ‘Siti Nurhaliza’), and phone (e.g., ‘+60 12-345-6789’). Rest days halt service: Sundays nationwide, Fridays in Trengganu, Kedah, and Kelantan (Thursday half-day)—e.g., no pickup during Hari Raya. Malaysia uses GMT +0800 year-round, 2.5 hours ahead of India’s IST (+0530). Language is English for customs; currency is Malaysian Ringgit (MYR).",
+        "Info About Section Header": "This section lists the locations where shipping services are available, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Coverage*: Major cities from India—not all rural.",
+            "- *No P.O. Boxes*: Full address, name, phone needed.",
+            "- *Rest Days*: Sunday, Friday in some states—plan ahead.",
+            "- *Time*: +0800, 2.5 hours ahead of India."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nIndian shipments to Malaysia can bill duties and taxes to the shipper (e.g., a Chennai exporter), receiver (e.g., a KL retailer), or third party (e.g., a Singapore broker). Third-party billing needs their name, country, and UPS account (e.g., ‘Asia Trade, SG, #789123’)—billing outside Malaysia adds a Duty and Tax Forwarding surcharge (MYR 50-75 as of March 07, 2025)—e.g., MYR 60 on a MYR 1,000 duty.\n\nShipping Charges\nFreight costs can bill to the shipper, receiver, or third party. Receiver billing needs their UPS account; third-party requires full details (e.g., ‘Gupta Exports, IN, #456789’)—no extra fee unless duties split.\n\nPayment Methods\nCredit card, check, or cash from India bills only the shipper—e.g., MYR 3,000 via Visa from Mumbai.\n\nThird-Party Billing\nMalaysian domestic shipments (e.g., KL to Penang) can’t bill to India, but EU-Malaysia shipments can bill an Indian third party with VAT/EIN—e.g., an Indian HQ pays MYR 5,000 for Germany-to-KL.\n\nSplit Duty And VAT (SDV)\nFreight and duties can bill to the Indian shipper or third party, taxes to the Malaysian receiver or another party—e.g., MYR 500 duty to shipper, MYR 300 tax to receiver. Adds a MYR 40-60 surcharge.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom.",
+        "Simplified Form": [
+            "- *Duties/Taxes*: Shipper, receiver, third party—fee if not Malaysia.",
+            "- *Shipping*: Shipper, receiver, third party—receiver needs account.",
+            "- *Payment*: Card/check/cash to shipper only from India.",
+            "- *Third Party*: EU-Malaysia can bill India—domestic can’t.",
+            "- *Split*: Duties one way, taxes another—extra charge."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Veterinary Products\nIndian vet products (e.g., HS 3002 for pet vaccines) need Veterinary Department approval—apply via https://www.dvs.gov.my/, adding 3-5 days at KUL.\n\nTelevisions\nIndian TVs (e.g., HS 8528) require an Import Permit from the Department of Electricity Supply Malaysia—importer applies pre-arrival, delays 2-4 days without it.\n\nCosmetics\nIndian cosmetics (e.g., HS 3304 for henna) must register with the National Pharmaceutical Agency (https://www.npra.gov.my/)—unregistered items (e.g., 10 lipsticks) face return or abandonment, costing MYR 200-400.\n\nGambling Devices\nIndian gambling devices (e.g., HS 9504 for slot machines) need Police Department and Ministry of Finance permits—delays 5-7 days.\n\nCoffee\nUnroasted Indian coffee (e.g., HS 0901.11) needs a Ministry of Health permit—apply via https://www.moh.gov.my/, clearance adds 2-3 days.\n\nTelecommunication Equipment\nIndian telecom gear (e.g., HS 8517 for routers) requires a SIRIM permit—importer secures it pre-shipment, or face MYR 500-1,000 fines.\n\nReligious Material\nIndian religious texts (e.g., HS 4901 for Bhagavad Gita) need Ministry of Home Affairs (KDN) approval—delays 3-5 days.\n\nIsraeli Origin Goods\nGoods from Israel (e.g., HS 9018 medical devices) need a Ministry of International Trade and Industry permit—rarely shipped from India.\n\nComputers\nIndian laptops (e.g., HS 8471) need SIRIM approval—e.g., a Dell from Bangalore delays 3-5 days without permit.\n\nVideos/Tapes\nIndian videos (e.g., HS 8523 for DVDs) need Censorship Board approval—e.g., ‘Yoga Tutorial, 5 tapes’ clears in 2-4 days.\n\nPersonal Effects\nIndian used household goods (e.g., HS 9403 furniture) over 6 months old clear duty-free—e.g., MYR 5,000 sofa set. Newer items (under 6 months) incur duties (e.g., 10% = MYR 500) and need an Electrical Board Permit for appliances—submit purchase receipts and inventory (e.g., ‘TV, Sony, 2024’).\n\nDairy\nIndian dairy (e.g., HS 0406 for ghee) needs Ministry of Health approval—delays 2-3 days.\n\nMedicine/Drugs\nIndian medicines (e.g., HS 3004 for paracetamol) need Pharmaceutical Board approval—e.g., 100 tablets clear in 3-5 days via https://www.npra.gov.my/.\n\nFood\nIndian food (e.g., HS 1905 for snacks) requires Ministry of Health approval unless small gifts—e.g., 5 kg spices need permit.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods, like medical items or jewelry.",
+        "Simplified Form": [
+            "- *Cosmetics*: Register with NPRA—else returned.",
+            "- *Telecom*: SIRIM permit pre-shipment—fines without.",
+            "- *Personal Effects*: Over 6 months duty-free—newer taxed.",
+            "- *Medicine*: Pharma Board approval—3-5 days.",
+            "- *Food*: Health permit—small gifts exempt.",
+            "- *Coffee*: Unroasted needs permit—2-3 days."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment Value Amount: 500.00 MYR (individual-to-individual, company-to-company, company-to-individual); 50.00 MYR (individual-to-company)\nShipment Type: Varies\nExemption Rule: Per shipment\n\nGifts from India to Malaysia up to MYR 500 (e.g., MYR 450 idol, individual-to-individual) or MYR 50 (e.g., MYR 40 keychain, individual-to-company) are duty- and tax-free as of March 07, 2025—e.g., no MYR 45 tax on MYR 450. Overages (e.g., MYR 600) incur duties (e.g., 10% = MYR 60). Mark ‘Gift Shipment’ on the invoice with details (e.g., ‘2 brass idols, MYR 225 each’) and consignee info (e.g., ‘Ali bin Hassan, 10 Jalan Pudu, KL, +60 3-9876-5432’)—missing details risk MYR 100-200 fees.",
+        "Info About Section Header": "This section explains if gifts can avoid taxes or duties and lists items that can’t be sent as gifts.",
+        "Simplified Form": [
+            "- *Limits*: MYR 500 most types, MYR 50 to companies—duty/tax-free.",
+            "- *Label*: ‘Gift Shipment’, item list, consignee details.",
+            "- *Over Limit*: Duties apply—extra costs."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Imports\nMalaysia accepts UPS Paperless Invoice for imports from India—e.g., a MYR 2,000 electronics shipment clears faster electronically.\n\nPaperless Invoice - Exports\nUPS Paperless Invoice supports Indian exports to Malaysia via tools like UPS WorldShip—e.g., a Kolkata firm saves 1-2 days to KL.\n\nInvoice\nNon-document Indian shipments to Malaysia (e.g., HS 6204 sarees) need 1 original and 2 copies of the invoice, including consignee phone (e.g., ‘+60 12-345-6789’)—e.g., ‘Fatima binti Omar, 5 Jalan Ipoh, 51200 KL’. Missing phones delay clearance by 1-3 days at Penang.",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods.",
+        "Simplified Form": [
+            "- *Paperless*: Imports/exports faster—India to Malaysia.",
+            "- *Invoice*: 1+2 copies, phone mandatory—non-docs."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Malaysia classifies Indian items like validated airline tickets, manuscripts, or intercompany CDs (e.g., HS 8523 with no copyright) as documents—e.g., 5 kg of annual reports are duty-free. Blank items (e.g., checks) or for-sale goods (e.g., newspapers) require invoices and may incur taxes—e.g., MYR 50 VAT on 10 kg of brochures.",
+        "Info About Section Header": "This section lists items that are treated as documents (not goods) for shipping purposes, with weight limits.",
+        "Simplified Form": [
+            "- *Docs*: Validated items from India—duty-free.",
+            "- *Non-Docs*: Blank/for-sale needs invoice—taxes possible."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Knives\nIndian knives (e.g., HS 8211) need a Police Department Import License—kitchen/utility knives (e.g., MYR 100 chef’s knife) okay without, others banned.\n\nChemicals\nSodium Arsenate (HS 2842) from India is prohibited—e.g., no chemical samples.\n\nLiquids\nLiquid Glucose (HS 1702) is banned—e.g., 5L syrup shipment rejected.\n\nGuns\nToy guns or replicas (HS 9503) from India are prohibited—e.g., MYR 200 plastic rifle returned.\n\nAlcoholic Beverages\nIndian liquor (e.g., HS 2208) needs an ISC contract—B2C spirits under 1L (e.g., 750ml whiskey) allowed, duty/tax apply—e.g., MYR 50 tax.\n\nSurgical Masks\nIndian masks (e.g., HS 6307) prohibited since 2020—includes ventilators, textile raw materials.\n\nTextiles\nCloth with Koran verses (e.g., HS 5208) banned—e.g., no prayer mats with text.",
+        "Info About Section Header": "This section lists items that cannot be shipped to India or have strict rules.",
+        "Simplified Form": [
+            "- *Knives*: License for non-kitchen—else banned.",
+            "- *Alcohol*: ISC, under 1L B2C—taxed.",
+            "- *Masks*: Prohibited since 2020—ventilators too.",
+            "- *Guns*: No toy replicas—returned.",
+            "- *Chemicals*: Sodium Arsenate banned.",
+            "- *Textiles*: No Koran imprints—out."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nAvailable in major Malaysian cities (e.g., KL, Penang) from India for an extra fee (e.g., MYR 50)—not rural areas. Check UPS’s Time in Transit tool—ideal for urgent shipments like perishables as of March 07, 2025.",
+        "Simplified Form": [
+            "- *Saturday*: Yes in cities—extra cost, check tool."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India-to-Malaysia options include UPS Worldwide Express Saver (1-3 days, evening), UPS Worldwide Expedited (2-5 days, economical), UPS Worldwide Express (1-3 days, standard), UPS Worldwide Express Freight (1-3 days, over 70 kg), and Worldwide Express Freight Midday (faster freight). Urban-focused—e.g., Express hits KL, not remote Sabah. Verify via Calculate Time and Cost.",
+        "Info About Section Header": "This section lists the types of shipping services available, like express or freight.",
+        "Simplified Form": [
+            "- *Options*: Express Saver, Expedited, Freight—city focus."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Solid Wood Packing Material\nIndian wood pallets (e.g., HS 4415) must meet ISPM 15—heat-treated, IPPC-stamped—or face fumigation/rejection at MYR 300-500. Check India’s NPPO (http://plantprotection.gov.in/).\n\nOther Shipment Types\nIndia bans diagnostic kits (HS 3822) exports since April 4, 2020—impacts Malaysia-bound shipments—e.g., no test reagents.",
+        "Info About Section Header": "This section covers unique rules for temporary imports, repairs, or specific materials.",
+        "Simplified Form": [
+            "- *Wood*: ISPM 15 stamped—else fumigated.",
+            "- *Diagnostics*: Banned from India since 2020."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis Value: 500.00 MYR\nIndian private/commercial shipments to Malaysia up to MYR 500 (e.g., MYR 450 scarf) are duty- and tax-free—e.g., no MYR 50 tax. Postponed sales tax on low-value goods (10% on MYR ≤500 online imports) awaits notice—e.g., MYR 40 tax on MYR 400 pending.\n\nHigh Value Exports: Over USD 1,000\nIndian exports over $1,000 (e.g., MYR 4,500 jewelry) need formal Indian customs clearance—adds 1 day. Jewelry over $500/piece (e.g., MYR 2,250 ring) needs a waiver.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties.",
+        "Simplified Form": [
+            "- *Low*: MYR 500 from India—duty/tax-free, tax pending.",
+            "- *High*: Over $1,000 needs India clearance—jewelry waiver at $500."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Maximum Weight: 70 kg (150 lbs.) per package\nMaximum Length: 274.00 cm (107.9 in.) per package\nMaximum Dimensions: 419.10 cm (165.0 in.)—length plus girth combined\n\nIndian packages to Malaysia can’t exceed 70 kg (e.g., a rice sack) or 274 cm long (e.g., a rolled mat). Total size (length + 2x width + 2x height) under 419.1 cm—oversized shifts to freight—e.g., a 300 cm statue uses Express Freight.",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages.",
+        "Simplified Form": [
+            "- *Weight*: Max 70 kg from India.",
+            "- *Size*: Max 274 cm long, 419.1 cm total."
+        ]
+    }
+]
