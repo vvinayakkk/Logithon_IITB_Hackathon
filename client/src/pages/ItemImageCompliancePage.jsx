@@ -4,8 +4,7 @@ import * as THREE from 'three';
 import { CloudUpload, Send, Info, Check, X, MessageCircle, FileText, Globe as GlobeIcon, Package, AlertTriangle, Calendar, Weight, DollarSign, Truck, BoxSelect, FileCheck } from 'lucide-react';
 import GlobeVisualization from '../components/Globe';
 import Header from '../components/header';
-// Note: GlobeVisualization component has been removed from this file
-// You can use it separately elsewhere as needed
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
 
 function ItemImageCompliancePage() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -23,12 +22,32 @@ function ItemImageCompliancePage() {
   const [loading, setLoading] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [arcsData, setArcsData] = useState([]);
+  const [detected, setDetected] = useState([]);
+  const [res, setRes] = useState([]);
 
   // List of countries for the dropdown
   const countries = [
     'United States', 'Canada', 'Mexico', 'United Kingdom', 'France', 
-    'Germany', 'Japan', 'China', 'Australia', 'Brazil', 'India'
+    'Germany', 'Japan', 'China', 'Australia', 'Brazil', 'India', 'Kuwait'
   ];
+  const prepareChartData = () => {
+    const relevanceData = res.map(item => ({
+      name: `${item["Search Item"]} (${item.Country})`,  // Changed to include country
+      relevance: parseFloat(item.Relevance) * 100,
+      country: item.Country,  // Added country information
+      item: item["Search Item"]  // Added item information
+    }));
+  
+    const riskData = [
+      { name: 'High Risk', value: res.filter(item => parseFloat(item.Relevance) > 0.6).length },
+      { name: 'Medium Risk', value: res.filter(item => parseFloat(item.Relevance) <= 0.6 && parseFloat(item.Relevance) > 0.4).length },
+      { name: 'Low Risk', value: res.filter(item => parseFloat(item.Relevance) <= 0.4).length },
+    ];
+  
+    return { relevanceData, riskData };
+  };
+  
+  const { relevanceData, riskData } = prepareChartData();
 
   // Restricted items database (simplified for example)
   const restrictedItemsDB = {
@@ -42,7 +61,8 @@ function ItemImageCompliancePage() {
     'China': ['weapons', 'drugs', 'political materials', 'certain electronics'],
     'Australia': ['weapons', 'drugs', 'biological materials', 'certain foods'],
     'Brazil': ['weapons', 'drugs', 'certain electronics', 'used goods'],
-    'India': ['weapons', 'drugs', 'gold above limits', 'certain electronics']
+    'India': ['weapons', 'drugs', 'gold above limits', 'certain electronics'],
+    'Kuwait': ['liquor', 'pork products', 'drugs', 'weapons']
   };
 
   // Country coordinates for the globe (simplified)
@@ -57,7 +77,8 @@ function ItemImageCompliancePage() {
     'China': { lat: 35.8617, lng: 104.1954 },
     'Australia': { lat: -25.2744, lng: 133.7751 },
     'Brazil': { lat: -14.2350, lng: -51.9253 },
-    'India': { lat: 20.5937, lng: 78.9629 }
+    'India': { lat: 20.5937, lng: 78.9629 },
+    'Kuwait': { lat: 29.3759, lng: 47.9774 }
   };
 
   const handleFileChange = (e) => {
@@ -84,52 +105,65 @@ function ItemImageCompliancePage() {
     
     setLoading(true);
     
-    // Simulate API call with timeout
-    setTimeout(() => {
-      // Simulate item detection from backend
-      const itemDescription = "Electronics - Smartphone"; // This would come from backend in real app
-      
-      // Mock checking if the item is prohibited
-      const isProhibited = restrictedItemsDB[destinationCountry]?.some(item => 
-        itemDescription.toLowerCase().includes(item)
-      );
-      
-      // Check document requirements
-      const missingDocuments = ['Commercial Invoice', 'Certificate of Origin'];
-      
-      // Set validation results
-      setValidationResults({
-        isCompliant: !isProhibited && missingDocuments.length === 0,
-        sourceCountry,
-        destinationCountry,
-        itemName: itemDescription,
-        issues: [
-          ...(isProhibited ? [`Item may be restricted in ${destinationCountry}`] : []),
-          ...(missingDocuments.length > 0 ? [`Missing required documents: ${missingDocuments.join(', ')}`] : [])
-        ],
-        recommendations: isProhibited || missingDocuments.length > 0 ? 
-          ['Check with local customs', 'Consider special permits', 'Complete all required documentation'] : 
-          ['Ready for shipment', 'All compliance checks passed']
+    try {
+      // Create form data
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+  
+      // Call API endpoint
+      const response = await fetch('http://localhost:3000/api/search_items', {
+        method: 'POST',
+        body: formData
       });
-      
-      // Create arc data for visualization (kept for future reference)
-      if (sourceCountry && destinationCountry) {
-        const srcCoords = countryCoordinates[sourceCountry];
-        const destCoords = countryCoordinates[destinationCountry];
-        
-        if (srcCoords && destCoords) {
-          setArcsData([{
-            startLat: srcCoords.lat,
-            startLng: srcCoords.lng,
-            endLat: destCoords.lat,
-            endLng: destCoords.lng,
-            color: isProhibited || missingDocuments.length > 0 ? '#FF4560' : '#00E396'
-          }]);
-        }
+  
+      if (!response.ok) {
+        throw new Error('API request failed');
       }
+  
+      const data = await response.json();
+      console.log("API Response:", data); // Debug log
       
+      // Set detected items and results
+      setDetected(data.detected_items || []);
+      setRes(data.results || []);
+  
+      // Update arc data for globe visualization
+      if (sourceCountry && destinationCountry && countryCoordinates[sourceCountry] && countryCoordinates[destinationCountry]) {
+        setArcsData([{
+          startLat: countryCoordinates[sourceCountry].lat,
+          startLng: countryCoordinates[sourceCountry].lng,
+          endLat: countryCoordinates[destinationCountry].lat,
+          endLng: countryCoordinates[destinationCountry].lng,
+          color: data.results.length === 0 ? 'rgba(0, 255, 0, 0.6)' : 'rgba(255, 0, 0, 0.6)'
+        }]);
+      }
+  
+      // Process the response to set validationResults
+      const validationResults = {
+        isCompliant: data.results.length === 0, // If no results, it's compliant
+        sourceCountry: sourceCountry,
+        destinationCountry: destinationCountry,
+        issues: data.results.map(item => `${item["Search Item"]} is prohibited in ${item.Country}`),
+        recommendations: [
+          "Check the destination country's customs regulations.",
+          "Ensure all required documentation is complete.",
+          "Contact the shipping carrier for further assistance."
+        ],
+        itemDetails: data.results.map(item => ({
+          item: item["Search Item"],
+          relevance: parseFloat(item.Relevance),
+          prohibitedItem: item["Prohibited Item"]
+        }))
+      };
+  
+      setValidationResults(validationResults);
+      
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to process image. Please try again.');
+    } finally {
       setLoading(false);
-    }, 2000);
+    }
   };
 
   const handleChatSubmit = (e) => {
@@ -171,11 +205,32 @@ function ItemImageCompliancePage() {
     }, 1000);
   };
 
+  // For demo purposes - example detection results if no data is present
+  const demoData = () => {
+    if (!res.length) {
+      setRes([
+        {
+          "Country": "Kuwait",
+          "Prohibited Item": "Liquor",
+          "Relevance": "0.647",
+          "Search Item": "Whiskey bottle"
+        },
+        {
+          "Country": "Kuwait",
+          "Prohibited Item": "Pork Products",
+          "Relevance": "0.587",
+          "Search Item": "Canned ham"
+        }
+      ]);
+      setDetected(["Whiskey bottle", "Glass container", "Canned ham"]);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-950 via-blue-950 to-gray-900 relative">
       {/* Header */}
       <Header />
-      <div>
+      <div style={{ height: '400px', width: '100%', position: 'relative', marginBottom: '2rem' }}>
         <GlobeVisualization arcsData={arcsData}/>
       </div>
       
@@ -286,6 +341,16 @@ function ItemImageCompliancePage() {
                   )}
                 </motion.button>
               </form>
+              
+              {/* Demo button */}
+              <div className="mt-3 text-center">
+                <button 
+                  onClick={demoData}
+                  className="text-sm text-blue-400 hover:text-blue-300 underline"
+                >
+                  Load demo data
+                </button>
+              </div>
             </div>
             
             {/* Helpful Tips */}
@@ -318,7 +383,90 @@ function ItemImageCompliancePage() {
                 </li>
               </ul>
             </motion.div>
-            
+
+            {/* Relevance Chart Section */}
+            {res.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-xl p-6 text-white shadow-xl border border-blue-800"
+              >
+                <h3 className="font-semibold mb-4 text-blue-300">Item-Country Relevance Analysis</h3>
+                <div className="w-full overflow-x-auto">
+                  <BarChart
+                    width={500}
+                    height={300}
+                    data={relevanceData}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 100, // Increased bottom margin for rotated labels
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1e3a8a" />
+                    <XAxis 
+                      dataKey="name" 
+                      stroke="#93c5fd"
+                      tick={{ fill: '#93c5fd' }}
+                      angle={-45}  // Rotate labels
+                      textAnchor="end"  // Align rotated text
+                      height={100}  // Increase height for rotated labels
+                    />
+                    <YAxis 
+                      stroke="#93c5fd"
+                      tick={{ fill: '#93c5fd' }}
+                      label={{ 
+                        value: 'Relevance Score (%)', 
+                        angle: -90, 
+                        position: 'insideLeft',
+                        fill: '#93c5fd'
+                      }}
+                    />
+                    <Tooltip 
+                      contentStyle={{ 
+                        backgroundColor: '#1e3a8a', 
+                        border: '1px solid #3b82f6',
+                        borderRadius: '8px',
+                        color: '#93c5fd'
+                      }}
+                      formatter={(value, name, props) => [
+                        `${value.toFixed(1)}%`,
+                        `${props.payload.item} in ${props.payload.country}`
+                      ]}
+                    />
+                    <Bar
+                      dataKey="relevance"
+                      fill="#3b82f6"
+                      radius={[4, 4, 0, 0]}
+                    >
+                      {relevanceData.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={entry.relevance > 60 ? '#ef4444' : entry.relevance > 40 ? '#f59e0b' : '#22c55e'}
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </div>
+                <div className="mt-4 flex justify-center space-x-4">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-red-500 rounded mr-2"></div>
+                    <span className="text-sm text-blue-200">High Risk (&gt;60%)</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-amber-500 rounded mr-2"></div>
+                    <span className="text-sm text-blue-200">Medium Risk (40-60%)</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded mr-2"></div>
+                    <span className="text-sm text-blue-200">Low Risk (&lt;40%)</span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
             {/* Recent Updates (moved from right to left column) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -356,7 +504,28 @@ function ItemImageCompliancePage() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="lg:col-span-2"
           >
-            {/* Results Section */}
+            {/* Detected Items Section - Always show if there are items */}
+            {detected.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-blue-900/30 rounded-xl p-6 text-white shadow-xl mb-6 border border-blue-800"
+              >
+                <h3 className="text-lg font-semibold mb-4 text-blue-300">Detected Items</h3>
+                <div className="bg-gray-900/70 rounded-lg p-4 border border-blue-800">
+                  <ul className="space-y-3">
+                    {detected.map((item, index) => (
+                      <li key={index} className="flex items-center">
+                        <Package className="h-5 w-5 text-blue-400 mr-3 flex-shrink-0" />
+                        <span className="text-blue-100 font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Compliance Results Section */}
             {validationResults ? (
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -411,29 +580,6 @@ function ItemImageCompliancePage() {
                   </div>
                 </div>
                 
-                {/* Item Details (detected by backend) */}
-                <div className="mt-5 bg-gray-950 rounded-lg p-4 border border-blue-900">
-                  <h5 className="text-sm font-medium text-blue-400 mb-3">Detected Item Details</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                    <div className="flex items-center">
-                      <span className="text-blue-400 mr-2">Item Type:</span>
-                      <span className="text-blue-100">{validationResults.itemName.split('-')[0].trim()}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="text-blue-400 mr-2">Description:</span>
-                      <span className="text-blue-100">{validationResults.itemName.split('-')[1]?.trim() || validationResults.itemName}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="text-blue-400 mr-2">Requires License:</span>
-                      <span className="text-blue-100">No</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="text-blue-400 mr-2">Estimated Duties:</span>
-                      <span className="text-blue-100">$45.00 USD</span>
-                    </div>
-                  </div>
-                </div>
-                
                 {/* AI Assistant Button */}
                 <div className="mt-5 text-center">
                   <motion.button
@@ -446,33 +592,10 @@ function ItemImageCompliancePage() {
                     Ask questions about this shipment
                   </motion.button>
                 </div>
-                
-                {/* Shipment Route Information */}
-                <div className="mt-5">
-                  <h5 className="text-sm font-medium text-blue-400 mb-3">Shipment Details</h5>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-gray-800 rounded-lg p-3 border border-blue-900">
-                      <span className="text-xs text-blue-400 block mb-1">Distance</span>
-                      <span className="font-medium text-blue-100">{Math.floor(Math.random() * 5000 + 3000)} km</span>
-                    </div>
-                    <div className="bg-gray-800 rounded-lg p-3 border border-blue-900">
-                      <span className="text-xs text-blue-400 block mb-1">Est. Transit Time</span>
-                      <span className="font-medium text-blue-100">{Math.floor(Math.random() * 10 + 3)} days</span>
-                    </div>
-                    <div className="bg-gray-800 rounded-lg p-3 border border-blue-900">
-                      <span className="text-xs text-blue-400 block mb-1">Required Documents</span>
-                      <span className="font-medium text-blue-100">3</span>
-                    </div>
-                    <div className="bg-gray-800 rounded-lg p-3 border border-blue-900">
-                      <span className="text-xs text-blue-400 block mb-1">Status</span>
-                      <span className="font-medium text-blue-100">Pending Approval</span>
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             ) : (
-              <div className="bg-gray-900 rounded-xl p-8 text-white shadow-xl mb-6 border border-blue-800 flex items-center justify-center h-full min-h-96">
-                <div className="text-center py-16">
+              <div className="bg-gray-900 rounded-xl p-8 text-white shadow-xl mb-6 border border-blue-800 flex items-center justify-center h-64">
+                <div className="text-center">
                   <FileCheck className="h-16 w-16 text-blue-500 mx-auto mb-4 opacity-70" />
                   <h3 className="text-lg font-medium text-blue-300">No Compliance Check Yet</h3>
                   <p className="text-sm text-blue-400 mt-3 max-w-xs mx-auto">
@@ -481,9 +604,119 @@ function ItemImageCompliancePage() {
                 </div>
               </div>
             )}
+
+            {/* Detailed Results Section - Always show if results exist */}
+            {res.length > 0 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-gray-900 rounded-xl p-6 text-white shadow-xl mb-6 border border-blue-800"
+              >
+                <h3 className="text-lg font-semibold mb-4 text-blue-300">Prohibited Items Matched</h3>
+                
+                <div className="space-y-4">
+                  {res.map((item, index) => (
+                    <div key={index} className="bg-gray-800 p-4 rounded-lg border border-blue-900">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <span className="text-blue-400 text-sm">Country</span>
+                          <p className="text-white font-medium">{item.Country}</p>
+                        </div>
+                        <div>
+                          <span className="text-blue-400 text-sm">Prohibited Item</span>
+                          <p className="text-rose-400 font-medium">{item["Prohibited Item"]}</p>
+                        </div>
+                        <div>
+                          <span className="text-blue-400 text-sm">Search Item</span>
+                          <p className="text-white">{item["Search Item"]}</p>
+                        </div>
+                        <div>
+                          <span className="text-blue-400 text-sm">Relevance</span>
+                          <div className="flex items-center mt-1">
+                            <div className="h-2 rounded-full bg-gray-700 w-full">
+                              <div 
+                                className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500" 
+                                style={{ width: `${parseFloat(item.Relevance) * 100}%` }}
+                              ></div>
+                            </div>
+                            <span className="ml-2 text-cyan-400 font-medium">
+                              {(parseFloat(item.Relevance) * 100).toFixed(1)}%
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Risk assessment card */}
+            {res.length > 0 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-xl p-6 text-white shadow-xl mb-6 border border-blue-800"
+              >
+                <h3 className="text-lg font-semibold mb-4 text-blue-300">Risk Assessment</h3>
+                
+                <div className="space-y-4">
+                  <div className="bg-gray-900/50 p-4 rounded-lg border border-red-800">
+                    <h4 className="text-rose-400 font-medium mb-2">High Risk Items</h4>
+                    <ul className="space-y-2">
+                      {res.filter(item => parseFloat(item.Relevance) > 0.6).map((item, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <AlertTriangle className="h-4 w-4 text-rose-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-rose-200">
+                            {item["Search Item"]} - matched with {item["Prohibited Item"]} ({(parseFloat(item.Relevance) * 100).toFixed(0)}% confidence)
+                          </span>
+                        </li>
+                      ))}
+                      {res.filter(item => parseFloat(item.Relevance) > 0.6).length === 0 && (
+                        <li className="text-blue-300">No high risk items detected</li>
+                      )}
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 p-4 rounded-lg border border-yellow-800">
+                    <h4 className="text-yellow-400 font-medium mb-2">Medium Risk Items</h4>
+                    <ul className="space-y-2">
+                      {res.filter(item => parseFloat(item.Relevance) <= 0.6 && parseFloat(item.Relevance) > 0.4).map((item, idx) => (                        <li key={idx} className="flex items-start">
+                          <AlertTriangle className="h-4 w-4 text-yellow-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-yellow-200">
+                            {item["Search Item"]} - matched with {item["Prohibited Item"]} ({(parseFloat(item.Relevance) * 100).toFixed(0)}% confidence)
+                          </span>
+                        </li>
+                      ))}
+                      {res.filter(item => parseFloat(item.Relevance) <= 0.6 && parseFloat(item.Relevance) > 0.4).length === 0 && (
+                        <li className="text-blue-300">No medium risk items detected</li>
+                      )}
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 p-4 rounded-lg border border-green-800">
+                    <h4 className="text-emerald-400 font-medium mb-2">Low Risk Items</h4>
+                    <ul className="space-y-2">
+                      {res.filter(item => parseFloat(item.Relevance) <= 0.4).map((item, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <Check className="h-4 w-4 text-emerald-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-emerald-200">
+                            {item["Search Item"]} - matched with {item["Prohibited Item"]} ({(parseFloat(item.Relevance) * 100).toFixed(0)}% confidence)
+                          </span>
+                        </li>
+                      ))}
+                      {res.filter(item => parseFloat(item.Relevance) <= 0.4).length === 0 && (
+                        <li className="text-blue-300">No low risk items detected</li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </main>
+      
       
       {/* Chatbot */}
       {showChatbot && (
@@ -546,8 +779,6 @@ function ItemImageCompliancePage() {
           </form>
         </motion.div>
       )}
-      
-      {/* Info Modal */}
       
       {/* Floating Chatbot Button */}
       {!showChatbot && (

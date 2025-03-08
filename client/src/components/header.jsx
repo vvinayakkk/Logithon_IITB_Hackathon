@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Package, Info, X, Check } from 'lucide-react';
+import { Package, Info, X, Check, Database, PenTool , Shield } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
   const [showInfoModal, setShowInfoModal] = useState(false);
+  const location = useLocation();
+
+  const navItems = [
+    { path: '/regulations', icon: Database, label: 'Database' },
+    { path: '/restrictions', icon: PenTool , label: 'Utilities' },
+    { path: '/admin', icon: Shield, label: 'Admin' },
+  ];
 
   return (
     <>
@@ -20,18 +28,39 @@ function Header() {
               Rapid Compliance Checker
             </h1>
           </motion.div>
-          
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowInfoModal(true)}
-            className="p-2 rounded-full bg-blue-700 hover:bg-blue-600 transition-colors"
-          >
-            <Info className="h-5 w-5" />
-          </motion.button>
+
+          <div className="flex items-center gap-6">
+            <nav className="flex items-center gap-4">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors
+                      ${location.pathname === item.path 
+                        ? 'bg-blue-700 text-white' 
+                        : 'text-blue-300 hover:bg-blue-800/50'}`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowInfoModal(true)}
+              className="p-2 rounded-full bg-blue-700 hover:bg-blue-600 transition-colors"
+            >
+              <Info className="h-5 w-5" />
+            </motion.button>
+          </div>
         </div>
       </header>
-      
+
       <div className="h-[72px]"></div>
       
       {showInfoModal && (
