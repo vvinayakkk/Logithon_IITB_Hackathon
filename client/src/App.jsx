@@ -10,6 +10,7 @@ import ShowRegulations from './pages/ShowRegulationsPage'
 import ComplianceFormPage from './pages/ComplianceFormPage'
 import Restrictions from './pages/restrictions'
 import AdminPanel from './pages/AdminPanel'
+import ComplianceChecker from './pages/dashboard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
       <Route path="/regulations" element={<RegulationsSearch />} />
       <Route path="/regulations/:source/:destination" element={<ShowRegulations />} />
       <Route path="/compliance" element={<ComplianceFormPage/>} />
+      <Route path="/dashboard" element={<ComplianceChecker/>} />
       <Route path="/admin" element={<AdminPanel/>}/>
     </Routes>
   )
