@@ -1,0 +1,137 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Declaration of Origin\nThe Declaration of Origin (Form DA 59) must accompany goods exported to South Africa subject to anti-dumping, countervailing, safeguard duties, or import restrictions against specific countries—shipments stop until provided. One original signed copy needed; no Chamber of Commerce or Customs stamp required.\nMSDS-NON DG\nGoods under IATA Special Provisions A67 require an MSDS. Advisable for UAE transits to avoid delays—include in shipment and upload to IDIS.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into South Africa.",
+        "Simplified Form": [
+            "- *DA 59 Form*: Needed for goods with special duties or restrictions—provide 1 signed original or shipment stops.",
+            "- *MSDS*: Batteries (IATA A67) need an MSDS—add it for UAE transits to avoid delays."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nUPS requires full street address and consignee phone—no P.O. Boxes.\nDuty and Taxes\nInclude freight and fees in value for duties/taxes.\nRegistration Number\nImporters/exporters need a SARS-registered code; private individuals need SA ID or SARS Tax Reference Number—delays if missing.\nPayment by Credit Card\nAccepted on delivery—check with UPS South Africa for card types.\nCustoms Clearance Process\nSARS revenue drive causes delays. Declare accurate export value—undervaluing risks R2500 penalty + 10% VAT if not cleared in 14 days. Clearance involves document checks, possible inspections, and duty/VAT collection—allow 7-28 days.",
+        "Info About Section Header": "This section provides details on customs processes in South Africa.",
+        "Simplified Form": [
+            "- *No P.O. Boxes*: Use full address with phone.",
+            "- *Duty & Tax*: Add shipping fees to item value.",
+            "- *Registration*: Provide SARS importer/exporter code or SA ID—delays without it.",
+            "- *Pay by Card*: Credit cards okay on delivery—confirm with UPS SA.",
+            "- *Clearance*: Expect delays; declare true value or face R2500 fine + 10% VAT. Clear in 7 days (14 for bulk, 28 for containers)."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to certain cities.\nUPS requires full street address and consignee phone—no P.O. Boxes.\nRest Days: Saturday, Sunday, holidays.\nGMT: +0200\nLanguage: English\nCurrency: Rand (ZAR)",
+        "Info About Section Header": "This section lists shipping locations in South Africa, time zones, and holidays.",
+        "Simplified Form": [
+            "- *Coverage*: Serves select cities.",
+            "- *Address*: Full street details and phone—no P.O. Boxes.",
+            "- *Rest Days*: Off Saturday, Sunday, SA holidays.",
+            "- *Time Zone*: GMT +0200 year-round.",
+            "- *Language & Money*: English; pay in Rand (ZAR)."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—third-party details needed. Surcharge if billed outside South Africa.\nShipping Charges\nBill to shipper, receiver, or third party—account number required.\nPayment Methods\nOnly shipper can pay by card, check, or cash.\nThird-Party Billing\nDomestic shipments can’t bill third parties outside SA unless payor has a VAT/Tax ID.",
+        "Info About Section Header": "This section explains payment options for shipping costs in South Africa.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—add third-party name and account.",
+            "- *Extra Fee*: Billing outside SA adds a surcharge.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account number.",
+            "- *Payment*: Only shipper can use card, check, or cash.",
+            "- *Third-Party Rule*: SA-to-SA can’t bill outside unless payor has a VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Cosmetics/Coffee/Tea\nMay need Dept of Health review.\nMachinery/Electronics\nMay need NRCS Letter of Authority—importer must confirm.\nMiscellaneous\nPetroleum, raw/scrap metal need import permits.\nIntercompany Data\nCDs/USB sticks need invoice with data and item value.\nUnsolicited Gifts\nMax 2 per year, ≤R1400 each—duty rebated.\nMedicine/Drugs\nNeeds MCC registration and import license; unregistered needs Section 21 permit—entry via JNB, CPT, PE, DUR only.\nAnimal Products\nFeeds may need Health, Agriculture, or State Vet review.\nSamples\nMax 6 items, marked/mutilated, with customs value.\nTextiles\nFrom China need DA59 Certificate of Origin.",
+        "Info About Section Header": "This section lists special rules for shipping certain goods to South Africa.",
+        "Simplified Form": [
+            "- *Cosmetics/Coffee/Tea*: Dept of Health may check.",
+            "- *Machinery/Electronics*: NRCS Letter may be needed—importer to verify.",
+            "- *Special Items*: Petroleum, scrap metal need permits.",
+            "- *Data*: CDs/USBs need invoice with data and item value.",
+            "- *Gifts*: 2/year, ≤R1400—duty-free if unsolicited.",
+            "- *Medicine*: MCC license or Section 21 permit—use JNB, CPT, PE, DUR.",
+            "- *Animal Feeds*: Health, Agri, or Vet may review.",
+            "- *Samples*: Max 6, marked, with value.",
+            "- *Textiles*: China-made need DA59."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment value: 1400 ZAR\nType: Individual-to-individual\nRule: Per shipment, max 2/year\nMark 'gift shipment' on invoice and waybill.",
+        "Info About Section Header": "This section explains gift tax exemptions in South Africa.",
+        "Simplified Form": [
+            "- *Gift Limit*: ≤R1400, 2 per year, person-to-person—duty-free.",
+            "- *Label It*: Write 'gift shipment' on invoice and waybill."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports, available for exports.\nInvoice\nNon-documents need 1 original + 2 copies in English, with value in foreign currency (ZAR only with FEC number), air waybill number, consignee phone, email—no proforma.",
+        "Info About Section Header": "This section details invoice requirements for shipping to South Africa.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports, available for exports.",
+            "- *Invoice*: 1 original + 2 copies, English, foreign currency (ZAR with FEC), waybill number, phone, email—no proforma."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Bids, checks, intercompany mail (non-commercial, zero value), event tickets, etc., count as documents.",
+        "Info About Section Header": "This section lists items treated as documents for shipping to South Africa.",
+        "Simplified Form": [
+            "- *Documents*: Bids, tickets, zero-value intercompany mail—no invoice needed.",
+            "- *Mark It*: Describe intercompany mail on waybill, check 'Documents Only'."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Prohibited: Personal effects, lithium metal batteries via Emirates, passports (except embassy-to-embassy).\nRestricted: Alcohol (ISC only, permits needed).",
+        "Info About Section Header": "This section lists items banned or restricted in South Africa.",
+        "Simplified Form": [
+            "- *Banned*: No personal effects, lithium metal batteries (via Dubai), passports (unless embassy).",
+            "- *Alcohol*: ISC only—needs exemption cert (non-commercial) or liquor license (commercial)."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to South Africa\nUPS Worldwide Express Saver, Expedited, Express Freight, Express, Express Plus",
+        "Info About Section Header": "This section lists shipping services from India to South Africa.",
+        "Simplified Form": [
+            "- *India to SA*: Pick Express Saver, Expedited, Express Freight, Express, or Express Plus—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Warranty Shipments\nReturns: Invoice shows purchase price, repair cost (zero if under warranty), needs warranty cert. Replacements: Full duty/VAT on market value.\nSolid Wood Packing Material\nISPM 15 applies—needs phytosanitary cert for raw wood >6mm.\nPrivate Shipments\nMax 3/year, ≤R50,000—needs SA ID, ITAC permit for used items.\nRepair and Return\nEntry: Duty/VAT deposit, refunded on export. Return: Needs export docs, DA65 for rebate.",
+        "Info About Section Header": "This section covers rules for special shipments to South Africa.",
+        "Simplified Form": [
+            "- *Warranty Returns*: List price, repair cost (zero if warranted), add cert—duty on repair only.",
+            "- *Warranty Replacements*: Full duty/VAT on market value.",
+            "- *Wood Packing*: Raw wood >6mm needs ISPM 15 cert.",
+            "- *Private*: 3/year, ≤R50,000—needs ID, ITAC for used items.",
+            "- *Repair & Return*: Entry: pay deposit, refunded on export. Return: export docs + DA65 for rebate."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: 500 ZAR—duty/tax-free below this.\nExports >$1,000 USD need formal clearance from India.",
+        "Info About Section Header": "This section states value thresholds for taxes/duties in South Africa.",
+        "Simplified Form": [
+            "- *Low Value*: ≤R500—duty/tax-free.",
+            "- *High Exports*: >$1,000 USD from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 274 cm (107.9 in.)\nMax dimensions: 400 cm (157.5 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for packages to South Africa.",
+        "Simplified Form": [
+            "- *Weight Limit*: 70 kg (150 lbs.) max.",
+            "- *Size Limits*: Max length 274 cm (107.9 in.), length + girth 400 cm (157.5 in.)."
+        ]
+    }
+]

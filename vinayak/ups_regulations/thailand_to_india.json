@@ -1,0 +1,172 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nSend via Express for CITES shipments.\nKnow Your Customer and POA\nKYC and POA mandatory for all non-document imports—provide to UPS pre-clearance.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need MSDS—advisable for UAE transits.\nPacking List\nRequired for multi-package shipments—separate or combined with invoice.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into India.",
+        "Simplified Form": [
+            "- *CITES*: Send certificate via Express.",
+            "- *KYC/POA*: Mandatory for all non-docs—give UPS before clearance.",
+            "- *MSDS*: Batteries need MSDS—include for UAE transits.",
+            "- *Packing List*: Needed for multiple packages—add separately or on invoice."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "MRP Labeling\nRetail packs need MRP, name, importer details.\nCustoms Clearance Process\nIEC and GST needed for commercial—non-docs in doc bags fined, 30-day limit.\nE-Way Bill\n>INR 50,000 interstate needs E-Way bill—importer provides, UPS assists.\nBureau of Indian Standards\nBIS cert for specific goods—check list.\nPost Office Boxes\nFull address + phone—no P.O. Boxes, mobile mandatory for KYC.\nGifts & Samples\n<INR 10,000 samples duty-free—gifts dutiable since Dec 2019.\nClearance Comments\nDocs only in doc bags—non-docs (e.g., CDs, tokens) in non-doc bags; chemicals need MAWB.\nAirfreight cleared at Calcutta, Bangalore, Delhi, Chennai, Hyderabad, Cochin, or Mumbai airports.\nDuty non-refundable—if consignee refuses, billed to shipper.\nCustom Requirements\nAir waybill in IDIS—non-docs need invoice, or delayed.",
+        "Info About Section Header": "This section provides details on customs processes for India imports.",
+        "Simplified Form": [
+            "- *MRP*: Retail needs price, name, importer on label.",
+            "- *Clearance*: IEC + GST for commercial—fines for errors, 30-day limit.",
+            "- *E-Way*: >INR 50,000 interstate needs bill—importer gives, UPS helps.",
+            "- *BIS*: Cert for listed goods—check online.",
+            "- *Address*: Full details + phone—no P.O. Boxes, mobile for KYC.",
+            "- *Gifts/Samples*: <INR 10,000 samples free—gifts taxed since 2019.",
+            "- *Rules*: Docs in doc bags—non-docs separate; chemicals via MAWB.",
+            "- *Airports*: Clears at Calcutta, Bangalore, Delhi, Chennai, Hyderabad, Cochin, or Mumbai.",
+            "- *Duty*: Non-refundable—billed to shipper if refused.",
+            "- *Docs*: Air waybill in IDIS—non-docs need invoice, or delayed."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to select cities—check postal codes.\nNo service to Andaman, Nicobar, Lakshadweep.\nFull address + phone—no P.O. Boxes, mobile mandatory.\nRest Days: Sun, holidays.\nGMT: +0550\nLanguage: English\nCurrency: INR",
+        "Info About Section Header": "This section lists shipping locations in India.",
+        "Simplified Form": [
+            "- *Coverage*: Select cities—check codes, no Andaman/Nicobar/Lakshadweep.",
+            "- *Address*: Full details + phone—no P.O. Boxes, mobile required.",
+            "- *Rest Days*: Off Sun, holidays.",
+            "- *Time Zone*: GMT +0550.",
+            "- *Language & Money*: English; pay in INR."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—surcharge if outside India.\nShipping Charges\nBill to shipper, receiver, or third party—needs account number.\nCOD not available—use Free Domicile.\nPayment Methods\nShipper only for card, check, cash.\nSplit Duty And VAT (SDV)\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic can’t bill outside—EU exception with VAT ID.",
+        "Info About Section Header": "This section explains payment options for shipping to India.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—extra fee if outside India.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account.",
+            "- *COD*: Not available—use Free Domicile.",
+            "- *Payment*: Shipper only for card, check, cash.",
+            "- *SDV*: Freight/duties to shipper/third party, taxes to receiver/third party—extra fee.",
+            "- *Third-Party*: India-to-India can’t bill outside—EU okay with VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nHealth Dept NOC—2-3 day delay; lab gear exempt.\nRadios\nWPC import license.\nTelevisions\nColor TVs in cargo with DGFT license.\nJewelry\n≤$2,500 precious in cargo—artificial okay.\nLeather\nWLRO NOC + origin cert.\nVitamins\nADC NOC—scientific name on invoice.\nTelecom/Satellite\nIMEI on phones, WPC license for satellite.\nChemicals\nMSDS + analysis—CRCL may test.\nClothing\nDye test cert—25% sampled, Thailand not exempt.\nNutritional Supplements\nDrug Controller NOC.\nDrugs\nADC NOC—scientific name on invoice.\nCellular Phones\nIMEI mandatory.\nBrochures\nNon-docs if with samples.\nCatalogs\nDutiable—not samples.\nMedicine\nADC NOC—scientific name on invoice.\nSecured/RSA Token\nDutiable—invoice with actual value.\nSIM Card\nDOT NOC for resale.\nFood\nFSSAI NOC—personal needs passport/Form-7.\nTextiles\nDye test cert—25% sampled.\nTapes\nSynopsis + docs—censorship delays.\nPakistan Goods\n200% duty.",
+        "Info About Section Header": "This section lists special rules for shipping goods to India.",
+        "Simplified Form": [
+            "- *Medical*: Health NOC—2-3 days; lab gear free.",
+            "- *Radios*: WPC license.",
+            "- *TVs*: Color via cargo with DGFT license.",
+            "- *Jewelry*: ≤$2,500 precious via cargo—artificial okay.",
+            "- *Leather*: WLRO NOC + origin cert.",
+            "- *Vitamins*: ADC NOC—use scientific name.",
+            "- *Telecom/Satellite*: IMEI on phones, WPC for satellite.",
+            "- *Chemicals*: MSDS + analysis—may be tested.",
+            "- *Clothing*: Dye cert—25% sampled, Thailand not exempt.",
+            "- *Supplements*: Drug Controller NOC.",
+            "- *Drugs*: ADC NOC—use scientific name.",
+            "- *Phones*: IMEI required.",
+            "- *Brochures*: Non-docs with samples.",
+            "- *Catalogs*: Taxed—not samples.",
+            "- *Medicine*: ADC NOC—use scientific name.",
+            "- *RSA Tokens*: Dutiable—show real value.",
+            "- *SIM*: DOT NOC for resale.",
+            "- *Food*: FSSAI NOC—personal needs passport/Form-7.",
+            "- *Textiles*: Dye cert—25% sampled.",
+            "- *Tapes*: Synopsis + docs—expect delays.",
+            "- *Pakistan*: 200% duty."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Value: 0 INR\nNo gift exemption—77% duty on assessable value.\nPerishables, plants, jewelry, supplements, drugs, food banned as gifts.",
+        "Info About Section Header": "This section explains gift tax exemptions in India.",
+        "Simplified Form": [
+            "- *Gifts*: No exemption—77% duty; no perishables, jewelry, drugs, food."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports/exports.\nInvoice\nFull shipper/importer details, matching KYC—phone, email, HS code, purpose mandatory.",
+        "Info About Section Header": "This section details invoice requirements for India.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports/exports.",
+            "- *Invoice*: Full shipper/importer info, match KYC—add phone, email, HS code, purpose."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Bonds, cash letters, manuscripts, reports, forms, blueprints, checks—up to 2 kg.",
+        "Info About Section Header": "This section lists items treated as documents for India.",
+        "Simplified Form": [
+            "- *Documents*: Bonds, cash letters, manuscripts, reports, forms, blueprints, checks—≤2 kg."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Samples\n≤5 pieces—specific items banned.\nAntiques\nISC only—100+ years old.\nComputers\nHSN 8741 restricted—license needed.\nMaps\nIncorrect India maps banned.\nSeeds\nPlant Quarantine NOC—cargo only.\nPrecious Metals\nCargo only.\nAnimals/Plants\nBanned.\nPersonal Effects\nCargo only—travel docs required.\nUsed Items\nSIL from DGFT.\nE-Cigs\nBanned.\nLithium Batteries\nUN3480 embargoed by airlines.\nDrones\nDGCA cert + SIL required.\nSingle-Use Plastic\nBanned since July 2022.\nGuns\nBanned—exceptions for licensed shooters.\nPassports\nEmbassy only.\nArtwork\nISC only—art >$100 needs appraisal.\nUsed Electronics\nMOEF NOC.\nPerishables\nCargo with NOC—no gifts/samples.",
+        "Info About Section Header": "This section lists banned or restricted items in India.",
+        "Simplified Form": [
+            "- *Samples*: ≤5 pieces—some banned.",
+            "- *Antiques*: ISC only—100+ years.",
+            "- *Computers*: HSN 8741 needs license.",
+            "- *Maps*: Wrong India borders banned.",
+            "- *Seeds*: NOC via cargo.",
+            "- *Metals*: Precious via cargo.",
+            "- *Animals/Plants*: Banned.",
+            "- *Personal Effects*: Cargo with travel docs.",
+            "- *Used Items*: SIL required.",
+            "- *E-Cigs*: Banned.",
+            "- *Lithium*: UN3480 airline ban.",
+            "- *Drones*: DGCA cert + SIL.",
+            "- *Plastic*: Single-use banned since 2022.",
+            "- *Guns*: Banned—shooters with license okay.",
+            "- *Passports*: Embassy only.",
+            "- *Artwork*: ISC only—art >$100 needs appraisal.",
+            "- *Used Electronics*: MOEF NOC.",
+            "- *Perishables*: Cargo with NOC—no gifts/samples."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "Thailand to India\nExpress Saver, Expedited, Freight, Freight Midday, Express Plus, Express",
+        "Info About Section Header": "This section lists shipping services from Thailand to India.",
+        "Simplified Form": [
+            "- *Thailand to India*: Pick Express Saver, Expedited, Freight, Midday, Plus, or Express—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nAta Carnet (6 months exhibits), Triptyque (6-12 months vehicles).\nRaw Materials\nDuty-free in bonded warehouse—pay, reclaim on export.\nSamples\n<INR 10,000 duty-free—mark 'SAMPLES FREE'.\nSolid Wood\nISPM 15 cert for raw >6mm.\nRepair and Return\nList details, serial, repair cost—duty on repair + freight.\nPersonal Shipments\nC2C 35-77%, B2C 10-42% with proof.\nGifts\nAll dutiable.",
+        "Info About Section Header": "This section covers special rules for India shipments.",
+        "Simplified Form": [
+            "- *Temp Import*: Ata Carnet (6 months exhibits), Triptyque (6-12 months vehicles).",
+            "- *Raw Materials*: Duty-free in warehouse—pay, reclaim on export.",
+            "- *Samples*: <INR 10,000 free—mark 'SAMPLES FREE'.",
+            "- *Wood*: >6mm needs ISPM 15.",
+            "- *Repairs*: List明天details, serial, repair cost—duty on repair + freight.",
+            "- *Personal*: C2C 35-77%, B2C 10-42% with proof.",
+            "- *Gifts*: All taxed."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: 0 INR—no duty/tax-free threshold.",
+        "Info About Section Header": "This section states value thresholds for India.",
+        "Simplified Form": [
+            "- *Low Value*: No exemption—all taxed."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 274 cm (107.9 in.)\nMax dimensions: 400 cm (157.5 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for India.",
+        "Simplified Form": [
+            "- *Weight*: 70 kg (150 lbs.) max.",
+            "- *Size*: Max length 274 cm (107.9 in.), length + girth 400 cm (157.5 in.)."
+        ]
+    }
+]

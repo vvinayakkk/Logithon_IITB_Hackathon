@@ -1,0 +1,150 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Miscellaneous\nIsraeli Origin Goods prohibited.\nJewelry\nNeeds original invoice with shipper’s letterhead, stamp, and weight/carats—consignee needs authorization letter.\nFood\nRequires Dubai Municipality clearance—submit docs and samples; no temp-controlled storage.\nMedicine/Vitamins\nNeeds origin doctor’s report (certified by health ministry) and UAE Ministry of Health approval—commercial needs import permit; no disposal, RTS if unapproved.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need MSDS—advisable for UAE transits; include in shipment and upload to IDIS.\nImport Permit\nMedical/pharma items need Ministry of Health permit—inspection fees: AED 200 (1-5 pkgs), AED 500 (>5 pkgs); storage AED 30 min or AED 3/kg/day from day 3.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into the UAE.",
+        "Simplified Form": [
+            "- *Israel Goods*: Banned.",
+            "- *Jewelry*: Original invoice with stamp, weight—needs consignee letter.",
+            "- *Food*: Dubai Municipality approval—submit docs, samples; no cold storage.",
+            "- *Meds/Vitamins*: Doctor’s report + UAE permit—commercial needs import permit; RTS if unapproved.",
+            "- *MSDS*: Batteries need MSDS—add for UAE transits.",
+            "- *Permits*: Meds/pharma need permit—fees: AED 200 (1-5 pkgs), AED 500 (>5); storage AED 30+ from day 3."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nFull address (name, building, street, city) and phone required—no P.O. Boxes; delays if incomplete.\nShipments requiring final clearance in Abu Dhabi Customs\nNeeds Emirates ID, authorization letter, or EASC ID—varies by consignee type.\nDuty and Taxes\nCalculated on CIF (cost + freight); ≥AED 300 dutiable; no discount reductions.\nClearance Comments\nCommercial importers need valid importer code (AED 330 new, AED 220 renew)—HS code and origin mandatory; extra fees for Sharjah/Saif Zone.\nExcise Tax\nCarbonated drinks, tobacco, vapes need excise payment—register on Brand-Sync; held until paid.\nNon-Documents\nFree zone shipments duty-exempt with proper invoice.\nVAT Clearance\nLink VAT ID to customs code on FTA portal.\nCustoms Clearance Process\nCommercial shipments need business code; individuals need full name/address—15-day clearance or RTS.",
+        "Info About Section Header": "This section provides details on customs processes in the UAE.",
+        "Simplified Form": [
+            "- *Address*: Full details + phone—no P.O. Boxes; delays if missing.",
+            "- *Abu Dhabi*: Needs ID, letter, or EASC card—depends on consignee.",
+            "- *Duty/Tax*: CIF basis; ≥AED 300 dutiable; no discounts.",
+            "- *Importer Code*: Commercial needs code (AED 330 new, AED 220 renew)—HS code + origin required.",
+            "- *Excise*: Drinks, tobacco, vapes need tax payment—register on Brand-Sync.",
+            "- *Free Zones*: Duty-free with correct invoice.",
+            "- *VAT*: Link ID to customs code.",
+            "- *Process*: Business code for companies, full name for individuals—clear in 15 days or RTS."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to certain cities—not all areas fully served.\nFull address and phone required—no P.O. Boxes.\nRest Days: Saturday, Sunday, holidays.\nGMT: +0400\nLanguage: Arabic\nCurrency: UAE Dirham (AED)",
+        "Info About Section Header": "This section lists shipping locations in the UAE.",
+        "Simplified Form": [
+            "- *Coverage*: Select cities—check TnT for details.",
+            "- *Address*: Full details + phone—no P.O. Boxes.",
+            "- *Rest Days*: Off Sat, Sun, UAE holidays.",
+            "- *Time Zone*: GMT +0400.",
+            "- *Language & Money*: Arabic; pay in AED."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—surcharge if outside UAE.\nShipping Charges\nBill to shipper, receiver, or third party—needs account number.\nPayment Methods\nOnly shipper pays by card, check, or cash.\nThird-Party Billing\nDomestic can’t bill outside UAE unless payor has VAT ID.",
+        "Info About Section Header": "This section explains payment options for shipping to the UAE.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—extra fee if outside UAE.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account.",
+            "- *Payment*: Shipper only for card, check, cash.",
+            "- *Third-Party*: UAE-to-UAE can’t bill outside without VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items/Vitamins/Medicine\nNeeds permit—RTS after 30 days if uncleared.\nVeterinary Products\nNeeds MOEW approval—RTS after 30 days.\nCosmetics\nNeeds municipality approval—RTS after 30 days.\nTelecom Equipment\nNeeds TRA approval—RTS after 30 days.\nFilms/Tapes/Magazines\nNeeds Ministry of Info approval.\nIntercompany Data\nCD/USB needs invoice with item value only.\nHerbal Medicine\nNeeds composition listed—RTS after 30 days.\nMilitary Equipment\nNeeds Ministry of Defense approval—RTS after 30 days.\nFood\nNeeds Dubai Municipality approval—no cold storage; RTS after 30 days.",
+        "Info About Section Header": "This section lists special rules for shipping goods to the UAE.",
+        "Simplified Form": [
+            "- *Meds/Vitamins*: Permit needed—RTS after 30 days.",
+            "- *Vet Products*: MOEW approval—RTS after 30 days.",
+            "- *Cosmetics*: Municipality okay—RTS after 30 days.",
+            "- *Telecom*: TRA approval—RTS after 30 days.",
+            "- *Films/Tapes/Mags*: Info Ministry approval.",
+            "- *Data*: CD/USB invoice with value only.",
+            "- *Herbal Meds*: List ingredients—RTS after 30 days.",
+            "- *Military*: Defense approval—RTS after 30 days.",
+            "- *Food*: Municipality approval—no cold storage; RTS after 30 days."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Value: 0 AED\nType: No official exemption\nRule: ≤AED 1,000 may be duty-free; >AED 1,000 at 5% CIF",
+        "Info About Section Header": "This section explains gift tax exemptions in the UAE.",
+        "Simplified Form": [
+            "- *Gifts*: No set exemption—≤AED 1,000 may be free; >AED 1,000 pays 5% CIF."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports, available for exports.\nInvoice\n1 original + 2 copies—needs HS code, origin, full description, undiscounted CIF value, phone/email; >AED 10,000 needs online attestation (AED 252.21 total).",
+        "Info About Section Header": "This section details invoice requirements for the UAE.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports, available for exports.",
+            "- *Invoice*: 1 original + 2 copies—add HS code, origin, full details, real CIF, phone/email.",
+            "- *High Value*: >AED 10,000 needs online attestation—AED 252.21; 14-day limit or AED 500 fine."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Cash letters, tickets (≤1 kg), intercompany mail (non-commercial, zero value), etc.—over 5 kg needs invoice.",
+        "Info About Section Header": "This section lists items treated as documents for the UAE.",
+        "Simplified Form": [
+            "- *Documents*: Tickets (≤1 kg), zero-value mail—over 5 kg needs invoice."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Alcohol\nMax 2 bottles with Dubai Police permit—RTS if unapproved.\nKnives\nOnly kitchen knives allowed.\nJewelry\nNeeds invoice with weight—≤$2,500 okay.\nChemicals\nNeeds Dubai Municipality approval—RTS after 15 days.\nMeat\nPork needs approval.\nTobacco/E-Cigs\nBanned.\nPersonal Effects\nNot allowed.\nFireworks/Books/Drugs\nBanned—books >AED 1,000 dutiable.\nLithium Metal Batteries\nBanned via Emirates.",
+        "Info About Section Header": "This section lists banned or restricted items in the UAE.",
+        "Simplified Form": [
+            "- *Alcohol*: ≤2 bottles with permit—RTS if no permit.",
+            "- *Knives*: Kitchen only.",
+            "- *Jewelry*: Invoice with weight—≤$2,500 okay.",
+            "- *Chemicals*: Municipality approval—RTS after 15 days.",
+            "- *Pork*: Needs approval.",
+            "- *Tobacco/E-Cigs*: Banned.",
+            "- *Personal Effects*: Banned.",
+            "- *Fireworks/Books/Drugs*: Banned—books >AED 1,000 dutiable.",
+            "- *Lithium Batteries*: Banned via Emirates."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to UAE\nExpress Saver, Expedited, Express Freight Midday, Express Plus, Express Freight, Express",
+        "Info About Section Header": "This section lists shipping services from India to the UAE.",
+        "Simplified Form": [
+            "- *India to UAE*: Pick Express Saver, Expedited, Freight Midday, Plus, Freight, or Express—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nNeeds deposit—refunded on re-export.\nMilitary Shipments\nMust go to Ministry of Defense with license.\nReturned Goods\nNeeds origin, reason, serial, export number.\nRepaired Goods\nNeeds pre-repair value, repair cost, serial—duty on repair.\nSolid Wood Packing Material\nISPM 15 applies—cert for raw wood >6mm.\nExhibition Goods\nNeeds importer code or exhibitor letter.",
+        "Info About Section Header": "This section covers special rules for UAE shipments.",
+        "Simplified Form": [
+            "- *Temp Import*: Pay deposit—refunded on export.",
+            "- *Military*: To Defense with license.",
+            "- *Returns*: List origin, reason, serial, export number.",
+            "- *Repairs*: List value, repair cost, serial—duty on repair.",
+            "- *Wood*: Raw >6mm needs ISPM 15 cert.",
+            "- *Exhibits*: Needs code or exhibitor letter."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: AED 1,000—duty/tax-free below for B2C.\nExports >$1,000 USD need formal clearance from India.",
+        "Info About Section Header": "This section states value thresholds for the UAE.",
+        "Simplified Form": [
+            "- *Low Value*: ≤AED 1,000 duty/tax-free for B2C.",
+            "- *High Exports*: >$1,000 USD from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 274 cm (107.9 in.)\nMax dimensions: 400 cm (157.5 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for the UAE.",
+        "Simplified Form": [
+            "- *Weight*: 70 kg (150 lbs.) max.",
+            "- *Size*: Max length 274 cm (107.9 in.), length + girth 400 cm (157.5 in.)."
+        ]
+    }
+]

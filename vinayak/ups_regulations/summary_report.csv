@@ -1,0 +1,21 @@
+Origin,Destination,Sections_Extracted,Status
+United States,India,13,Success
+United Kingdom,India,14,Success
+Canada,India,13,Success
+Australia,India,13,Success
+Germany,India,13,Success
+China,India,14,Success
+Japan,India,13,Success
+South Korea,India,13,Success
+France,India,14,Success
+Italy,India,14,Success
+Netherlands,India,14,Success
+Singapore,India,12,Success
+United Arab Emirates,India,13,Success
+Saudi Arabia,India,13,Success
+Brazil,India,14,Success
+Mexico,India,14,Success
+Russia,India,0,Failed - No data found
+South Africa,India,13,Success
+Thailand,India,13,Success
+Malaysia,India,13,Success

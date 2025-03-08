@@ -1,0 +1,185 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nFor shipments from Canada to India involving endangered species (e.g., wildlife products), a CITES Certificate must be sent via Express service to clear Indian customs.\nKnow Your Customer and POA\nCanadian exporters must ensure importers provide Know Your Customer (KYC) documents (e.g., PAN card, Aadhar) and a Power of Attorney (POA) to UPS before customs clearance. This applies to all non-document shipments to India, regardless of value.\nPacking List\nFor multi-package shipments from Canada, include a detailed packing list with the commercial invoice—or combine both into one document—listing all contents.\nMSDS-NON DG\nGoods under IATA Special Provisions A67 (e.g., certain batteries) require a Material Safety Data Sheet (MSDS). While not mandatory for all shipments, lacking an MSDS or Non-Dangerous Goods (NON DG) declaration may delay clearance if routed via the UAE, a common transit hub for Canada-India shipments. Include these documents and upload copies to UPS’s IDIS system.",
+        "Info About Section Header": "Paperwork needed for shipping goods from Canada to India, including permits and certificates.",
+        "Simplified Form": [
+            "- **CITES Certificate**: For wildlife items (e.g., fur, ivory), send a CITES Certificate via Express from Canada to clear Indian customs.",
+            "- **KYC and POA**: Ensure your Indian importer gives UPS their ID (KYC) and a signed permission letter (POA) before clearance—required for all non-document shipments, no matter the value.",
+            "- **Packing List**: For multiple packages, add a content list to your invoice or combine them into one detailed document.",
+            "- **MSDS/NON DG**: For items like batteries, include an MSDS. If shipping via UAE, attach an MSDS or NON DG letter and upload to IDIS to avoid delays."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Clearance Comments\nFrom Canada, only documents and letters should ship in a Docs Bag. Items like fabric swatches, CDs, or tokens must use a Non-DOC Bag per Indian customs rules, or penalties may apply, billed back to Canada.\nMaster Air Waybill (MAWB)\nChemical shipments or valuable cargo (e.g., diamond powder) from Canada require a Master Air Waybill (MAWB) for clearance at Indian cargo terminals, even for small values.\nAirfreight Routing\nShipments from Canada arriving at Indian transit ports (e.g., Mumbai) transfer to regional airports: Calcutta (East), Bangalore (Karnataka), Delhi (North), Chennai/Hyderabad/Cochin (South), or Mumbai (others). Consignees can opt for clearance at transit with confirmation.\nCargo Arrival Notice (CAN)\nUPS India sends a CAN upon arrival; consignees choose their broker or UPS’s broker for clearance.\nDuty and Taxes\nNon-refundable duties apply. If the Indian receiver refuses payment, costs revert to the Canadian shipper.\nCustoms Requirements\nAll Canada-to-India shipments need a valid air waybill uploaded to IDIS with the invoice. Missing documents cause delays and demurrage fees.\nNo P.O. Boxes\nUPS requires a full street address and consignee phone number (mandatory for non-documents) for KYC checks.\nGifts & Samples\nMark ‘Gift’ or ‘Sample’ on invoices. Samples under INR 10,000 (~CAD 165) may clear duty-free from Canada; gifts face duties since Dec 2019.\nMRP Labeling\nPrepackaged retail goods from Canada must show Maximum Retail Price (MRP), product name, import date, importer details, and quantity.\nCustoms Clearance Process\nIndian consignees need an IEC and GST number for commercial shipments. Non-documents in a Docs Bag trigger fines, and shipments must clear within 30 days or be abandoned.\nE-Way Bill\nGoods over INR 50,000 (~CAD 825) moving across Indian states require an E-Way Bill from the importer. Contact UPS Canada helpline for assistance.\nBureau of Indian Standards (BIS)\nCertain electronics from Canada need BIS certification (see https://bis.gov.in).",
+        "Info About Section Header": "Rules and processes for clearing shipments from Canada through Indian customs.",
+        "Simplified Form": [
+            "- **Docs vs Non-Docs**: Ship only papers in a Docs Bag from Canada—other items (e.g., CDs) go in a Non-DOC Bag, or face penalties.",
+            "- **MAWB**: Chemicals or valuables need a Master Air Waybill for Indian cargo clearance.",
+            "- **Routing**: Shipments land in Mumbai, then move to Calcutta, Bangalore, Delhi, or South airports—or clear at transit with consignee OK.",
+            "- **CAN**: UPS India notifies arrival; pick your broker or use UPS’s.",
+            "- **Duties**: If the receiver won’t pay, you (in Canada) get billed—no refunds.",
+            "- **Air Waybill**: Upload it to IDIS with the invoice, or expect delays and fees.",
+            "- **Address**: No P.O. Boxes—give a full address and phone number for KYC.",
+            "- **Gifts/Samples**: Label them; samples under CAD 165 may be duty-free, gifts aren’t.",
+            "- **MRP Labels**: Retail items need MRP, name, date, and importer info.",
+            "- **IEC/GST**: Receivers need these for commercial goods; clear within 30 days or lose it.",
+            "- **E-Way Bill**: Over CAD 825 across states? Importer needs an E-Way Bill—call UPS Canada for help.",
+            "- **BIS**: Electronics may need BIS approval—check online."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service from Canada to India covers select cities—check UPS’s INTLDI Time in Transit tool with Indian postal codes. No service to Andaman and Nicobar Islands or Lakshadweep. Provide a full street address (no P.O. Boxes) and consignee phone number (mandatory for non-documents) for KYC. Rest days in India: Sundays and official holidays. Time zone: GMT +5:50. Language: English. Currency: Indian Rupee (INR).",
+        "Info About Section Header": "Locations in India served from Canada, with time zones and holidays.",
+        "Simplified Form": [
+            "- **Coverage**: Ships from Canada to select Indian cities—verify postal codes with INTLDI tool.",
+            "- **No Service**: Andaman, Nicobar, and Lakshadweep are off-limits.",
+            "- **Address**: Full street address and phone (mandatory for non-documents)—no P.O. Boxes.",
+            "- **Rest Days**: India closes Sundays and holidays.",
+            "- **Time Zone**: GMT +5:50.",
+            "- **Language & Currency**: English, INR."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Shipping Charges\nFrom Canada, bill shipping to the shipper, Indian receiver (with account number), or a third party (name, country, account required). COD unavailable—use Free Domicile (F/D) terms.\nPayment Methods\nCredit card, check, or cash bills only the Canadian shipper.\nSplit Duty and VAT (SDV)\nFreight/duties can bill to Canada or a third party; taxes to India or a third party—includes a surcharge.\nThird-Party Billing\nDomestic Indian shipments can’t bill to Canada unless in the EU with a VAT ID.\nDuties and Taxes\nBill to Canada, India, or a third party (details needed). If billed outside India, a Duty and Tax Forwarding surcharge applies.",
+        "Info About Section Header": "How shipping costs and duties from Canada to India can be paid.",
+        "Simplified Form": [
+            "- **Shipping Charges**: Bill to you in Canada, the Indian receiver (needs account), or a third party (needs details). No COD—use F/D terms.",
+            "- **Payment**: Card, check, or cash? Only bills you in Canada.",
+            "- **Split Billing**: Freight/duties to Canada or third party, taxes to India or third party—extra fee applies.",
+            "- **Third-Party**: Can’t bill Canada for India-only shipments unless EU-based with VAT.",
+            "- **Duties/Taxes**: Bill to Canada, India, or third party—outside India adds a surcharge."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nFrom Canada, medical products (e.g., devices, kits) need a Health Department NOC on arrival—personal use too. UPS India assists if docs are ready; expect 2-3 day delays. Lab equipment needs a catalog.\nRadios\nRadios from Canada require an import license from India’s Wireless Planning Wing.\nLeather Goods\nLeather items need a Wildlife Regional Office NOC and certificate of origin.\nSatellite Equipment\nSatellite gear needs a Wireless Planning Wing license and NOC.\nChemicals\nChemicals from Canada need an MSDS and analysis—Indian customs may test them.\nNutritional Supplements\nSupplements require a Drug Controller NOC.\nDrugs/Medicine\nMedicines need an Assistant Drug Controller NOC—use scientific names on invoices to avoid delays.\nCellular Telephones\nPhones must show IMEI on device and invoice.\nBrochures\nBrochures with samples (e.g., swatches) are non-documents, dutiable.\nCatalogs\nCatalogs from Canada face duties—not samples.\nRSA Tokens\nTokens are dutiable—include actual value on invoice.\nSIM Cards\nSIMs for resale need a Department of Telecom NOC.\nTapes\nFilms/tapes need a synopsis and origin details—subject to censorship and duties.\nPakistan-Origin Goods\nGoods via Canada from Pakistan face 200% duty.\nFood\nFood needs an FSSAI NOC—personal use requires passport and Form-7.\nPersonal Imports\nC2C shipments to individuals: 77% duty; B2C online purchases: 43% with proof.\nTextiles\nTextiles need a hazardous dye certificate from a Canadian lab or India’s Textile Ministry.\nVitamins\nVitamins need an Assistant Drug Controller NOC—use scientific names.\nToys\nToys from Canada need safety certificates (e.g., ASTM F963)—samples tested by NABL labs.\nTelecom Equipment\nPhones need IMEI registered with India’s DOT.\nClothing\nClothing needs a dye test certificate from Canada—EU/China exempt from Azo dye tests.\nTelevisions\nColor TVs need a DGFT license, Cargo mode only.\nJewelry\nGold/silver jewelry up to USD 2,500 ships via Cargo with MAWB—Courier prohibited.",
+        "Info About Section Header": "Special rules for goods shipped from Canada to India.",
+        "Simplified Form": [
+            "- **Medical Items**: Need an NOC on arrival—UPS helps, but delays 2-3 days. Lab gear needs a catalog.",
+            "- **Radios**: Get an Indian Wireless license.",
+            "- **Leather**: Needs a Wildlife NOC and origin certificate.",
+            "- **Satellite Gear**: Requires a license and NOC.",
+            "- **Chemicals**: Include MSDS—India may test.",
+            "- **Supplements**: Need a Drug Controller NOC.",
+            "- **Medicine**: NOC required—list scientific names.",
+            "- **Phones**: Show IMEI on phone and invoice.",
+            "- **Brochures**: With samples? They’re dutiable.",
+            "- **Catalogs**: Always dutiable—not samples.",
+            "- **RSA Tokens**: Dutiable—show real value.",
+            "- **SIM Cards**: Resale needs a Telecom NOC.",
+            "- **Tapes**: Add synopsis—expect duties.",
+            "- **Pakistan Goods**: 200% duty if routed via Canada.",
+            "- **Food**: Needs FSSAI NOC—personal use needs passport.",
+            "- **Personal**: C2C 77%; B2C 43% with proof.",
+            "- **Textiles**: Dye certificate from Canada or India.",
+            "- **Vitamins**: NOC needed—use scientific names.",
+            "- **Toys**: Safety certs required—tested in India.",
+            "- **Telecom**: IMEI must be DOT-registered.",
+            "- **Clothing**: Dye cert needed—some origins exempt.",
+            "- **TVs**: DGFT license, Cargo only.",
+            "- **Jewelry**: Up to USD 2,500 via Cargo with MAWB."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment Value\nNo gift exemption from Canada to India—duties apply at 0 INR.\nProhibited Gifts\nFrom Canada, you can’t send perishables, plants, precious stones, gold, silver, supplements, drugs, cosmetics, confectionery, fruits, veggies, spices, honey, chocolate, tinned food, meat, milk, or commercial meds as gifts. Personal use needs customs approval.\nDuty\n77% on assessable value (invoice + freight + insurance).",
+        "Info About Section Header": "Gift tax rules for Canada-to-India shipments.",
+        "Simplified Form": [
+            "- **No Exemption**: All gifts from Canada face duties—no minimum.",
+            "- **Banned Gifts**: No perishables, plants, gold, supplements, drugs, candy, fruits, spices, honey, chocolate, tinned food, meat, milk, or meds.",
+            "- **Personal Use**: Needs customs OK.",
+            "- **Duty**: 77% on total value (invoice + shipping + insurance)."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Exports\nUPS Paperless Invoice is available for exports from Canada to India.\nInvoice Details\nFor smooth clearance, include: exporter’s name/address/contact (Canada), importer’s name (matching KYC), phone, email, full address, invoice number/date, goods description, HS Code, origin (Canada), quantity, unit price, total value, Incoterms (e.g., CIF), purpose (e.g., resale), and all shipping costs.\nPaperless Invoice - Imports\nIndia accepts UPS Paperless Invoice for small packages from Canada.",
+        "Info About Section Header": "Invoice details for Canada-to-India shipments.",
+        "Simplified Form": [
+            "- **Paperless**: Use UPS Paperless Invoice from Canada.",
+            "- **Details**: List your Canadian details, importer’s name (per KYC), phone, email, address, invoice number, goods info, HS Code, Canada origin, prices, Incoterms, purpose, and costs.",
+            "- **India Accepts**: Paperless OK for small packages."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "From Canada, these count as documents up to 2 kg: manuscripts, tickets, reports, bids, blank forms, blueprints, charts, price lists, proposals, seismic data, spec sheets, used traveler’s checks, visa apps (to embassies), bonds, cash letters, print-outs, graphs, Mylars, intercompany mail. Blank traveler’s checks are restricted. UPS Canada offers online/printable forms.",
+        "Info About Section Header": "Items treated as documents from Canada to India.",
+        "Simplified Form": [
+            "- **Documents**: Up to 2 kg—manuscripts, tickets, reports, bids, forms, blueprints, charts, price lists, proposals, seismic data, specs, used checks, visa apps (embassies only), bonds, cash letters, print-outs, graphs, Mylars, intercompany mail.",
+            "- **Restricted**: No blank traveler’s checks.",
+            "- **Forms**: Get them online or printed from UPS Canada."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Samples\nFrom Canada, samples can’t exceed 5 pieces—unclear ones face inspection. Mumbai bans duty-free clearance; Bangalore/Delhi may allow it.\nProhibited Gifts/Samples\nNo perishables, plants, stones, gold, silver, supplements, drugs, cosmetics, confectionery, fruits, veggies, spices, honey, chocolate, tinned food, meat, milk, or commercial meds—personal use needs approval.\nAntiques/Artwork\nRestricted from Canada—needs ISC contract. Art must be from living artists, appraised within a year.\nComputers\nLaptops/PCs/tablets (HSN 8741) need a Restricted Import License.\nMaps/Publications\nIncorrect India boundary maps banned.\nSeeds\nNeed a Plant Quarantine NOC—Cargo only.\nAnimal Products/Plants\nProhibited.\nPersonal Effects\nCourier restricted—Cargo needs passport, visa, ticket, 6-month travel history.\nUsed Items\nBanned unless with a Special Import License.\nConsumables/Perishables\nCargo only with NOCs (e.g., FSSAI).\nGuns\nBanned—exceptions for licensed shooters or film productions with MHA NOC.\nPassports\nEmbassies only.\nE-Cigarettes\nFully prohibited.\nLithium Batteries\nUN3480 banned by Emirates/Lufthansa; metal batteries restricted by airlines.\nUsed Electronics\nNeed an MOEF NOC.\nDrones\nBanned unless with DGCA clearance, airworthiness cert, and SIL.\nSingle-Use Plastics\nBanned since July 2022 (e.g., straws, cups under 120 microns).",
+        "Info About Section Header": "Items banned or restricted from Canada to India.",
+        "Simplified Form": [
+            "- **Samples**: Max 5 pieces—unclear ones inspected. No duty-free in Mumbai.",
+            "- **Banned Gifts**: No perishables, plants, gold, supplements, drugs, candy, fruits, spices, honey, chocolate, tinned food, meat, milk, or meds.",
+            "- **Antiques/Art**: Needs ISC—art must be recent, appraised.",
+            "- **Computers**: License needed for laptops/PCs.",
+            "- **Maps**: Wrong India borders banned.",
+            "- **Seeds**: NOC required—Cargo only.",
+            "- **Animals/Plants**: No-go.",
+            "- **Personal Effects**: Cargo only with travel docs.",
+            "- **Used Items**: Banned without SIL.",
+            "- **Perishables**: Cargo with NOCs.",
+            "- **Guns**: Banned—exceptions with licenses.",
+            "- **Passports**: Embassies only.",
+            "- **E-Cigs**: Fully banned.",
+            "- **Batteries**: UN3480 and metal types restricted.",
+            "- **Used Electronics**: Needs MOEF NOC.",
+            "- **Drones**: Banned without DGCA docs.",
+            "- **Plastics**: No single-use items (e.g., thin straws)."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "Check UPS’s Calculate Time and Cost tool for Canada-to-India service details. Options: UPS Worldwide Express Saver, Expedited, Express Freight Midday, Express Plus, Express Freight, Express. Not all services reach every Indian address.",
+        "Info About Section Header": "Shipping services from Canada to India.",
+        "Simplified Form": [
+            "- **Check Tool**: Use Calculate Time and Cost for specifics.",
+            "- **Options**: Express Saver, Expedited, Freight Midday, Express Plus, Freight, Express.",
+            "- **Limits**: Not all areas covered."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nAta Carnet from Canada allows exhibition goods for 6 months—must re-export.\nTriptyque\nVehicles from Canada need this for 6-month duty-free entry (extendable), with auto club membership.\nRaw Materials\nImport duty-free from Canada for processing in bonded warehouses—claim drawback on re-export.\nSamples\nUnder INR 10,000 (~CAD 165), mark ‘SAMPLES – FREE OF COST’ for duty-free.\nWood Packing\nFollow ISPM 15—use treated wood over 6mm for crates/pallets.\nRepair and Return\nInvoices need goods details, serial/model, origin (Canada), value, and ‘Repair and Return’ note—duty on repair costs.\nGifts\nAll gifts from Canada face duties.\nPersonal Shipments\nC2C: 35% duty (10% with proof); B2C online: 10% with proof, 35% without (77.28% for gifts).",
+        "Info About Section Header": "Special rules for Canada-to-India shipments.",
+        "Simplified Form": [
+            "- **Ata Carnet**: Exhibit goods for 6 months—re-export.",
+            "- **Triptyque**: Vehicles duty-free for 6 months with club membership.",
+            "- **Raw Materials**: Duty-free for processing—reclaim on export.",
+            "- **Samples**: Under CAD 165, label ‘FREE’ for no duty.",
+            "- **Wood**: Use ISPM 15-treated wood.",
+            "- **Repairs**: List details—duty on repair costs.",
+            "- **Gifts**: Always dutiable.",
+            "- **Personal**: C2C 35% (10% with proof); B2C 10% with proof, 35% without (77% for gifts)."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "No de minimis value from Canada to India—duties apply at 0 INR for all shipments.",
+        "Info About Section Header": "Value thresholds for Canada-to-India duties.",
+        "Simplified Form": [
+            "- **No Minimum**: Duties start at 0 INR—no exceptions."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs) per package. Max length: 274 cm (107.9 in). Max dimensions: 400 cm (157.5 in) combined (length + girth).",
+        "Info About Section Header": "Size and weight limits for Canada-to-India packages.",
+        "Simplified Form": [
+            "- **Weight**: Up to 70 kg (150 lbs).",
+            "- **Length**: Up to 274 cm (107.9 in).",
+            "- **Total Size**: 400 cm (157.5 in) with girth."
+        ]
+    }
+]

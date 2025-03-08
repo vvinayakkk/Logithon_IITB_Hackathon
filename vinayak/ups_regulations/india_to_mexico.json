@@ -1,0 +1,150 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Paperless Invoice - Imports\nUPS Paperless Invoice is accepted by Mexican Customs for small package imports.\nAnti-Dumping\nMexico discourages dumping with 'Cuotas Compensatorias' duties on certain goods from China, like ceramic coatings (USD $2.90-$12.42/mt2) and bikes for kids (USD $13.12/piece).\nNAFTA Certificate of Origin\nFor shipments over $1,000 USD from Canada or the U.S., a NAFTA Certificate is needed for lower duties. For $1,000 or less, a NAFTA Statement on the invoice works—shipper must sign it. Personal use shipments don’t need this if marked 'personal use' and from a NAFTA country.\nCertificates of Origin\nOptional but required for trade agreement benefits.\nMSDS-NON DG\nGoods under IATA A67 need a Material Safety Data Sheet (MSDS). In UAE transits, missing MSDS can delay shipments—include it for Mexico too.\nADDITIONAL IMPORT DOCUMENTATION\nSince October 15, 2024, Mexico’s SAT requires: full importer name, RFC tax ID, and detailed item descriptions (no vague terms like 'gift') on every package for T1 clearance (up to $2,500 USD). Non-compliant packages get returned.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into Mexico, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *UPS Paperless Invoice*: Use this for small package imports into Mexico—Customs accepts it hassle-free.",
+            "- *Anti-Dumping Duties*: Shipping from China? Extra fees (e.g., $13.12 per kids’ bike or $2.90-$12.42/mt2 for ceramics) apply to stop cheap imports flooding Mexico.",
+            "- *NAFTA Certificate*: For U.S./Canada shipments over $1,000, include this to cut duties. Under $1,000? Just add a signed NAFTA Statement on the invoice.",
+            "- *Personal Use*: No NAFTA papers needed if it’s for personal use—just mark it on the invoice and ensure it’s from a NAFTA country.",
+            "- *Detailed Descriptions*: Since Oct 2024, every package needs the importer’s full name, RFC tax ID, and exact item details (e.g., 'blue cotton shirt,' not 'gift') or it’s sent back.",
+            "- *MSDS for Safety*: Shipping IATA A67 items (like batteries)? Attach a Material Safety Data Sheet to avoid delays, especially if routing through UAE."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Customs Clearance Process\nWhen UPS isn’t the broker: UPS delivers to a warehouse, your broker picks it up for clearance, and you track it with them. For exports, your broker clears it with Mexican Customs, then returns it to UPS with export docs.\nPost Office Boxes\nNo P.O. Box deliveries—give a full street address and phone number.\nLimits on Imports by Individuals\nIndividuals can import limited quantities without permits: 10 clothing items, 5 computer parts, 10 pairs of shoes, etc.\nDoor-to-Door Delivery\nDutiable shipments may need consignee verification.\nMissing Value\nConsignee must provide a Value Declaration or revised invoice.\nPayment by Credit Card\nAccepted for freight/import charges at delivery—check accepted cards with UPS Mexico.\nWarnings for Industrial Property\nCounterfeit goods get held until authenticity is proven.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through Mexican customs, including addresses and contact info requirements.",
+        "Simplified Form": [
+            "- *Customs with Your Broker*: UPS drops your package at a warehouse; your broker handles clearance. For exports, they clear it and return it to UPS with papers.",
+            "- *No P.O. Boxes*: Always provide a full street address and phone number—P.O. Boxes don’t work in Mexico.",
+            "- *Individual Limits*: No permit needed for small amounts—like 10 shirts, 5 computer parts, or 10 pairs of shoes.",
+            "- *Door-to-Door*: If duties apply, Customs might call you to confirm details.",
+            "- *Missing Value?*: Send a Value Declaration or updated invoice to clear your package.",
+            "- *Pay by Card*: Use a credit card for shipping/import fees on delivery—ask UPS Mexico which cards work.",
+            "- *Counterfeit Check*: Fake brand items get held—prove they’re real or lose them."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service is provided to and from certain cities.\nIntra-Mexico UPS Services\nDomestic Express Saver covers all of Mexico; Express Plus 8:30 a.m. and Express 10:30 a.m. are only in major city zip codes. Call 01-800-90-292-00 for details. IVA tax applies to domestic rates.\nUPS cannot deliver to P.O. Boxes—full address required.\nRest Days: Saturday, Sunday, and holidays.\nGMT: -0600\nLanguage: Spanish\nCurrency: Mexican Peso (MXN)",
+        "Info About Section Header": "This section lists the locations where shipping services are available in Mexico, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Nationwide Service*: Domestic Express Saver reaches all of Mexico.",
+            "- *Fast Delivery*: Express Plus (8:30 a.m.) and Express (10:30 a.m.) are only in big city zip codes—call 01-800-90-292-00 to check.",
+            "- *Tax Note*: Domestic shipments get an IVA tax added.",
+            "- *No P.O. Boxes*: Shipments need a full street address.",
+            "- *Closed Days*: No delivery on Saturday, Sunday, or Mexican holidays.",
+            "- *Time Zone*: Mexico runs on GMT -0600.",
+            "- *Language & Money*: Spanish is the language; pay in Mexican Pesos (MXN)."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Payment Methods\nOnly the shipper can pay by credit card, check, or cash.\nThird-Party Billing\nDomestic shipments (e.g., Mexico to Mexico) can’t bill a third party outside Mexico. Duties/taxes can bill shipper, receiver, or a third party—third-party name, country, and account number needed. A surcharge applies if billing duties/taxes outside Mexico.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom in Mexico.",
+        "Simplified Form": [
+            "- *Shipper Pays*: Only the shipper can use cash, check, or card for shipping costs.",
+            "- *Third-Party Limits*: For Mexico-to-Mexico shipments, third-party billing must be in Mexico—not outside.",
+            "- *Duties & Taxes*: Bill these to shipper, receiver, or a third party (include their name, country, and account number).",
+            "- *Extra Fee*: Billing duties/taxes outside Mexico adds a surcharge."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nNeed a COFEPRIS permit from Mexico’s Health Department—personal use requires a one-time permit.\nElectrical Items\nMust meet NOM quality standards unless under $2,500 USD.\nToys\nFor kids under 3, need a COFEPRIS permit.\nChemicals\nRequire a technical letter and HS Code—not allowed via simplified entry.\nComputers\nOver $2,500 USD need NOM compliance.\nWood Products\nNeed SEMARNAT permit and fumigation stamp.\nDrugs\nCOFEPRIS permit required.\nAnimal Products\nCITES permit needed for endangered species items.\nConsumables\nHealth Ministry permit for human consumption items.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods to Mexico, like medical items or jewelry.",
+        "Simplified Form": [
+            "- *Medical Items*: Get a COFEPRIS permit from Mexico’s Health Department—even for personal use (one-time permit).",
+            "- *Electrical Goods*: Over $2,500 USD? Meet NOM quality rules or face delays.",
+            "- *Toys for Toddlers*: Toys for kids under 3 need a COFEPRIS permit.",
+            "- *Chemicals*: Include a technical letter and HS Code—simplified entry isn’t allowed.",
+            "- *Computers*: Above $2,500 USD, they must follow NOM standards.",
+            "- *Wood Items*: Need a SEMARNAT permit and fumigation stamp on all wood pieces.",
+            "- *Drugs*: Always attach a COFEPRIS permit or Customs won’t release them.",
+            "- *Animal Products*: Endangered species items need a CITES permit.",
+            "- *Food/Consumables*: Human-use items require a Health Ministry permit."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "There are no gift exemptions for Mexico. All goods going into Mexico are subject to the normal duty and tax rates.",
+        "Info About Section Header": "This section explains if gifts can avoid taxes or duties and lists items that can’t be sent as gifts.",
+        "Simplified Form": [
+            "- *No Gift Breaks*: All shipments to Mexico pay full duties and taxes—gifts don’t get a pass."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Mexico requires a commercial invoice (English or Spanish). For exports over $1,000 USD, electronic CFDI filing is mandatory. Include serial numbers, brand, model, value, and consignee’s RFC tax ID. Consignee phone number is required.",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods to Mexico.",
+        "Simplified Form": [
+            "- *Invoice Basics*: Send a commercial invoice in English or Spanish.",
+            "- *Exports Over $1,000*: Use electronic CFDI filing for Customs.",
+            "- *Must-Have Details*: List serial numbers, brand, model, value, and the consignee’s RFC tax ID.",
+            "- *Phone Number*: Add the consignee’s phone number or face delays."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Documents don’t need an invoice—just mark 'Documents Only' on the waybill. Includes airline tickets, passports, bids, and newsletters.",
+        "Info About Section Header": "This section lists items that are treated as documents (not goods) for shipping purposes to Mexico, with weight limits.",
+        "Simplified Form": [
+            "- *Documents Only*: No invoice needed for things like tickets, passports, or newsletters—just check 'Documents Only' on the waybill.",
+            "- *No Duties*: These skip duties and taxes."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Prohibited: Meat (needs Senasica permit), credit cards (vulnerable product rules), e-cigarettes, marijuana, surgical masks, ventilators, military equipment. Restricted: Tobacco needs COFEPRIS permit and PECE payment.",
+        "Info About Section Header": "This section lists items that cannot be shipped to Mexico or have strict rules.",
+        "Simplified Form": [
+            "- *Banned Items*: No meat (unless with Senasica permit), credit cards, e-cigarettes, marijuana, masks, ventilators, or military gear.",
+            "- *Tobacco Rules*: Needs a COFEPRIS permit and PECE payment—don’t skip these."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nAvailable in some areas with WW Express Saver and a 'Saturday Delivery' sticker. Check UPS transit system for availability.",
+        "Simplified Form": [
+            "- *Saturday Option*: Available in some Mexico areas—use WW Express Saver and add a 'Saturday Delivery' sticker.",
+            "- *Check First*: Confirm your area with UPS’s transit system."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to Mexico: UPS Worldwide Expedited, Express Freight, Express, Express Saver.",
+        "Info About Section Header": "This section lists the types of shipping services available from India to Mexico.",
+        "Simplified Form": [
+            "- *India to Mexico*: Pick from Expedited, Express Freight, Express, or Express Saver—check UPS for details."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nIMMEX and other temporary imports (trade shows, repairs) accepted—allow extra clearance time. Samples must be marked unusable and under $1 USD value.",
+        "Info About Section Header": "This section covers unique rules for temporary imports, repairs, or specific materials to Mexico.",
+        "Simplified Form": [
+            "- *Temporary Imports*: IMMEX or trade show items are okay—expect extra time for clearance.",
+            "- *Samples*: Mark them unusable, keep value under $1 USD, and avoid commercial packaging."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis Value: $50 USD—shipments at or below this may avoid duties/taxes. Exports over $1,000 USD need formal clearance.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties in Mexico.",
+        "Simplified Form": [
+            "- *Low Value*: Up to $50 USD might skip duties and taxes.",
+            "- *High Value Exports*: Over $1,000 USD needs formal export clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.) per package. Max length: 274 cm (107.9 in.). Max dimensions: 419 cm (165 in.) length and girth combined.",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages to Mexico.",
+        "Simplified Form": [
+            "- *Weight Limit*: 70 kg (150 lbs.) max per package.",
+            "- *Size Limits*: Max length 274 cm (107.9 in.), total length + girth 419 cm (165 in.)."
+        ]
+    }
+]

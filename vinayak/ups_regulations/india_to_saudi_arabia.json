@@ -1,0 +1,145 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Legalization\nThe shipper can obtain a certified Certificate of Origin and Invoice from the Saudi Embassy or Chamber of Commerce prior to export to assist with clearance in Saudi Arabia.\nPaperless Invoice - Imports\nUPS Paperless Invoice is accepted by Customs for small package imports.\nMiscellaneous\nIECEE permit/SASO\nCommodities requiring SASO/IECEE: Electrical goods, water pumps, washing machines, laptops, printers, mobile phones, batteries. 3-pin power cords required (2-pin not allowed).\nSaber/SASO\nSaber platform registers conformity certificates for consumer products. Check https://saber.sa/home/regulations.\nCertificate of Origin\nRequired if origin is removable (e.g., sticker); not needed if permanently marked. SFDA, CITC, MOI may still request it. Chamber of Commerce issuance is enough; Saudi Embassy certification optional. Guarantee letter allows 90 days to provide docs or face a 2000 SAR ($533 USD) penalty.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need an MSDS—UAE transits may delay without it.\nCertificate of Conformity\nSASO CoC required for mobiles, computers, telecom equipment, and appliances—must be lab-tested and accompany shipment.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into Saudi Arabia, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *Legalized Docs*: Get a Certificate of Origin and Invoice certified by the Chamber of Commerce or Saudi Embassy before shipping.",
+            "- *Paperless Invoice*: UPS Paperless works for small package imports.",
+            "- *SASO/IECEE*: Electrical items (e.g., laptops, phones) need a SASO cert and 3-pin cords—importer needs an IECEE permit for 3+ items.",
+            "- *Saber Platform*: Register consumer goods on Saber (see saber.sa) for conformity.",
+            "- *Certificate of Origin*: Needed if origin is on a sticker, not if stamped—gov agencies might still ask. Missing docs? Use a guarantee letter or pay 2000 SAR fine.",
+            "- *MSDS*: Batteries need an MSDS—add it for UAE transits to avoid delays.",
+            "- *CoC*: Mobiles, computers, and appliances need a lab-tested SASO CoC with the shipment."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nFull address (name, phone, street, building, city) required—no P.O. Boxes.\nDuty and Taxes\nInclude freight and fees in value for duties/taxes.\nClearance Comments\nGoods from Pakistan (COO PK) held by Audit Dept—delays vary, no set release time.\nBan of Imports\nPornographic material prohibited.\nPayment by Credit Card\nAccepted for freight/import charges—check accepted cards with UPS Saudi Arabia.\nMiscellaneous\nE-commerce (B2C) invoices need a breakdown (value, shipping, duties, VAT, fees)—unnotified charges revert to shipper.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through customs in Saudi Arabia.",
+        "Simplified Form": [
+            "- *No P.O. Boxes*: Give full address (name, mobile, street, city)—P.O. Boxes delay delivery.",
+            "- *Duty & Tax*: Add shipping fees to item value for calculations.",
+            "- *Pakistan Goods*: Items from Pakistan face audit holds—delays can be 1-2 weeks or more.",
+            "- *Porn Ban*: No adult material allowed.",
+            "- *Pay by Card*: Use credit cards for fees at delivery—confirm cards with UPS Saudi Arabia.",
+            "- *E-commerce*: List all charges (value, shipping, duties, VAT) on B2C invoices, or they’ll bill back to shipper."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to every address in Saudi Arabia.\nFull address required—no P.O. Boxes.\nRest Days: Friday (UPS), Friday-Saturday (public/private sectors).\nGMT: +0300\nLanguage: Arabic\nCurrency: Saudi Riyal (SAR)",
+        "Info About Section Header": "This section lists the locations where shipping services are available in Saudi Arabia, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Nationwide*: UPS delivers everywhere in Saudi Arabia.",
+            "- *Full Address*: Include name, phone, street—no P.O. Boxes.",
+            "- *Rest Days*: UPS off Friday; most businesses off Friday-Saturday.",
+            "- *Time Zone*: GMT +0300 year-round.",
+            "- *Language & Money*: Arabic spoken; pay in Saudi Riyal (SAR)."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—third-party details needed. Surcharge if billed outside Saudi Arabia.\nE-commerce must notify receivers of all charges, or they revert to shipper.\nShipping Charges\nBill to shipper, receiver, or third party—account number required.\nPayment Methods\nOnly shipper can pay by card, check, or cash.\nThird-Party Billing\nDomestic shipments can’t bill third parties outside Saudi Arabia.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom in Saudi Arabia.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—add third-party name and account.",
+            "- *Extra Fee*: Billing outside Saudi Arabia adds a surcharge.",
+            "- *E-commerce*: Tell receivers all charges upfront, or shipper pays.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs an account number.",
+            "- *Payment*: Only shipper can use card, check, or cash.",
+            "- *Third-Party Limit*: Saudi-to-Saudi shipments can’t bill outside the country."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Cosmetics\nNeed Ministry of Health check, CoC, production/expiration dates, ingredients in Arabic, and fixed origin.\nJewelry\nPrecious metals need engraved origin, 18+ carat gold, purity details, consignee logo—religious symbols banned.\nTelecommunication Equipment\nRequires import license and CoC.\nComputers\nNeed CoC.\nClothing\nOrigin on internal labels; military uniforms may need a license—religious symbols banned.\nDrugs/Medicine\nPrivate imports banned; needs Health Authority cert or permit from MOH/SFDA—small shipments checked at airport, larger ones downtown.\nAnimal Products\nNon-domesticated need ISC contract; feeds face lab checks.\nFood\nSubject to Ministry of Health lab analysis.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods to Saudi Arabia.",
+        "Simplified Form": [
+            "- *Cosmetics*: Needs CoC, dates, Arabic ingredients, and permanent origin—lab check possible.",
+            "- *Jewelry*: Engrave origin, 18+ carat gold, purity, consignee logo—no religious symbols.",
+            "- *Telecom Gear*: Get an import license and CoC.",
+            "- *Computers*: Include a CoC.",
+            "- *Clothing*: Origin on labels; military uniforms need a license—no religious symbols.",
+            "- *Drugs/Medicine*: No private imports—needs origin cert or MOH/SFDA permit; small batches cleared at airport, big ones downtown.",
+            "- *Animal Products*: Non-domesticated need ISC; feeds go to lab.",
+            "- *Food*: Faces Ministry of Health lab test."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "No gift exemption for shipments to Saudi Arabia.",
+        "Info About Section Header": "This section explains if gifts can avoid taxes or duties in Saudi Arabia.",
+        "Simplified Form": [
+            "- *No Gift Breaks*: All shipments to Saudi Arabia pay full duties and taxes—gifts included."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Non-document shipments need 1 original + 2 copies of invoice on shipper’s letterhead, with full address, phone, and stamp—legalized if over $2,600 USD. Documents don’t need one.",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods to Saudi Arabia.",
+        "Simplified Form": [
+            "- *Invoice Copies*: Non-documents need 1 original + 2 copies on letterhead with stamp.",
+            "- *Details*: List full address, phone—legalize if over $2,600 USD.",
+            "- *Documents*: No invoice needed for papers."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Cash letters, airline tickets, passports, etc., count as documents—subject to Ministry of Information inspection.",
+        "Info About Section Header": "This section lists items treated as documents (not goods) for shipping to Saudi Arabia.",
+        "Simplified Form": [
+            "- *Documents Only*: Tickets, passports, reports—no invoice, but checked by Ministry of Info.",
+            "- *Mark It*: Label as 'Documents Only' on waybill."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Prohibited: Antiques, toys with idols/military/religious symbols, weapons, religious items, Israeli goods, chemicals, tobacco/e-cigarettes, personal effects, artwork, drones, alcohol, narcotics, porn.\nRestricted: Perfumes (needs lab check, legalized docs), mobiles (SASO cert), cigars (215% duty + VAT).",
+        "Info About Section Header": "This section lists items that cannot be shipped to Saudi Arabia or have strict rules.",
+        "Simplified Form": [
+            "- *Banned*: No antiques, military toys, guns, Bibles, Israeli items, chemicals, tobacco, e-cigs, used stuff, art, drones, alcohol, drugs, porn.",
+            "- *Perfumes*: Needs lab check, legalized invoice, and origin details.",
+            "- *Mobiles*: SASO cert required—unregistered face lab delays.",
+            "- *Cigars*: High duty (215%) + 15% VAT on revalued amount."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to Saudi Arabia: Express Saver, Expedited, Express Freight.",
+        "Info About Section Header": "This section lists the types of shipping services available from India to Saudi Arabia.",
+        "Simplified Form": [
+            "- *India to Saudi*: Pick Express Saver, Expedited, or Express Freight—check UPS for details."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Returned Goods\nList origin and return reason on invoice.\nRepaired Goods\nShow value before and after repair.\nSamples\nDetail and mark/mutilate on invoice.\nSolid Wood Packing Material\nFollow ISPM 15—needs phytosanitary cert for raw wood over 6mm.",
+        "Info About Section Header": "This section covers unique rules for returns, repairs, or specific materials to Saudi Arabia.",
+        "Simplified Form": [
+            "- *Returns*: Note origin and why it’s coming back on the invoice.",
+            "- *Repairs*: List pre- and post-repair values.",
+            "- *Samples*: Describe and mark them unusable on the invoice.",
+            "- *Wood Packing*: Raw wood over 6mm needs ISPM 15 cert."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: 1000 SAR ($266 USD)—below this, 15% VAT + 17.25 SAR fee; above, 5-20% duty + VAT. Commercial shipments have no deminimis.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties in Saudi Arabia.",
+        "Simplified Form": [
+            "- *Low Value*: Up to 1000 SAR ($266 USD)—15% VAT + 17.25 SAR fee.",
+            "- *High Value*: Over 1000 SAR—5-20% duty + 15% VAT.",
+            "- *Commercial*: No low-value break—duty + VAT on all."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.) per package.\nMax length: 274 cm (107.9 in.).\nMax dimensions: 400 cm (157.5 in.) length and girth combined.",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages to Saudi Arabia.",
+        "Simplified Form": [
+            "- *Weight Limit*: 70 kg (150 lbs.) max per package.",
+            "- *Size Limits*: Max length 274 cm (107.9 in.), total length + girth 400 cm (157.5 in.)."
+        ]
+    }
+]
