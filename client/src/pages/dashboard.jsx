@@ -1,7 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Globe, AlertTriangle, Check, Package, MapPin, AlertCircle, FileText, Activity, X, ChevronDown, ChevronUp, Upload } from 'lucide-react';
+import { Globe, AlertTriangle, Check, Package, MapPin, AlertCircle, FileText, Activity, X, ChevronDown, ChevronUp, Upload, Download, FileDown } from 'lucide-react';
 import Papa from 'papaparse'; // For parsing CSV files
+import { Line, Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+// Register ChartJS components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const ComplianceChecker = () => {
   const [shipments, setShipments] = useState([]);
@@ -27,6 +51,8 @@ const ComplianceChecker = () => {
   const [selectedRow, setSelectedRow] = useState(null); // To track the selected row
   const [showPopup, setShowPopup] = useState(false); // To control pop-up visibility
   const [selectedShipmentDetails, setSelectedShipmentDetails] = useState(null); // To store selected shipment details
+  const [complianceStats, setComplianceStats] = useState(null);
+  const [csvStats, setCsvStats] = useState(null);
 
   useEffect(() => {
     // Mock data for shipments, country restrictions, and notifications
@@ -66,7 +92,7 @@ const ComplianceChecker = () => {
   const checkCompliance = async (shipment) => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/api/check_all', {
+      const response = await axios.post('http://localhost:3000/api/check_financial_all', {
         source: shipment.source,
         destination: shipment.destination,
         shipment_details: {
@@ -78,6 +104,7 @@ const ComplianceChecker = () => {
       });
 
       setComplianceResults(response.data);
+      processComplianceData(response.data);
     } catch (error) {
       console.error('Error checking compliance:', error);
     } finally {
@@ -106,6 +133,7 @@ const ComplianceChecker = () => {
       });
 
       setComplianceResultsCsv(response.data);
+      processCsvStats(response.data);
 
       // Update CSV data with compliance results
       const updatedCsvData = csvData.map((row, index) => ({
@@ -197,15 +225,88 @@ const ComplianceChecker = () => {
     }
   };
 
-  // Pop-up component to display compliance details
+  // Function to generate a color based on the value
+  const getStatusColor = (status) => {
+    switch (status?.toLowerCase()) {
+      case 'high': return 'bg-red-500 text-white';
+      case 'medium': return 'bg-yellow-500 text-black';
+      case 'low': return 'bg-green-500 text-white';
+      case 'compliant': return 'bg-green-500 text-white';
+      case 'non-compliant': return 'bg-red-500 text-white';
+      case 'warning': return 'bg-yellow-500 text-black';
+      default: return 'bg-blue-500 text-white';
+    }
+  };
+
+  // Improved pop-up component to display compliance details in a sequential manner
   const CompliancePopup = ({ details, onClose }) => {
     if (!details) return null;
+    
+    // Parse the details if it's a string
+    const parsedDetails = typeof details === 'string' ? JSON.parse(details) : details;
+    
+    // Function to render each section 
+    const renderSection = (title, data, level = 0) => {
+      if (!data || (typeof data === 'object' && Object.keys(data).length === 0)) {
+        return null;
+      }
+      
+      const paddingLeft = level * 16;
+      
+      return (
+        <div 
+          key={title} 
+          className="border border-gray-700 rounded-lg p-4 mb-4"
+          style={{ marginLeft: `${paddingLeft}px` }}
+        >
+          <h4 className="text-blue-300 font-medium mb-3 capitalize">
+            {title.replace(/_/g, ' ')}
+          </h4>
+          <div className="space-y-3">
+            {typeof data === 'object' && !Array.isArray(data) ? (
+              Object.entries(data).map(([key, value]) => (
+                <div key={key}>
+                  {Array.isArray(value) || (typeof value === 'object' && value !== null) ? (
+                    renderSection(key, value, level + 1)
+                  ) : (
+                    <div className="grid grid-cols-2 gap-4 border-b border-gray-700 pb-2">
+                      <span className="text-gray-400 capitalize">{key.replace(/_/g, ' ')}:</span>
+                      <span className={`text-white ${key.includes('compliant') || key.includes('risk') || key.includes('status') ? 'font-bold' : ''}`}>
+                        {key.includes('compliant') ? 
+                          (value ? 'Yes ✓' : 'No ✗') : 
+                          (key.includes('risk_level') || key.includes('status') ? 
+                            <span className={`px-2 py-1 rounded ${getStatusColor(value)}`}>{value}</span> : 
+                            String(value)
+                          )
+                        }
+                      </span>
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : Array.isArray(data) ? (
+              <div className="pl-4 border-l-2 border-gray-700">
+                <ul className="list-disc pl-4 space-y-2">
+                  {data.map((item, index) => (
+                    <li key={index} className="text-gray-300">
+                      {typeof item === 'object' ? JSON.stringify(item) : String(item)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <span className="text-white">{String(data)}</span>
+            )}
+          </div>
+        </div>
+      );
+    };
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center p-4" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <div className="bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl border border-gray-700 relative">
-          <div className="sticky top-0 p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800">
-            <h3 className="text-lg font-medium text-blue-300">Compliance Details</h3>
+      <div className="fixed inset-0 bg-black bg-opacity-70 z-[9999] flex items-center justify-center p-4" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <div className="bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-xl border border-gray-700 relative">
+          <div className="sticky top-0 p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800 z-10">
+            <h3 className="text-xl font-medium text-blue-300">Compliance Report</h3>
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-200 p-2 rounded-lg hover:bg-gray-700"
@@ -213,42 +314,279 @@ const ComplianceChecker = () => {
               <X size={20} />
             </button>
           </div>
-          <div className="p-4 space-y-4">
-            {Object.entries(JSON.parse(details)).map(([section, data]) => (
-              <div key={section} className="border border-gray-700 rounded-lg p-4">
-                <h4 className="text-blue-300 font-medium mb-2 capitalize">
-                  {section.replace(/_/g, ' ')}
-                </h4>
-                <div className="space-y-2">
-                  {typeof data === 'object' ? (
-                    Object.entries(data).map(([key, value]) => (
-                      <div key={key} className="grid grid-cols-2 gap-4">
-                        <span className="text-gray-400 capitalize">{key.replace(/_/g, ' ')}:</span>
-                        <span className="text-white">
-                          {Array.isArray(value) ? value.join(', ') : 
-                           typeof value === 'object' ? JSON.stringify(value, null, 2) : 
-                           String(value)}
-                        </span>
-                      </div>
-                    ))
-                  ) : (
-                    <span className="text-white">{String(data)}</span>
-                  )}
+          
+          <div className="p-6 space-y-6">
+            {/* Summary section first */}
+            {parsedDetails.overall_compliance && (
+              <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4 mb-6 border-l-4 border-blue-500">
+                <h3 className="text-lg font-bold text-blue-300 mb-3">Compliance Summary</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="flex flex-col items-center justify-center p-4 bg-gray-800 rounded-lg">
+                    <span className="text-gray-400 mb-2">Overall Status</span>
+                    <span className={`text-lg font-bold px-3 py-1 rounded ${parsedDetails.overall_compliance.compliant ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
+                      {parsedDetails.overall_compliance.compliant ? 'Compliant' : 'Non-Compliant'}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center p-4 bg-gray-800 rounded-lg">
+                    <span className="text-gray-400 mb-2">Risk Level</span>
+                    <span className={`text-lg font-bold px-3 py-1 rounded ${getStatusColor(parsedDetails.overall_compliance.overall_risk_level)}`}>
+                      {parsedDetails.overall_compliance.overall_risk_level}
+                    </span>
+                  </div>
                 </div>
+                {parsedDetails.overall_compliance.summary && (
+                  <div className="mt-4 p-3 bg-blue-900 bg-opacity-20 rounded border border-blue-800">
+                    <p className="text-gray-300">{parsedDetails.overall_compliance.summary}</p>
+                  </div>
+                )}
               </div>
-            ))}
+            )}
+            
+            {/* Render each main section sequentially */}
+            {Object.entries(parsedDetails).map(([section, data]) => 
+              renderSection(section, data)
+            )}
           </div>
         </div>
       </div>
     );
   };
 
+  // Add this function to process compliance data for graphs
+  const processComplianceData = (results) => {
+    const stats = {
+      riskLevels: {
+        labels: ['Low', 'Medium', 'High'],
+        datasets: [{
+          label: 'Risk Level Distribution',
+          data: [0, 0, 0],
+          backgroundColor: ['#10B981', '#F59E0B', '#EF4444'],
+        }]
+      },
+      complianceScore: {
+        labels: [],
+        datasets: [{
+          label: 'Compliance Score Trend',
+          data: [],
+          borderColor: '#3B82F6',
+          tension: 0.1,
+        }]
+      }
+    };
+
+    if (results?.overall_compliance) {
+      // Update risk level count
+      const riskLevel = results.overall_compliance.overall_risk_level.toLowerCase();
+      const riskIndex = riskLevel === 'low' ? 0 : riskLevel === 'medium' ? 1 : 2;
+      stats.riskLevels.datasets[0].data[riskIndex]++;
+
+      // Add compliance score
+      stats.complianceScore.labels.push(new Date().toLocaleTimeString());
+      stats.complianceScore.datasets[0].data.push(
+        results.overall_compliance.compliance_score || 0
+      );
+    }
+
+    setComplianceStats(stats);
+  };
+
+  // Add this function to process CSV data for graphs
+  const processCsvStats = (results) => {
+    const stats = {
+      riskDistribution: {
+        labels: ['Low', 'Medium', 'High'],
+        datasets: [{
+          label: 'Risk Level Distribution',
+          data: [0, 0, 0],
+          backgroundColor: ['#10B981', '#F59E0B', '#EF4444'],
+        }]
+      },
+      complianceByCountry: {
+        labels: [],
+        datasets: [{
+          label: 'Compliance Rate by Country',
+          data: [],
+          backgroundColor: '#3B82F6',
+        }]
+      }
+    };
+
+    // Process results
+    const countryStats = {};
+    let riskCounts = { low: 0, medium: 0, high: 0 };
+
+    results.results.forEach(result => {
+      // Count risk levels
+      const riskLevel = result.compliance_result.overall_compliance.overall_risk_level.toLowerCase();
+      riskCounts[riskLevel]++;
+
+      // Calculate compliance by country
+      const country = result.compliance_result.destination_country;
+      if (!countryStats[country]) {
+        countryStats[country] = { total: 0, compliant: 0 };
+      }
+      countryStats[country].total++;
+      if (result.compliance_result.overall_compliance.compliant) {
+        countryStats[country].compliant++;
+      }
+    });
+
+    // Update risk distribution
+    stats.riskDistribution.datasets[0].data = [
+      riskCounts.low,
+      riskCounts.medium,
+      riskCounts.high
+    ];
+
+    // Update country compliance rates
+    Object.entries(countryStats).forEach(([country, data]) => {
+      stats.complianceByCountry.labels.push(country);
+      stats.complianceByCountry.datasets[0].data.push(
+        (data.compliant / data.total) * 100
+      );
+    });
+
+    setCsvStats(stats);
+  };
+
+  // Update the ComplianceGraphs component styling
+  const ComplianceGraphs = ({ data, type }) => {
+    if (!data) return null;
+
+    const graphOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#94A3B8' // text-slate-400
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: '#1E293B' // border-slate-800
+          },
+          ticks: { 
+            color: '#94A3B8' // text-slate-400
+          }
+        },
+        x: {
+          grid: {
+            color: '#1E293B' // border-slate-800
+          },
+          ticks: { 
+            color: '#94A3B8' // text-slate-400
+          }
+        }
+      }
+    };
+
+    return (
+      <div className="space-y-6">
+        {type === 'single' ? (
+          <>
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+              <h3 className="text-lg font-medium text-slate-200 mb-4">Risk Level Distribution</h3>
+              <div className="h-64">
+                <Bar 
+                  data={data.riskLevels} 
+                  options={{
+                    ...graphOptions,
+                    plugins: {
+                      ...graphOptions.plugins,
+                      title: {
+                        display: true,
+                        color: '#E2E8F0' // text-slate-200
+                      }
+                    }
+                  }} 
+                />
+              </div>
+            </div>
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+              <h3 className="text-lg font-medium text-slate-200 mb-4">Compliance Score Trend</h3>
+              <div className="h-64">
+                <Line 
+                  data={data.complianceScore} 
+                  options={{
+                    ...graphOptions,
+                    plugins: {
+                      ...graphOptions.plugins,
+                      title: {
+                        display: true,
+                        color: '#E2E8F0' // text-slate-200
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+              <h3 className="text-lg font-medium text-slate-200 mb-4">Risk Distribution (Bulk)</h3>
+              <div className="h-64">
+                <Bar 
+                  data={data.riskDistribution} 
+                  options={{
+                    ...graphOptions,
+                    plugins: {
+                      ...graphOptions.plugins,
+                      title: {
+                        display: true,
+                        color: '#E2E8F0' // text-slate-200
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+              <h3 className="text-lg font-medium text-slate-200 mb-4">Compliance Rate by Country</h3>
+              <div className="h-64">
+                <Bar 
+                  data={data.complianceByCountry} 
+                  options={{
+                    ...graphOptions,
+                    plugins: {
+                      ...graphOptions.plugins,
+                      title: {
+                        display: true,
+                        color: '#E2E8F0' // text-slate-200
+                      }
+                    },
+                    scales: {
+                      ...graphOptions.scales,
+                      y: {
+                        ...graphOptions.scales.y,
+                        max: 100,
+                        ticks: {
+                          color: '#94A3B8',
+                          callback: (value) => `${value}%`
+                        }
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    );
+  };
+
+  // Update the stats tab section styling
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-blue-950 to-gray-900 text-slate-200">
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center space-x-2">
-            <Globe className="text-blue-400" size={28} />
+            <Globe className="text-cyan-400" size={28} />
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
               CrossBorder Compliance Hub
             </h1>
@@ -268,8 +606,8 @@ const ComplianceChecker = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             {/* Compliance Check, Shipments, and CSV Upload Tabs */}
-            <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-gray-700">
-              <div className="flex border-b border-gray-700">
+            <div className="bg-gray-900/30 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-blue-800">
+              <div className="flex border-b border-blue-800">
                 <button
                   onClick={() => setActiveTab('check')}
                   className={`px-4 py-3 flex-1 font-medium flex items-center justify-center ${activeTab === 'check' ? 'bg-blue-900 bg-opacity-50 text-blue-300' : 'text-gray-300 hover:bg-gray-700'}`}
@@ -510,20 +848,20 @@ const ComplianceChecker = () => {
                             <div className="space-x-2">
                               <button
                                 onClick={checkComplianceCsv}
-                                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold flex items-center disabled:opacity-50"
+                                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm flex items-center"
                                 disabled={loading}
                               >
                                 {loading ? (
                                   <div className="flex items-center">
-                                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
-                                    Checking...
+                                    Processing...
                                   </div>
                                 ) : (
                                   <>
-                                    <AlertTriangle size={16} className="mr-2" />
+                                    <AlertTriangle size={16} className="mr-1" />
                                     Check Compliance
                                   </>
                                 )}
@@ -531,64 +869,99 @@ const ComplianceChecker = () => {
                               {complianceResultsCsv && (
                                 <button
                                   onClick={downloadUpdatedCsv}
-                                  className="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold flex items-center"
+                                  className="px-4 mt-3 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white text-sm flex items-center"
                                 >
-                                  <Upload size={16} className="mr-2" />
-                                  Download Updated CSV
+                                  <FileDown size={16} className="mr-1" />
+                                  Download Results
                                 </button>
                               )}
                             </div>
                           </div>
 
-                          {/* CSV Data Table */}
                           <div className="overflow-x-auto">
-                            <table className="w-full text-sm">
+                            <table className="w-full text-sm border-collapse">
                               <thead>
                                 <tr className="bg-gray-700 bg-opacity-50">
-                                  {csvData.length > 0 && Object.keys(csvData[0]).map((key) => (
-                                    <th key={key} className="px-4 py-2 text-left">{key}</th>
+                                  {Object.keys(csvData[0]).slice(0, 6).map((header) => (
+                                    <th key={header} className="px-3 py-2 text-left text-xs uppercase">
+                                      {header}
+                                    </th>
                                   ))}
+                                  {complianceResultsCsv && (
+                                    <>
+                                      <th className="px-3 py-2 text-center text-xs uppercase">Status</th>
+                                      <th className="px-3 py-2 text-center text-xs uppercase">Risk Level</th>
+                                      <th className="px-3 py-2 text-center text-xs uppercase">Details</th>
+                                    </>
+                                  )}
                                 </tr>
                               </thead>
                               <tbody>
-                                {csvData.map((row, index) => (
-                                  <tr
-                                    key={index}
-                                    className={`${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-800'} bg-opacity-40 hover:bg-gray-700 cursor-pointer`}
-                                    onClick={() => {
-                                      setSelectedShipmentDetails(row.additional_info);
-                                      setShowPopup(true);
-                                    }}
+                                {csvData.slice(0, 10).map((row, index) => (
+                                  <tr 
+                                    key={index} 
+                                    className={`${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-800'} bg-opacity-40 hover:bg-gray-700 ${selectedRow === index ? 'bg-gray-700' : ''}`}
+                                    onClick={() => setSelectedRow(selectedRow === index ? null : index)}
                                   >
-                                    {Object.entries(row).map(([key, value], i) => (
-                                      key !== 'additional_info' && (
-                                        <td key={i} className="px-4 py-3">
-                                          {key === 'compliance_status' ? (
-                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                              value === 'Compliant' ? 'bg-green-100 text-green-800' :
-                                              'bg-red-100 text-red-800'
-                                            }`}>
-                                              {value}
-                                            </span>
-                                          ) : key === 'risk_level' ? (
-                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                              value === 'Low' ? 'bg-green-100 text-green-800' :
-                                              value === 'Medium' ? 'bg-yellow-100 text-yellow-800' :
-                                              'bg-red-100 text-red-800'
-                                            }`}>
-                                              {value}
-                                            </span>
-                                          ) : (
-                                            value
-                                          )}
-                                        </td>
-                                      )
+                                    {Object.keys(row).slice(0, 6).map((key) => (
+                                      <td key={key} className="px-3 py-2 text-sm">
+                                        {row[key]}
+                                      </td>
                                     ))}
+                                    {complianceResultsCsv && (
+                                      <>
+                                        <td className="px-3 py-2 text-center">
+                                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                            row.compliance_status === 'Compliant' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                                          }`}>
+                                            {row.compliance_status === 'Compliant' ? <Check size={12} className="mr-1" /> : <X size={12} className="mr-1" />}
+                                            {row.compliance_status}
+                                          </span>
+                                        </td>
+                                        <td className="px-3 py-2 text-center">
+                                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                            row.risk_level === 'Low' ? 'bg-green-100 text-green-800' :
+                                            row.risk_level === 'Medium' ? 'bg-yellow-100 text-yellow-800' :
+                                            'bg-red-100 text-red-800'
+                                          }`}>
+                                            {row.risk_level}
+                                          </span>
+                                        </td>
+                                        <td className="px-3 py-2 text-center">
+                                          <button
+                                            onClick={(e) => {
+                                              e.stopPropagation();
+                                              try {
+                                                // Get the compliance result for this specific row from complianceResultsCsv
+                                                const rowResult = complianceResultsCsv.results[index].compliance_result;
+                                                if (rowResult) {
+                                                  setSelectedShipmentDetails(rowResult);
+                                                  setShowPopup(true);
+                                                } else {
+                                                  console.error('No compliance data found for this row');
+                                                }
+                                              } catch (error) {
+                                                console.error('Error displaying compliance details:', error);
+                                              }
+                                            }}
+                                            className="text-blue-400 hover:text-blue-300 px-2 py-1 rounded hover:bg-gray-600"
+                                          >
+                                            View
+                                          </button>
+                                        </td>
+                                      </>
+                                    )}
                                   </tr>
                                 ))}
                               </tbody>
                             </table>
                           </div>
+                          
+                          {csvData.length > 10 && (
+                            <div className="text-center text-gray-400 text-sm mt-2">
+                              Showing 10 of {csvData.length} rows
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -599,169 +972,206 @@ const ComplianceChecker = () => {
 
             {/* Compliance Results */}
             {complianceResults && (
-              <div className="mt-8 space-y-6">
-                <h2 className="text-2xl font-bold text-blue-300">Compliance Results</h2>
-                <div className="space-y-4">
-                  {complianceResults.results.map((result, index) => (
-                    <div key={index} className="bg-gray-800 bg-opacity-50 rounded-lg p-4 border border-gray-700">
-                      <div
-                        className="flex items-center justify-between cursor-pointer"
-                        onClick={() => setExpandedResult(expandedResult === index ? null : index)}
-                      >
-                        <div className="flex items-center">
-                          <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                            result.compliance.compliant ? 'bg-green-500' :
-                            result.compliance.compliant === false ? 'bg-red-500' : 'bg-yellow-500'
-                          }`}>
-                            {result.compliance.compliant ? (
-                              <Check size={16} className="text-white" />
-                            ) : result.compliance.compliant === false ? (
-                              <X size={16} className="text-white" />
-                            ) : (
-                              <AlertTriangle size={16} className="text-white" />
-                            )}
-                          </div>
-                          <span className="ml-2 font-medium">{result.section}</span>
-                        </div>
-                        <button>
-                          {expandedResult === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                        </button>
+              <div className="bg-gray-900/30 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-blue-800">
+                <div className="px-6 py-4 border-b border-gray-700 flex justify-between items-center">
+                  <h2 className="text-lg font-medium text-blue-300">Compliance Results</h2>
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    complianceResults.overall_compliance.compliant ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'
+                  }`}>
+                    {complianceResults.overall_compliance.compliant ? 'Compliant' : 'Non-Compliant'}
+                  </span>
+                </div>
+                <div className="p-6 space-y-4">
+                  {/* Overall compliance */}
+                  <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-md font-medium text-blue-300">Overall Compliance</h3>
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${
+                        getStatusColor(complianceResults.overall_compliance.overall_risk_level)
+                      }`}>
+                        Risk Level: {complianceResults.overall_compliance.overall_risk_level}
+                      </span>
+                    </div>
+                    <p className="text-gray-300 text-sm mb-2">{complianceResults.overall_compliance.summary}</p>
+                    {complianceResults.overall_compliance.violations && complianceResults.overall_compliance.violations.length > 0 && (
+                      <div className="mt-3">
+                        <h4 className="text-sm font-medium text-red-300 mb-2">Violations:</h4>
+                        <ul className="list-disc pl-5 text-sm text-red-200 space-y-1">
+                          {complianceResults.overall_compliance.violations.map((violation, idx) => (
+                            <li key={idx}>{violation}</li>
+                          ))}
+                        </ul>
                       </div>
-                      {expandedResult === index && (
-                        <div className="mt-4 space-y-4">
-                          <div className="grid grid-cols-2 gap-4">
-                            <div>
-                              <span className="text-gray-400">Compliance Score:</span>
-                              <span className="ml-2 font-medium">{result.compliance.compliance_score}</span>
-                            </div>
-                            <div>
-                              <span className="text-gray-400">Risk Level:</span>
-                              <span className={`ml-2 font-medium ${
-                                result.compliance.risk_level === 'High' ? 'text-red-500' :
-                                result.compliance.risk_level === 'Medium' ? 'text-yellow-500' : 'text-green-500'
-                              }`}>
-                                {result.compliance.risk_level}
+                    )}
+                    {complianceResults.overall_compliance.suggestions && complianceResults.overall_compliance.suggestions.length > 0 && (
+                      <div className="mt-3">
+                        <h4 className="text-sm font-medium text-green-300 mb-2">Suggestions:</h4>
+                        <ul className="list-disc pl-5 text-sm text-green-200 space-y-1">
+                          {complianceResults.overall_compliance.suggestions.map((suggestion, idx) => (
+                            <li key={idx}>{suggestion}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Document compliance */}
+                  <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4 relative">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-md font-medium text-blue-300">Document Compliance</h3>
+                      <button 
+                        onClick={() => setExpandedResult(expandedResult === 'document' ? null : 'document')}
+                        className="text-blue-300 hover:text-blue-200"
+                      >
+                        {expandedResult === 'document' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                      </button>
+                    </div>
+                    
+                    <div className={`${expandedResult === 'document' ? 'block' : 'hidden'}`}>
+                      {complianceResults.document_compliance.required_documents && (
+                        <div className="mb-3">
+                          <h4 className="text-sm font-medium text-gray-300 mb-2">Required Documents:</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {complianceResults.document_compliance.required_documents.map((doc, idx) => (
+                              <span key={idx} className="px-2 py-1 bg-gray-600 rounded-md text-xs text-gray-200 flex items-center">
+                                <FileText size={12} className="mr-1" />
+                                {doc}
                               </span>
-                            </div>
-                          </div>
-                          <div>
-                            <span className="text-gray-400">Officer Notes:</span>
-                            <p className="mt-1 text-gray-300">{result.compliance.officer_notes}</p>
-                          </div>
-                          <div>
-                            <span className="text-gray-400">Reasons:</span>
-                            <ul className="mt-1 list-disc list-inside text-gray-300">
-                              {result.compliance.reasons.map((reason, i) => (
-                                <li key={i}>{reason}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <span className="text-gray-400">Suggestions:</span>
-                            <ul className="mt-1 list-disc list-inside text-gray-300">
-                              {result.compliance.suggestions.map((suggestion, i) => (
-                                <li key={i}>{suggestion}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <span className="text-gray-400">Violations:</span>
-                            <ul className="mt-1 list-disc list-inside text-gray-300">
-                              {result.compliance.violations.map((violation, i) => (
-                                <li key={i}>{violation}</li>
-                              ))}
-                            </ul>
+                            ))}
                           </div>
                         </div>
                       )}
+                      
+                      {complianceResults.document_compliance.missing_documents && complianceResults.document_compliance.missing_documents.length > 0 && (
+                        <div className="mb-3">
+                          <h4 className="text-sm font-medium text-red-300 mb-2">Missing Documents:</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {complianceResults.document_compliance.missing_documents.map((doc, idx) => (
+                              <span key={idx} className="px-2 py-1 bg-red-900 bg-opacity-30 rounded-md text-xs text-red-200 flex items-center">
+                                <FileText size={12} className="mr-1" />
+                                {doc}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <p className="text-sm text-gray-300">{complianceResults.document_compliance.document_notes}</p>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Item compliance */}
+                  <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-md font-medium text-blue-300">Item Compliance</h3>
+                      <button 
+                        onClick={() => setExpandedResult(expandedResult === 'item' ? null : 'item')}
+                        className="text-blue-300 hover:text-blue-200"
+                      >
+                        {expandedResult === 'item' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                      </button>
+                    </div>
+                    
+                    <div className={`${expandedResult === 'item' ? 'block' : 'hidden'}`}>
+                      {complianceResults.item_compliance.restricted_items && complianceResults.item_compliance.restricted_items.length > 0 && (
+                        <div className="mb-3">
+                          <h4 className="text-sm font-medium text-yellow-300 mb-2">Restricted Items:</h4>
+                          <ul className="list-disc pl-5 text-sm text-yellow-200 space-y-1">
+                            {complianceResults.item_compliance.restricted_items.map((item, idx) => (
+                              <li key={idx}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      
+                      {complianceResults.item_compliance.prohibited_items && complianceResults.item_compliance.prohibited_items.length > 0 && (
+                        <div className="mb-3">
+                          <h4 className="text-sm font-medium text-red-300 mb-2">Prohibited Items:</h4>
+                          <ul className="list-disc pl-5 text-sm text-red-200 space-y-1">
+                            {complianceResults.item_compliance.prohibited_items.map((item, idx) => (
+                              <li key={idx}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      
+                      <p className="text-sm text-gray-300">{complianceResults.item_compliance.item_notes}</p>
+                    </div>
+                  </div>
+
+                  {/* Officer notes */}
+                  {complianceResults.overall_compliance.officer_notes && (
+                    <div className="bg-blue-900 bg-opacity-30 rounded-lg p-4 border border-blue-800">
+                      <h4 className="text-sm font-medium text-blue-300 mb-2">Officer Notes:</h4>
+                      <p className="text-sm text-gray-300">{complianceResults.overall_compliance.officer_notes}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
           </div>
 
-          {/* Right Sidebar */}
+          {/* Sidebar */}
           <div className="space-y-6">
-            {/* Global Shipment Activity */}
-            <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-gray-700">
-              <div className="px-4 py-3 border-b border-gray-700 flex justify-between items-center">
-                <h2 className="font-medium text-blue-300 flex items-center">
-                  <Globe size={18} className="mr-2" />
-                  Global Shipment Activity
-                </h2>
+            {/* Notifications */}
+            <div className="bg-gray-900/30 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-blue-800">
+              <div className="px-4 py-3 border-b border-gray-700">
+                <h2 className="text-md font-medium text-blue-300">Notifications</h2>
               </div>
-              <div className="p-4">
-                <div className="relative w-full h-64 flex items-center justify-center overflow-hidden">
-                  <div className="absolute w-48 h-48 rounded-full border-4 border-opacity-20 border-blue-500"></div>
-                  <div className="absolute w-40 h-40 rounded-full border-2 border-opacity-30 border-cyan-400"></div>
-                  <svg viewBox="-10 -10 220 220" className="absolute w-64 h-64">
-                    <circle cx="100" cy="100" r="100" fill="#0a192f" stroke="#2a5298" strokeWidth="1" />
-                    {[20, 40, 60, 80].map((r, i) => (
-                      <circle key={i} cx="100" cy="100" r={r} fill="none" stroke="#2a5298" strokeWidth="0.5" strokeDasharray="1,2" />
-                    ))}
-                    {Array.from({ length: 12 }).map((_, i) => {
-                      const angle = (i * 30) * Math.PI / 180;
-                      return (
-                        <path
-                          key={i}
-                          d={`M 100 0 Q 100 100 100 200`}
-                          fill="none"
-                          stroke="#2a5298"
-                          strokeWidth="0.5"
-                          strokeDasharray="1,2"
-                          transform={`rotate(${i * 30} 100 100)`}
-                        />
-                      );
-                    })}
-                  </svg>
-                </div>
+              <div className="p-4 space-y-2 max-h-64 overflow-y-auto">
+                {notifications.map((notification) => (
+                  <div
+                    key={notification.id}
+                    className={`p-3 rounded-lg flex items-start ${
+                      notification.type === 'success' ? 'bg-green-900 bg-opacity-20 border border-green-800' :
+                      notification.type === 'warning' ? 'bg-yellow-900 bg-opacity-20 border border-yellow-800' :
+                      'bg-red-900 bg-opacity-20 border border-red-800'
+                    }`}
+                  >
+                    <span className="flex-shrink-0 mt-0.5">
+                      {notification.type === 'success' ? (
+                        <Check size={16} className="text-green-400" />
+                      ) : notification.type === 'warning' ? (
+                        <AlertTriangle size={16} className="text-yellow-400" />
+                      ) : (
+                        <AlertCircle size={16} className="text-red-400" />
+                      )}
+                    </span>
+                    <p className="ml-3 text-sm text-gray-300">{notification.message}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Recent Notifications */}
-            <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-gray-700">
-              <div className="px-4 py-3 border-b border-gray-700 flex justify-between items-center">
-                <h2 className="font-medium text-blue-300">Recent Notifications</h2>
-                <span className="px-2 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">
-                  {notifications.length} new
-                </span>
+            {/* Country Restrictions */}
+            <div className="bg-gray-900/30 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-blue-800">
+              <div className="px-4 py-3 border-b border-gray-700">
+                <h2 className="text-md font-medium text-blue-300">Country Restrictions</h2>
               </div>
-              <div className="p-4">
-                <div className="space-y-3 max-h-80 overflow-y-auto pr-2">
-                  {notifications.map(notification => (
-                    <div
-                      key={notification.id}
-                      className={`p-3 rounded-lg border ${
-                        notification.type === 'success' ? 'bg-green-900 bg-opacity-20 border-green-800' :
-                        notification.type === 'warning' ? 'bg-yellow-900 bg-opacity-20 border-yellow-800' :
-                        'bg-red-900 bg-opacity-20 border-red-800'
-                      }`}
-                    >
-                      <div className="flex items-start">
-                        <div className="mr-2 mt-0.5">
-                          {notification.type === 'success' ?
-                            <Check size={16} className="text-green-400" /> :
-                            notification.type === 'warning' ?
-                            <AlertTriangle size={16} className="text-yellow-400" /> :
-                            <AlertCircle size={16} className="text-red-400" />}
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-200">{notification.message}</p>
-                          <p className="text-xs text-gray-400 mt-1">Just now</p>
-                        </div>
-                      </div>
+              <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
+                {Object.entries(countryRestrictions).map(([country, restrictions]) => (
+                  <div key={country} className="rounded-lg bg-gray-700 bg-opacity-30 overflow-hidden">
+                    <div className="px-4 py-2 bg-gray-700 flex items-center">
+                      <MapPin size={14} className="text-gray-400 mr-2" />
+                      <h3 className="text-sm font-medium text-white">{country}</h3>
                     </div>
-                  ))}
-                </div>
+                    <div className="p-3">
+                      <ul className="list-disc pl-5 text-sm text-gray-300 space-y-1">
+                        {restrictions.map((restriction, idx) => (
+                          <li key={idx}>{restriction}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Compliance Pop-up */}
-      {showPopup && (
+      {/* Popup for detailed information */}
+      {showPopup && selectedShipmentDetails && (
         <CompliancePopup
           details={selectedShipmentDetails}
           onClose={() => {
@@ -769,6 +1179,47 @@ const ComplianceChecker = () => {
             setSelectedShipmentDetails(null);
           }}
         />
+      )}
+
+      {activeTab === 'stats' && (
+        <div className="container mx-auto px-4 py-8 space-y-8">
+          <div className="bg-gray-900/30 backdrop-blur-sm border border-blue-800 rounded-xl p-6">
+            <h2 className="text-2xl font-semibold text-slate-200 mb-8">Compliance Analytics</h2>
+            
+            {/* Single Shipment Analysis */}
+            {complianceStats && (
+              <div className="mb-12">
+                <h3 className="text-xl font-medium text-slate-300 mb-6 flex items-center">
+                  <Activity className="mr-2 text-blue-400" size={24} />
+                  Single Shipment Analysis
+                </h3>
+                <ComplianceGraphs data={complianceStats} type="single" />
+              </div>
+            )}
+
+            {/* Bulk Analysis */}
+            {csvStats && (
+              <div>
+                <h3 className="text-xl font-medium text-slate-300 mb-6 flex items-center">
+                  <Package className="mr-2 text-blue-400" size={24} />
+                  Bulk Analysis
+                </h3>
+                <ComplianceGraphs data={csvStats} type="bulk" />
+              </div>
+            )}
+
+            {!complianceStats && !csvStats && (
+              <div className="text-center py-12">
+                <div className="bg-slate-800/80 rounded-lg p-8 max-w-lg mx-auto">
+                  <Activity className="mx-auto h-12 w-12 text-slate-400 mb-4" />
+                  <p className="text-slate-400 text-lg">
+                    No analysis data available. Check compliance for shipments to see analytics.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

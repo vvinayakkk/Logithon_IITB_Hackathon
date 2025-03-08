@@ -19,7 +19,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<ComplianceChecker />} /> 
+      <Route path='/reports' element={<ComplianceChecker />} /> 
       <Route path='/restrictions' element={<Restrictions/>} />
       <Route path="/regulations" element={<RegulationsSearch />} />
       <Route path="/regulations/:source/:destination" element={<ShowRegulations />} />

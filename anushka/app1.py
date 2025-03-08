@@ -19,6 +19,13 @@ import spacy
 import google.generativeai as genai
 import logging
 from twilio.rest import Client
+from jinja2 import Template
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib import colors
+from io import BytesIO
+import uuid
 
 
 ACCOUNT_SID = "AC338d14a32c3fd7d04aa789471a6617e5"
@@ -64,7 +71,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 def get_embedding_model():
     """Load the embedding model only once and reuse it."""
     global _model
-    if _model is None:
+    if (_model is None):
         logger.info("Loading embedding model...")
         _model = SentenceTransformer('all-MiniLM-L6-v2')
     return _model
@@ -72,7 +79,7 @@ def get_embedding_model():
 def get_nlp_model():
     """Load the spaCy NLP model for natural language processing."""
     global _nlp
-    if _nlp is None:
+    if (_nlp is None):
         logger.info("Loading NLP model...")
         try:
             _nlp = spacy.load("en_core_web_sm")
@@ -608,115 +615,287 @@ def chat():
         "entities": extract_entities(query)
     })
 
-@app.route('/generate-pdf', methods=['GET'])
+@app.route('/generate-pdf', methods=['POST'])
 def generate_pdf():
     try:
-        # Get and parse data from query parameter
-        data_param = request.args.get('data', '{}')
-        data = json.loads(data_param)
-        
-        item_name = data.get('itemName', 'Unknown Item')
+        data = request.json
+        title = data.get('title', 'Shipping Restrictions Report')
         results = data.get('results', [])
+        country_info = data.get('country_info', {})
         
-        # Create a PDF in memory
+        # Create PDF buffer
         buffer = BytesIO()
-        doc = SimpleDocTemplate(buffer, pagesize=letter, 
-                               rightMargin=72, leftMargin=72,
-                               topMargin=72, bottomMargin=72)
-        
-        elements = []
-        
-        # Styles
+        doc = SimpleDocTemplate(
+            buffer,
+            pagesize=A4,
+            rightMargin=72,
+            leftMargin=72,
+            topMargin=72,
+            bottomMargin=72
+        )
+
+        # Prepare the story (content)
+        story = []
         styles = getSampleStyleSheet()
-        title_style = styles['Heading1']
-        title_style.alignment = 1  # Center alignment
         
-        subtitle_style = styles['Heading2']
-        normal_style = styles['Normal']
+        # Custom styles
+        title_style = ParagraphStyle(
+            'CustomTitle',
+            parent=styles['Heading1'],
+            fontSize=24,
+            spaceAfter=30,
+            textColor=colors.HexColor('#1a365d')
+        )
         
-        # Title
-        elements.append(Paragraph(f"Item Restrictions Report", title_style))
-        elements.append(Spacer(1, 12))
+        header_style = ParagraphStyle(
+            'CustomHeader',
+            parent=styles['Heading2'],
+            fontSize=16,
+            spaceAfter=12,
+            textColor=colors.HexColor('#2563eb')
+        )
         
-        # Search term
-        elements.append(Paragraph(f"Search Term: {item_name}", subtitle_style))
-        elements.append(Spacer(1, 12))
+        subheader_style = ParagraphStyle(
+            'CustomSubHeader',
+            parent=styles['Heading3'],
+            fontSize=14,
+            spaceAfter=8,
+            textColor=colors.HexColor('#3b82f6')
+        )
         
-        # Add each country's restrictions
-        for country_data in results:
-            country = country_data.get('country', 'Unknown Country')
-            items = country_data.get('items', [])
+        normal_style = ParagraphStyle(
+            'CustomNormal',
+            parent=styles['Normal'],
+            fontSize=10,
+            spaceBefore=4,
+            spaceAfter=4,
+            textColor=colors.HexColor('#333333')
+        )
+        
+        item_style = ParagraphStyle(
+            'ItemStyle',
+            parent=styles['Normal'],
+            fontSize=10,
+            leftIndent=20,
+            bulletIndent=10,
+            spaceBefore=2,
+            spaceAfter=2,
+            textColor=colors.HexColor('#333333')
+        )
+
+        # Add report title
+        story.append(Paragraph(title, title_style))
+        story.append(Spacer(1, 20))
+        
+        # Add generation date
+        current_date = time.strftime("%B %d, %Y %H:%M:%S")
+        story.append(Paragraph(f"Generated on: {current_date}", normal_style))
+        story.append(Spacer(1, 20))
+        
+        # Add country-specific information if available
+        if country_info:
+            country_name = country_info.get('country', 'Country Information')
+            story.append(Paragraph(f"Country: {country_name}", header_style))
+            story.append(Spacer(1, 8))
             
-            elements.append(Paragraph(f"Country: {country}", subtitle_style))
-            
-            # Create table for items
+            items = country_info.get('items', [])
             if items:
-                data_rows = [["Item", "Score"]]
+                story.append(Paragraph(f"Total Prohibited Items: {len(items)}", normal_style))
+                story.append(Spacer(1, 12))
+                
+                story.append(Paragraph("Complete List of Import Prohibitions:", subheader_style))
                 for item in items:
-                    data_rows.append([item.get('item', ''), f"{float(item.get('score', 0)) * 100:.1f}%"])
-                
-                # Create the table
-                table = Table(data_rows, colWidths=[350, 100])
-                
-                # Add style to the table
-                table.setStyle(TableStyle([
-                    ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
-                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-                    ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-                    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                    ('GRID', (0, 0), (-1, -1), 1, colors.black)
-                ]))
-                
-                elements.append(table)
-            else:
-                elements.append(Paragraph("No restrictions found", normal_style))
+                    story.append(Paragraph(f"• {item}", item_style))
+                story.append(Spacer(1, 20))
+
+        # Add search results if available
+        if results:
+            story.append(Paragraph("Search Results", header_style))
+            story.append(Spacer(1, 8))
             
-            elements.append(Spacer(1, 12))
+            # Add results table
+            table_data = [['Item', 'Country', 'Status', 'Match Score']]
+            for result in results:
+                score = f"{result.get('score', 0) * 100:.1f}%" if result.get('score') is not None else 'N/A'
+                table_data.append([
+                    result.get('item', ''),
+                    result.get('country', ''),
+                    result.get('status', 'Prohibited'),
+                    score
+                ])
+
+            table_style = TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#2563eb')),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (-1, 0), 12),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                ('BACKGROUND', (0, 1), (-1, -1), colors.HexColor('#f8fafc')),
+                ('TEXTCOLOR', (0, 1), (-1, -1), colors.HexColor('#333333')),
+                ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+                ('FONTSIZE', (0, 1), (-1, -1), 10),
+                ('GRID', (0, 0), (-1, -1), 1, colors.HexColor('#e2e8f0')),
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('PADDING', (0, 0), (-1, -1), 6),
+            ])
+
+            # Calculate column widths based on content
+            col_widths = [200, 100, 100, 100]  # Adjust these values as needed
+            table = Table(table_data, colWidths=col_widths)
+            table.setStyle(table_style)
+            story.append(table)
+            story.append(Spacer(1, 20))
+            
+        # Group results by country
+        grouped_results = {}
+        for result in results:
+            country = result.get('country', 'Unknown')
+            if country not in grouped_results:
+                grouped_results[country] = []
+            grouped_results[country].append(result)
+            
+        # Add detailed country sections
+        if grouped_results:
+            story.append(Paragraph("Detailed Country Restrictions", header_style))
+            story.append(Spacer(1, 12))
+            
+            for country, items in grouped_results.items():
+                story.append(Paragraph(f"{country}", subheader_style))
+                story.append(Spacer(1, 4))
+                
+                for item in items:
+                    item_text = item.get('item', '')
+                    score = item.get('score', 0)
+                    score_text = f" (Match Score: {score * 100:.1f}%)" if score > 0 else ""
+                    story.append(Paragraph(f"• {item_text}{score_text}", item_style))
+                
+                story.append(Spacer(1, 12))
+
+        # Add disclaimer and additional information
+        story.append(Paragraph("Important Information", header_style))
+        story.append(Spacer(1, 8))
         
-        # Build the PDF
-        doc.build(elements)
+        disclaimer_text = """
+        These items are strictly prohibited for import into the specified destinations. 
+        Attempting to ship these items may result in delays, fines, or confiscation.
+        Always verify current regulations with customs authorities before shipping.
+        """
+        story.append(Paragraph(disclaimer_text, normal_style))
+        story.append(Spacer(1, 12))
         
-        # Get the value from the BytesIO buffer
-        pdf_data = buffer.getvalue()
+        notes_text = """
+        Note: This report is generated based on information available in our database. 
+        Import regulations may change without notice. The information in this document 
+        is provided for reference purposes only and should not be considered legal advice.
+        """
+        story.append(Paragraph(notes_text, normal_style))
+
+        # Build PDF
+        doc.build(story)
+        
+        # Get PDF content
+        pdf_content = buffer.getvalue()
         buffer.close()
-        
+
         # Create response
-        response = make_response(pdf_data)
+        response = make_response(pdf_content)
         response.headers['Content-Type'] = 'application/pdf'
-        response.headers['Content-Disposition'] = f'attachment; filename=item_restrictions_{item_name}.pdf'
+        response.headers['Content-Disposition'] = f'attachment; filename={title.replace(" ", "-").lower()}.pdf'
         
         return response
+
     except Exception as e:
         logger.error(f"Error generating PDF: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+
 @app.route("/send_message", methods=["POST"])
 def send_message():
     try:
-        data = request.json
-        message_type = data.get("type", "sms")  # "sms" or "whatsapp"
-        text = data.get("message", "Hello from Twilio!")
+        data = request.form
+        from_number = 'whatsapp:+14155238886'
+        to = data.get('to')
+        to_number = f"whatsapp:{to}"
+        message_body = data.get('message')
+        
+        # Handle file upload to Supabase
+        if 'file' in request.files:
+            file = request.files['file']
+            if file:
+                # Generate a unique filename
+                file_extension = os.path.splitext(file.filename)[1]
+                unique_filename = f"{uuid.uuid4()}{file_extension}"
+                
+                # Save file temporarily
+                temp_path = f"temp_{unique_filename}"
+                file.save(temp_path)
+                
+                try:
+                    logger.info(f"Using bucket: {BUCKET_NAME}")
+                    
+                    # Upload to Supabase storage
+                    with open(temp_path, 'rb') as f:
+                        file_content = f.read()
+                    
+                    logger.info(f"Uploading file {unique_filename} ({len(file_content)} bytes)")
+                    
+                    # Try the upload
+                    res = supabase.storage.from_(BUCKET_NAME).upload(
+                        path=unique_filename,
+                        file=file_content,
+                        file_options={"content-type": file.content_type or "application/octet-stream"}
+                    )
+                    
+                    logger.info(f"Upload response: {res}")
+                    
+                    # Get public URL for the file
+                    file_url = supabase.storage.from_(BUCKET_NAME).get_public_url(unique_filename)
+                    logger.info(f"Generated public URL: {file_url}")
+                    
+                    # Clean up temporary file
+                    os.remove(temp_path)
+                    
+                    # Send message with media
+                    message = client.messages.create(
+                        from_=from_number,
+                        body=message_body,
+                        to=to_number,
+                        media_url=file_url
+                    )
+                    
+                    logger.info(f"Message sent with SID: {message.sid}")
+                    
+                except Exception as upload_error:
+                    logger.error(f"Supabase upload error: {str(upload_error)}")
+                    
+                    # Send message without media as a fallback
+                    message = client.messages.create(
+                        from_=from_number,
+                        body=f"{message_body} (Note: File attachment failed to upload)",
+                        to=to_number
+                    )
+            else:
+                # Send message without media
+                message = client.messages.create(
+                    from_=from_number,
+                    body=message_body,
+                    to=to_number
+                )
+        else:
+            # Send message without media
+            message = client.messages.create(
+                from_=from_number,
+                body=message_body,
+                to=to_number
+            )
 
-        if message_type == "whatsapp":
-            to_number = f"whatsapp:{YOUR_PHONE_NUMBER}"
-            from_number = TWILIO_WHATSAPP_NUMBER
-        else:  # SMS via Messaging Service
-            to_number = YOUR_PHONE_NUMBER
-            from_number = MESSAGING_SERVICE_SID  # Use Messaging Service SID
-
-        message = client.messages.create(
-            messaging_service_sid=from_number if message_type == "sms" else None,
-            from_=None if message_type == "sms" else from_number,
-            body=text,
-            to=to_number
-        )
-
-        return jsonify({"message_sid": message.sid, "status": "Message sent!"})
+        return jsonify({"message_sid": message.sid})
 
     except Exception as e:
+        logger.error(f"Error sending message: {str(e)}")
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

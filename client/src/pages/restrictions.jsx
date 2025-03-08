@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Package, Search, AlertTriangle, Check, X, Globe, Map, Truck, HelpCircle, RefreshCw, Layers, MessageSquare, ShieldAlert, Clock, Plus } from 'lucide-react';
+import { Package, Search, AlertTriangle, Check, X, Globe, Map, Truck, HelpCircle, RefreshCw, Layers, MessageSquare, ShieldAlert, Clock, Plus, Download, Share2 } from 'lucide-react';
+import { CSVLink } from 'react-csv';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 import Header from '../components/header';
 import axios from 'axios';
@@ -12,6 +15,8 @@ const Restrictions = () => {
   const [loading, setLoading] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('country');
+  const [isExportOpen, setIsExportOpen] = useState(false);
+  const [sharing, setSharing] = useState(false);
 
   // Chat-related states
   const [chatHistory, setChatHistory] = useState([
@@ -253,6 +258,116 @@ const Restrictions = () => {
       );
     }
   }, [chatMessages, activeChatId]);
+
+  // Add these new functions for export functionality
+  const exportToPDF = async () => {
+    try {
+      // Set loading state if needed
+      // setExporting(true);
+      
+      // Prepare data for PDF generation
+      const pdfData = {
+        title: activeTab === 'country' 
+          ? `Prohibited Items for ${selectedCountry}`
+          : `Countries Restricting "${itemName}"`,
+        results: results,
+        // Add country_info for country-specific reports
+        country_info: activeTab === 'country' ? {
+          country: selectedCountry,
+          items: results.map(result => result.item)
+        } : null
+      };
+  
+      // Get PDF from backend
+      const pdfResponse = await axios.post('http://localhost:5000/generate-pdf', pdfData, {
+        responseType: 'blob'
+      });
+      
+      // Create a blob URL and trigger download
+      const blob = new Blob([pdfResponse.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create temporary link element to trigger download
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `shipping-restrictions-${new Date().getTime()}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      
+      // Clean up
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
+      
+      // Reset loading state if needed
+      // setExporting(false);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+      // Reset loading state if needed
+      // setExporting(false);
+    }
+  };
+
+  const prepareCSVData = () => {
+    const csvData = [
+      ['Item', 'Country', 'Status', 'Match Score'],
+      ...results.map(result => [
+        result.item,
+        result.country,
+        result.status,
+        `${(result.score * 100).toFixed(1)}%`
+      ])
+    ];
+    return csvData;
+  };
+
+  const shareOnWhatsApp = async () => {
+    setSharing(true);
+    try {
+      const text = `This is your report`;
+
+      // Prepare data for PDF generation
+      const pdfData = {
+        title: activeTab === 'country' 
+          ? `Prohibited Items for ${selectedCountry}`
+          : `Countries Restricting "${itemName}"`,
+        results: results,
+        type: activeTab,
+        searchTerm: activeTab === 'country' ? selectedCountry : itemName
+      };
+
+      // Get PDF from backend
+      const pdfResponse = await axios.post('http://localhost:5000/generate-pdf', pdfData, {
+        responseType: 'blob'
+      });
+      
+      // Create FormData
+      const formData = new FormData();
+      formData.append('to', '+919930679651'); // Replace with phone number input
+      formData.append('message', text);
+      formData.append('file', new Blob([pdfResponse.data], { type: 'application/pdf' }), 'shipping-restrictions.pdf');
+
+      // Send to WhatsApp
+      const response = await axios.post('http://localhost:5000/send_message', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      if (response.data.message_sid) {
+        alert('Report shared successfully via WhatsApp!');
+      } else {
+        throw new Error('Failed to send message');
+      }
+
+    } catch (error) {
+      console.error('Error sharing via WhatsApp:', error);
+      alert('Failed to share report via WhatsApp. Please try again.');
+    } finally {
+      setSharing(false);
+      setIsExportOpen(false);
+    }
+  };
 
   // Render tab content
   const renderTabContent = () => {
@@ -546,26 +661,70 @@ const Restrictions = () => {
             {/* Results area - shared between first two tabs */}
             {(activeTab === 'country' || activeTab === 'item') && results && (
               <div className="rounded-lg bg-gray-900/60 backdrop-blur-md border border-blue-800/40 p-4 mt-6 animate-fade-in">
-                <h3 className="text-xl font-bold text-blue-300 mb-4 flex items-center justify-between">
-                  <div className="flex items-center">
-                    {activeTab === 'country' ? (
-                      <>
-                        <Layers className="h-5 w-5 mr-2 text-yellow-400" />
-                        Prohibited Items for {selectedCountry}
-                      </>
-                    ) : (
-                      <>
-                        <AlertTriangle className="h-5 w-5 mr-2 text-yellow-400" />
-                        Countries Restricting "{itemName}"
-                      </>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-blue-300 flex items-center">
+                    <div className="flex items-center">
+                      {activeTab === 'country' ? (
+                        <>
+                          <Layers className="h-5 w-5 mr-2 text-yellow-400" />
+                          Prohibited Items for {selectedCountry}
+                        </>
+                      ) : (
+                        <>
+                          <AlertTriangle className="h-5 w-5 mr-2 text-yellow-400" />
+                          Countries Restricting "{itemName}"
+                        </>
+                      )}
+                    </div>
+                    {results.length > 0 && (
+                      <span className="text-sm font-normal bg-yellow-400/10 text-yellow-300 px-3 py-1 rounded-full">
+                        {results.length} items found
+                      </span>
                     )}
-                  </div>
+                  </h3>
+                  
                   {results.length > 0 && (
-                    <span className="text-sm font-normal bg-yellow-400/10 text-yellow-300 px-3 py-1 rounded-full">
-                      {results.length} items found
-                    </span>
+                    <div className="relative">
+                      <button
+                        onClick={() => setIsExportOpen(!isExportOpen)}
+                        className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+                      >
+                        <Download className="h-4 w-4" />
+                        <span>Export</span>
+                      </button>
+
+                      {isExportOpen && (
+                        <div className="absolute right-0 mt-2 w-48 rounded-lg bg-gray-800 shadow-lg border border-blue-800/40 z-10">
+                          <button
+                            onClick={exportToPDF}
+                            className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2"
+                          >
+                            <Download className="h-4 w-4" />
+                            <span>Export as PDF</span>
+                          </button>
+
+                          <CSVLink
+                            data={prepareCSVData()}
+                            filename="shipping-restrictions.csv"
+                            className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2"
+                          >
+                            <Download className="h-4 w-4" />
+                            <span>Export as CSV</span>
+                          </CSVLink>
+
+                          <button
+                            onClick={shareOnWhatsApp}
+                            disabled={sharing}
+                            className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2 disabled:opacity-50"
+                          >
+                            <Share2 className="h-4 w-4" />
+                            <span>{sharing ? 'Sharing...' : 'Share via WhatsApp'}</span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   )}
-                </h3>
+                </div>
 
                 {results.length === 0 ? (
                   <div className="flex items-center bg-green-900/30 text-green-300 p-4 rounded-lg border border-green-800/40">

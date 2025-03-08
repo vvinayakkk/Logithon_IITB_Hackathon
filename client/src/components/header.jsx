@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Package, Info, X, Check, Database, PenTool , Shield } from 'lucide-react';
+import { Package, Info, X, Check, Database, PenTool, Shield, BarChart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
@@ -9,13 +9,14 @@ function Header() {
 
   const navItems = [
     { path: '/regulations', icon: Database, label: 'Database' },
-    { path: '/restrictions', icon: PenTool , label: 'Utilities' },
+    { path: '/restrictions', icon: PenTool, label: 'Utilities' },
     { path: '/admin', icon: Shield, label: 'Admin' },
+    { path: '/reports', icon: BarChart, label: 'Reports' },
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 bg-gray-950 shadow-lg text-white p-4 border-b border-blue-800">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-gray-950 via-blue-950 to-gray-900 shadow-lg text-white p-4 border-b border-blue-800">
         <div className="container mx-auto flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }} 
@@ -23,7 +24,7 @@ function Header() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <Package className="h-8 w-8 text-blue-400" />
+            <Package className="h-8 w-8 text-cyan-400" />
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Rapid Compliance Checker
             </h1>
@@ -39,7 +40,7 @@ function Header() {
                     to={item.path}
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors
                       ${location.pathname === item.path 
-                        ? 'bg-blue-700 text-white' 
+                        ? 'bg-blue-600/50 text-cyan-300' 
                         : 'text-blue-300 hover:bg-blue-800/50'}`}
                   >
                     <Icon className="h-5 w-5" />
@@ -53,7 +54,7 @@ function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowInfoModal(true)}
-              className="p-2 rounded-full bg-blue-700 hover:bg-blue-600 transition-colors"
+              className="p-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-colors"
             >
               <Info className="h-5 w-5" />
             </motion.button>
@@ -68,7 +69,7 @@ function Header() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-gray-900/90 backdrop-blur-md rounded-xl max-w-lg w-full p-6 relative border border-blue-800"
+            className="bg-gradient-to-b from-gray-900 via-blue-950 to-gray-900 backdrop-blur-md rounded-xl max-w-lg w-full p-6 relative border border-blue-800"
           >
             <button 
               onClick={() => setShowInfoModal(false)}
