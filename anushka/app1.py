@@ -1,5 +1,10 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, make_response
 from flask_cors import CORS
+from io import BytesIO
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 import re
 import json
 import PyPDF2
@@ -13,10 +18,19 @@ import time
 import spacy
 import google.generativeai as genai
 import logging
+from twilio.rest import Client
+
+
+ACCOUNT_SID = "AC338d14a32c3fd7d04aa789471a6617e5"
+AUTH_TOKEN = "c2a0f002936b4a8a62b219f8865ae247"
+MESSAGING_SERVICE_SID = "MG161d82d9efb0b7dc49b53a7008b5c2c8"  # Twilio Messaging Service SID
+TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"  # Twilio's default sandbox number
+YOUR_PHONE_NUMBER = "+917977409706"  # Example: +919876543210
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
 
 app = Flask(__name__, static_folder='../frontend/build')
 CORS(app)  # Enable CORS for all routes
@@ -28,6 +42,14 @@ _all_items = None
 _country_map = None
 _country_data = None
 _nlp = None
+
+ACCOUNT_SID = "AC402d24ad766ba5c73dd10c865bd5ba38"
+AUTH_TOKEN = "9acb4c17cf0b00befcb81168aa3e402d"
+MESSAGING_SERVICE_SID = "MGf88ee5c9f52bda63c4fec2e8cf710f30"  # Twilio Messaging Service SID
+TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"  # Twilio's default sandbox number
+YOUR_PHONE_NUMBER = "+917977409706"  # Example: +919876543210
+
+client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 # Paths configuration
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
@@ -83,7 +105,7 @@ def parse_country_data(text):
     for line in lines:
         line = line.strip()
         country_match = country_pattern.match(line)
-        if country_match:
+        if (country_match):
             if current_country and current_items:
                 countries_data[current_country] = current_items
             current_country = country_match.group(1).strip()
@@ -585,6 +607,116 @@ def chat():
         "response": response,
         "entities": extract_entities(query)
     })
+
+@app.route('/generate-pdf', methods=['GET'])
+def generate_pdf():
+    try:
+        # Get and parse data from query parameter
+        data_param = request.args.get('data', '{}')
+        data = json.loads(data_param)
+        
+        item_name = data.get('itemName', 'Unknown Item')
+        results = data.get('results', [])
+        
+        # Create a PDF in memory
+        buffer = BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=letter, 
+                               rightMargin=72, leftMargin=72,
+                               topMargin=72, bottomMargin=72)
+        
+        elements = []
+        
+        # Styles
+        styles = getSampleStyleSheet()
+        title_style = styles['Heading1']
+        title_style.alignment = 1  # Center alignment
+        
+        subtitle_style = styles['Heading2']
+        normal_style = styles['Normal']
+        
+        # Title
+        elements.append(Paragraph(f"Item Restrictions Report", title_style))
+        elements.append(Spacer(1, 12))
+        
+        # Search term
+        elements.append(Paragraph(f"Search Term: {item_name}", subtitle_style))
+        elements.append(Spacer(1, 12))
+        
+        # Add each country's restrictions
+        for country_data in results:
+            country = country_data.get('country', 'Unknown Country')
+            items = country_data.get('items', [])
+            
+            elements.append(Paragraph(f"Country: {country}", subtitle_style))
+            
+            # Create table for items
+            if items:
+                data_rows = [["Item", "Score"]]
+                for item in items:
+                    data_rows.append([item.get('item', ''), f"{float(item.get('score', 0)) * 100:.1f}%"])
+                
+                # Create the table
+                table = Table(data_rows, colWidths=[350, 100])
+                
+                # Add style to the table
+                table.setStyle(TableStyle([
+                    ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
+                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                    ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                    ('GRID', (0, 0), (-1, -1), 1, colors.black)
+                ]))
+                
+                elements.append(table)
+            else:
+                elements.append(Paragraph("No restrictions found", normal_style))
+            
+            elements.append(Spacer(1, 12))
+        
+        # Build the PDF
+        doc.build(elements)
+        
+        # Get the value from the BytesIO buffer
+        pdf_data = buffer.getvalue()
+        buffer.close()
+        
+        # Create response
+        response = make_response(pdf_data)
+        response.headers['Content-Type'] = 'application/pdf'
+        response.headers['Content-Disposition'] = f'attachment; filename=item_restrictions_{item_name}.pdf'
+        
+        return response
+    except Exception as e:
+        logger.error(f"Error generating PDF: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/send_message", methods=["POST"])
+def send_message():
+    try:
+        data = request.json
+        message_type = data.get("type", "sms")  # "sms" or "whatsapp"
+        text = data.get("message", "Hello from Twilio!")
+
+        if message_type == "whatsapp":
+            to_number = f"whatsapp:{YOUR_PHONE_NUMBER}"
+            from_number = TWILIO_WHATSAPP_NUMBER
+        else:  # SMS via Messaging Service
+            to_number = YOUR_PHONE_NUMBER
+            from_number = MESSAGING_SERVICE_SID  # Use Messaging Service SID
+
+        message = client.messages.create(
+            messaging_service_sid=from_number if message_type == "sms" else None,
+            from_=None if message_type == "sms" else from_number,
+            body=text,
+            to=to_number
+        )
+
+        return jsonify({"message_sid": message.sid, "status": "Message sent!"})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
