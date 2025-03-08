@@ -8,6 +8,7 @@ from flask import Flask, request, jsonify
 from concurrent.futures import ThreadPoolExecutor
 from flask_cors import CORS
 from dotenv import load_dotenv  # Add this import
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 app = Flask(__name__)
 CORS(app)
@@ -85,17 +86,24 @@ def get_section_content(regulation_data, section_name):
     return None
 
 def check_compliance_with_gemini(section_data, user_data, api_key):
-    """Check compliance using Gemini API with enhanced compliance officer analysis."""
+    """Check compliance with Gemini API, including tax/tariff for your specific routes."""
     gemini_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent"
     headers = {
         "Content-Type": "application/json",
         "x-goog-api-key": api_key
     }
+    print("user data", user_data)
+    # Calculate financial information first
+    shipment_value = float(user_data.get('shipment_value_usd', 0.0))
+    source_country = user_data.get('source')
+    destination_country = user_data.get('destination')
     
-    # Construct enhanced prompt for Gemini
+    cost_info = get_exchange_rate_and_taxes(source_country, destination_country, shipment_value)
+    financial_details = json.dumps(cost_info, indent=2) if cost_info else "Not available"
+
     prompt = f"""
     You are a UPS Senior International Compliance Officer with 15+ years of experience in global shipping regulations. 
-    Analyze the following shipment details against regulatory requirements with extreme attention to detail.
+    Analyze the shipment details against regulatory requirements and financial implications.
     
     REGULATORY FRAMEWORK:
     {section_data['content']}
@@ -103,34 +111,38 @@ def check_compliance_with_gemini(section_data, user_data, api_key):
     COMPLIANCE CHECKLIST:
     {json.dumps(section_data['simplified_form'], indent=2)}
     
-    SHIPMENT DETAILS FOR INSPECTION:
+    SHIPMENT DETAILS:
     {json.dumps(user_data, indent=2)}
     
-    TASK: Conduct a thorough, critical compliance analysis as a Senior Compliance Officer would.
+    FINANCIAL DETAILS:
+    {financial_details}
     
-    Format your response as a JSON object with the following structure:
+    TASK: Conduct a thorough compliance analysis. You MUST include the financial analysis in your response.
+    The financial analysis should reflect the provided financial details and their compliance implications.
+    
+    Format your response as a JSON object:
     {{
-        "compliant": boolean,  // true if fully compliant, false otherwise
-        "compliance_score": number,  // Rate compliance from 0-100
-        "risk_level": string,  // "High", "Medium", "Low", or "None"
-        "reasons": [
-            // Detailed array of specific compliance findings (both positive and negative)
-            // Include regulation code references where applicable
-        ],
-        "violations": [
-            // Array of specific rules violated, if any
-        ],
-        "suggestions": [
-            // Specific, actionable recommendations to resolve each violation
-        ],
-        "additional_requirements": [
-            // Any additional permits, forms or documentation needed
-        ],
-        "officer_notes": string  // Professional insight from your experience with similar cases
+        "compliant": boolean,
+        "compliance_score": number,
+        "risk_level": string,
+        "reasons": [],
+        "violations": [],
+        "suggestions": [],
+        "additional_requirements": [],
+        "financial_analysis": {{
+            "exchange_rate": {cost_info.get('exchange_rate') if cost_info else 0},
+            "source_currency": "{cost_info.get('source_currency') if cost_info else ''}",
+            "dest_currency": "{cost_info.get('dest_currency') if cost_info else ''}",
+            "converted_amount": {cost_info.get('converted_amount') if cost_info else 0},
+            "tariff_rate": {cost_info.get('tariff_rate') if cost_info else 0},
+            "tariff_amount": {cost_info.get('tariff_amount') if cost_info else 0},
+            "total_with_tariff": {cost_info.get('total_with_tariff') if cost_info else 0},
+            "tax_compliance_notes": "Include any tax compliance observations here"
+        }},
+        "officer_notes": string
     }}
     
-    Ensure your analysis is thorough, strict, and identifies ALL potential compliance issues.
-    Be extremely attentive to details that might be overlooked.
+    IMPORTANT: Always include the financial_analysis object with the provided values. Do not return null for financial_analysis.
     """
     
     payload = {
@@ -139,7 +151,7 @@ def check_compliance_with_gemini(section_data, user_data, api_key):
             "temperature": 0.3,
             "topK": 40,
             "topP": 0.95,
-            "maxOutputTokens": 1500
+            "maxOutputTokens": 2000
         }
     }
     
@@ -147,39 +159,38 @@ def check_compliance_with_gemini(section_data, user_data, api_key):
         response = requests.post(gemini_url, headers=headers, json=payload)
         response_data = response.json()
         
-        # Extract the text response and parse it as JSON
         if "candidates" in response_data and len(response_data["candidates"]) > 0:
             text_response = response_data["candidates"][0]["content"]["parts"][0]["text"]
-            # Find JSON in the response
-            try:
-                import re
-                json_match = re.search(r'({.*})', text_response, re.DOTALL)
-                if json_match:
-                    return json.loads(json_match.group(1))
-            except Exception as parse_error:
-                print(f"JSON parsing error: {str(parse_error)}")
-                # Fallback if JSON parsing fails
-                return {
-                    "compliant": None,
-                    "compliance_score": 0,
-                    "risk_level": "Unknown",
-                    "reasons": ["Failed to parse Gemini response: " + str(parse_error)],
-                    "violations": ["Error in analysis"],
-                    "suggestions": ["Please review manually"],
-                    "additional_requirements": [],
-                    "officer_notes": "Technical error occurred during compliance evaluation."
-                }
+            json_match = re.search(r'({.*})', text_response, re.DOTALL)
+            if json_match:
+                result = json.loads(json_match.group(1))
+                # Ensure financial analysis is always present
+                if 'financial_analysis' not in result or result['financial_analysis'] is None:
+                    result['financial_analysis'] = cost_info or {
+                        "exchange_rate": 0,
+                        "source_currency": "",
+                        "dest_currency": "",
+                        "converted_amount": 0,
+                        "tariff_rate": 0,
+                        "tariff_amount": 0,
+                        "total_with_tariff": 0,
+                        "tax_compliance_notes": "Financial analysis not available"
+                    }
+                return result
                 
-        return {
+        default_result = {
             "compliant": None,
             "compliance_score": 0,
             "risk_level": "Unknown",
-            "reasons": ["Failed to get a valid response from Gemini"],
+            "reasons": ["Failed to get valid response"],
             "violations": ["Analysis error"],
             "suggestions": ["Please review manually"],
             "additional_requirements": [],
-            "officer_notes": "System couldn't complete the compliance evaluation."
+            "financial_analysis": cost_info if cost_info else None,
+            "officer_notes": "System couldn't complete evaluation"
         }
+        return default_result
+        
     except Exception as e:
         print(f"Error calling Gemini API: {str(e)}")
         return {
@@ -188,11 +199,11 @@ def check_compliance_with_gemini(section_data, user_data, api_key):
             "risk_level": "Unknown",
             "reasons": [f"API error: {str(e)}"],
             "violations": ["Service unavailable"],
-            "suggestions": ["Please try again later"],
+            "suggestions": ["Please try again"],
             "additional_requirements": [],
-            "officer_notes": "Technical difficulties encountered during evaluation process."
+            "financial_analysis": cost_info if cost_info else None,
+            "officer_notes": "Technical difficulties encountered"
         }
-
 # Function to get all section names from a regulation file
 def get_all_sections(file_path):
     """Get all section names from a regulation file."""
@@ -232,6 +243,10 @@ def check_section_compliance(section_name):
         destination = data.get('destination')
         user_data = data.get('shipment_details', {})
         
+        # Add source and destination to user_data
+        user_data['source'] = source
+        user_data['destination'] = destination
+        
         if not source or not destination:
             return jsonify({"error": "Source and destination are required"}), 400
         
@@ -262,14 +277,15 @@ def check_section_compliance(section_name):
         return jsonify({"error": str(e)}), 500
 
 # Route to check compliance for all sections in parallel
-@app.route('/api/check_all', methods=['POST'])
+@app.route('/api/check_financial_all', methods=['POST'])
 def check_all_compliance():
     try:
         data = request.json
         source = data.get('source')
         destination = data.get('destination')
         user_data = data.get('shipment_details', {})
-        
+        user_data['source'] = source
+        user_data['destination'] = destination
         if not source or not destination:
             return jsonify({"error": "Source and destination are required"}), 400
         
@@ -457,6 +473,20 @@ def process_single_shipment(shipment_row, api_key):
     # Use the provided API key for this specific shipment
     compliance_result = check_all_compliance_with_gemini(all_sections_data, shipment_row, api_key)
     
+    # Add financial analysis
+    shipment_value = float(shipment_row.get('shipment_value_usd', 0.0))
+    cost_info = get_exchange_rate_and_taxes(source, destination, shipment_value)
+    compliance_result['financial_analysis'] = cost_info if cost_info else {
+        "exchange_rate": 0,
+        "source_currency": "",
+        "dest_currency": "",
+        "converted_amount": 0,
+        "tariff_rate": 0,
+        "tariff_amount": 0,
+        "total_with_tariff": 0,
+        "tax_compliance_notes": "Financial analysis not available"
+    }
+    
     return {
         "source": source,
         "destination": destination,
@@ -641,6 +671,173 @@ def search_items():
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+def get_exchange_rate_and_taxes(source_country, destination_country, amount_usd):
+    """Get exchange rate and tax/tariff information for specific country pairs in your dataset."""
+    try:
+        # Input validation
+        if not source_country or not destination_country:
+            print("Source or destination country is missing")
+            return None
+            
+        if not isinstance(source_country, str) or not isinstance(destination_country, str):
+            print("Source and destination must be strings")
+            return None
+            
+        if not amount_usd or not isinstance(amount_usd, (int, float)) or amount_usd <= 0:
+            print("Invalid amount provided")
+            return None
+
+        # Country code mapping (using ISO 3166-1 alpha-2 codes where possible)
+        country_codes = {
+            'australia': 'AU',
+            'brazil': 'BR',
+            'canada': 'CA',
+            'china': 'CN',
+            'france': 'FR',
+            'germany': 'DE',
+            'india': 'IN',
+            'italy': 'IT',
+            'japan': 'JP',
+            'malaysia': 'MY',
+            'mexico': 'MX',
+            'netherlands': 'NL',
+            'singapore': 'SG',
+            'thailand': 'TH',
+            'arabia': 'SA',
+            'africa': 'ZA',
+            'korea': 'KR',
+            'emirates': 'AE',
+            'kingdom': 'UK',
+            'states': 'US'
+        }
+
+        # Safe conversion to lowercase and lookup
+        source_code = country_codes.get(source_country.lower().strip())
+        dest_code = country_codes.get(destination_country.lower().strip())
+        
+        if not source_code or not dest_code:
+            print(f"Invalid country codes for {source_country} or {destination_country}")
+            return None
+
+        # Currency mapping (rest remains same)
+        currencies = {
+            'AU': 'AUD',
+            'BR': 'BRL',
+            'CA': 'CAD',
+            'CN': 'CNY',
+            'FR': 'EUR',
+            'DE': 'EUR',
+            'IN': 'INR',
+            'IT': 'EUR',
+            'JP': 'JPY',
+            'MY': 'MYR',
+            'MX': 'MXN',
+            'NL': 'EUR',
+            'SG': 'SGD',
+            'TH': 'THB',
+            'SA': 'SAR',
+            'ZA': 'ZAR',
+            'KR': 'KRW',
+            'AE': 'AED',
+            'UK': 'GBP',
+            'US': 'USD'
+        }
+
+        tariff_rates = {
+            # To India
+            'AU-IN': 0.10,  # Australia to India: 10% average
+            'BR-IN': 0.15,  # Brazil to India: 15%
+            'CA-IN': 0.08,  # Canada to India: 8%
+            'CN-IN': 0.12,  # China to India: 12%
+            'FR-IN': 0.10,  # France to India: 10%
+            'DE-IN': 0.10,  # Germany to India: 10%
+            'IT-IN': 0.10,  # Italy to India: 10%
+            'JP-IN': 0.07,  # Japan to India: 7%
+            'MY-IN': 0.06,  # Malaysia to India: 6%
+            'MX-IN': 0.15,  # Mexico to India: 15%
+            'NL-IN': 0.10,  # Netherlands to India: 10%
+            'SA-IN': 0.12,  # Saudi Arabia to India: 12%
+            'SG-IN': 0.05,  # Singapore to India: 5%
+            'ZA-IN': 0.14,  # South Africa to India: 14%
+            'KR-IN': 0.08,  # South Korea to India: 8%
+            'TH-IN': 0.07,  # Thailand to India: 7%
+            'AE-IN': 0.11,  # UAE to India: 11%
+            'UK-IN': 0.10,  # UK to India: 10%
+            'US-IN': 0.09,  # US to India: 9%
+            # From India
+            'IN-AU': 0.06,  # India to Australia: 6%
+            'IN-BR': 0.20,  # India to Brazil: 20%
+            'IN-CA': 0.07,  # India to Canada: 7%
+            'IN-CN': 0.15,  # India to China: 15%
+            'IN-FR': 0.12,  # India to France: 12%
+            'IN-DE': 0.12,  # India to Germany: 12%
+            'IN-IT': 0.12,  # India to Italy: 12%
+            'IN-JP': 0.05,  # India to Japan: 5%
+            'IN-MY': 0.04,  # India to Malaysia: 4%
+            'IN-MX': 0.18,  # India to Mexico: 18%
+            'IN-NL': 0.12,  # India to Netherlands: 12%
+            'IN-SG': 0.03,  # India to Singapore: 3%
+            'IN-TH': 0.06   # India to Thailand: 6%
+        }
+        # Get destination currency
+        dest_currency = currencies.get(dest_code)
+        if not dest_currency:
+            print(f"No currency found for destination country code: {dest_code}")
+            return None
+
+        # Get exchange rates
+        try:
+            exchange_api_url = "https://api.exchangerate-api.com/v4/latest/USD"
+            response = requests.get(exchange_api_url, timeout=10)
+            response.raise_for_status()  # Raises an HTTPError for bad responses
+            rates = response.json()['rates']
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching exchange rates: {str(e)}")
+            return None
+
+        # Calculate exchange
+        exchange_rate = rates.get(dest_currency, 1.0) / rates.get('USD', 1.0)
+        converted_amount = amount_usd * exchange_rate
+
+        # Calculate tariff using existing rates
+        route_key = f"{source_code}-{dest_code}"
+        tariff_rate = tariff_rates.get(route_key, 0.0)
+        tariff_amount = converted_amount * tariff_rate
+
+        result = {
+            'exchange_rate': round(exchange_rate, 4),
+            'source_currency': 'USD',
+            'dest_currency': dest_currency,
+            'converted_amount': round(converted_amount, 2),
+            'tariff_rate': tariff_rate,
+            'tariff_amount': round(tariff_amount, 2),
+            'total_with_tariff': round(converted_amount + tariff_amount, 2),
+            'calculation_successful': True
+        }
+        
+        print(f"Successfully calculated rates for {source_country} to {destination_country}")
+        return result
+
+    except Exception as e:
+        print(f"Error getting exchange rate/tax info: {str(e)}")
+        return {
+            'exchange_rate': 1.0,
+            'source_currency': 'USD',
+            'dest_currency': 'USD',
+            'converted_amount': amount_usd,
+            'tariff_rate': 0.0,
+            'tariff_amount': 0.0,
+            'total_with_tariff': amount_usd,
+            'calculation_successful': False,
+            'error': str(e)
+        }
+    
+
+
+
+
 
 
 
