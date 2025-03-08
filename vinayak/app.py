@@ -585,5 +585,64 @@ def check_all_compliance_with_gemini(all_sections_data, shipment_details, api_ke
                 "summary": "Technical difficulties encountered during evaluation process."
             }
         }
+    
+
+
+from flask import Flask, request, jsonify
+from PIL import Image
+import io
+import json
+import pandas as pd
+import plotly.express as px
+import numpy as np
+
+# Import necessary functions from your existing code
+from myfiles.first import get_multiple_items_from_image, search_prohibited_items, create_results_dataframe
+
+@app.route('/api/search_items', methods=['POST'])
+def search_items():
+    try:
+        # Check if the request contains a file
+        if 'file' not in request.files:
+            return jsonify({"error": "No file provided"}), 400
+        
+        # Read the image file
+        file = request.files['file']
+        image = Image.open(io.BytesIO(file.read()))
+        
+        # Get multiple items from the image
+        detected_items = get_multiple_items_from_image(image)
+        
+        if not detected_items:
+            return jsonify({"error": "No items detected in the image"}), 400
+        
+        # Search for prohibited items for each detected item
+        top_k = 20  # You can make this configurable via request parameters
+        all_results = {}
+        for item in detected_items:
+            results = search_prohibited_items(item, top_k)
+            if not isinstance(results, dict):  # Ensure no error was returned
+                all_results[item] = results
+        
+        # Create a DataFrame from the results
+        df = create_results_dataframe(all_results)
+        
+        
+        
+        # Convert DataFrame to JSON
+        results_json = df.to_json(orient='records')
+        
+        # Return the results along with visualizations
+        return jsonify({
+            "detected_items": detected_items,
+            "results": json.loads(results_json),
+            
+        }), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=3000)
