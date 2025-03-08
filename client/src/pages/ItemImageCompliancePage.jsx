@@ -24,11 +24,11 @@ function ItemImageCompliancePage() {
   const [arcsData, setArcsData] = useState([]);
   const [detected, setDetected] = useState([]);
   const [res, setRes] = useState([]);
+  const [syntheticLoading, setSyntheticLoading] = useState(false);
 
   // List of countries for the dropdown
   const countries = [
     'United States', 'Canada', 'Mexico', 'United Kingdom', 'France', 
-    'Germany', 'Japan', 'China', 'Australia', 'Brazil', 'India', 'Kuwait'
   ];
   const prepareChartData = () => {
     const relevanceData = res.map(item => ({
@@ -166,7 +166,7 @@ function ItemImageCompliancePage() {
     }
   };
 
-  const handleChatSubmit = (e) => {
+  const handleChatSubmit = async (e) => {
     e.preventDefault();
     
     if (!message.trim()) return;
@@ -176,33 +176,47 @@ function ItemImageCompliancePage() {
     setChatMessages([...chatMessages, userMessage]);
     setMessage('');
     
-    // Simulate bot response
-    setTimeout(() => {
-      let botResponse = '';
-      
-      // Simple rule-based responses
-      if (message.toLowerCase().includes('prohibited') || message.toLowerCase().includes('banned')) {
-        botResponse = `Each country has specific prohibited items. For ${destinationCountry || 'most countries'}, typically weapons, drugs, and certain food products are restricted. Would you like specific details about a country?`;
-      } else if (message.toLowerCase().includes('document') || message.toLowerCase().includes('paperwork')) {
-        botResponse = 'For international shipments, you typically need: a commercial invoice, packing list, and shipping declaration. Some countries may require additional certificates or permits for specific items.';
-      } else if (message.toLowerCase().includes('time') || message.toLowerCase().includes('long')) {
-        botResponse = 'Shipping times vary by destination. Express services take 2-5 days internationally, while standard shipping can take 1-3 weeks. Customs clearance can add additional delays.';
-      } else if (validationResults && message.toLowerCase().includes('why')) {
-        botResponse = validationResults.isCompliant ? 
-          'Your item appears to comply with destination country regulations based on our initial check. However, we always recommend verifying with the shipping carrier.' : 
-          `Your item may be restricted because ${destinationCountry} has regulations against items similar to what you're shipping. We recommend checking with customs or obtaining special permits.`;
-      } else {
-        botResponse = 'I can help with questions about shipping compliance, prohibited items, required documentation, or shipping timeframes. What specific information do you need?';
+    try {
+      // Prepare context for the AI
+      const context = `
+        Context:
+        - Source Country: ${sourceCountry}
+        - Destination Country: ${destinationCountry}
+        - Detected Items: ${detected.join(', ')}
+        - Compliance Status: ${validationResults ? (validationResults.isCompliant ? 'Compliant' : 'Non-compliant') : 'Unknown'}
+        
+        User Question: ${message}
+      `;
+
+      // Call Gemini API
+      const response = await fetch('http://localhost:5000/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: context }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response from AI');
       }
-      
-      const newBotMessage = { sender: 'bot', message: botResponse };
-      setChatMessages(prevMessages => [...prevMessages, newBotMessage]);
-      
-      // Scroll to bottom of chat
-      if (chatContainerRef.current) {
-        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-      }
-    }, 1000);
+
+      const data = await response.json();
+      const botMessage = { sender: 'bot', message: data.response };
+      setChatMessages(prevMessages => [...prevMessages, botMessage]);
+    } catch (error) {
+      console.error('Error:', error);
+      const errorMessage = { 
+        sender: 'bot', 
+        message: 'Sorry, I encountered an error. Please try again later.' 
+      };
+      setChatMessages(prevMessages => [...prevMessages, errorMessage]);
+    }
+
+    // Scroll to bottom of chat
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   };
 
   // For demo purposes - example detection results if no data is present

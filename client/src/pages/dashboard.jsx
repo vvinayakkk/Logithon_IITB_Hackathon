@@ -98,7 +98,7 @@ const ComplianceChecker = () => {
         shipment_details: {
           item_name: shipment.contents,
           weight: shipment.weight,
-          value: shipment.value,
+          shipment_value_usd: shipment.value,
           documents: shipment.documents
         },
       });
@@ -971,142 +971,134 @@ const ComplianceChecker = () => {
             </div>
 
             {/* Compliance Results */}
-            {complianceResults && (
-              <div className="bg-gray-900/30 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-blue-800">
-                <div className="px-6 py-4 border-b border-gray-700 flex justify-between items-center">
-                  <h2 className="text-lg font-medium text-blue-300">Compliance Results</h2>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    complianceResults.overall_compliance.compliant ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'
-                  }`}>
-                    {complianceResults.overall_compliance.compliant ? 'Compliant' : 'Non-Compliant'}
-                  </span>
+            {complianceResults?.results && (
+              <div className="mt-8 space-y-6">
+                <h2 className="text-2xl font-bold text-blue-300">Compliance Results</h2>
+                <div className="space-y-4">
+                  {complianceResults.results.map((result, index) => (
+                    <div key={index} className="bg-gray-800 bg-opacity-50 rounded-lg p-4 border border-gray-700">
+                      <div
+                        className="flex items-center justify-between cursor-pointer"
+                        onClick={() => setExpandedResult(expandedResult === index ? null : index)}
+                      >
+                        <div className="flex items-center">
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                            result.compliance.compliant ? 'bg-green-500' :
+                            result.compliance.compliant === false ? 'bg-red-500' : 'bg-yellow-500'
+                          }`}>
+                            {result.compliance.compliant ? (
+                              <Check size={16} className="text-white" />
+                            ) : result.compliance.compliant === false ? (
+                              <X size={16} className="text-white" />
+                            ) : (
+                              <AlertTriangle size={16} className="text-white" />
+                            )}
+                          </div>
+                          <span className="ml-2 font-medium">{result.section}</span>
+                        </div>
+                        <button>
+                          {expandedResult === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        </button>
+                      </div>
+                      {expandedResult === index && (
+                        <div className="mt-4 space-y-4">
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <span className="text-gray-400">Compliance Score:</span>
+                              <span className="ml-2 font-medium">{result.compliance.compliance_score}</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-400">Risk Level:</span>
+                              <span className={`ml-2 font-medium ${
+                                result.compliance.risk_level === 'High' ? 'text-red-500' :
+                                result.compliance.risk_level === 'Medium' ? 'text-yellow-500' : 'text-green-500'
+                              }`}>
+                                {result.compliance.risk_level}
+                              </span>
+                            </div>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">Officer Notes:</span>
+                            <p className="mt-1 text-gray-300">{result.compliance.officer_notes}</p>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">Reasons:</span>
+                            <ul className="mt-1 list-disc list-inside text-gray-300">
+                              {result.compliance.reasons.map((reason, i) => (
+                                <li key={i}>{reason}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">Suggestions:</span>
+                            <ul className="mt-1 list-disc list-inside text-gray-300">
+                              {result.compliance.suggestions.map((suggestion, i) => (
+                                <li key={i}>{suggestion}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">Violations:</span>
+                            <ul className="mt-1 list-disc list-inside text-gray-300">
+                              {result.compliance.violations.map((violation, i) => (
+                                <li key={i}>{violation}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
-                <div className="p-6 space-y-4">
-                  {/* Overall compliance */}
-                  <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-md font-medium text-blue-300">Overall Compliance</h3>
-                      <span className={`px-2 py-1 rounded text-xs font-medium ${
-                        getStatusColor(complianceResults.overall_compliance.overall_risk_level)
-                      }`}>
-                        Risk Level: {complianceResults.overall_compliance.overall_risk_level}
-                      </span>
-                    </div>
-                    <p className="text-gray-300 text-sm mb-2">{complianceResults.overall_compliance.summary}</p>
-                    {complianceResults.overall_compliance.violations && complianceResults.overall_compliance.violations.length > 0 && (
-                      <div className="mt-3">
-                        <h4 className="text-sm font-medium text-red-300 mb-2">Violations:</h4>
-                        <ul className="list-disc pl-5 text-sm text-red-200 space-y-1">
-                          {complianceResults.overall_compliance.violations.map((violation, idx) => (
-                            <li key={idx}>{violation}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {complianceResults.overall_compliance.suggestions && complianceResults.overall_compliance.suggestions.length > 0 && (
-                      <div className="mt-3">
-                        <h4 className="text-sm font-medium text-green-300 mb-2">Suggestions:</h4>
-                        <ul className="list-disc pl-5 text-sm text-green-200 space-y-1">
-                          {complianceResults.overall_compliance.suggestions.map((suggestion, idx) => (
-                            <li key={idx}>{suggestion}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+              </div>
+            )}
 
-                  {/* Document compliance */}
-                  <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4 relative">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-md font-medium text-blue-300">Document Compliance</h3>
-                      <button 
-                        onClick={() => setExpandedResult(expandedResult === 'document' ? null : 'document')}
-                        className="text-blue-300 hover:text-blue-200"
-                      >
-                        {expandedResult === 'document' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                      </button>
-                    </div>
-                    
-                    <div className={`${expandedResult === 'document' ? 'block' : 'hidden'}`}>
-                      {complianceResults.document_compliance.required_documents && (
-                        <div className="mb-3">
-                          <h4 className="text-sm font-medium text-gray-300 mb-2">Required Documents:</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {complianceResults.document_compliance.required_documents.map((doc, idx) => (
-                              <span key={idx} className="px-2 py-1 bg-gray-600 rounded-md text-xs text-gray-200 flex items-center">
-                                <FileText size={12} className="mr-1" />
-                                {doc}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      {complianceResults.document_compliance.missing_documents && complianceResults.document_compliance.missing_documents.length > 0 && (
-                        <div className="mb-3">
-                          <h4 className="text-sm font-medium text-red-300 mb-2">Missing Documents:</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {complianceResults.document_compliance.missing_documents.map((doc, idx) => (
-                              <span key={idx} className="px-2 py-1 bg-red-900 bg-opacity-30 rounded-md text-xs text-red-200 flex items-center">
-                                <FileText size={12} className="mr-1" />
-                                {doc}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      <p className="text-sm text-gray-300">{complianceResults.document_compliance.document_notes}</p>
-                    </div>
-                  </div>
-
-                  {/* Item compliance */}
-                  <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-md font-medium text-blue-300">Item Compliance</h3>
-                      <button 
-                        onClick={() => setExpandedResult(expandedResult === 'item' ? null : 'item')}
-                        className="text-blue-300 hover:text-blue-200"
-                      >
-                        {expandedResult === 'item' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                      </button>
-                    </div>
-                    
-                    <div className={`${expandedResult === 'item' ? 'block' : 'hidden'}`}>
-                      {complianceResults.item_compliance.restricted_items && complianceResults.item_compliance.restricted_items.length > 0 && (
-                        <div className="mb-3">
-                          <h4 className="text-sm font-medium text-yellow-300 mb-2">Restricted Items:</h4>
-                          <ul className="list-disc pl-5 text-sm text-yellow-200 space-y-1">
-                            {complianceResults.item_compliance.restricted_items.map((item, idx) => (
-                              <li key={idx}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      
-                      {complianceResults.item_compliance.prohibited_items && complianceResults.item_compliance.prohibited_items.length > 0 && (
-                        <div className="mb-3">
-                          <h4 className="text-sm font-medium text-red-300 mb-2">Prohibited Items:</h4>
-                          <ul className="list-disc pl-5 text-sm text-red-200 space-y-1">
-                            {complianceResults.item_compliance.prohibited_items.map((item, idx) => (
-                              <li key={idx}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      
-                      <p className="text-sm text-gray-300">{complianceResults.item_compliance.item_notes}</p>
-                    </div>
-                  </div>
-
-                  {/* Officer notes */}
-                  {complianceResults.overall_compliance.officer_notes && (
-                    <div className="bg-blue-900 bg-opacity-30 rounded-lg p-4 border border-blue-800">
-                      <h4 className="text-sm font-medium text-blue-300 mb-2">Officer Notes:</h4>
-                      <p className="text-sm text-gray-300">{complianceResults.overall_compliance.officer_notes}</p>
+            {/* Item compliance - Add null check */}
+            {complianceResults?.item_compliance && (
+              <div className="bg-gray-700 bg-opacity-30 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-md font-medium text-blue-300">Item Compliance</h3>
+                  <button 
+                    onClick={() => setExpandedResult(expandedResult === 'item' ? null : 'item')}
+                    className="text-blue-300 hover:text-blue-200"
+                  >
+                    {expandedResult === 'item' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </button>
+                </div>
+                
+                <div className={`${expandedResult === 'item' ? 'block' : 'hidden'}`}>
+                  {complianceResults.item_compliance.restricted_items?.length > 0 && (
+                    <div className="mb-3">
+                      <h4 className="text-sm font-medium text-yellow-300 mb-2">Restricted Items:</h4>
+                      <ul className="list-disc pl-5 text-sm text-yellow-200 space-y-1">
+                        {complianceResults.item_compliance.restricted_items.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
                     </div>
                   )}
+                  
+                  {complianceResults.compliance.prohibited_items?.length > 0 && (
+                    <div className="mb-3">
+                      <h4 className="text-sm font-medium text-red-300 mb-2">Prohibited Items:</h4>
+                      <ul className="list-disc pl-5 text-sm text-red-200 space-y-1">
+                        {complianceResults.item_compliance.prohibited_items.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+        
                 </div>
+              </div>
+            )}
+
+            {/* Officer notes - Add null check */}
+            {complianceResults?.compliance?.officer_notes && (
+              <div className="bg-blue-900 bg-opacity-30 rounded-lg p-4 border border-blue-800">
+                <h4 className="text-sm font-medium text-blue-300 mb-2">Officer Notes:</h4>
+                <p className="text-sm text-gray-300">{complianceResults.overall_compliance.officer_notes}</p>
               </div>
             )}
           </div>
@@ -1168,59 +1160,59 @@ const ComplianceChecker = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Popup for detailed information */}
-      {showPopup && selectedShipmentDetails && (
-        <CompliancePopup
-          details={selectedShipmentDetails}
-          onClose={() => {
-            setShowPopup(false);
-            setSelectedShipmentDetails(null);
-          }}
-        />
-      )}
+        {/* Popup for detailed information */}
+        {showPopup && selectedShipmentDetails && (
+          <CompliancePopup
+            details={selectedShipmentDetails}
+            onClose={() => {
+              setShowPopup(false);
+              setSelectedShipmentDetails(null);
+            }}
+          />
+        )}
 
-      {activeTab === 'stats' && (
-        <div className="container mx-auto px-4 py-8 space-y-8">
-          <div className="bg-gray-900/30 backdrop-blur-sm border border-blue-800 rounded-xl p-6">
-            <h2 className="text-2xl font-semibold text-slate-200 mb-8">Compliance Analytics</h2>
-            
-            {/* Single Shipment Analysis */}
-            {complianceStats && (
-              <div className="mb-12">
-                <h3 className="text-xl font-medium text-slate-300 mb-6 flex items-center">
-                  <Activity className="mr-2 text-blue-400" size={24} />
-                  Single Shipment Analysis
-                </h3>
-                <ComplianceGraphs data={complianceStats} type="single" />
-              </div>
-            )}
-
-            {/* Bulk Analysis */}
-            {csvStats && (
-              <div>
-                <h3 className="text-xl font-medium text-slate-300 mb-6 flex items-center">
-                  <Package className="mr-2 text-blue-400" size={24} />
-                  Bulk Analysis
-                </h3>
-                <ComplianceGraphs data={csvStats} type="bulk" />
-              </div>
-            )}
-
-            {!complianceStats && !csvStats && (
-              <div className="text-center py-12">
-                <div className="bg-slate-800/80 rounded-lg p-8 max-w-lg mx-auto">
-                  <Activity className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                  <p className="text-slate-400 text-lg">
-                    No analysis data available. Check compliance for shipments to see analytics.
-                  </p>
+        {activeTab === 'stats' && (
+          <div className="container mx-auto px-4 py-8 space-y-8">
+            <div className="bg-gray-900/30 backdrop-blur-sm border border-blue-800 rounded-xl p-6">
+              <h2 className="text-2xl font-semibold text-slate-200 mb-8">Compliance Analytics</h2>
+              
+              {/* Single Shipment Analysis */}
+              {complianceStats && (
+                <div className="mb-12">
+                  <h3 className="text-xl font-medium text-slate-300 mb-6 flex items-center">
+                    <Activity className="mr-2 text-blue-400" size={24} />
+                    Single Shipment Analysis
+                  </h3>
+                  <ComplianceGraphs data={complianceStats} type="single" />
                 </div>
-              </div>
-            )}
+              )}
+
+              {/* Bulk Analysis */}
+              {csvStats && (
+                <div>
+                  <h3 className="text-xl font-medium text-slate-300 mb-6 flex items-center">
+                    <Package className="mr-2 text-blue-400" size={24} />
+                    Bulk Analysis
+                  </h3>
+                  <ComplianceGraphs data={csvStats} type="bulk" />
+                </div>
+              )}
+
+              {!complianceStats && !csvStats && (
+                <div className="text-center py-12">
+                  <div className="bg-slate-800/80 rounded-lg p-8 max-w-lg mx-auto">
+                    <Activity className="mx-auto h-12 w-12 text-slate-400 mb-4" />
+                    <p className="text-slate-400 text-lg">
+                      No analysis data available. Check compliance for shipments to see analytics.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
