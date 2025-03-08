@@ -1,0 +1,147 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Import License\nCustoms may require an import license for certain products depending on their harmonized tariff code and country of origin. The importer must obtain this.\nDeclaration of Conformity\nFor CE-marked goods (e.g., toys, medical devices), a Declaration of Conformity is needed to prove EU safety standards. Issued by the manufacturer or EU representative.\nFree Trade Agreements\nPreferential duty rates apply if goods meet origin rules—proof via a certificate or exporter statement.\nImport Control System 2 (ICS2)\nSince March 1, 2023, air shipments to/via the EU (including Netherlands) need a 6-digit HS code, detailed descriptions, and consignee’s EORI number.\nCertificate of Origin\nNot mandatory for textiles but must state origin on the invoice. Customs may request a certificate if doubtful.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need an MSDS—UAE transits may delay without it.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into the Netherlands, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *Import License*: Some goods need a license based on their origin and HS code—importer must arrange it.",
+            "- *CE Marking*: For toys, medical devices, etc., include a Declaration of Conformity to meet EU safety rules.",
+            "- *Trade Agreements*: Lower duties possible—show proof of origin with a certificate or statement.",
+            "- *ICS2 Rules*: Air shipments to/via Netherlands since March 2023 need a 6-digit HS code, clear item details, and consignee’s EORI number.",
+            "- *Origin on Invoice*: Textiles don’t need a certificate, but list the origin country per item—Customs might ask for more proof.",
+            "- *MSDS for Safety*: Shipping batteries? Attach an MSDS, especially if going through UAE, to avoid delays."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nUPS cannot deliver to P.O. Boxes—full street address and phone number required.\nDuty and Taxes\nInclude freight and fees in value calculations for duties/taxes.\nGifts & Samples\nSince December 2019, gifts to India attract duties/taxes regardless of value.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through customs in the Netherlands, including addresses and contact info requirements.",
+        "Simplified Form": [
+            "- *No P.O. Boxes*: Give a full street address and phone number—P.O. Boxes don’t work.",
+            "- *Duty & Tax Costs*: Add shipping fees to the item value when figuring out duties/taxes.",
+            "- *Gifts to India*: Note—gifts to India (not Netherlands) face duties/taxes since Dec 2019."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service covers every address in the Netherlands.\nUPS cannot deliver to P.O. Boxes—full address required.\nRest Days: Saturday, Sunday, and official holidays.\nGMT: Spring +0200 / Fall +0100\nLanguage: Dutch\nCurrency: Euro (EUR)",
+        "Info About Section Header": "This section lists the locations where shipping services are available in the Netherlands, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Full Coverage*: UPS delivers to every address in the Netherlands.",
+            "- *No P.O. Boxes*: Provide a complete street address with phone number.",
+            "- *Closed Days*: No delivery on Saturday, Sunday, or Dutch holidays.",
+            "- *Time Zone*: Spring GMT +0200, Fall GMT +0100.",
+            "- *Language & Currency*: Dutch is spoken; payments in Euros (EUR)."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—third-party name, country, and account number needed. Surcharge if billed outside Netherlands.\nPayment Methods\nOnly shipper can pay by card, check, or cash.\nSplit Duty And VAT (SDV)\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic shipments can’t bill third parties outside the EU unless payor has a VAT/Tax ID.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom in the Netherlands.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes can go to shipper, receiver, or third party—include third-party details.",
+            "- *Extra Fee*: Billing duties/taxes outside Netherlands adds a surcharge.",
+            "- *Cash/Card*: Only the shipper can pay with card, check, or cash.",
+            "- *Split Billing*: Freight/duties to one party, taxes to another—expect a surcharge.",
+            "- *Third-Party Rule*: Netherlands-to-Netherlands shipments can’t bill outside EU unless the payor has a VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Samples\nMust be for business use, marked/mutilated, and described fully on the invoice.\nShoes\nDetailed info (leather type, sole material, shoe type) required.\nAntiques\nOver 100 years old get 0% duty and reduced VAT—expert confirmation needed.\nAnimal Products\nNeed vet inspection and ISC contract—specific docs for food/non-food items.\nDairy\nTreated as animal products—vet checks apply.\nArtwork\nOriginals import at 0% duty and reduced VAT.\nHoney\nCheck EU import bans—needs health certificate and vet check.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods to the Netherlands.",
+        "Simplified Form": [
+            "- *Samples*: For business only—mark them unusable and detail on the invoice.",
+            "- *Shoes*: List leather type, sole material, and who they’re for (e.g., men’s boots).",
+            "- *Antiques*: Over 100 years? Get 0% duty and lower VAT with expert proof.",
+            "- *Animal Products*: Need vet checks and an ISC contract—extra docs for food or non-food.",
+            "- *Dairy*: Counts as animal products—vet inspection required.",
+            "- *Artwork*: Original paintings or sculptures get 0% duty and reduced VAT.",
+            "- *Honey*: Confirm it’s allowed (some origins banned)—include a health certificate and expect a vet check."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment value: 45 EUR\nType: Individual-to-individual\nRule: Per person\nLimits: 50 cigarettes, 1L spirits (>22% vol), 2L wine, 50g perfume. Mark 'gift' on invoice and waybill.",
+        "Info About Section Header": "This section explains if gifts can avoid taxes or duties and lists items that can’t be sent as gifts to the Netherlands.",
+        "Simplified Form": [
+            "- *Gift Limit*: Up to 45 EUR per person avoids duties/taxes.",
+            "- *Allowed Items*: 50 cigarettes, 1L strong spirits, 2L wine, 50g perfume max.",
+            "- *Label It*: Write 'gift' on the invoice and UPS waybill, plus the giver’s name and address."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Non-document shipments need 1 original + 2 copies of the invoice. Documents don’t need one.\nConsignee’s phone required for private shipments over 22 EUR.\nAvoid vague descriptions (e.g., 'apparel'—use 'men’s shirts').",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods to the Netherlands.",
+        "Simplified Form": [
+            "- *Invoice Copies*: Non-documents need 1 original and 2 copies—documents skip this.",
+            "- *Phone Number*: Add consignee’s phone for private shipments over 22 EUR.",
+            "- *Clear Details*: No vague terms—say 'women’s jackets,' not 'apparel'."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "No commercial value items like airline tickets, annual reports, passports, etc., count as documents.",
+        "Info About Section Header": "This section lists items that are treated as documents (not goods) for shipping purposes to the Netherlands.",
+        "Simplified Form": [
+            "- *Documents Only*: Tickets, passports, reports—no value? No invoice needed.",
+            "- *Mark It*: Check 'Documents Only' on the waybill."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Prohibited: Seeds, plants from India, personal effects, vitamins with certain substances.\nRestricted: Alcohol (ISC contract only), tobacco (needs Dutch excise labels), wine (extra docs).",
+        "Info About Section Header": "This section lists items that cannot be shipped to the Netherlands or have strict rules.",
+        "Simplified Form": [
+            "- *Banned*: No seeds, Indian plants, personal effects, or vitamins with melatonin.",
+            "- *Alcohol*: Only with an ISC contract—duty paid at entry.",
+            "- *Tobacco*: Must have Dutch excise labels or it’s seized.",
+            "- *Wine*: Needs a certificate and analysis report unless under 5L."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nAvailable in some areas—check UPS transit system.",
+        "Info About Section Header": "This section provides info wherther saturday delivery is available in the Netherlands.",
+        "Simplified Form": [
+            "- *Saturday Option*: Possible in some Netherlands areas—verify with UPS transit system."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to Netherlands: Express Saver, Expedited, Express Freight, Express.",
+        "Info About Section Header": "This section lists the types of shipping services available from India to the Netherlands.",
+        "Simplified Form": [
+            "- *India to Netherlands*: Choose Express Saver, Expedited, Express Freight, or Express—check UPS for availability."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nGoods for exhibits/testing clear without duty/VAT if re-exported—security deposit required.\nSamples\nMust be marked/mutilated and described.\nEmbassy Shipments\nTax/duty-free with a 'libre permis' form from the embassy.",
+        "Info About Section Header": "This section covers unique rules for temporary imports, repairs, or specific materials to the Netherlands.",
+        "Simplified Form": [
+            "- *Temporary Imports*: For shows or tests—no duty/VAT if re-exported, but pay a deposit first.",
+            "- *Samples*: Mark them unusable and detail on the invoice.",
+            "- *Embassy Goods*: Duty-free with a 'libre permis' form—shipments wait until it’s provided."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: 150 EUR—duty-free but VAT applies above 22 EUR.\nExports over $1,000 USD need formal clearance.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties in the Netherlands.",
+        "Simplified Form": [
+            "- *Low Value*: Up to 150 EUR skips duty, but VAT kicks in above 22 EUR.",
+            "- *High Value Exports*: Over $1,000 USD needs formal export clearance from India."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.) per package.\nMax length: 274 cm (107.9 in.).\nMax dimensions: 400 cm (157.5 in.) length and girth combined.",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages to the Netherlands.",
+        "Simplified Form": [
+            "- *Weight Limit*: 70 kg (150 lbs.) max per package.",
+            "- *Size Limits*: Max length 274 cm (107.9 in.), total length + girth 400 cm (157.5 in.)."
+        ]
+    }
+]

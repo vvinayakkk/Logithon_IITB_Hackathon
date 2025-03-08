@@ -1,0 +1,51 @@
+shipment_id,tracking_number,shipment_date,sender_name,sender_country,recipient_name,recipient_country,total_value,currency,total_weight,shipment_method,carrier,status,compliance_notes
+67cbe38544314efee589cb0c,S7X9O6X3L6B,2025-03-08,Robinson-Mccullough,United States,Long Ltd,United Arab Emirates,11149.87,USD,81.78,Air,DHL,Flagged,Shipment value exceeds threshold for United Arab Emirates. Additional documentation required.
+67cbe38644314efee589cb18,P4D6E3Q4F1I,2025-03-08,Jackson-Jennings,Germany,Humphrey-Wright,Canada,4467.08,EUR,16.7,Air,DHL,Flagged,Shipment value exceeds threshold for Canada. Additional documentation required.
+67cbe38644314efee589cb20,W8N9L6O9Y5O,2025-03-08,King-Khan,Germany,Roberson-Liu,Brazil,6075.71,EUR,81.48,Air,DHL,Flagged,Shipment value exceeds threshold for Brazil. Additional documentation required.
+67cbe38644314efee589cb30,N9G4D4W7E2D,2025-03-08,King-Khan,Germany,Price PLC,China,4800.41,EUR,82.48,Air,UPS,Compliant,
+67cbe38744314efee589cb44,Q9V2K3U3R7O,2025-03-08,Robinson-Mccullough,United States,Chaney Ltd,United Arab Emirates,4048.28,USD,28.68,Air,DHL,Flagged,Shipment value exceeds threshold for United Arab Emirates. Additional documentation required.
+67cbe38744314efee589cb50,T4Z5K1X6U9K,2025-03-08,King-Khan,Germany,"Smith, Foster and Nichols",China,5762.23,EUR,74.87,Air,UPS,Rejected,
+67cbe38844314efee589cb5e,R5V2Q6I8N1Y,2025-03-08,Brown-Collins,Germany,Booker-Perez,France,2537.23,EUR,29.02,Land,China Post,Flagged,Shipment value exceeds threshold for France. Additional documentation required.
+67cbe38844314efee589cb66,E4Y6O3N1C4F,2025-03-08,Brown-Collins,Germany,Peck-Young,France,219.64,EUR,10.21,Air,UPS,Pending,
+67cbe38844314efee589cb6c,X0Q3G7F5B9F,2025-03-08,Jackson-Jennings,Germany,Stevenson-Rivera,United Arab Emirates,4738.69,EUR,22.58,Air,FedEx,Rejected,"Contains prohibited item: Wine of fresh grapes, in containers holding 2 liters or less (HS: 2204.21)"
+67cbe38944314efee589cb76,A3A0J2Y3I5O,2025-03-08,Brown-Collins,Germany,Cummings-James,China,6403.49,EUR,40.06,Air,FedEx,Flagged,Contains restricted item requiring special clearance: Medical instruments and appliances (HS: 9018.90)
+67cbe38944314efee589cb84,L3T7B6I3Y9G,2025-03-08,Jackson-Jennings,Germany,"Manning, Baker and Henry",China,6851.17,EUR,52.15,Air,FedEx,Flagged,Shipment value exceeds threshold for China. Additional documentation required.
+67cbe38944314efee589cb94,D2T1V5K7F2P,2025-03-08,Robinson-Mccullough,United States,"Riley, Baker and Brown",France,302.47,USD,11.77,Air,FedEx,Flagged,Contains restricted item requiring special clearance: Whiskies (HS: 2208.30)
+67cbe38a44314efee589cb9c,F0Q5E0W2T9X,2025-03-08,Brown-Collins,Germany,"Contreras, Chapman and Warner",United Arab Emirates,6300.11,EUR,18.67,Air,UPS,Flagged,
+67cbe38a44314efee589cba8,L0Q9B4L3A0A,2025-03-08,King-Khan,Germany,"Howell, Frank and Steele",Australia,3216.65,EUR,9.96,Air,DHL,Flagged,Shipment value exceeds threshold for Australia. Additional documentation required.
+67cbe38a44314efee589cbb2,C5S7R4H7B8L,2025-03-08,King-Khan,Germany,Rivera-Fry,Canada,3981.09,EUR,3.72,Air,DHL,Flagged,
+67cbe38b44314efee589cbba,F9O7R7V0S6X,2025-03-08,Brown-Collins,Germany,Mendoza-Jones,United Kingdom,7291.75,EUR,25.93,Air,DHL,Flagged,Shipment value exceeds threshold for United Kingdom. Additional documentation required.
+67cbe38b44314efee589cbc8,H3G4N6O3K9Q,2025-03-08,Brown-Collins,Germany,Roberts-Sanchez,France,4710.25,EUR,35.53,Air,DHL,Flagged,Contains restricted item requiring special clearance: Whiskies (HS: 2208.30)
+67cbe38b44314efee589cbd4,M7T6R9M7E7R,2025-03-08,Jackson-Jennings,Germany,"Warren, Campbell and Powell",United States,2583.93,EUR,8.92,Air,UPS,Flagged,Shipment value exceeds threshold for United States. Additional documentation required.
+67cbe38c44314efee589cbdc,Z9N6F0Z6J8B,2025-03-08,Brown-Collins,Germany,"Robinson, Crane and Russell",Canada,1086.03,EUR,7.72,Air,FedEx,Pending,
+67cbe38c44314efee589cbe4,E5H6Y6Q2V0G,2025-03-08,Brown-Collins,Germany,Henderson-Harding,United States,668.46,EUR,37.53,Air,DHL,Pending,
+67cbe38c44314efee589cbec,F2M3H5Z7P3R,2025-03-08,King-Khan,Germany,Scott Inc,United Kingdom,1599.2,EUR,21.13,Air,UPS,Flagged,
+67cbe38c44314efee589cbf8,X1V7M8C2L5Q,2025-03-08,Jackson-Jennings,Germany,Roach-Henry,United States,3641.67,EUR,44.11,Air,FedEx,Flagged,Contains restricted item requiring special clearance: Medical instruments and appliances (HS: 9018.90)
+67cbe38d44314efee589cc06,U1X4D2B8Q1J,2025-03-08,King-Khan,Germany,Cruz-Klein,Canada,5609.36,EUR,50.03,Air,DHL,Flagged,Shipment value exceeds threshold for Canada. Additional documentation required.
+67cbe38d44314efee589cc14,Q5S1K7K7O9N,2025-03-08,Robinson-Mccullough,United States,Wilkins and Sons,Germany,4002.54,USD,13.67,Air,UPS,Flagged,
+67cbe38d44314efee589cc20,N2X1S7Q3Z1B,2025-03-08,Robinson-Mccullough,United States,Williams and Sons,Germany,5816.22,USD,45.28,Air,UPS,Rejected,
+67cbe38e44314efee589cc2c,I0X2W2I9D6Z,2025-03-08,King-Khan,Germany,"Stanley, Lamb and Griffin",Japan,7258.03,EUR,73.61,Air,UPS,Compliant,
+67cbe38e44314efee589cc42,V3G6N7V9K5T,2025-03-08,Jackson-Jennings,Germany,"Parsons, Morrison and Nicholson",Canada,604.18,EUR,0.36,Air,UPS,Pending,
+67cbe38e44314efee589cc48,N0K6D5N7W6I,2025-03-08,Brown-Collins,Germany,Stein-Stanley,Australia,5116.64,EUR,75.39,Air,DHL,Flagged,Shipment value exceeds threshold for Australia. Additional documentation required.
+67cbe38f44314efee589cc58,Z0V9J7W4L8Z,2025-03-08,King-Khan,Germany,House-Jones,China,7642.68,EUR,98.63,Air,DHL,Rejected,
+67cbe38f44314efee589cc68,N4E0N4J1T2H,2025-03-08,Robinson-Mccullough,United States,Johnson-Miller,United Arab Emirates,1145.2,USD,42.75,Air,FedEx,Flagged,Contains restricted item requiring special clearance: Whiskies (HS: 2208.30)
+67cbe38f44314efee589cc72,V8S9J1B1C3N,2025-03-08,Robinson-Mccullough,United States,Campbell-Jackson,Canada,3259.43,USD,25.56,Land,USPS,Flagged,
+67cbe39044314efee589cc80,T0Q9K7L5V6O,2025-03-08,Brown-Collins,Germany,Davis and Sons,France,1602.2,EUR,16.88,Land,UPS,Flagged,Shipment value exceeds threshold for France. Additional documentation required.
+67cbe39044314efee589cc88,U0K9G1U2A5A,2025-03-08,Jackson-Jennings,Germany,Phillips Group,France,9428.02,EUR,71.63,Air,DHL,Flagged,Shipment value exceeds threshold for France. Additional documentation required.
+67cbe39044314efee589cc98,A5G9Q5I8R4Y,2025-03-08,Robinson-Mccullough,United States,King Ltd,Japan,3742.26,USD,81.47,Sea,Maersk,Flagged,"Contains restricted item requiring special clearance: Coffee, roasted, not decaffeinated (HS: 0901.21)"
+67cbe39144314efee589cca6,L7Q7Z1U3E5I,2025-03-08,Robinson-Mccullough,United States,"Lin, Sanchez and Mccann",United Kingdom,498.8,USD,4.63,Air,DHL,Compliant,
+67cbe39144314efee589ccb6,S8O9S4H1N2M,2025-03-08,King-Khan,Germany,"Moore, Gates and Hall",United Kingdom,1252.18,EUR,2.14,Air,DHL,Flagged,
+67cbe39244314efee589ccbe,D8E0F9Q3R0C,2025-03-08,Jackson-Jennings,Germany,"Castaneda, Lowe and West",Brazil,6218.94,EUR,54.6,Air,UPS,Flagged,Shipment value exceeds threshold for Brazil. Additional documentation required.
+67cbe39244314efee589cccc,T0X7U2Q0T7D,2025-03-08,Brown-Collins,Germany,Blake Ltd,China,5431.11,EUR,89.63,Air,UPS,Flagged,Contains restricted item requiring special clearance: Medical instruments and appliances (HS: 9018.90)
+67cbe39244314efee589ccda,P1R2V5K8Z8L,2025-03-08,Jackson-Jennings,Germany,Price-Vang,Brazil,8941.99,EUR,50.96,Air,DHL,Flagged,Shipment value exceeds threshold for Brazil. Additional documentation required.
+67cbe39344314efee589ccea,F8I7R1L1O2Z,2025-03-08,Brown-Collins,Germany,"Roberts, Martinez and Davis",Australia,1996.17,EUR,20.77,Air,FedEx,Flagged,Shipment value exceeds threshold for Australia. Additional documentation required.
+67cbe39344314efee589ccf2,G7F3B4L4L5F,2025-03-08,Jackson-Jennings,Germany,"Hansen, Gibbs and Ashley",United Arab Emirates,951.74,EUR,10.31,Air,DHL,Compliant,
+67cbe39444314efee589cd06,K5H3V7I6L1D,2025-03-08,King-Khan,Germany,"Hammond, Erickson and Williams",Canada,6896.95,EUR,63.64,Air,DHL,Flagged,Shipment value exceeds threshold for Canada. Additional documentation required.
+67cbe39444314efee589cd14,R5H8J5W1C7I,2025-03-08,Robinson-Mccullough,United States,Ward-Hodges,United Kingdom,3879.47,USD,38.61,Air,UPS,Rejected,
+67cbe39444314efee589cd1e,N5J8A5N1C8K,2025-03-08,King-Khan,Germany,Nelson-Ferguson,United Kingdom,4746.46,EUR,87.7,Air,UPS,Flagged,Contains restricted item requiring special clearance: Medical instruments and appliances (HS: 9018.90)
+67cbe39544314efee589cd2e,P9F2X3J8E8W,2025-03-08,Brown-Collins,Germany,"Smith, Stephens and Melton",United Arab Emirates,8903.03,EUR,60.26,Air,DHL,Rejected,
+67cbe39544314efee589cd3c,C3O7V0K3E8L,2025-03-08,Brown-Collins,Germany,Reed-Stone,United States,1994.4,EUR,24.13,Air,FedEx,Flagged,Contains restricted item requiring special clearance: Medical instruments and appliances (HS: 9018.90)
+67cbe39544314efee589cd48,F3Z1K0U5Q3E,2025-03-08,Jackson-Jennings,Germany,Crane-Freeman,Brazil,243.46,EUR,10.0,Air,DHL,Flagged,
+67cbe39644314efee589cd50,I7T4V1I8L7F,2025-03-08,Jackson-Jennings,Germany,Keller-Brown,United Arab Emirates,1576.4,EUR,27.92,Air,FedEx,Rejected,
+67cbe39644314efee589cd58,P8J5K6H8Y5M,2025-03-08,Robinson-Mccullough,United States,Ferguson-Ramsey,United Arab Emirates,5017.48,USD,68.55,Air,UPS,Rejected,
+67cbe39644314efee589cd68,S4L4U7Y7K3B,2025-03-08,Robinson-Mccullough,United States,"Williams, Johnson and Robbins",Germany,1030.86,USD,32.73,Air,DHL,Flagged,Shipment value exceeds threshold for Germany. Additional documentation required.

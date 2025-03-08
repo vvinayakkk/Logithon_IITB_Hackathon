@@ -1,0 +1,35 @@
+{
+  "us-de": [
+    "All electronics shipments must include detailed component lists and MSDS for batteries.",
+    "Shipments valued over $5000 require export declaration form EEI."
+  ],
+  "cn-us": [
+    "All textile products must include country of origin labeling and fabric composition."
+  ],
+  "india-united states": [
+    "Import of milk is prohibited in United States",
+    "All textile products must include country of origin labeling, fabric composition details, and RN number for US imports.",
+    "Wooden handicrafts must be treated for pests and include a phytosanitary certificate.",
+    "Food products require FDA prior notice and must comply with US labeling requirements listing all ingredients and allergens."
+  ],
+  "china-united kingdom": [
+    "Electronic products must have CE marking and comply with RoHS directive limiting hazardous substances.",
+    "Toys must comply with EN71 safety standards and carry appropriate warning labels."
+  ],
+  "united states-japan": [
+    "Cosmetic products must list all ingredients in Japanese and be registered with the Ministry of Health, Labour and Welfare.",
+    "Medical devices require pre-market approval from the Pharmaceuticals and Medical Devices Agency (PMDA)."
+  ],
+  "brazil-india": [
+    "Leather goods must be clearly marked with country of origin and comply with USDA regulations."
+  ],
+  "india-united arab emirates": [
+    "All meat products must be halal certified and include certificates of origin and health."
+  ],
+  "australia-india": [
+    "Wine exports must have certificates of origin, analysis, and Chinese import labeling."
+  ],
+  "uk-in": [
+    "Fish is not allowed"
+  ]
+}

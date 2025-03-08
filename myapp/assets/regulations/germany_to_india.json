@@ -1,0 +1,192 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nFor shipments from Germany to India involving endangered species (e.g., exotic leather), send a CITES Certificate via Express to clear Indian customs.\nSED (New Electronic Export System)\nFor exports from Germany, submit an electronic declaration to German customs. You’ll get an Export Accompanying Document (EAD) with a Movement Reference Number (MRN) to include with the shipment—UPS handles EU exit clearance. Informal declarations are allowed up to EUR 1,000 unless restricted (e.g., embargoed goods)—UPS clears these at exit. For shipments EUR 1,001-3,000 leaving by air, declarations can go directly to the exit customs office. UPS offers free formal declarations for German account holders—allow one working day for processing. See www.ups.com/de or https://ups.atlas-netz.de/ for self-service options.\nKnow Your Customer and POA\nGerman exporters must ensure Indian importers provide Know Your Customer (KYC) documents (e.g., PAN card) and a Power of Attorney (POA) to UPS before clearance—mandatory for all non-document shipments.\nPacking List\nFor multi-package shipments from Germany, include a packing list with the invoice or combine them into one detailed document.\nMSDS-NON DG\nGoods under IATA Special Provisions A67 (e.g., batteries) need a Material Safety Data Sheet (MSDS). Include an MSDS or Non-Dangerous Goods (NON DG) declaration—upload to IDIS—especially if transiting via UAE, to avoid delays.",
+        "Info About Section Header": "Paperwork needed for shipping from Germany to India.",
+        "Simplified Form": [
+            "- **CITES Certificate**: For wildlife items, send via Express from Germany.",
+            "- **SED**: File electronically in Germany; get EAD with MRN—UPS clears at EU exit.",
+            "- **Informal**: Up to EUR 1,000, use invoice—EUR 1,001-3,000 by air goes to exit customs.",
+            "- **UPS Service**: Free declarations—allow a day; check ups.com/de or atlas-netz.de.",
+            "- **KYC and POA**: Indian buyer must give UPS ID and permission—required for all non-documents.",
+            "- **Packing List**: Multi-packages need a list with invoice or combined.",
+            "- **MSDS/NON DG**: For batteries, include MSDS or NON DG—upload to IDIS, especially via UAE."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nNo P.O. Box delivery in India—provide a full address and phone (mandatory for non-documents) for KYC.\nGifts & Samples\nLabel ‘Gift’ or ‘Sample’ on invoices—samples under INR 10,000 (~EUR 110) may be duty-free; gifts face duties since Dec 2019.\nMRP Labeling\nRetail goods from Germany must show Maximum Retail Price (MRP), product name, import date, importer details, and quantity.\nClearance Comments\nFrom Germany, only documents go in a Docs Bag—non-documents (e.g., CDs) need a Non-DOC Bag, or face Indian customs fines.\nMaster Air Waybill (MAWB)\nChemicals or valuables (e.g., diamond powder) need an MAWB for cargo clearance.\nAirfreight Routing\nShipments land in Mumbai, then move to Calcutta (East), Bangalore (Karnataka), Delhi (North), Chennai/Hyderabad/Cochin (South), or stay in Mumbai—consignee can clear at transit.\nCargo Arrival Notice (CAN)\nUPS India sends a CAN—consignee picks their broker or UPS’s.\nDuty and Taxes\nNon-refundable—if refused, costs bill back to Germany.\nCustom Requirements\nUpload a valid air waybill to IDIS with invoice—missing docs cause delays and fees.\nCustoms Clearance Process\nConsignee needs an IEC and GST number for commercial goods—clear within 30 days or shipment is abandoned.\nE-Way Bill\nGoods over INR 50,000 (~EUR 550) moving across Indian states need an E-Way Bill—importer provides, UPS Germany assists.\nBureau of Indian Standards (BIS)\nSome German goods (e.g., electronics) need BIS certification—check https://bis.gov.in.",
+        "Info About Section Header": "Clearance rules for Germany-to-India shipments.",
+        "Simplified Form": [
+            "- **No P.O. Boxes**: Full address and phone for KYC.",
+            "- **Gifts/Samples**: Mark them—samples under EUR 110 may skip duty, gifts don’t.",
+            "- **MRP**: Retail items need price, name, date, importer info.",
+            "- **Docs Only**: Papers in Docs Bag—others in Non-DOC or get fined.",
+            "- **MAWB**: Chemicals/valuable need MAWB for cargo.",
+            "- **Routing**: Lands in Mumbai, then regional airports—or clear at transit.",
+            "- **CAN**: UPS notifies—choose broker.",
+            "- **Duties**: Receiver skips? You pay in Germany—no refunds.",
+            "- **Air Waybill**: Upload to IDIS with invoice—or face delays.",
+            "- **IEC/GST**: Needed for commercial—clear in 30 days.",
+            "- **E-Way Bill**: Over EUR 550 across states? Importer needs it—UPS Germany helps.",
+            "- **BIS**: Check if certification is required."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service from Germany to India covers select cities—check INTLDI Time in Transit with Indian postal codes. No service to Andaman and Nicobar Islands or Lakshadweep. Provide a full address and phone (mandatory for non-documents). Rest days: Sundays and Indian holidays. Time zone: GMT +5:50. Language: English. Currency: INR.",
+        "Info About Section Header": "Indian areas served from Germany.",
+        "Simplified Form": [
+            "- **Coverage**: Ships to select cities—verify with INTLDI.",
+            "- **No Service**: Andaman, Nicobar, Lakshadweep excluded.",
+            "- **Address**: Full details and phone required.",
+            "- **Rest Days**: Sundays and holidays off.",
+            "- **Time Zone**: GMT +5:50.",
+            "- **Language & Currency**: English, INR."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to Germany, India, or a third party (needs name, country, account)—outside India adds a surcharge.\nShipping Charges\nBill to Germany, India (with account), or a third party (details needed). No COD—use Free Domicile (F/D).\nPayment Methods\nCard, check, or cash bills only Germany.\nSplit Duty and VAT (SDV)\nFreight/duties to Germany or third party, taxes to India or third party—surcharge applies.\nThird-Party Billing\nIndia-only shipments can’t bill to Germany unless EU-based with VAT ID.",
+        "Info About Section Header": "Payment options for Germany-to-India shipping.",
+        "Simplified Form": [
+            "- **Duties/Taxes**: Bill to Germany, India, or third party—outside India adds fee.",
+            "- **Shipping**: Bill to Germany, India (needs account), or third party—no COD, use F/D.",
+            "- **Payment**: Card/check/cash only to Germany.",
+            "- **Split Billing**: Freight to Germany, taxes to India—extra charge.",
+            "- **Third-Party**: India-only can’t bill Germany unless EU with VAT."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nGerman medical goods need a Health Department NOC on arrival—personal use too. UPS India helps with docs; expect 2-3 day delays. Lab equipment needs a catalog.\nRadios\nRequire an Indian Wireless Planning Wing license.\nTelevisions\nColor TVs need a DGFT license, Cargo only.\nJewelry\nGold/silver up to USD 2,500 via Cargo with MAWB—Courier banned. Non-precious (e.g., brass) is fine.\nLeather Goods\nNeed a Wildlife NOC and origin certificate.\nToys\nNeed safety certificates (e.g., EN71)—tested by NABL labs.\nTelecom Equipment\nPhones need IMEI on device and invoice, DOT-registered.\nSatellite Equipment\nNeeds a Wireless Planning Wing license and NOC.\nChemicals\nInclude MSDS and analysis—customs may test.\nClothing\nNeeds a dye test certificate from Germany—EU exempt from Azo dye tests.\nNutritional Supplements\nRequire a Drug Controller NOC.\nDrugs/Medicine\nNeed an Assistant Drug Controller NOC—use scientific names.\nBrochures\nWith samples? Dutiable.\nMedicine\nNOC required—scientific names on invoice.\nRSA Tokens\nDutiable—show real value.\nSIM Cards\nResale needs a DOT NOC.\nFood\nNeeds an FSSAI NOC—personal use requires passport.\nPersonal Imports\nC2C: 77% duty; B2C: 43% with proof.\nTextiles\nNeed a dye certificate from Germany or India.\nVitamins\nNOC required—use scientific names.\nPhones\nIMEI mandatory.\nCatalogs\nDutiable—not samples.\nTapes\nFilms need a synopsis—expect duties.\nPakistan Goods\n200% duty if routed via Germany.",
+        "Info About Section Header": "Special rules for goods from Germany to India.",
+        "Simplified Form": [
+            "- **Medical**: NOC needed—UPS aids, delays 2-3 days. Lab gear needs catalog.",
+            "- **Radios**: Wireless license required.",
+            "- **TVs**: DGFT license, Cargo only.",
+            "- **Jewelry**: Up to USD 2,500 via Cargo—non-precious OK.",
+            "- **Leather**: Wildlife NOC and origin cert.",
+            "- **Toys**: Safety certs—tested in India.",
+            "- **Telecom**: IMEI on phone and invoice.",
+            "- **Satellite**: License and NOC needed.",
+            "- **Chemicals**: MSDS required—may be tested.",
+            "- **Clothing**: Dye cert—EU skips Azo test.",
+            "- **Supplements**: Drug Controller NOC.",
+            "- **Medicine**: NOC—scientific names.",
+            "- **Brochures**: Samples make them dutiable.",
+            "- **Tokens**: Show value—dutiable.",
+            "- **SIMs**: Resale needs DOT NOC.",
+            "- **Food**: FSSAI NOC—personal needs passport.",
+            "- **Personal**: C2C 77%; B2C 43% with proof.",
+            "- **Textiles**: Dye cert required.",
+            "- **Vitamins**: NOC—scientific names.",
+            "- **Phones**: IMEI mandatory.",
+            "- **Catalogs**: Dutiable—not samples.",
+            "- **Tapes**: Synopsis needed—dutiable.",
+            "- **Pakistan**: 200% duty."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "No gift exemption from Germany to India—duties apply at 0 INR. Banned gifts: perishables, plants, precious stones, gold, silver, supplements, drugs, cosmetics, confectionery, fruits, veggies, spices, honey, chocolate, tinned food, meat, milk, commercial meds. Personal use needs customs approval. Duty: 77% on assessable value (invoice + freight + insurance).",
+        "Info About Section Header": "Gift rules for Germany-to-India shipments.",
+        "Simplified Form": [
+            "- **No Exemption**: All gifts face duties.",
+            "- **Banned**: No perishables, plants, gold, supplements, drugs, candy, fruits, spices, honey, chocolate, tinned, meat, milk, meds.",
+            "- **Personal**: Needs customs OK.",
+            "- **Duty**: 77% on total value."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Imports\nIndia accepts UPS Paperless Invoice for small packages from Germany.\nPaperless Invoice - Exports\nAvailable for small package exports from Germany.\nInvoice Details\nInclude: German exporter’s name/address/contact, Indian importer’s name (matching KYC), phone, email, address, invoice number/date, goods description, HS Code, origin (Germany), quantity, price, total, Incoterms (e.g., CIF), purpose, and costs.",
+        "Info About Section Header": "Invoice needs for Germany-to-India shipping.",
+        "Simplified Form": [
+            "- **Paperless Imports**: India OKs it for small packages.",
+            "- **Paperless Exports**: Available from Germany.",
+            "- **Details**: List German sender, Indian receiver (per KYC), phone, email, address, invoice info, HS Code, Germany origin, prices, Incoterms, purpose, costs."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "From Germany, up to 2 kg: bonds, cash letters, manuscripts, tickets, reports, bids, blank forms, blueprints, charts, print-outs, intercompany mail, price lists, proposals, seismic data, spec sheets, used traveler’s checks, visa apps (to embassies), graphs, Mylars. Blank checks restricted. UPS Germany offers forms online/print.",
+        "Info About Section Header": "Documents from Germany to India.",
+        "Simplified Form": [
+            "- **Documents**: Up to 2 kg—bonds, letters, manuscripts, tickets, reports, bids, forms, blueprints, charts, print-outs, mail, prices, proposals, seismic, specs, used checks, visas (embassies), graphs, Mylars.",
+            "- **Restricted**: No blank checks.",
+            "- **Forms**: Get from UPS Germany online or print."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Samples\nMax 5 pieces from Germany—Mumbai bans duty-free; Bangalore/Delhi may allow it.\nProhibited Gifts\nNo perishables, plants, stones, gold, silver, supplements, drugs, cosmetics, confectionery, fruits, veggies, spices, honey, chocolate, tinned food, meat, milk, meds—personal use needs approval.\nAntiques\nRestricted from Germany—needs ISC contract.\nComputers\nLaptops/PCs (HSN 8741) need a Restricted Import License.\nMaps\nIncorrect India borders banned.\nSeeds\nNeed a Plant Quarantine NOC—Cargo only.\nPrecious Items\nStones, gold, silver via Cargo only.\nAnimals\nBanned.\nUsed Items\nBanned without SIL.\nArtwork\nRestricted from Germany—needs ISC; must be recent, appraised.\nPerishables\nCargo only with NOCs (e.g., FSSAI).\nGuns\nBanned—exceptions for licensed shooters or film with MHA NOC.\nPassports\nEmbassies only.\nE-Cigarettes\nFully banned.\nBatteries\nUN3480 banned by airlines; metal batteries restricted.\nPublications\nIncorrect India maps banned.\nUsed Electronics\nNeed MOEF NOC.\nDrones\nBanned unless with DGCA clearance, airworthiness cert, SIL.\nPlastics\nSingle-use banned since July 2022 (e.g., straws).\nPlants\nBanned.\nPersonal Effects\nCargo only with passport, visa, ticket, 6-month travel history.",
+        "Info About Section Header": "Banned or restricted items from Germany to India.",
+        "Simplified Form": [
+            "- **Samples**: Max 5—Mumbai dutiable, others may not be.",
+            "- **Banned Gifts**: No perishables, plants, gold, supplements, drugs, candy, fruits, spices, honey, chocolate, tinned, meat, milk, meds.",
+            "- **Antiques**: ISC needed.",
+            "- **Computers**: License for laptops/PCs.",
+            "- **Maps**: Wrong borders banned.",
+            "- **Seeds**: NOC—Cargo only.",
+            "- **Precious**: Cargo only.",
+            "- **Animals**: Banned.",
+            "- **Used**: Needs SIL.",
+            "- **Artwork**: ISC—recent, appraised.",
+            "- **Perishables**: Cargo with NOCs.",
+            "- **Guns**: Banned—exceptions with licenses.",
+            "- **Passports**: Embassies only.",
+            "- **E-Cigs**: Fully banned.",
+            "- **Batteries**: UN3480 and metal restricted.",
+            "- **Publications**: Wrong maps banned.",
+            "- **Electronics**: Used needs NOC.",
+            "- **Drones**: Banned without DGCA docs.",
+            "- **Plastics**: No single-use items.",
+            "- **Plants**: Banned.",
+            "- **Personal**: Cargo with travel docs."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "Check Calculate Time and Cost for Germany-to-India service details. Options: UPS Worldwide Express Saver, Expedited, Express Freight, Economy DDU, Economy DDP, Express, Freight Midday, Express Plus. Not all reach every Indian address.",
+        "Info About Section Header": "Shipping services from Germany to India.",
+        "Simplified Form": [
+            "- **Check Tool**: Use Calculate Time and Cost.",
+            "- **Options**: Express Saver, Expedited, Freight, Economy DDU/DDP, Express, Freight Midday, Express Plus.",
+            "- **Limits**: Not all areas covered."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Ata Carnet\nTemporary exhibition goods from Germany—re-export in 6 months.\nTriptyque\nVehicles duty-free for 6 months (extendable) with auto club membership.\nRaw Materials\nDuty-free from Germany for processing—claim drawback on re-export.\nSamples\nUnder INR 10,000 (~EUR 110), mark ‘SAMPLES – FREE OF COST’ for duty-free.\nWood Packing\nUse ISPM 15-treated wood over 6mm.\nRepair and Return\nInvoices need details, origin (Germany), value, ‘Repair and Return’—duty on repair costs.\nPersonal Shipments\nC2C: 35% duty (10% with proof); B2C: 10% with proof, 35% without (77.28% for gifts).\nGifts\nAll dutiable.",
+        "Info About Section Header": "Special rules for Germany-to-India shipments.",
+        "Simplified Form": [
+            "- **Ata Carnet**: Exhibit goods—re-export in 6 months.",
+            "- **Triptyque**: Vehicles 6 months duty-free with club.",
+            "- **Raw Materials**: Duty-free for processing—reclaim later.",
+            "- **Samples**: Under EUR 110, label ‘FREE’ for no duty.",
+            "- **Wood**: ISPM 15-treated only.",
+            "- **Repairs**: List details—duty on repairs.",
+            "- **Personal**: C2C 35% (10% with proof); B2C 10% with proof, 35% without (77% for gifts).",
+            "- **Gifts**: Always dutiable."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "No de minimis value from Germany to India—duties apply at 0 INR.",
+        "Info About Section Header": "Duty thresholds for Germany-to-India.",
+        "Simplified Form": [
+            "- **No Minimum**: Duties from 0 INR."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs). Max length: 274 cm (107.9 in). Max dimensions: 400 cm (157.5 in) combined (length + girth).",
+        "Info About Section Header": "Package limits for Germany-to-India.",
+        "Simplified Form": [
+            "- **Weight**: Up to 70 kg.",
+            "- **Length**: Up to 274 cm.",
+            "- **Total**: 400 cm with girth."
+        ]
+    }
+]

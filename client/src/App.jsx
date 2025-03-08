@@ -9,6 +9,7 @@ import RegulationsSearch from './pages/RegulationsSearchPage'
 import ShowRegulations from './pages/ShowRegulationsPage'
 import ComplianceFormPage from './pages/ComplianceFormPage'
 import Restrictions from './pages/restrictions'
+import AdminPanel from './pages/AdminPanel'
 import ComplianceChecker from './pages/dashboard'
 import Login from './pages/login'
 import Signup from './pages/signup'
@@ -26,6 +27,7 @@ function App() {
       <Route path="/dashboard" element={<ItemImageCompliancePage/>} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path="/admin" element={<AdminPanel/>}/>
     </Routes>
   )
 }

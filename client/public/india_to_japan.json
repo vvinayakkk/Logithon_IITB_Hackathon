@@ -1,0 +1,137 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nWhen shipping goods from India to Japan that include endangered species products (e.g., HS 4301 for shawls made from Shahtoosh wool), a CITES Certificate is mandatory under the Convention on International Trade in Endangered Species. Issued by India’s Ministry of Environment, Forest and Climate Change, it must detail the species (e.g., Capra falconeri), source (e.g., legally harvested), and quantity. To avoid delays at Japanese ports like Narita (NRT), send the original certificate via express service (e.g., UPS Worldwide Express) ahead of the shipment. Japan Customs Service enforces strict checks, and missing documentation leads to seizure or return at the shipper’s expense—e.g., a €200-300 cost for a returned silk scarf batch. Clearance typically adds 2-4 days with proper paperwork.\n\nCustoms Clearance Process\nCustoms Procedure Agent\nFor Indian exporters without a Japan-based importer, Japan Customs Law requires appointing a Customs Procedure Agent (CPA)—a licensed Japanese entity (e.g., a Tokyo-based logistics firm) to handle import declarations. Under Article 2 of the Customs Law, an ‘importer’ must have rights to the cargo at declaration time (e.g., ownership or lease). If no importer exists, the Indian exporter must notify Japan Customs of the CPA via the NACCS (Nippon Automated Cargo and Port Consolidated System) at least 24 hours before arrival. Examples include: a lessee under a machinery lease (e.g., HS 8479), a consignee for sales (e.g., HS 6204 textiles), or a processor for repairs (e.g., HS 8517 electronics). Contact the Japan Customs office (https://www.customs.go.jp/) for CPA lists—failure to appoint delays clearance by 3-5 days.\n\nPacking List\nA packing list isn’t mandatory for Indian shipments to Japan but is recommended for complex consignments (e.g., mixed electronics with HS 8471 and HS 8525). It should detail item descriptions (e.g., ‘LED monitors, 10 units’), quantities, and weights—e.g., ‘50 kg total, 5 kg/unit’. Including it with the invoice speeds clearance at Osaka by 1-2 days, avoiding customs queries.\n\nCertificate of Origin\nImports of silk or silk-related products from India (e.g., HS 5007 for silk sarees or HS 6304 for silk linens) require a Certificate of Origin (COO) to verify Indian origin, especially under the India-Japan Comprehensive Economic Partnership Agreement (CEPA). Issued by the Indian Chamber of Commerce or Export Promotion Council for Textiles, it must be original, signed in ink, and include a detailed description (e.g., ‘handwoven silk sarees, 20 pcs, made in Varanasi’). Japan Customs may request this for duty reductions (e.g., 2.5% instead of 5% on HS 5007)—without it, full duties apply, adding ¥10,000-¥20,000 to a ¥500,000 shipment.\n\nMSDS-NON DG\nGoods under IATA Special Provisions A67 (e.g., HS 3402 for non-hazardous cleaning agents) from India to Japan require a Material Safety Data Sheet (MSDS) or Non-Dangerous Goods (NON DG) declaration. While not mandatory for all shipments, UAE authorities—often a transit hub for India-Japan routes—may hold shipments lacking these at Dubai (DXB), causing 2-4 day delays. For a shipment of Indian herbal soaps, include an MSDS stating ‘non-hazardous, no flammable components’ and upload copies to UPS’s IDIS system. This ensures smooth transit and delivery to Tokyo, avoiding ¥5,000-¥10,000 in penalty fees.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into a country, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *CITES*: Indian endangered goods need a certificate—send express ahead.",
+            "- *CPA*: No Japan importer? Pick a local agent for India shipments.",
+            "- *Packing List*: Not required, but helps—list items, weights.",
+            "- *COO*: Silk from India needs origin proof—cuts duties via CEPA.",
+            "- *MSDS*: Non-DG goods to Japan via UAE—include MSDS to avoid holds."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nUPS doesn’t deliver Indian shipments to P.O. Boxes in Japan—e.g., no ‘P.O. Box 123, Tokyo’. Provide a full street address (e.g., ‘1-2-3 Shibuya, Shibuya-ku, Tokyo 150-0002’), consignee name (e.g., ‘Hiroshi Tanaka’), and phone number (e.g., ‘+81 3-1234-5678’). Missing details trigger returns at the shipper’s cost—e.g., ¥15,000 for a 5 kg package from Mumbai—or delays of 2-3 days while UPS contacts the recipient.\n\nGifts & Samples\nSince December 12, 2019, all gifts imported into India from Japan attract duties and taxes, but for Japan-bound gifts from India, the rule differs—see ‘Gift Exemptions’. For samples (e.g., HS 3304 for cosmetic testers), Japan allows small quantities (e.g., 10 perfume vials) without formal clearance if marked ‘Samples—No Commercial Value’ on the invoice. Over 10 kg or commercial intent requires full customs processing, adding 1-2 days and ¥5,000-¥10,000 in fees at Narita.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through customs, including addresses and contact info requirements.",
+        "Simplified Form": [
+            "- *P.O. Boxes*: No delivery—give full address, name, phone from India.",
+            "- *Gifts*: India to Japan follows Japan rules—see exemptions.",
+            "- *Samples*: Small Indian samples free—mark ‘no value’."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "UPS serves all Japanese addresses from India except specific Fukushima zones due to lingering post-2011 disaster restrictions, though services resumed in many areas by March 07, 2025. Excluded postal codes include 9601723, 9791101, 9791161-9791171, 9791300-9791392, 9791400-9791495, 9791506, 9791533-9791545, 9791151, 9601600, 9791601, 9791706-9791757, and 9792165—e.g., no delivery to ‘Fukushima-shi, 9601723’. Check UPS’s Time in Transit tool for updates, as reinstatement progresses in Iwate, Miyagi, and Fukushima. No P.O. Box delivery—use full addresses (e.g., ‘2-1-1 Nishi-Shinjuku, Shinjuku-ku, Tokyo 163-8001’) with name and phone. Rest days halt service: Saturdays, Sundays, and holidays like Golden Week (April 29-May 5) or Obon (mid-August). Japan uses GMT +0900 year-round, 3.5 hours ahead of India’s IST (+0530). Language is Japanese; currency is Japanese Yen (JPY).",
+        "Info About Section Header": "This section lists the locations where shipping services are available, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Coverage*: Most Japan from India—some Fukushima zones out.",
+            "- *No P.O. Boxes*: Full address, name, phone required.",
+            "- *Rest Days*: No service weekends, holidays—plan ahead.",
+            "- *Time*: +0900, 3.5 hours ahead of India."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nFor Indian shipments to Japan, duties and taxes can bill to the shipper (e.g., a Bangalore exporter), receiver (e.g., a Kyoto retailer), or a third party (e.g., a Singapore broker). Third-party billing needs their name, country, and UPS account number (e.g., ‘Asia Logistics, SG, #456789’). Billing outside Japan adds a Duty and Tax Forwarding surcharge (¥2,000-¥3,000 as of March 07, 2025)—e.g., a ¥50,000 duty on electronics.\n\nShipping Charges\nFreight costs from India to Japan can bill to the shipper, receiver, or third party. Receiver billing requires their UPS account; third-party billing needs full details (e.g., ‘Patel Exports, IN, #123456’). No extra fee unless duties are split.\n\nPayment Methods\nCredit card, check, or cash payments from India must bill the shipper—e.g., a Delhi firm paying ¥30,000 via Mastercard.\n\nThird-Party Billing\nJapanese domestic shipments (e.g., Tokyo to Osaka) can’t bill to India, but EU-Japan shipments can bill an Indian third party with a VAT/EIN on file—e.g., an Indian HQ covering a ¥100,000 shipment from Germany to Japan.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom.",
+        "Simplified Form": [
+            "- *Duties/Taxes*: Shipper, receiver, or third party—fee if not Japan.",
+            "- *Shipping*: Shipper, receiver, or third party—receiver needs account.",
+            "- *Payment*: Card/check/cash only to shipper from India.",
+            "- *Third Party*: EU-Japan can bill India with ID—domestic can’t."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Veterinary Products\nIndian veterinary goods (e.g., HS 3002 for vaccines) need an import license from Japan’s Ministry of Health, Labour and Welfare (MHLW), applied for by the importer via https://www.mhlw.go.jp/. Clearance at Yokohama adds 3-5 days.\n\nShoes\nIndian footwear (e.g., HS 6403 for sandals) requires invoices detailing sole (e.g., ‘rubber’), upper (e.g., ‘leather’), and use (e.g., ‘men’s casual’)—e.g., ‘leather upper, rubber sole, sports shoes’. Vague terms delay customs by 1-2 days.\n\nCosmetics\nIndian cosmetics (e.g., HS 3304 for kohl) to individuals are capped at 24 pieces (e.g., 12 lipstick boxes, 2 per box)—overages need an MHLW import license. Companies need import and sales licenses; samples allow 36 pieces—e.g., 36 cream tubes as testers. No quantity limit for commercial imports with licenses.\n\nDental Instruments\nIndian dental tools (e.g., HS 9018 for drills) to individuals or doctors need a medical license, max 3 pieces (e.g., 3 scalers)—4+ requires an MHLW import license, adding ¥10,000 in fees.\n\nVitamins\nIndian vitamins (e.g., HS 2936) to companies need an import license; individuals get a 2-month supply (e.g., 60 tablets)—delays of 2-3 days common due to MHLW checks.\n\nVideos/Tapes\nIndian videos (e.g., HS 8523 for DVDs) need invoices with title (e.g., ‘Yoga Basics’), format (e.g., ‘DVD’), quantity (e.g., ‘5’), use (e.g., ‘personal’), and consignee phone. Customs contacts the recipient, adding 1-2 days.\n\nLaser Discs/CD Roms/Discs\nSimilar to videos, Indian discs need phone, titles, quantity, and use—e.g., ‘Math Tutorial, 10 CDs, educational’. Verification delays clearance.\n\nClothing\nIndian clothing from South Korea (e.g., HS 6204) over ¥20,000 CIF needs an importer order sheet or bank slip—e.g., ¥25,000 for kurtas triggers audits, delaying 2-4 days.\n\nNutritional Supplements\nCommercial Indian supplements (e.g., HS 2106 for protein powder) need an import license; personal shipments cap at 2 months (e.g., 1 kg whey).\n\nAnimal Skins\nIndian leather goods (e.g., HS 4107 for jackets) may need a CITES certificate if from endangered species—e.g., python skin bags.\n\nDrugs/Medicine\nIndian medicines (e.g., HS 3004 for paracetamol) to companies need import and sales licenses; individuals get 1-month prescription (e.g., 30 pills), 2-month quasi-drugs (e.g., 60 herbal tablets), or 24 external items (e.g., 24 ointments). Psychoactive drugs are banned—delays 2-5 days.\n\nTableware\nIndian ceramic cups (e.g., HS 6912) need MHLW notification unless under 10 kg for personal use—e.g., 5 kg of spoons exempt.\n\nPersonal Effects\nIndian unaccompanied baggage (e.g., clothes) clears duty-free within 6 months of arrival if sealed by Japan Customs at entry—e.g., ¥50,000 worth of kurtas.\n\nFood\nIndian commercial food (e.g., HS 1905 for snacks) needs MHLW inspection; personal under 10 kg (e.g., 5 kg spices) is exempt—ham, sausage banned.\n\nParts\nIndian machinery parts (e.g., HS 8473 for printer gears) need invoices naming the machine—e.g., ‘gears for HP LaserJet’.\n\nTextiles\nIndian textiles (e.g., HS 5208) claiming CEPA duty cuts need a COO—e.g., 2% off ¥100,000 cotton fabric.\n\nCoffee\nRoasted Indian coffee (e.g., HS 0901.21) needs MHLW inspection; raw beans (HS 0901.11) are banned—delays 2-3 days.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods, like medical items or jewelry.",
+        "Simplified Form": [
+            "- *Cosmetics*: 24 pieces for Indian personal—licenses for more.",
+            "- *Vitamins*: 2-month supply personal—license for companies.",
+            "- *Drugs*: 1-month prescription, 2-month quasi—banned items out.",
+            "- *Food*: Under 10 kg personal okay—commercial needs inspection.",
+            "- *Textiles*: CEPA needs COO—saves duties.",
+            "- *Coffee*: Roasted needs check—raw banned."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment Value Amount: 10,000.00 Japanese Yen (JPY)\nShipment Type: Individual-to-individual from India to Japan\nExemption Rule: Per shipment\n\nGifts from India to Japan up to ¥10,000 CIF (e.g., a ¥9,000 brass statue + ¥1,000 shipping) are duty- and tax-free as of March 07, 2025—e.g., no extra ¥2,200 tax on a ¥10,000 item. Over ¥10,000 (e.g., ¥12,000 jewelry) may face pre-inspection if descriptions are vague (e.g., ‘gift item’). Invoices need detailed lists (e.g., ‘2 brass idols, ¥4,500 each’), ‘Gift Shipment’ written—not ‘Christmas gift’—and consignee details (e.g., ‘Akira Sato, 3-4-5 Ginza, Chuo-ku, Tokyo, +81 3-5678-1234’). Add this to the UPS Waybill’s Special Instructions—missing info risks ¥2,000-¥5,000 in fees.",
+        "Info About Section Header": "This section explains if gifts can avoid taxes or duties and lists items that can’t be sent as gifts.",
+        "Simplified Form": [
+            "- *Limit*: ¥10,000 from India—duty/tax-free.",
+            "- *Details*: List items, values, ‘Gift Shipment’—full address, phone.",
+            "- *Over Limit*: Inspection if vague—extra costs."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Exports\nUPS Paperless Invoice supports Indian exports to Japan via tools like UPS Internet Shipping, cutting clearance time by 1-2 days—e.g., a Chennai textile firm avoids paper delays to Osaka.\n\nInvoice\nIndian document shipments over 9.5 kg (e.g., 10 kg of manuals) need an invoice; non-documents (e.g., HS 6204 kurtas) require 1 original and 2 copies. Include the consignee’s phone (e.g., ‘+81 90-1234-5678’)—e.g., ‘Hiroko Yamada, 1-2-3 Roppongi, Minato-ku, Tokyo’. Missing phones delay clearance by 1-3 days at Kobe.\n\nPaperless Invoice - Imports\nJapan Customs accepts UPS Paperless Invoice for imports from India—e.g., a ¥50,000 electronics shipment clears faster electronically.",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods.",
+        "Simplified Form": [
+            "- *Paperless*: India to Japan—speeds up process.",
+            "- *Docs*: Over 9.5 kg needs invoice—non-docs 1+2 copies.",
+            "- *Phone*: Consignee number mandatory—avoids delays."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Japan classifies Indian items like manuscripts, annual reports, or visa applications as documents up to 9.5 kg—e.g., 5 kg of bids are duty-free. Over 9.5 kg (e.g., 10 kg of periodicals) requires an invoice and may incur taxes (e.g., ¥1,000 VAT). Examples include blank envelopes, microfilm without images, or 5 kg of price lists—no commercial value assumed.",
+        "Info About Section Header": "This section lists items that are treated as documents (not goods) for shipping purposes, with weight limits.",
+        "Simplified Form": [
+            "- *Docs*: Up to 9.5 kg from India—duty-free.",
+            "- *Over 9.5 kg*: Invoice needed—taxes possible."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Jewelry\nIndian jewelry (e.g., HS 7113) caps at $500/package—e.g., ¥55,000 gold bangles okay. Costume jewelry under $150/item (e.g., ¥16,000 brass rings) is unrestricted if no precious metals/stones. Rough diamonds need a Kimberley Process Certificate—delays 2-3 days.\n\nMiscellaneous\nSince October 1, 2010, UPS bans Indian plant/animal quarantine items—e.g., fresh mangoes (HS 0804), raw wool (HS 5101)—due to MAFF rules (http://www.pps.go.jp/english/). Includes seeds, soil, meat, or pet food—returns cost ¥10,000-¥20,000.\n\nTobacco\nIndian tobacco leaves (HS 2401) are banned—rolled cigarettes okay with limits.\n\nElectronic Cigarettes\nIndian e-cigs (e.g., HS 8543) need an ISC contract—companies require import licenses; individuals get 1 cartridge—e.g., 1 nicotine pod.\n\nAlcoholic Beverages\nIndian liquor (e.g., HS 2208) needs an ISC contract—private shipments cap at 10 kg (e.g., 9L whiskey).\n\nLithium Metal Batteries\nBanned on Emirates flights via Dubai—alternate routes delay India-Japan shipments by 2-4 days.\n\nSurgical Masks\nIndian masks (e.g., HS 6307) are prohibited as of 2020—ventilators and textile raw materials too.\n\nCannabidiol\nCBD oil from India (HS 1302) is banned—zero tolerance.\n\nKnives\nOnly Indian kitchen knives (e.g., HS 8211) allowed—others like daggers banned.",
+        "Info About Section Header": "This section lists items that cannot be shipped to India or have strict rules.",
+        "Simplified Form": [
+            "- *Jewelry*: $500 max from India—costume $150/item.",
+            "- *Plants/Animals*: No fresh goods, meat—banned since 2010.",
+            "- *E-cigs*: ISC needed—1 cartridge for personal.",
+            "- *Alcohol*: ISC, max 10 kg private—India to Japan.",
+            "- *Batteries*: No Emirates—delays via other routes.",
+            "- *Masks*: Prohibited since 2020—includes vents."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India-to-Japan options include UPS Worldwide Express Saver (1-3 days, evening), UPS Worldwide Express (1-3 days, standard), UPS Worldwide Expedited (2-5 days, economical), UPS Worldwide Express Freight (1-3 days, over 70 kg), and Worldwide Express Freight Midday (faster freight). Not all reach rural areas—e.g., Express Saver hits Tokyo but not remote Hokkaido. Check Calculate Time and Cost for specifics.",
+        "Info About Section Header": "This section lists the types of shipping services available, like express or freight.",
+        "Simplified Form": [
+            "- *Options*: Express Saver, Expedited, Freight—urban focus."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Military Shipments\nIndian goods to Japanese military bases (e.g., HS 9014 for navigation gear) need Form 380 from the Military Control Department—provide camp name (e.g., ‘Camp Zama’), building, and phone (e.g., ‘+81 46-407-1234’). Clearance at Yokosuka adds 2-3 days.\n\nSolid Wood Packing Material\nIndian wood pallets (e.g., HS 4415) must meet ISPM 15—heat-treated, IPPC-stamped—or face rejection/fumigation at ¥15,000-¥25,000. Check India’s NPPO (http://plantprotection.gov.in/).\n\nOther Shipment Types\nIndia bans diagnostic kits (HS 3822) exports since April 4, 2020—impacts Japan-bound shipments.",
+        "Info About Section Header": "This section covers unique rules for temporary imports, repairs, or specific materials.",
+        "Simplified Form": [
+            "- *Military*: Form 380, full base details—2-3 day delay.",
+            "- *Wood*: ISPM 15 stamped—else fumigated.",
+            "- *Diagnostics*: Banned from India since 2020."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis Value: 10,000.00 JPY\nIndian private/commercial shipments to Japan up to ¥10,000 (e.g., ¥9,500 scarf) are duty- and tax-free—e.g., no ¥2,200 tax. Over ¥10,000 adds duties/VAT.\n\nHigh Value Exports: Over USD 1,000\nIndian exports over $1,000 (e.g., ¥110,000 jewelry) need formal Indian customs clearance—adds 1 day. Jewelry over $500/piece needs a waiver.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties.",
+        "Simplified Form": [
+            "- *Low*: ¥10,000 from India—duty/tax-free.",
+            "- *High*: Over $1,000 needs India clearance—jewelry waiver at $500."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Maximum Weight: 70 kg (150 lbs.) per package\nMaximum Length: 274.00 cm (107.9 in.) per package\nMaximum Dimensions: 419.10 cm (165.0 in.)—length plus girth combined\n\nIndian packages to Japan can’t exceed 70 kg (e.g., a spice crate) or 274 cm long (e.g., a rolled carpet). Total size (length + 2x width + 2x height) under 419.1 cm—oversized needs freight—e.g., a 300 cm statue shifts to Express Freight.",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages.",
+        "Simplified Form": [
+            "- *Weight*: Max 70 kg from India.",
+            "- *Size*: Max 274 cm long, 419.1 cm total."
+        ]
+    }
+]

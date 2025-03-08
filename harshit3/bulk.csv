@@ -1,0 +1,16 @@
+shipment_id,source,destination,item_description,quantity,value,weight,hs_code,documents_available,special_notes
+SHP-001,India,United States,Cotton t-shirts with printed designs,500,5000,45,6109.10.00,commercial_invoice packing_list,First-time shipment from this supplier
+SHP-002,India,United States,Handcrafted wooden figurines,100,3500,30,4420.10.00,phytosanitary_certificate,Wood treated with heat treatment
+SHP-003,India,United States,Spice mix packets (curry powder),2000,8000,300,0910.99.00,ingredients_list fda_prior_notice,Contains allergens: mustard
+SHP-004,China,European Union,Bluetooth speakers with rechargeable batteries,1000,12000,200,8518.22.00,ce_declaration rohs_compliance,Contains lithium batteries
+SHP-005,China,European Union,Children's plush toys with small parts,500,4500,50,9503.00.90,en71_certificate,Age 3+ warning labels attached
+SHP-006,United States,Japan,Facial serums with vitamin C,300,9000,20,3304.99.00,ingredient_list,Contains preservatives
+SHP-007,United States,Japan,Dental examination equipment,10,45000,100,9018.49.00,technical_documentation,Class II medical device
+SHP-008,Brazil,United States,Leather wallets and card holders,250,7500,15,4202.31.00,certificate_of_origin,Full grain leather
+SHP-009,Germany,United Arab Emirates,Refrigerated beef cuts,500,15000,1000,0201.30.00,halal_certificate health_certificate,Temperature controlled shipping
+SHP-010,Australia,China,Bottled red wine (750ml),1200,36000,1800,2204.21.00,certificate_of_origin,Special import labeling applied
+SHP-011,India,United States,Mango pulp in aseptic packaging,1500,9000,3000,2008.99.40,fda_prior_notice,Preservative-free
+SHP-012,China,European Union,Smartphone charging cables,5000,10000,250,8544.42.90,ce_declaration,Non-branded generic cables
+SHP-013,Germany,Japan,Automotive parts (brake pads),200,12000,300,8708.30.10,technical_specifications,Passenger vehicles only
+SHP-014,United Kingdom,United States,Woolen scarves with embroidery,350,8750,30,6214.20.00,commercial_invoice,Hand-finished products
+SHP-015,Mexico,Canada,Tequila bottles (750ml),800,32000,1200,2208.90.40,certificate_of_origin,Aged premium product

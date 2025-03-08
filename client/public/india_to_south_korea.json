@@ -1,0 +1,148 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nForward via Express service for clearance.\nMiscellaneous\nIrremovable origin marking (e.g., 'Made in [Country]') required on goods and packaging—penalties if missing.\nPermit and License\nFoods, drugs, medical devices, telecom equipment need Korean FDA or similar permits.\nPacking List\nNot mandatory.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need an MSDS—advisable for UAE transits to avoid delays; include in shipment and upload to IDIS.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into South Korea.",
+        "Simplified Form": [
+            "- *CITES*: Send certificate via Express for endangered species.",
+            "- *Origin Marking*: Permanent 'Made in [Country]' on items and packaging—or face fines.",
+            "- *Permits*: Foods, drugs, telecom need Korean FDA or institute approval.",
+            "- *Packing List*: Optional.",
+            "- *MSDS*: Batteries need MSDS—add for UAE transits to skip delays."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Personal Shipments\nIndividuals need PCCC, birthdate (C2C), or Alien/Passport No. (foreigners)—get PCCC at unipass.customs.go.kr. Missing info delays shipment.\nCustoms Clearance Process\nIrremovable origin label required—delays and penalties if missing.\nPost Office Boxes\nFull address and phone mandatory—no P.O. Boxes.\nHigh Value Amount\nOver $150 (non-US) or $200 (US) needs formal entry—poor descriptions delay clearance.\nAddress Format\nAccurate address (building, room, street, gu) required—penalties (KRW 100K-500K) for mismatches.\nDeminimis Shipments\n≤$150 (non-US) or $200 (US) skips duty/tax unless restricted (e.g., meds, food).\nAll E-Commerce Shipments\nSince Oct 04, 2022, need 6-digit HS code and e-commerce type (direct, agent, delivery)—delays if incomplete.",
+        "Info About Section Header": "This section provides details on customs processes in South Korea.",
+        "Simplified Form": [
+            "- *Personal*: Need PCCC (unipass.customs.go.kr) and phone—add birthdate (C2C) or passport (foreigners).",
+            "- *Origin Label*: Permanent mark required—or expect delays/fines.",
+            "- *Address*: Full details (building, street, gu) with phone—no P.O. Boxes.",
+            "- *High Value*: >$150 (non-US) or $200 (US) needs formal entry; vague descriptions delay.",
+            "- *Address Match*: Wrong address = KRW 100K-500K fines.",
+            "- *Low Value*: ≤$150 (non-US) or $200 (US) duty-free unless restricted (e.g., meds).",
+            "- *E-commerce*: 6-digit HS code + type (direct/agent/delivery) mandatory—or face delays."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to every address.\nFull address and phone required—no P.O. Boxes.\nRest Days: Sunday, holidays.\nGMT: +0900\nLanguage: Korean\nCurrency: Won (KRW)",
+        "Info About Section Header": "This section lists shipping locations in South Korea.",
+        "Simplified Form": [
+            "- *Coverage*: Everywhere in South Korea.",
+            "- *Address*: Full street details + phone—no P.O. Boxes.",
+            "- *Rest Days*: Off Sundays, Korean holidays.",
+            "- *Time Zone*: GMT +0900.",
+            "- *Language & Money*: Korean; pay in Won (KRW)."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—surcharge if outside Korea.\nShipping Charges\nBill to shipper, receiver, or third party—needs account number.\nPayment Methods\nOnly shipper pays by card, check, or cash.\nSplit Duty And VAT\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic can’t bill outside Korea unless payor has VAT ID.",
+        "Info About Section Header": "This section explains payment options for shipping to South Korea.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—extra fee if outside Korea.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account.",
+            "- *Payment*: Shipper only for card, check, cash.",
+            "- *Split Billing*: Freight/duties one party, taxes another—surcharge applies.",
+            "- *Third-Party*: Korea-to-Korea can’t bill outside without VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items/Vitamins/Pharmaceuticals/Drugs\nNeed Korean FDA recommendation—personal vitamins/meds limited to 6 bottles, DHEA to 2 (≤90 pills).\nCosmetics\nNeed KFDA Quarantine License—functional (e.g., whitening) needs formal entry.\nTelecom Equipment\nNeeds Radio Research Lab cert.\nClothing\nFor sale needs material and origin labels.\nCellular Phones\nNeeds controlled license—hard for individuals.\nContact Lenses\nNeeds KFDA Quarantine License.\nChecks\nNon-negotiable needs formal entry and permit.\nRice\nCleared only at 9 ports (e.g., Busan)—needs bonded truck.\nElectronic Goods\nCables, batteries need Korea Electric Testing permit.\nToys/Furniture\nFor kids <14 needs Korea Conformity Lab okay.\nChemicals\nCertain HTS codes need Korea Chemicals Assoc. permit.\nNicotine\n>1% needs specs; >100kg/year needs declaration.\nFood\nNeeds quarantine—jerky needs animal cert.",
+        "Info About Section Header": "This section lists special rules for shipping goods to South Korea.",
+        "Simplified Form": [
+            "- *Meds/Vitamins*: KFDA approval—6 bottles max personal, DHEA 2 (≤90 pills).",
+            "- *Cosmetics*: KFDA license—functional needs formal entry.",
+            "- *Telecom*: Radio Research cert required.",
+            "- *Clothing*: Sale items need material/origin labels.",
+            "- *Phones*: Controlled license—tough for individuals.",
+            "- *Lenses*: KFDA license needed.",
+            "- *Checks*: Formal entry + permit for non-negotiable.",
+            "- *Rice*: Use 9 ports (e.g., Busan) + bonded truck.",
+            "- *Electronics*: Testing permit for cables, batteries.",
+            "- *Kids’ Toys*: <14 needs conformity okay.",
+            "- *Chemicals*: Specific HTS needs assoc. permit.",
+            "- *Nicotine*: >1% needs specs; >100kg needs declaration.",
+            "- *Food*: Quarantine—jerky needs cert."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Value: 150,000 KRW\nType: Individual-to-individual, company-to-individual\nRule: Per shipment\nMark 'gift shipment' on invoice and waybill.",
+        "Info About Section Header": "This section explains gift tax exemptions in South Korea.",
+        "Simplified Form": [
+            "- *Gift Limit*: ≤150,000 KRW duty-free—person-to-person or company-to-person.",
+            "- *Label It*: Add 'gift shipment' on invoice and waybill."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports, available for exports.\nInvoice\n1 original + 2 copies in English—needs reason, currency, itemized value, brand/model, Incoterms, origin, phone, email. HS code speeds clearance—no vague terms.",
+        "Info About Section Header": "This section details invoice requirements for South Korea.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports, available for exports.",
+            "- *Invoice*: 1 original + 2 copies—list reason, currency, per-item value, brand, Incoterms, origin, phone, email. Add HS code; no vague terms."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Cash letters, manuscripts, tickets, reports, etc., count as documents—need consignee name, birthdate/PCCC, phone.",
+        "Info About Section Header": "This section lists items treated as documents for South Korea.",
+        "Simplified Form": [
+            "- *Documents*: Tickets, reports, etc.—no invoice, but needs name, birthdate (or PCCC), phone."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Prohibited: Animal skins, toy guns, guns, lithium metal batteries (via Emirates), kitchen waste disposers.\nRestricted: Knives (police permit), e-cigs (ISC + permit), alcohol (ISC, ≤1L personal).",
+        "Info About Section Header": "This section lists banned or restricted items in South Korea.",
+        "Simplified Form": [
+            "- *Banned*: No skins, toy guns, guns, lithium batteries (via Dubai), waste disposers.",
+            "- *Knives*: Needs police permit.",
+            "- *E-cigs*: ISC + safety permit.",
+            "- *Alcohol*: ISC—≤1L personal, no quarantine."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to South Korea\nExpress Saver, Expedited, Express Freight, Express Freight Midday",
+        "Info About Section Header": "This section lists shipping services from India to South Korea.",
+        "Simplified Form": [
+            "- *India to Korea*: Pick Express Saver, Expedited, Express Freight, or Midday—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Military Shipments\nNeeds camp name and 'military use only'—requires SOFA stamps.\nRepaired Goods\nFormal entry—needs export permit, serial, repair details; duty on repair cost.\nEmbassy\n'Diplomatic Pouch' with GBL skips clearance—otherwise needs Foreign Affairs docs.\nSolid Wood Packing Material\nISPM 15 applies—cert for raw wood >6mm.\nReturned Goods\nFormal entry—needs export permit, serial; 10% tax.\nSamples\n'No commercial value' on invoice—duty/tax if >$250 CIF.",
+        "Info About Section Header": "This section covers special rules for South Korea shipments.",
+        "Simplified Form": [
+            "- *Military*: Add camp name, 'military use only'—needs SOFA stamps.",
+            "- *Repaired*: Formal entry—export permit, serial, repair cost for duty.",
+            "- *Embassy*: 'Diplomatic Pouch' + GBL skips clearance—or get Foreign Affairs docs.",
+            "- *Wood*: Raw >6mm needs ISPM 15 cert.",
+            "- *Returns*: Formal entry—export permit, serial; 10% tax.",
+            "- *Samples*: Mark 'no value'—duty/tax if >$250 CIF."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: $150 (non-US) or $200 (US)—duty/tax-free below.\nExports >$1,000 USD need formal clearance from India.",
+        "Info About Section Header": "This section states value thresholds for South Korea.",
+        "Simplified Form": [
+            "- *Low Value*: ≤$150 (non-US) or $200 (US)—duty/tax-free.",
+            "- *High Exports*: >$1,000 USD from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 274 cm (107.9 in.)\nMax dimensions: 419.1 cm (165 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for South Korea.",
+        "Simplified Form": [
+            "- *Weight*: 70 kg (150 lbs.) max.",
+            "- *Size*: Max length 274 cm (107.9 in.), length + girth 419.1 cm (165 in.)."
+        ]
+    }
+]

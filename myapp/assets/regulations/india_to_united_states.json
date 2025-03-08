@@ -1,0 +1,175 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Steel License\nRequired for certain steel—apply 60 days prior, $21.75 fee, valid 75 days.\nConsumer Prod Safety\nSince Nov 2008, consumer goods need certificate of conformity—importer issues.\nPower of Attorney\nNeeded for CBP compliance—required >$50,000 or for TIB, NLMs, PGAs, etc.\nImport Declaration\nUS goods returning >$10,000 need Manufacturer’s Affidavit.\nMSDS-NON DG\nIATA A67 goods (e.g., batteries) need MSDS—advisable for UAE transits.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into the US.",
+        "Simplified Form": [
+            "- *Steel License*: Needed for some steel—apply early, $21.75, lasts 75 days.",
+            "- *Safety Cert*: Since 2008, consumer goods need conformity doc—importer signs.",
+            "- *POA*: CBP needs it >$50,000 or for TIB, NLMs, FDA, etc.",
+            "- *US Returns*: >$10,000 requires Manufacturer’s Affidavit.",
+            "- *MSDS*: Batteries need MSDS—add for UAE transits."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Post Office Boxes\nNeeds full address + phone—no P.O. Boxes.\nImports from Iran\nBanned by CBP—food/carpets allowed pre-2010 cutoff.\nRestricted Articles\nIPR goods (e.g., Nike, Rolex) seized if counterfeit.\nPayment by Credit Card\nAccepted on delivery—check with UPS US.\nGeneral Order\nUnentered goods held 15 days, auctioned after 6 months—fines up to $1,000.\nCustoms Clearance Process\nRepaired goods: list origin, original cost, repair cost—duties on repair only.",
+        "Info About Section Header": "This section provides details on customs processes in the US.",
+        "Simplified Form": [
+            "- *Address*: Full details + phone—no P.O. Boxes.",
+            "- *Iran*: Banned—pre-2010 food/carpets okay if cleared by Sept 28, 2010.",
+            "- *IPR*: Counterfeit brands (e.g., Nike) seized.",
+            "- *Payment*: Card on delivery—confirm with UPS US.",
+            "- *G.O.*: 15 days to enter, 6 months to claim—$1,000 fine risk.",
+            "- *Repairs*: List origin, original + repair cost—duties on repair."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service to every US address.\nNeeds full address + phone—no P.O. Boxes.\nRest Days: Sat, Sun, holidays.\nGMT: Spring -0400 / Fall -0500\nLanguage: English\nCurrency: USD",
+        "Info About Section Header": "This section lists shipping locations in the US.",
+        "Simplified Form": [
+            "- *Coverage*: All US addresses.",
+            "- *Address*: Full details + phone—no P.O. Boxes.",
+            "- *Rest Days*: Off Sat, Sun, US holidays.",
+            "- *Time Zone*: GMT -0400 (Spring) / -0500 (Fall).",
+            "- *Language & Money*: English; pay in USD."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nBill to shipper, receiver, or third party—surcharge if outside US.\nShipping Charges\nBill to shipper, receiver, or third party—needs account number.\nPayment Methods\nOnly shipper pays by card, check, cash.\nSplit Duty And VAT\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic can’t bill outside US—EU exception with VAT ID.",
+        "Info About Section Header": "This section explains payment options for shipping to the US.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—extra fee if outside US.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs account.",
+            "- *Payment*: Shipper only for card, check, cash.",
+            "- *Split Billing*: Freight/duties one party, taxes another—surcharge applies.",
+            "- *Third-Party*: US-to-US can’t bill outside—EU okay with VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nFDA clearance for surgical instruments.\nVet Products\nFDA clearance required.\nShoes\nNeeds footwear declaration.\nElectrical Items\nFDA for CD players, microwaves, CRT TVs.\nCosmetics/Dental/Vitamins\nFDA clearance—vitamins need type, purpose, dosage.\nChemicals\nTSCA declaration for Chapters 28-29 HTSUS.\nComputers\nFDA for laptops with CD/DVD.\nMeat\nBanned if cloven-hoofed (except gelatin/milk)—FSIS for others, ≤50 lbs exempt.\nHazmat\n$40 fee, contract only.\nTobacco\nATF permit, excise tax—NY cigs to licensed only.\nWood\nLacey Act + ISPM 15 marking.\nClothing\nList fabric, maker, knit/woven, gender.\nWatches\nDetail components—Rolex needs dealer proof.\nPharma/Drugs\nFDA approval—personal use exceptions.\nEye Wear\nFDA regs—lenses need drop test or demo mark.\nTableware\nFDA clearance.\nAgriculture\nLacey Act declaration—plants need phyto cert.\nContact Lenses\nFDA clearance.\nWine\nTTB permit, COLA—personal via ISC.\nTextiles\nMutilated samples duty-free—list manufacturer.\nFood\nFSIS for meat/fish, FDA prior notice—organic needs 21-digit cert.",
+        "Info About Section Header": "This section lists special rules for shipping goods to the US.",
+        "Simplified Form": [
+            "- *Medical/Vet*: FDA clearance.",
+            "- *Shoes*: File footwear declaration.",
+            "- *Electronics*: FDA for CD players, microwaves, CRT TVs, laptops.",
+            "- *Cosmetics/Dental/Vitamins*: FDA—vitamins need type, use, dose.",
+            "- *Chemicals*: TSCA declaration for HTSUS 28-29.",
+            "- *Meat*: Cloven-hoof banned—FSIS ≤50 lbs exempt.",
+            "- *Hazmat*: $40, contract only.",
+            "- *Tobacco*: ATF permit, tax—NY cigs to licensed only.",
+            "- *Wood*: Lacey Act + ISPM 15 mark.",
+            "- *Clothing*: List fabric, maker, knit/woven, gender.",
+            "- *Watches*: Detail parts—Rolex needs dealer proof.",
+            "- *Drugs*: FDA approval—personal okay with conditions.",
+            "- *Eye Wear*: FDA—lenses need test or ‘demo’ stamp.",
+            "- *Tableware*: FDA clearance.",
+            "- *Plants*: Lacey Act + phyto cert.",
+            "- *Contacts*: FDA clearance.",
+            "- *Wine*: TTB permit, COLA—personal via ISC.",
+            "- *Textiles*: Mutilate samples—list maker.",
+            "- *Food*: FSIS for meat, FDA notice—organic needs 21-digit cert."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Value: $100 USD ($200 from VI, Guam, Samoa)\nType: Individual-to-individual\nRule: Per person—list names, describe gifts, mark ‘Gift’.",
+        "Info About Section Header": "This section explains gift tax exemptions in the US.",
+        "Simplified Form": [
+            "- *Gifts*: ≤$100 ($200 from VI/Guam/Samoa) per person—list names, items, mark ‘Gift’."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice\nAccepted for imports/exports.\nInvoice\n1 original + 2 copies in English—list shipper/consignee, EIN, goods details, USD value.\nExpress Shipments\nInvoice >$2,000, or >$5 for textiles/bearings/shoes/ICs, all tobacco.",
+        "Info About Section Header": "This section details invoice requirements for the US.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports/exports.",
+            "- *Invoice*: 1 original + 2 copies in English—add shipper, consignee, EIN, details, USD.",
+            "- *Express*: Invoice >$2,000, or >$5 for textiles/bearings/shoes/ICs, all tobacco."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Cash letters, tickets, checks, passports, USBs with intercompany data—no value required.",
+        "Info About Section Header": "This section lists items treated as documents for the US.",
+        "Simplified Form": [
+            "- *Documents*: Tickets, checks, passports, intercompany USBs—zero value."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Alcohol\nISC only—TTB permit, FDA, COLA; no consumer delivery.\nBatteries\nLead-acid restricted—lithium needs contract.\nSeeds\nUSDA permit/phyto cert.\nLottery Tickets\nBanned—CBP destroys.\nRice\nPhyto cert from Khapra Beetle countries—non-commercial banned.\nPersonal Effects\nVia UPS Store/ISC—used items, no sales.\nE-Cigs\nBanned since April 2021.\nSwords\nISC approval.\nKratom\nConsumption banned—ISC for non-edible.\nMasks/Ventilators\nHS-coded items prohibited.\nDomperidone\nBanned—exceptions for foreigners.\nRoyal Honey\nFDA banned.\nSalmon\nRussian origin banned—needs cert.\nRussian Metals\nAluminum, copper, nickel banned.\nBeer\nPersonal shipments banned.\nIran Goods\nBanned—pre-2010 exceptions ended.\nKinder Eggs\nSurprise banned—Joy okay with CPSC/FDA.\nHID Lights\nNon-compliant vehicle kits banned.\nHigh-Power Lasers\n>5 mW banned.",
+        "Info About Section Header": "This section lists banned or restricted items in the US.",
+        "Simplified Form": [
+            "- *Alcohol*: ISC only—TTB, FDA, COLA; no consumer drop-off.",
+            "- *Batteries*: Lead-acid limited—lithium via contract.",
+            "- *Seeds*: USDA permit/phyto cert.",
+            "- *Lottery*: Banned—CBP destroys.",
+            "- *Rice*: Phyto cert from beetle areas—personal banned.",
+            "- *Personal Effects*: UPS Store/ISC—used, no resale.",
+            "- *E-Cigs*: Banned since 2021.",
+            "- *Swords*: ISC approval.",
+            "- *Kratom*: No consumption—ISC for other uses.",
+            "- *Masks/Vents*: HS-coded items banned.",
+            "- *Domperidone*: Banned—foreigners with PIP okay.",
+            "- *Royal Honey*: FDA banned.",
+            "- *Salmon*: Russian banned—cert required.",
+            "- *Russian Metals*: Aluminum, copper, nickel banned.",
+            "- *Beer*: Personal banned.",
+            "- *Iran*: Banned—pre-2010 cutoff.",
+            "- *Kinder Eggs*: Surprise banned—Joy needs CPSC/FDA.",
+            "- *HID Lights*: Non-compliant car kits banned.",
+            "- *Lasers*: >5 mW banned."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nSelected postal codes—Express with sticker, imports by Friday night.",
+        "Info About Section Header": "This section indicates Saturday delivery availability.",
+        "Simplified Form": [
+            "- *Saturday*: Yes—select areas, Express with sticker, clear by Friday night."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to US\nExpress Saver, Expedited, Express Freight, Freight Midday, Express Plus, Express",
+        "Info About Section Header": "This section lists shipping services from India to the US.",
+        "Simplified Form": [
+            "- *India to US*: Pick Express Saver, Expedited, Freight, Midday, Plus, or Express—check UPS."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Returned Goods\nUS goods duty-free if unchanged—list origin, no value increase.\nRepaired Goods\nList origin, original + repair cost—duties on repair.\nSolid Wood\nISPM 15 cert for raw >6mm.\n10kg/25kg Boxes\nMust be prepaid.\nOther\nIndia bans diagnostic kits (HS 3822) export since April 2020.",
+        "Info About Section Header": "This section covers special rules for US shipments.",
+        "Simplified Form": [
+            "- *Returns*: US goods free if unchanged—list origin, no upgrades.",
+            "- *Repairs*: List origin, original + repair cost—duties on repair.",
+            "- *Wood*: >6mm needs ISPM 15.",
+            "- *Boxes*: 10kg/25kg prepaid only.",
+            "- *India*: No diagnostic kits (HS 3822) export since 2020."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis: $800 USD—duty/tax-free except PGAs, ADD/CVD, quotas.\nExports >$1,000 USD from India need formal clearance.",
+        "Info About Section Header": "This section states value thresholds for the US.",
+        "Simplified Form": [
+            "- *Low Value*: ≤$800 free—exceptions for FDA, ADD, quotas.",
+            "- *High Exports*: >$1,000 from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Max weight: 70 kg (150 lbs.)\nMax length: 270 cm (108 in.)\nMax dimensions: 419 cm (165 in.) length + girth",
+        "Info About Section Header": "This section specifies max weight and size for the US.",
+        "Simplified Form": [
+            "- *Weight*: 70 kg (150 lbs.) max.",
+            "- *Size*: Max length 270 cm (108 in.), length + girth 419 cm (165 in.)."
+        ]
+    }
+]

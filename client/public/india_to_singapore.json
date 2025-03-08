@@ -1,0 +1,132 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "CITES Certificate\nTo enable clearance for CITES shipments, please ensure CITES Certificate from Importer to be sent to Singapore Brokerage for clearance. The importer is required to obtain a CITES permit from National Parks Board (NParks) for both commercial consignments and personal effect and the CITES permit must be obtained before the shipment’s arrival date.\nPacking List\nPacking list is not mandatory required.\nMSDS-NON DG\nGoods under IATA Special Provisions A67 require a MSDS (Material Safety Data Sheet).\nIt is not required for all, however shipments can be held by local authority in United Arab Emirates after screening due to lack of MSDS (Material Safety Data Sheet) or NON DG (Dangerous Goods) declaration letter from the shipper resulting to misconnections and impacting end-to-end service.\nIt would be advisable for all shipments originating, transiting and terminating for UAE to have MSDS or NON DG declaration from shipper enclosed in the shipment and copies to be uploaded in IDIS.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into Singapore, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *CITES Permit*: For endangered species, get an NParks CITES permit before arrival—send it to Singapore Brokerage.",
+            "- *Packing List*: Optional, not required.",
+            "- *MSDS*: Batteries (IATA A67) need an MSDS—include it for UAE transits to avoid delays."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Gifts & Samples\nGIFTS ONLY - With effect from 12 December 2019 all gift articles imported in India will attract duties and Taxes...\nPost Office Boxes\nUPS cannot deliver to a P.O. Box address. All packages require a consignee's contact name and complete street address including apartment, suite or unit number if applicable. The consignee's telephone number should be provided if known.\nClearance Comments\nAll packages shipped to Singapore require the consignee's telephone number. Include both the residential and commercial phone numbers for letter documents and non-documents.\nPayment by Credit Card\nCredit card payments are accepted upon delivery for freight and import charges by this destination. Contact UPS or the UPS service partner in the destination country or territory to determine which credit cards are accepted.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through customs in Singapore.",
+        "Simplified Form": [
+            "- *No P.O. Boxes*: Use a full street address with contact name—no P.O. Boxes allowed.",
+            "- *Phone Numbers*: Add consignee’s residential and business phone for all shipments.",
+            "- *Pay by Card*: Credit cards accepted on delivery—check with UPS Singapore for card types."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service is provided to and from every address in the country or territory.\nUPS cannot deliver to a P.O. Box address...\nRest Days:\nSunday, and official holidays.\nGMT:\nSpring +0800/ Fall +0800\nLanguage:\nEnglish\nCurrency:\nSingapore Dollar(SGD)",
+        "Info About Section Header": "This section lists the locations where shipping services are available in Singapore, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Full Coverage*: UPS delivers everywhere in Singapore.",
+            "- *No P.O. Boxes*: Provide a complete street address with phone.",
+            "- *Rest Days*: No delivery on Sundays or Singapore holidays.",
+            "- *Time Zone*: GMT +0800 year-round.",
+            "- *Language & Currency*: English used; pay in SGD."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nDuties/taxes can be billed to shipper, receiver, or third party—third-party details needed. Surcharge if billed outside Singapore.\nShipping Charges\nBill to shipper, receiver, or third party—account number required.\nPayment Methods\nOnly shipper can pay by card, check, or cash.\nSplit Duty And VAT (SDV)\nFreight/duties to shipper/third party, taxes to receiver/third party—surcharge applies.\nThird-Party Billing\nDomestic shipments can’t bill third parties outside Singapore unless payor has a VAT/Tax ID.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom in Singapore.",
+        "Simplified Form": [
+            "- *Who Pays*: Duties/taxes to shipper, receiver, or third party—include third-party name and account.",
+            "- *Extra Fee*: Billing outside Singapore adds a surcharge.",
+            "- *Shipping Costs*: Bill to shipper, receiver, or third party—needs an account number.",
+            "- *Payment*: Only shipper can use card, check, or cash.",
+            "- *Split Billing*: Freight/duties one party, taxes another—surcharge applies.",
+            "- *Third-Party Rule*: Singapore-to-Singapore can’t bill outside unless payor has a VAT ID."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Medical Items\nRadiating equipment needs HSA-CRP approval.\nVeterinary Products\nNeed AVA approval.\nRadios and Radio Equipment\n2-way devices need IDA approval.\nCosmetics\nNew products need HSA Cosmetic Control Unit approval and testing.\nVitamins/Nutritional Supplements/Medicine\nNeed HSA approval—invoice must list items, ingredients, import license (company), HSA letter (3-month validity), or prescription (personal).\nGambling Devices\nNeed Arms & Explosive Dept approval.\nCITES Shipments\nNeed NParks CITES permit and certificate—email pre-alert to upsabccsgarg@ups.com.\nPet Food\nNParks controls—needs ingredient list; meat-free needs manufacturer declaration, meat needs health cert.\nLive Plants\nNeed phytosanitary cert uploaded to IDIS.\nFood/Dairy/Fish\nNeed AVA approval.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods to Singapore.",
+        "Simplified Form": [
+            "- *Medical Gear*: Radiating items need HSA-CRP okay.",
+            "- *Vet Products*: Get AVA approval.",
+            "- *Radios*: 2-way radios need IDA nod.",
+            "- *Cosmetics*: New ones need HSA testing.",
+            "- *Vitamins/Supplements/Meds*: HSA approval—list items, ingredients, license (company), or prescription (personal) on invoice.",
+            "- *Gambling Items*: Arms & Explosive Dept must approve.",
+            "- *CITES*: NParks CITES permit required—email upsabccsgarg@ups.com.",
+            "- *Pet Food*: NParks needs ingredient list—meat-free needs declaration, meat needs cert.",
+            "- *Plants*: Upload phytosanitary cert to IDIS.",
+            "- *Food/Dairy/Fish*: AVA approval needed."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Imports/Exports\nUPS Paperless accepted for imports and available for exports.\nInvoice\nSince Jan 1, 2023, GST-registered overseas vendors selling low-value goods (≤S$400) need GST number and GST paid status per item on invoice if turnover exceeds S$1M globally and S$100K to Singapore B2C. Non-document shipments need 1 original + 2 copies with detailed description and consignee phone—no proforma invoices.",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods to Singapore.",
+        "Simplified Form": [
+            "- *Paperless*: Okay for imports, available for exports.",
+            "- *GST Rules*: For low-value goods (≤S$400), add GST number and 'GST Paid' per item if you sell >S$1M globally and >S$100K to Singapore consumers.",
+            "- *Invoice Copies*: Non-documents need 1 original + 2 copies—detail items and add consignee phone.",
+            "- *No Proforma*: Proforma invoices not accepted."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Negotiable bonds, cash letters, airline tickets, intercompany data on diskettes (non-commercial, not software), etc., count as documents.",
+        "Info About Section Header": "This section lists items treated as documents (not goods) for shipping to Singapore.",
+        "Simplified Form": [
+            "- *Documents Only*: Tickets, bonds, non-commercial diskettes—no invoice needed.",
+            "- *Mark It*: Write 'Intercompany Data on Diskette' and check 'Documents Only' on waybill if applicable."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Prohibited: Chewing gum, tobacco (chewing, e-cigs, shisha), narcotics, CBD oil.\nRestricted: Knives (9cm+ or military need Arms & Explosive approval), guns/toys (ISC contract, AEB approval), alcohol (ISC, ≤5L and ≤S$100 for B2C, permit otherwise).",
+        "Info About Section Header": "This section lists items that cannot be shipped to Singapore or have strict rules.",
+        "Simplified Form": [
+            "- *Banned*: No chewing gum, tobacco (e-cigs, shisha), drugs, CBD oil.",
+            "- *Knives*: 9cm+ or military need Arms & Explosive okay—upload photo to IDIS.",
+            "- *Guns/Toys*: Need ISC contract and AEB approval—upload photo.",
+            "- *Alcohol*: ISC only—≤5L and ≤S$100 for personal, otherwise get AVA permit."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India to Singapore\nUPS Worldwide Expedited\nUPS WorldWide Express Freight\nUPS Worldwide Express Saver",
+        "Info About Section Header": "This section lists the types of shipping services available from India to Singapore.",
+        "Simplified Form": [
+            "- *India to Singapore*: Choose Expedited, Express Freight, or Express Saver—check UPS for availability."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Repaired Goods\nGST waived if shipment nature and return indicated on waybill/invoice.\nSolid Wood Packing Material\nISPM 15 applies—needs phytosanitary cert for raw wood over 6mm.\nRepair and Return Shipments\nExport invoice needs description, serial, model, origin, and 'repair and return' note—pickup delayed 1 day for permit (S$100 fee). Re-import needs same plus warranty status and repair cost—7% GST if not under warranty.",
+        "Info About Section Header": "This section covers unique rules for repairs or specific materials to Singapore.",
+        "Simplified Form": [
+            "- *Repaired Goods*: Skip GST by noting 'repair and return' on waybill/invoice.",
+            "- *Wood Packing*: Raw wood >6mm needs ISPM 15 cert.",
+            "- *Repair & Return*: Export: list item details, origin, 'repair and return'—pickup delayed 1 day (S$100 fee). Re-import: add warranty info, repair cost—7% GST if no warranty."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis Value: 0 SGD—GST (8%) applies to all imports; low-value goods (≤S$400) need GST registration if vendor exceeds S$1M global and S$100K B2C to Singapore. Exports over $1,000 USD need formal clearance from India.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties in Singapore.",
+        "Simplified Form": [
+            "- *No Tax Break*: All imports pay 8% GST.",
+            "- *Low-Value Goods*: ≤S$400 needs GST registration if vendor sells >S$1M globally and >S$100K to Singapore consumers—mark 'GST Paid' on invoice.",
+            "- *High-Value Exports*: >$1,000 USD from India needs formal clearance."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Maximum weight: 70 kg (150 lbs.) per package\nMaximum length: 274.00 cm (107.9 in.)\nMaximum dimensions: 419.10 cm (165.0 in.) length and girth combined",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages to Singapore.",
+        "Simplified Form": [
+            "- *Weight Limit*: 70 kg (150 lbs.) max per package.",
+            "- *Size Limits*: Max length 274 cm (107.9 in.), total length + girth 419.1 cm (165 in.)."
+        ]
+    }
+]

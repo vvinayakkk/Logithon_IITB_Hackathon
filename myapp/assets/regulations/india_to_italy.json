@@ -1,0 +1,152 @@
+[
+    {
+        "Section": "Import Documentation",
+        "Content": "Import License\nWhen shipping goods from India to Italy, Italian customs may require an import license for certain products based on their harmonized tariff code (HS code), as defined by the EU’s Combined Nomenclature (CN). For example, restricted items like pharmaceuticals (e.g., HS 3004 for medicines) or agricultural goods (e.g., HS 0805 for citrus fruits) from India might need this license due to EU quotas or safety standards. The requirement hinges on India as the country of origin, not just the export point (e.g., if transshipped via Singapore). The Italian importer must apply for this license through the Italian Ministry of Economic Development (MiSE), often requiring an original export license from India’s Directorate General of Foreign Trade (DGFT) to support the application. This process can take 2-4 weeks, depending on the commodity and current EU-India trade policies as of March 07, 2025. For specifics, contact the Italian Chamber of Commerce (Unioncamere) or the Indian Embassy in Rome, as requirements may evolve with trade negotiations.\n\nCITES Certificate\nThe Washington Convention on International Trade in Endangered Species (CITES) governs shipments from India to Italy containing leather or other products from non-domesticated animals, such as python skin bags or ivory carvings. These require a CITES certificate issued by India’s Ministry of Environment, Forest and Climate Change, detailing the species (e.g., Python molurus), origin, and legal sourcing. Without this, Italian customs will seize or return the goods. Notably, UPS ports like Bergamo (BGY) and Venice (VCE) cannot clear CITES shipments, as they lack Italian Agricultural Resources approval—clearance must occur at designated points like Milan Malpensa (MXP). Delays of 3-5 days and additional fees may apply.\n\nProduct Safety\nMarket Surveillance\nItaly enforces EU product safety through national agencies like the Italian Customs Agency (Agenzia delle Dogane e dei Monopoli) and regional health authorities, conducting market surveillance. For Indian exports—e.g., electronics or toys—customs may request a Declaration of Conformity (DoC) at entry points like Genoa or Rome Fiumicino. Non-compliant goods, such as a child’s toy with excess phthalates, risk seizure or destruction, with costs borne by the shipper or importer.\n\nDeclaration of Conformity (DoC)\nThe DoC is mandatory for Indian goods entering Italy with CE marking, such as medical devices (e.g., HS 9018 for thermometers) or machinery (e.g., HS 8479 for textile looms). This document, signed by the Indian manufacturer or their EU representative, confirms compliance with EU directives (e.g., Medical Device Regulation 2017/745). It must include the manufacturer’s name, address (e.g., ‘Ravi Industries, Mumbai’), product details (e.g., ‘Model X-100, Serial 12345’), and applicable standards. If the Indian firm lacks an EU representative, the Italian importer must provide the DoC and supporting test reports, available for 10 years post-import. See EU guidelines: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C:2022:247:TOC.\n\nNational Requirements\nFor CE-marked goods from India, the Italian importer must declare conformity within the customs entry, supported by the DoC. This applies to toys, electronics, medical devices, sunglasses, chemicals, measuring devices, pressure equipment, and pyrotechnics—no exceptions. Spot checks at ports like Naples may lead to fines or shipment rejection if CE marking is absent or unverifiable.\n\nFree Trade Agreements\nIndia benefits from the EU’s Generalised System of Preferences (GSP), allowing reduced or zero duties on certain goods (e.g., textiles under HS 6204) shipped to Italy, provided they meet origin rules. Indian exporters must provide a Form A certificate, validated by Indian customs, proving the goods are wholly produced or substantially transformed in India (e.g., cotton woven in Gujarat, not just assembled). The importer submits this at clearance to claim preferences, verifiable via: http://ec.europa.eu/trade/policy/countries-and-regions/development/generalised-scheme-of-preferences/.\n\nImport Control System 2 (ICS2)\nSince March 1, 2023, ICS2 mandates pre-arrival data for air shipments from India to Italy. For a shipment of spices and textiles, the invoice must list a 6-digit HS code per item (e.g., 0904.21 for dried peppers, 5208.52 for cotton fabric), detailed descriptions (e.g., ‘organic turmeric powder, 5 kg’), net weights if multiple codes apply, and the Italian importer’s EORI number. Missing data delays clearance at Milan or holds shipments at origin, per EU rules: https://ec.europa.eu/taxation_customs/business/customs-controls/ics2_en.\n\nMiscellaneous\nZIKA Virus / Disinfection Certificate\nItaly requires a disinfection certificate for Indian goods like tires, cut flowers, or exotic wood (e.g., teak under HS 4407) from Zika-affected regions, issued by India’s Ministry of Health. Without it, customs may mandate disinfection at import, adding 2-3 days and costs (approx. €50-100).\n\nCertificate of Origin\nTextiles from India (e.g., HS 5007 for silk fabrics) don’t need a Certificate of Origin since 2011, but the invoice must state ‘Origin: India’ per line. If customs suspects rerouting (e.g., via Bangladesh), they may demand a certificate from the Indian Chamber of Commerce, requiring an original signature, seal, and detailed goods description (e.g., ‘handwoven silk sarees, 10 pcs’).\n\nForm A\nUnder the GSP, a Form A from India enables duty reductions for eligible goods (e.g., leather shoes under HS 6403). Issued by Indian customs, it must accompany the shipment in original, proving Indian origin through production records or supplier declarations.",
+        "Info About Section Header": "This section explains the paperwork needed when bringing goods into a country, including certificates, permits, and other requirements.",
+        "Simplified Form": [
+            "- *Import License*: Some Indian goods need an Italian license—importer gets it via MiSE, might need India’s DGFT export license.",
+            "- *CITES*: Leather from India (e.g., python) needs a CITES certificate—not cleared at Bergamo/Venice.",
+            "- *DoC*: CE-marked goods from India need a signed DoC—importer keeps it ready for customs.",
+            "- *GSP*: India’s Form A cuts duties—prove origin with customs-stamped original.",
+            "- *ICS2*: Air shipments need HS codes, weights, EORI—delays without them.",
+            "- *Textiles*: No origin certificate, just ‘India’ on invoice—customs might ask for proof."
+        ]
+    },
+    {
+        "Section": "Clearance Information",
+        "Content": "Miscellaneous\nImport Requirements\nRadiometric Surveillance\nFor Indian shipments of scrap metal (e.g., HS 7204), finished metal products (e.g., HS 7326 for steel utensils), or semi-finished metals (e.g., HS 7218 for steel bars), Italy mandates radiometric testing at the first EU entry point, like Milan Malpensa. This ensures no radioactive contamination, issuing a certificate post-test with a €180 UPS brokerage fee. Delays of 1-3 days are common.\n\nCustoms Clearance Process\nItalian customs requires declarations within 20 days of arrival from India. For a shipment of handicrafts landing March 07, 2025, the deadline is March 27, 2025—miss it, and UPS returns it at the shipper’s expense (e.g., €200-300). UPS clears imports for Italian entities or EU-based firms with special setups, but non-EU importers (e.g., an Indian seller) need an Italian Importer of Record (IOR) with a tax ID or EORI. Include this on the invoice to avoid holds.\n\nShipment to Italian Private People\nFor Indian gifts or goods over €150 (e.g., a €200 silk saree), the Italian consignee’s Tax ID (Codice Fiscale) is mandatory on the invoice, plus a phone number and email. Without these, customs delays clearance by 2-5 days, contacting the recipient directly.\n\nShipments to Foreign Private People\nNon-Italian EU residents importing from India (e.g., a German tourist in Italy) need an EORI for shipments over €150. For personal luggage via UPS, a temporary EORI is required—apply via http://www.agenziadoganemonopoli.gov.it/, submitting a signed form, passport copy, and travel proof (e.g., airline ticket) through UPS’s IDIS system. Issuance takes 3-5 days.\n\nShipments to Businesses\nItalian businesses importing from India (e.g., a Milan retailer buying spices) need a VAT number for all shipments over €22. Include the importer’s phone and email on the invoice to meet clearance timelines (typically 1-2 days).\n\nLivigno Shipments\nLivigno (postal code 23041), a duty-free zone, incurs a €37 UPS surcharge for Indian shipments (except documents under 2.5 kg). Clearance occurs outside Italian customs jurisdiction, adding 1-2 days.\n\nSan Marino Shipments\nFor San Marino (postal codes 47890-47899), Indian shippers must name a local broker on the invoice. UPS delivers under bond to the broker, who handles clearance—POD reflects the broker’s signature, not the final recipient’s.\n\nPost Office Boxes\nUPS doesn’t deliver to P.O. Boxes from India. Provide a full street address (e.g., ‘Via Roma 12, Apt 3, 20121 Milano’), consignee name, and phone number to avoid returns.\n\nDuty and Taxes\nDuties and taxes for Indian goods include the CIF value—e.g., €500 for jewelry, €50 freight from Mumbai, €10 insurance totals €560. Duty (e.g., 2.5% on HS 7113 = €14) and VAT (22% on €574 = €126.28) apply, plus clearance fees, payable by the designated party.\n\nClearance Comments\nMiss the 20-day declaration window, and UPS auto-returns Indian shipments—e.g., a delayed electronics batch costs the shipper €250 in return fees.\n\nGifts & Samples\nSince December 12, 2019, Indian gifts to India attract duties, but for Italy, EU rules apply—see ‘Gift Exemptions’ for details.",
+        "Info About Section Header": "This section provides details on the rules and processes for getting shipments through customs, including addresses and contact info requirements.",
+        "Simplified Form": [
+            "- *Metal Test*: Indian scrap metal needs a €180 radiometric test—delays likely.",
+            "- *Deadline*: Declare within 20 days from India, or it’s returned at shipper’s cost.",
+            "- *Private*: Over €150 needs Italian Tax ID, phone—delays without.",
+            "- *Foreign*: Non-Italians need EORI over €150—apply with passport via UPS.",
+            "- *Business*: VAT number for over €22—add contact info.",
+            "- *Livigno*: €37 surcharge from India—duty-free zone rules."
+        ]
+    },
+    {
+        "Section": "Areas Served",
+        "Content": "Service is provided to and from all points in Italy for shipments from India, except specific zones. Livigno (postal code 23041) offers delivery-only from India—no pickups—due to its duty-free status, requiring a €37 surcharge and full address (e.g., ‘Via Fontana 5, 23041 Livigno’). San Marino (postal codes 47890-47899) uses country code SM, not IT—shipments from India need a local broker’s details. Vatican City (postal code 00120) uses IT code and accepts Indian shipments with a full address (e.g., ‘Via della Stazione Vaticana 1, 00120’). UPS doesn’t serve P.O. Boxes—provide a street address, name, and phone (e.g., ‘+39 06 1234567’). Rest days halt service: Saturdays, Sundays, and holidays like Ferragosto (August 15) or Easter Monday. Time zones shift—Spring GMT +0200 (March-October), Fall GMT +0100 (October-March)—versus India’s IST (GMT +0530), a 3.5-hour gap. Language is Italian; currency is Euro (EUR).",
+        "Info About Section Header": "This section lists the locations where shipping services are available, along with time zones and holidays.",
+        "Simplified Form": [
+            "- *Coverage*: Most of Italy from India, some exceptions.",
+            "- *Livigno*: Delivery only, €37 fee—full address needed.",
+            "- *San Marino*: Use SM code, name a broker.",
+            "- *Vatican*: Use IT code, full address.",
+            "- *Rest Days*: No service weekends or holidays—plan ahead.",
+            "- *Time*: Spring +0200, Fall +0100—3.5 hours behind India."
+        ]
+    },
+    {
+        "Section": "Billing Options",
+        "Content": "Duties and Taxes\nFor Indian shipments to Italy, duties and taxes can be billed to the shipper (e.g., a Delhi exporter), receiver (e.g., a Rome retailer), or a third party (e.g., a logistics firm in Dubai). Third-party billing requires their name, country, and UPS account number (e.g., ‘Global Logistics, UAE, #123456’). Billing outside Italy incurs a Duty and Tax Forwarding surcharge (€15-20 as of March 07, 2025), covering extra processing.\n\nShipping Charges\nFreight costs from India to Italy can bill to the shipper, receiver, or third party. Receiver billing needs their UPS account number; third-party billing needs full details (e.g., ‘Singh Trading, India, #789012’). No surcharge applies unless combined with duty forwarding.\n\nPayment Methods\nCredit card, check, or cash payments from India must bill the shipper—e.g., a Mumbai firm paying via Visa for a €300 shipment.\n\nSplit Duty And VAT (SDV)\nSplit billing lets freight and duties go to the Indian shipper or a third party, while VAT goes to the Italian receiver or another party. A €10-15 surcharge applies—e.g., an Indian exporter pays €50 duties, the Italian buyer pays €100 VAT on machinery.\n\nThird-Party Billing\nItalian domestic shipments (e.g., Milan to Rome) can’t bill to India, but EU-wide shipments (e.g., Italy to France) can bill an Indian third party with a VAT/EIN ID on file with UPS—e.g., an Indian parent company covering costs.",
+        "Info About Section Header": "This section explains how shipping costs, duties, and taxes can be paid and by whom.",
+        "Simplified Form": [
+            "- *Duties/Taxes*: Bill to shipper, receiver, or third party—extra fee if not Italy.",
+            "- *Shipping*: Bill to shipper, receiver, or third party—receiver needs account.",
+            "- *Payment*: Card/check/cash? Shipper only from India.",
+            "- *Split*: Duties to shipper/third party, VAT to receiver/third party—adds fee.",
+            "- *Third Party*: EU-wide can bill India with VAT ID—domestic can’t."
+        ]
+    },
+    {
+        "Section": "Commodity Specific Stipulations",
+        "Content": "Samples\nMutilated samples from India (e.g., torn fabric swatches under €22) enter Italy duty- and VAT-free if marked ‘Samples—No Commercial Value’ on the invoice. Non-mutilated samples (e.g., 5 cotton shirts) incur duties unless minimal (under 5 items). Descriptions must be precise—e.g., ‘mutilated cotton sari pieces, 10 pcs’—not just ‘samples’.\n\nShoes\nIndian footwear (e.g., HS 6403 for leather sandals) needs detailed invoices: leather type (e.g., buffalo), sole material (e.g., rubber), upper material (e.g., canvas), and wearer (e.g., women). ‘Shoes’ alone risks rejection at Milan customs.\n\nCosmetics\nCommercial Indian cosmetics (e.g., HS 3304 for herbal creams) must meet EU labeling rules, translated into Italian (e.g., ‘Crema all’Aloe, 50ml, scadenza 03/2026’), and require a health permit from Italy’s Ministry of Health, obtainable via UPS for €50-100. Private imports allow 2 kinds, 2 items each (e.g., 2 lipsticks, 2 creams) without a permit.\n\nLeather Goods\nCITES applies to Indian leather from endangered species (e.g., crocodile belts)—a certificate is mandatory, and clearance isn’t at UPS ports like Bergamo. Non-CITES leather (e.g., cowhide) needs the invoice to state the Latin name (e.g., Bos taurus) to confirm it’s not protected.\n\nVitamins\nIndian vitamins (e.g., HS 2936) are medicines—see ‘Medicine’.\n\nCoffee\nRoasted coffee from India (e.g., HS 0901.21) needs a health permit for commercial imports, labeled in Italian (e.g., ‘Caffè Arabica, 500g, scadenza 12/2025’). Up to 2.5 kg for testing enters without a permit if the importer declares usage.\n\nNutritional Supplements\nTreated as medicines—see ‘Medicine’.\n\nAnimal Products\nIndian animal products (e.g., HS 4107 for leather, HS 0409 for honey) require veterinary inspection at Cologne (UPS’s EU air entry), needing an ISC contract. Food items need an EU-approved Indian supplier, a Health Certificate, and Italian labeling. Non-food (e.g., wool samples) also needs vet checks if unprocessed—costs €50-100, delays 1-3 days.\n\nPlants\nIndian plants (e.g., HS 0602 for saplings) need phytosanitary clearance at Venice (VCE), with a certificate from India’s Plant Protection Organization. Delays apply if misrouted to other ports.\n\nDairy\nIndian cheese or ghee (HS 0406) falls under Animal Products—requires ISC and vet checks.\n\nMusic/DVDs/Films\nPrivate shipments from India need a ‘personal use only’ declaration; commercial ones need proof of Italian royalties paid—e.g., SIAE clearance for a Bollywood DVD.\n\nHoney\nIndian honey (HS 0409) needs a vet inspection and Health Certificate unless from an EU-approved source—small gift amounts (up to 2 kg) may bypass this.\n\nMetals, Non-Precious\nIndian scrap metal (HS 7204) undergoes mandatory radiometric testing (€180 fee) at entry—delays 1-3 days.\n\nMedical Instruments\nIndian devices (e.g., HS 9018 for scalpels) need Italian labels and a health permit via UPS (€50-100), plus CE marking per EU rules.\n\nDrugs\nSee ‘Medicine’.\n\nUSB Sticks\nData-carrying USBs from India need an invoice stating ‘intercompany data’ and value (e.g., €10)—VAT may apply over €22.\n\nTest Reagent\nIndian monoclonal antibody reagents (e.g., HS 3822) avoid vet checks if commercially produced; polyclonal ones need inspection and detailed invoices (e.g., ‘rabbit-derived, 10ml’).\n\nFood\nIndian food (e.g., HS 1905 for snacks) needs a Health Certificate unless a small gift/sample—special rules apply for tea from certain origins per EU 2009/669/EC.",
+        "Info About Section Header": "This section lists special rules for shipping certain types of goods, like medical items or jewelry.",
+        "Simplified Form": [
+            "- *Samples*: Torn Indian samples under €22—duty-free, mark ‘no value’.",
+            "- *Shoes*: Detail leather, sole, wearer for Indian shoes—avoid vague terms.",
+            "- *Cosmetics*: Commercial needs Italian labels, permit—private up to 4 items.",
+            "- *Leather*: CITES for endangered species; Latin name for others.",
+            "- *Coffee*: Permit for roasted Indian coffee—2.5 kg test amount okay.",
+            "- *Animal Products*: ISC contract, vet check at Cologne—extra costs."
+        ]
+    },
+    {
+        "Section": "Gift Exemptions",
+        "Content": "Shipment Value Amount: Up to 45.00 European Monetary Unit (Euro) EUR\nShipment Type: Individual-to-individual from India to Italy\nExemption Rule: Per shipment\n\nGifts from an Indian individual to an Italian individual (e.g., a €40 brass idol) up to €45 are duty-free as of March 07, 2025, but VAT (22%) applies above €22—e.g., €4.84 on a €22 gift. Mark ‘Gift Shipment’ on the invoice and UPS Waybill, including the sender’s details (e.g., ‘Amit Patel, 12 MG Road, Mumbai’). The Italian recipient’s Codice Fiscale or EORI is mandatory for exemption. Limits include 50 cigarettes, 1L spirits, or 50g perfume—exceeding these (e.g., 2L whiskey) voids the exemption.",
+        "Info About Section Header": "This section explains if gifts can avoid taxes or duties and lists items that can’t be sent as gifts.",
+        "Simplified Form": [
+            "- *Limit*: Up to €45 from India—duty-free, VAT over €22.",
+            "- *Label*: ‘Gift Shipment’ and sender’s name/address on docs.",
+            "- *ID*: Needs Italian Codice Fiscale/EORI.",
+            "- *Caps*: Max 50 cigarettes, 1L spirits, 50g perfume."
+        ]
+    },
+    {
+        "Section": "Invoice Requirements",
+        "Content": "Paperless Invoice - Exports\nUPS Paperless Invoice supports exports from India to Italy via systems like WorldShip, cutting clearance time by 1-2 days—e.g., a Delhi exporter sending textiles avoids paper delays.\n\nInvoice\nNon-document shipments from India to Italy need 1 original and 2 copies of the invoice, showing true value (e.g., €100 for a kurta, not €5) to avoid undervaluation flags. For private recipients over €22, include the consignee’s phone (e.g., ‘+39 333 1234567’); mobile and email are optional. Businesses need the Italian VAT number; private importers need the Codice Fiscale. Livigno, Vatican, Campione d’Italia, and San Marino always require invoices—e.g., ‘Via della Pace 1, 47893 San Marino’. Descriptions must be specific (e.g., ‘men’s silk kurta, red, 5 pcs’) per EU guidelines: http://ec.europa.eu/taxation_customs/resources/documents/customs/policy_issues/customs_security/acceptable_goods_description_guidelines_en.pdf.",
+        "Info About Section Header": "This section details what information must be included on an invoice for shipping goods.",
+        "Simplified Form": [
+            "- *Paperless*: Electronic invoices from India—faster clearance.",
+            "- *Copies*: 1 original + 2 copies, real values—lowballing delays.",
+            "- *Private*: Phone over €22, Codice Fiscale—helps customs.",
+            "- *Business*: VAT number—specific goods descriptions."
+        ]
+    },
+    {
+        "Section": "Items Classified as Documents",
+        "Content": "Italy classifies Indian items like annual reports, bids, or personalized checks as documents if they lack commercial value—e.g., a shareholder report from an Indian firm. Up to 20 kg, these are duty-free; over 20 kg (e.g., ‘50 kg of exam papers’), a pro forma invoice and declaration may trigger VAT. Examples include validated tickets, up to 5 intercompany manuals, or 5 credit cards. Bulk brochures or event tickets from printers don’t qualify—need full invoices.",
+        "Info About Section Header": "This section lists items that are treated as documents (not goods) for shipping purposes, with weight limits.",
+        "Simplified Form": [
+            "- *Documents*: Indian reports up to 20 kg—duty-free, no value.",
+            "- *Over 20 kg*: Pro forma needed—might cost VAT."
+        ]
+    },
+    {
+        "Section": "Prohibited or Restricted Commodities",
+        "Content": "Alcoholic Beverages\nIndian alcohol (e.g., HS 2208 for whiskey) needs an ISC contract—UPS limits imports to wine/sparkling wine up to 15% ABV (no excise duty). Commercial importers need a health permit (€50-100 via UPS); private imports cap at 5L without one—age checks apply (18+).\n\nKnives\nDouble-edged Indian knives (e.g., kirpans) need a police permit; ornamental swords don’t unless weaponizable.\n\nTobacco Products\nIndian tobacco (e.g., HS 2402 for bidis) can’t clear via UPS—requires ISC and excise stamps.\n\nSeeds\nIndian seeds (e.g., HS 1209) need phytosanitary clearance at Venice (VCE)—delays if misrouted.\n\nSoil\nSoil from India is banned under EU rules (e.g., HS 2505)—exceptions for peat-based items.\n\nPersonal Effects\nNot shippable between India and Italy via UPS.\n\nArtwork/Antiques\nIndian art over 100 years (e.g., HS 9706 for Mughal vases) gets reduced VAT (10%) with Fine Arts expertise—delays and fees apply.\n\nCITES Shipments\nEndangered species items (e.g., HS 4301 for furs) need a CITES certificate and ISC—cleared only at Venice.\n\nMedicine\nIndian medicines (e.g., HS 3004) are B2B only—private imports from outside EEA are banned.",
+        "Info About Section Header": "This section lists items that cannot be shipped to India or have strict rules.",
+        "Simplified Form": [
+            "- *Alcohol*: Wine up to 15% with ISC—5L private max.",
+            "- *Knives*: Double-edged needs permit—ornamental okay.",
+            "- *Tobacco*: No UPS clearance—needs ISC.",
+            "- *Seeds*: Phytosanitary at Venice—don’t misroute.",
+            "- *Soil*: Banned from India—peat exception.",
+            "- *Medicine*: B2B only—no private imports."
+        ]
+    },
+    {
+        "Section": "Saturday Delivery",
+        "Content": "Saturday Delivery Available: Yes\nUPS offers Saturday delivery from India to major Italian cities (e.g., Rome, Milan) but not rural areas—check the UPS Time in Transit tool. As of March 07, 2025, it’s ideal for urgent shipments like perishables.",
+        "Simplified Form": [
+            "- *Saturday*: Yes to big cities from India—check tool."
+        ]
+    },
+    {
+        "Section": "Service Options",
+        "Content": "India-to-Italy options include UPS Worldwide Express Saver (1-3 days, evening), UPS Worldwide Expedited (2-5 days, economical), UPS Worldwide Express Freight (1-3 days, over 70 kg), Worldwide Express Freight Midday (faster freight), UPS Worldwide Express Plus (1-2 days, morning), and UPS Worldwide Express (1-3 days, standard). Availability varies—e.g., Express Plus reaches Milan but not remote Sicily. Verify via Calculate Time and Cost.",
+        "Info About Section Header": "This section lists the types of shipping services available, like express or freight.",
+        "Simplified Form": [
+            "- *Options*: Express Saver, Expedited, Freight, Plus—speed vs. cost."
+        ]
+    },
+    {
+        "Section": "Special Clearance Requirements",
+        "Content": "Temporary Import\nIndian goods (e.g., HS 9023 for trade show models) can enter Italy duty-free temporarily if unchanged and re-exported within 6 months. A security deposit (CIF-based, e.g., €500 for a €500 item) is required, refunded post-re-export. Invoice must state ‘Temporary Import for Exhibition’—UPS rarely handles this; check with Italian Brokerage.\n\nSolid Wood Packing Material\nIndian wood pallets (e.g., HS 4415) must meet ISPM 15—heat-treated and IPPC-stamped—or face rejection/fumigation at shipper’s cost (€100-200).",
+        "Info About Section Header": "This section covers unique rules for temporary imports, repairs, or specific materials.",
+        "Simplified Form": [
+            "- *Temporary*: Duty-free short-term from India—deposit needed.",
+            "- *Wood*: Heat-treated, stamped pallets—else rejected."
+        ]
+    },
+    {
+        "Section": "Value Limits",
+        "Content": "Deminimis Value: 150.00 EUR\nIndian shipments to Italy up to €150 (e.g., €100 scarf) are duty-free but VAT applies over €22 (22% = €6.16 on €28). Excludes alcohol, tobacco, perfume.\n\nHigh Value Exports: Over USD 1,000\nIndian exports over $1,000 (e.g., €900 jewelry) need formal Indian customs clearance, adding a day. Jewelry over $500/piece requires a value waiver.",
+        "Info About Section Header": "This section states the minimum value thresholds for shipments that affect taxes or duties.",
+        "Simplified Form": [
+            "- *Low*: Up to €150 from India—duty-free, VAT over €22.",
+            "- *High*: Over $1,000 needs Indian clearance—extra day."
+        ]
+    },
+    {
+        "Section": "Weight and Size Limits",
+        "Content": "Maximum Weight: 70 kg (150 lbs.) per package\nMaximum Length: 274.00 cm (107.9 in.) per package\nMaximum Dimensions: 400.00 cm (157.5 in.)—length plus girth combined\n\nIndian packages to Italy can’t exceed 70 kg (e.g., a spice crate) or 274 cm long (e.g., a rolled rug). Total size (length + 2x width + 2x height) must be under 400 cm—oversized needs freight service.",
+        "Info About Section Header": "This section specifies the maximum weight and size allowed for packages.",
+        "Simplified Form": [
+            "- *Weight*: Max 70 kg from India.",
+            "- *Size*: Max 274 cm long, 400 cm total."
+        ]
+    }
+]
