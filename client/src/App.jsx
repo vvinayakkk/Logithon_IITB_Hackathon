@@ -8,6 +8,7 @@ import GlobeVisualization from './components/Globe'
 import RegulationsSearch from './pages/RegulationsSearchPage'
 import ShowRegulations from './pages/ShowRegulationsPage'
 import ComplianceFormPage from './pages/ComplianceFormPage'
+import Restrictions from './pages/restrictions'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +16,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<ItemImageCompliancePage/>} /> 
-      <Route path='/globe' element={<GlobeVisualization/>} />
+      <Route path='/restrictions' element={<Restrictions/>} />
       <Route path="/regulations" element={<RegulationsSearch />} />
       <Route path="/regulations/:source/:destination" element={<ShowRegulations />} />
       <Route path="/compliance" element={<ComplianceFormPage/>} />
