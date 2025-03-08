@@ -28,12 +28,11 @@ from io import BytesIO
 import uuid
 
 
-ACCOUNT_SID = "AC338d14a32c3fd7d04aa789471a6617e5"
-AUTH_TOKEN = "c2a0f002936b4a8a62b219f8865ae247"
-MESSAGING_SERVICE_SID = "MG161d82d9efb0b7dc49b53a7008b5c2c8"  # Twilio Messaging Service SID
+account_sid = 'AC338d14a32c3fd7d04aa789471a6617e5'
+auth_token = 'c2a0f002936b4a8a62b219f8865ae247'
 TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"  # Twilio's default sandbox number
-YOUR_PHONE_NUMBER = "+917977409706"  # Example: +919876543210
-
+YOUR_PHONE_NUMBER = "+919930679651"  # Example: +919876543210
+client = Client(account_sid, auth_token)
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -50,13 +49,7 @@ _country_map = None
 _country_data = None
 _nlp = None
 
-ACCOUNT_SID = "AC402d24ad766ba5c73dd10c865bd5ba38"
-AUTH_TOKEN = "9acb4c17cf0b00befcb81168aa3e402d"
-MESSAGING_SERVICE_SID = "MGf88ee5c9f52bda63c4fec2e8cf710f30"  # Twilio Messaging Service SID
-TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"  # Twilio's default sandbox number
-YOUR_PHONE_NUMBER = "+917977409706"  # Example: +919876543210
 
-client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 # Paths configuration
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
@@ -809,6 +802,21 @@ def generate_pdf():
         logger.error(f"Error generating PDF: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+import os
+from flask import Flask, request, jsonify
+from supabase import create_client
+from twilio.rest import Client
+import uuid
+
+supabase_url = "https://egdbvwtvwqhqorfknmfj.supabase.co"
+supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnZGJ2d3R2d3FocW9yZmtubWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUyMjA1MTQsImV4cCI6MjA1MDc5NjUxNH0.osnvEZThw50kZTZfuM1qjIMkaFeOo6bJ2A5NnM86hC0"
+supabase = create_client(supabase_url, supabase_key)
+BUCKET_NAME="uploads"
+# Define this route OUTSIDE of any other function, at the top level of your app
+@app.route('/files/<filename>')
+def serve_file(filename):
+    return send_from_directory('uploads', filename)
+
 
 @app.route("/send_message", methods=["POST"])
 def send_message():
@@ -889,10 +897,88 @@ def send_message():
                 body=message_body,
                 to=to_number
             )
+        data = request.form
+        from_number = 'whatsapp:+14155238886'
+        to = data.get('to')
+        to_number = f"whatsapp:{to}"
+        message_body = data.get('message')
+        
+        # Handle file upload to Supabase
+        if 'file' in request.files:
+            file = request.files['file']
+            if file:
+                # Generate a unique filename
+                file_extension = os.path.splitext(file.filename)[1]
+                unique_filename = f"{uuid.uuid4()}{file_extension}"
+                
+                # Save file temporarily
+                temp_path = f"temp_{unique_filename}"
+                file.save(temp_path)
+                
+                try:
+                    logger.info(f"Using bucket: {BUCKET_NAME}")
+                    
+                    # Upload to Supabase storage
+                    with open(temp_path, 'rb') as f:
+                        file_content = f.read()
+                    
+                    logger.info(f"Uploading file {unique_filename} ({len(file_content)} bytes)")
+                    
+                    # Try the upload
+                    res = supabase.storage.from_(BUCKET_NAME).upload(
+                        path=unique_filename,
+                        file=file_content,
+                        file_options={"content-type": file.content_type or "application/octet-stream"}
+                    )
+                    
+                    logger.info(f"Upload response: {res}")
+                    
+                    # Get public URL for the file
+                    file_url = supabase.storage.from_(BUCKET_NAME).get_public_url(unique_filename)
+                    logger.info(f"Generated public URL: {file_url}")
+                    
+                    # Clean up temporary file
+                    os.remove(temp_path)
+                    
+                    # Send message with media
+                    message = client.messages.create(
+                        from_=from_number,
+                        body=message_body,
+                        to=to_number,
+                        media_url=file_url
+                    )
+                    
+                    logger.info(f"Message sent with SID: {message.sid}")
+                    
+                except Exception as upload_error:
+                    logger.error(f"Supabase upload error: {str(upload_error)}")
+                    
+                    # Send message without media as a fallback
+                    message = client.messages.create(
+                        from_=from_number,
+                        body=f"{message_body} (Note: File attachment failed to upload)",
+                        to=to_number
+                    )
+            else:
+                # Send message without media
+                message = client.messages.create(
+                    from_=from_number,
+                    body=message_body,
+                    to=to_number
+                )
+        else:
+            # Send message without media
+            message = client.messages.create(
+                from_=from_number,
+                body=message_body,
+                to=to_number
+            )
 
+        return jsonify({"message_sid": message.sid})
         return jsonify({"message_sid": message.sid})
 
     except Exception as e:
+        logger.error(f"Error sending message: {str(e)}")
         logger.error(f"Error sending message: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
@@ -922,6 +1008,7 @@ if __name__ == '__main__':
     
     # Initialize the system
     initialize_system()
-    
+    if not os.path.exists('uploads'):
+        os.makedirs('uploads')
     # Run the Flask app
     app.run(host='0.0.0.0', port=5000, debug=True)
