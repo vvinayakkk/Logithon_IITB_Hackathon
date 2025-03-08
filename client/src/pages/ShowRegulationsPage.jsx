@@ -28,6 +28,7 @@ const ShowRegulations = () => {
   };
 
   useEffect(() => {
+
     const fetchRegulations = async () => {
       try {
         // Format the JSON filename according to source_to_destination.json

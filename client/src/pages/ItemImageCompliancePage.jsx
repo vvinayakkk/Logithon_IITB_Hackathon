@@ -81,19 +81,19 @@ function ItemImageCompliancePage() {
     'Kuwait': { lat: 29.3759, lng: 47.9774 }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSelectedFile(file);
-      
-      // Create a preview
-      const reader = new FileReader();
-      reader.onload = () => {
-        setPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+    const handleFileChange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        setSelectedFile(file);
+        
+        // Create a preview
+        const reader = new FileReader();
+        reader.onload = () => {
+          setPreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -854,4 +854,4 @@ function ItemImageCompliancePage() {
   );
 }
 
-export default ItemImageCompliancePage;
+  export default ItemImageCompliancePage;

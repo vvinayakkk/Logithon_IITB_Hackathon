@@ -1,8 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, StyleSheet, Modal, TextInput, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, StyleSheet, Modal, TextInput, Platform, Alert } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import WebView from 'react-native-webview';
+import * as FileSystem from 'expo-file-system';
+import { shareAsync } from 'expo-sharing';
+
+// Add these utility functions
+const save = async (uri, filename, mimetype) => {
+  if (Platform.OS === "android") {
+    const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+    if (permissions.granted) {
+      const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+      await FileSystem.StorageAccessFramework.createFileAsync(permissions.directoryUri, filename, mimetype)
+        .then(async (uri) => {
+          await FileSystem.writeAsStringAsync(uri, base64, { encoding: FileSystem.EncodingType.Base64 });
+          Alert.alert('Success', `${filename} saved successfully!`);
+        })
+        .catch(e => {
+          console.log(e);
+          Alert.alert('Error', 'Failed to save file.');
+        });
+    } else {
+      shareAsync(uri);
+    }
+  } else {
+    shareAsync(uri);
+  }
+};
+
 // Import all JSON files explicitly
 import australia_to_india from '../assets/regulations/australia_to_india.json';
 import brazil_to_india from '../assets/regulations/brazil_to_india.json';
@@ -87,10 +113,49 @@ const regulationsMap = {
   'united_states_to_india': united_states_to_india
 };
 
+const ExportMenu = ({ visible, onClose, onExportCSV, onExportPDF }) => (
+  <Modal
+    visible={visible}
+    transparent={true}
+    animationType="fade"
+    onRequestClose={onClose}
+  >
+    <TouchableOpacity 
+      style={styles.menuOverlay} 
+      activeOpacity={1} 
+      onPress={onClose}
+    >
+      <View style={styles.menuContainer}>
+        <TouchableOpacity 
+          style={styles.menuItem} 
+          onPress={() => {
+            onClose();
+            onExportCSV();
+          }}
+        >
+          <Ionicons name="document-text-outline" size={24} color="#f8fafc" />
+          <Text style={styles.menuItemText}>Export as CSV</Text>
+        </TouchableOpacity>
+        <View style={styles.menuDivider} />
+        <TouchableOpacity 
+          style={styles.menuItem} 
+          onPress={() => {
+            onClose();
+            onExportPDF();
+          }}
+        >
+          <Ionicons name="document-outline" size={24} color="#f8fafc" />
+          <Text style={styles.menuItemText}>Export as PDF</Text>
+        </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
+  </Modal>
+);
+
 const ShowRegulations = () => {
   // Update API URL with explicit protocol and port
   const API_URL ='http://192.168.80.60:6001/api/chat'  // For Android
-
+  const BACKEND_URL="http://192.168.80.60:5000"
   const { source, destination } = useLocalSearchParams();
   const [regulations, setRegulations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -102,6 +167,8 @@ const ShowRegulations = () => {
   const [chatMessages, setChatMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [chatId, setChatId] = useState(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
     try {
@@ -116,6 +183,7 @@ const ShowRegulations = () => {
       const data = regulationsMap[lookupKey];
       
       if (data) {
+        console.log(data);
         setRegulations(data);
         setLoading(false);
       } else {
@@ -163,6 +231,61 @@ const ShowRegulations = () => {
     return text;
   };
 
+  const parseMarkdownText = (text) => {
+    // Split by new lines first to handle bullet points
+    const lines = text.split('\n');
+    
+    return lines.map((line, lineIndex) => {
+      // Handle bullet points at the start of lines
+      if (line.trim().match(/^[*-]\s/)) {
+        return (
+          <View key={lineIndex} style={styles.bulletItemChat}>
+            <Text style={styles.bulletPointChat}>•</Text>
+            <View style={styles.bulletTextChat}>
+              {parseInlineMarkdown(line.replace(/^[*-]\s/, ''))}
+            </View>
+          </View>
+        );
+      }
+      
+      return (
+        <View key={lineIndex} style={styles.lineContainer}>
+          {parseInlineMarkdown(line)}
+        </View>
+      );
+    });
+  };
+
+  const parseInlineMarkdown = (text) => {
+    const parts = text.split(/((?:\*\*|__)[^*_]+(?:\*\*|__)|(?:\*|_)[^*_]+(?:\*|_)|\[[^\]]+\]\([^)]+\)|:\s+)/).filter(Boolean);
+    
+    return parts.map((part, index) => {
+      if (part.match(/^(?:\*\*|__).+(?:\*\*|__)$/)) {
+        return (
+          <Text key={index} style={styles.boldText}>
+            {part.replace(/^(?:\*\*|__)|(?:\*\*|__)$/g, '')}
+          </Text>
+        );
+      }
+      if (part.match(/^(?:\*|_).+(?:\*|_)$/)) {
+        return (
+          <Text key={index} style={styles.italicText}>
+            {part.replace(/^(?:\*|_)|(?:\*|_)$/g, '')}
+          </Text>
+        );
+      }
+      if (part.match(/^\[.*\]\(.*\)$/)) {
+        const [_, text] = part.match(/\[(.*)\]/);
+        return (
+          <Text key={index} style={styles.linkText}>
+            {text}
+          </Text>
+        );
+      }
+      return part ? <Text key={index} style={styles.messageText}>{part}</Text> : null;
+    });
+  };
+
   const renderContent = (content, isSimplified) => {
     if (isSimplified) {
       return (
@@ -173,50 +296,13 @@ const ShowRegulations = () => {
             nestedScrollEnabled={true}
           >
             {content.map((item, index) => {
-              // Split the text into parts (main text and colon-separated parts)
-              const parts = item
-                .replace(/^\s*-\s*/, '') // Remove bullet points
-                .split(/(?=:)/) // Split before colons but keep them
-
+              const cleanText = item.trim().replace(/^[-*•]\s*/, '');
+              
               return (
                 <View key={index} style={styles.bulletItem}>
                   <Text style={styles.bulletPoint}>•</Text>
-                  <View style={styles.textContent}>
-                    {parts.map((part, partIndex) => (
-                      <View key={partIndex} style={styles.textPart}>
-                        {part.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/).map((segment, i) => {
-                          if (segment.startsWith('**') && segment.endsWith('**')) {
-                            // Bold text
-                            return (
-                              <Text key={i} style={styles.boldText}>
-                                {segment.replace(/\*\*/g, '')}
-                              </Text>
-                            );
-                          } else if (segment.match(/\[(.*?)\]\((.*?)\)/)) {
-                            // Link text
-                            const [_, text] = segment.match(/\[(.*?)\]/);
-                            return (
-                              <Text key={i} style={styles.linkText}>
-                                {text}
-                              </Text>
-                            );
-                          } else if (segment.startsWith(':')) {
-                            // Format colon segments
-                            return (
-                              <Text key={i} style={styles.regularText}>
-                                {segment.trim()}
-                              </Text>
-                            );
-                          }
-                          // Regular text
-                          return segment ? (
-                            <Text key={i} style={styles.regularText}>
-                              {segment}
-                            </Text>
-                          ) : null;
-                        })}
-                      </View>
-                    ))}
+                  <View style={styles.textContainer}>
+                    {parseMarkdownText(cleanText)}
                   </View>
                 </View>
               );
@@ -252,6 +338,8 @@ const ShowRegulations = () => {
 
     const newUserMessage = { sender: 'user', text: userInput };
     setChatMessages(prev => [...prev, newUserMessage]);
+    setUserInput('');
+    setIsTyping(true);
     
     try {
       console.log('Sending request to:', API_URL); // Debug log
@@ -290,7 +378,8 @@ const ShowRegulations = () => {
 
         setChatMessages(prev => [...prev, { 
           sender: 'bot', 
-          text: data.message 
+          text: data.message,
+          isMarkdown: true
         }]);
       } else {
         throw new Error(data.error || 'Failed to get response');
@@ -302,9 +391,9 @@ const ShowRegulations = () => {
         sender: 'bot', 
         text: `Error: ${errorMessage}. Please try again.`
       }]);
+    } finally {
+      setIsTyping(false);
     }
-    
-    setUserInput('');
   };
 
   // Add openChatbot function
@@ -318,7 +407,16 @@ const ShowRegulations = () => {
     ]);
   };
 
-  // Add Chatbot component
+  // Add typing animation component
+  const TypingAnimation = () => (
+    <View style={styles.typingContainer}>
+      <View style={styles.typingDot} />
+      <View style={styles.typingDot} />
+      <View style={styles.typingDot} />
+    </View>
+  );
+
+  // Update renderChatbot to include a safe area for bottom devices
   const renderChatbot = () => (
     <Modal
       visible={chatbotOpen}
@@ -327,6 +425,10 @@ const ShowRegulations = () => {
       onRequestClose={() => setChatbotOpen(false)}
     >
       <View style={styles.modalContainer}>
+        <TouchableOpacity 
+          style={styles.modalOverlay}
+          onPress={() => setChatbotOpen(false)}
+        />
         <View style={styles.chatContainer}>
           <View style={styles.chatHeader}>
             <Text style={styles.chatTitle}>Regulation Assistant</Text>
@@ -335,30 +437,68 @@ const ShowRegulations = () => {
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={styles.chatMessages}>
+          <ScrollView 
+            style={styles.chatMessages}
+            contentContainerStyle={styles.chatMessagesContent}
+            ref={scrollViewRef => {
+              if (scrollViewRef) {
+                scrollViewRef.scrollToEnd({ animated: true });
+              }
+            }}
+          >
             {chatMessages.map((msg, i) => (
               <View
                 key={i}
                 style={[
                   styles.messageContainer,
-                  msg.sender === 'user' ? styles.userMessage : styles.botMessage
+                  msg.sender === 'user' ? styles.userMessageContainer : styles.botMessageContainer
                 ]}
               >
-                <Text style={msg.sender === 'user' ? styles.userText : styles.botText}>
-                  {msg.text}
-                </Text>
+                <View
+                  style={[
+                    styles.messageBubble,
+                    msg.sender === 'user' ? styles.userBubble : styles.botBubble
+                  ]}
+                >
+                  {msg.isMarkdown ? (
+                    <View style={styles.markdownContainer}>
+                      <Text style={styles.messageText}>
+                        {parseMarkdownText(msg.text)}
+                      </Text>
+                    </View>
+                  ) : (
+                    <Text style={[
+                      styles.messageText,
+                      msg.sender === 'user' ? styles.userText : styles.botText
+                    ]}>
+                      {msg.text}
+                    </Text>
+                  )}
+                </View>
               </View>
             ))}
+            {isTyping && (
+              <View style={styles.botMessageContainer}>
+                <View style={[styles.messageBubble, styles.botBubble]}>
+                  <TypingAnimation />
+                </View>
+              </View>
+            )}
           </ScrollView>
 
           <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              value={userInput}
-              onChangeText={setUserInput}
-              placeholder="Ask about these regulations..."
-              placeholderTextColor="#9CA3AF"
-            />
+            <View style={styles.inputWrapper}>
+              <TextInput
+                style={styles.input}
+                value={userInput}
+                onChangeText={setUserInput}
+                placeholder="Ask about these regulations..."
+                placeholderTextColor="#9CA3AF"
+                multiline={false}
+                returnKeyType="send"
+                onSubmitEditing={handleChatSubmit}
+              />
+            </View>
             <TouchableOpacity
               style={styles.sendButton}
               onPress={handleChatSubmit}
@@ -370,6 +510,70 @@ const ShowRegulations = () => {
       </View>
     </Modal>
   );
+
+  // Add export functions
+  const exportToCSV = async () => {
+    if (regulations.length === 0) {
+      Alert.alert('No Data', 'There are no regulations to export.');
+      return;
+    }
+
+    let csvContent = "Section,Content,Simplified Form\n";
+    
+    regulations.forEach(regulation => {
+      csvContent += `"${regulation.Section}","${regulation.Content.replace(/"/g, '""')}","${(regulation['Simplified Form'] || []).join('; ').replace(/"/g, '""')}"\n`;
+    });
+
+    const filename = `${source}_to_${destination}_regulations_${Date.now()}.csv`;
+    const fileUri = FileSystem.documentDirectory + filename;
+    
+    try {
+      await FileSystem.writeAsStringAsync(fileUri, csvContent);
+      save(fileUri, filename, 'text/csv');
+    } catch (err) {
+      console.error('Error writing CSV file:', err);
+      Alert.alert('Error', 'Failed to create CSV file.');
+    }
+  };
+
+  const downloadPdf = async () => {
+    if (regulations.length === 0) {
+      Alert.alert('No Data', 'There are no regulations to export.');
+      return;
+    }
+
+    try {
+      const filename = `${source}_to_${destination}_regulations_${Date.now()}.pdf`;
+      
+      // Format the data according to the server's expected structure
+      const exportData = encodeURIComponent(JSON.stringify({
+        title: `Regulations: ${source} to ${destination}`,
+        source: source,
+        destination: destination,
+        sections: regulations.map(reg => ({
+          title: reg.Section,
+          content: reg.Content,
+          simplified: reg['Simplified Form'] || []
+        }))
+      }));
+      
+      console.log("Sending data:", decodeURIComponent(exportData)); // Debug log
+      
+      const result = await FileSystem.downloadAsync(
+        `${BACKEND_URL}/generate-pdf?data=${exportData}`,
+        FileSystem.documentDirectory + filename
+      );
+      
+      if (result.status !== 200) {
+        throw new Error('Failed to download PDF');
+      }
+      
+      save(result.uri, filename, 'application/pdf');
+    } catch (error) {
+      console.error('Error downloading PDF:', error);
+      Alert.alert('Error', 'Failed to download PDF report.');
+    }
+  };
 
   if (loading) {
     return (
@@ -406,11 +610,24 @@ const ShowRegulations = () => {
             <Ionicons name="arrow-back" size={24} color="white" />
             <Text style={styles.backButtonText}>Back</Text>
           </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.exportButton} 
+            onPress={() => setMenuVisible(true)}
+          >
+            <Ionicons name="download-outline" size={24} color="#FFFFFF" />
+          </TouchableOpacity>
         </View>
         <Text style={styles.routeText}>
           {source} to {destination}
         </Text>
       </View>
+
+      <ExportMenu
+        visible={menuVisible}
+        onClose={() => setMenuVisible(false)}
+        onExportCSV={exportToCSV}
+        onExportPDF={downloadPdf}
+      />
 
       {/* Main Content */}
       <ScrollView style={styles.content}>
@@ -479,13 +696,13 @@ const ShowRegulations = () => {
   );
 };
 
-const existingStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#0f172a', // Darker background
   },
   header: {
-    backgroundColor: '#1E40AF',
+    backgroundColor: '#1e3a8a', // Darker blue
     padding: 16,
     paddingTop: 48,
   },
@@ -497,10 +714,10 @@ const existingStyles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#f8fafc', // Light text
   },
   routeText: {
-    color: 'white',
+    color: '#cbd5e1', // Slightly dimmed text
     fontSize: 18,
     marginTop: 8,
   },
@@ -509,7 +726,7 @@ const existingStyles = StyleSheet.create({
     alignItems: 'center',
   },
   backButtonText: {
-    color: 'white',
+    color: '#f8fafc',
     marginLeft: 8,
     fontSize: 16,
   },
@@ -519,24 +736,24 @@ const existingStyles = StyleSheet.create({
   },
   section: {
     marginBottom: 16,
-    backgroundColor: 'white',
+    backgroundColor: '#1e293b', // Dark blue-gray background
     borderRadius: 8,
     overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 5,
   },
   sectionHeader: {
     padding: 16,
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#2563eb', // Bright blue
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   sectionHeaderOpen: {
-    backgroundColor: '#1E40AF',
+    backgroundColor: '#1e40af', // Darker blue when open
   },
   sectionHeaderContent: {
     flexDirection: 'row',
@@ -544,7 +761,7 @@ const existingStyles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    color: 'white',
+    color: '#f8fafc',
     fontSize: 18,
     fontWeight: '600',
     flex: 1,
@@ -553,12 +770,14 @@ const existingStyles = StyleSheet.create({
     padding: 16,
   },
   simplifiedContent: {
-    backgroundColor: '#EFF6FF',
+    backgroundColor: '#1e293b', // Dark blue-gray
     padding: 16,
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#3b82f6',
   },
   simplifiedTitle: {
-    color: '#1E40AF',
+    color: '#60a5fa', // Lighter blue
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 8,
@@ -571,238 +790,274 @@ const existingStyles = StyleSheet.create({
   toggleButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E5E7EB',
+    backgroundColor: '#334155', // Dark slate
     padding: 8,
     borderRadius: 6,
   },
   toggleButtonText: {
-    color: '#4B5563',
+    color: '#e2e8f0', // Light gray
     marginLeft: 8,
   },
-  centerContainer: {
-    flex: 1,
-    justifyContent: 'center',
+  chatButton: {
+    flexDirection: 'row',
     alignItems: 'center',
-  },
-  errorText: {
-    color: '#EF4444',
-    marginBottom: 16,
-    fontSize: 16,
-  },
-  button: {
-    backgroundColor: '#3B82F6',
-    padding: 12,
+    backgroundColor: '#2563eb', // Bright blue
+    padding: 8,
     borderRadius: 6,
+    marginLeft: 8,
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
+  chatButtonText: {
+    color: '#f8fafc',
+    marginLeft: 8,
   },
-  contentText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#1F2937',
-    marginBottom: 12,
-  },
-});
-
-const additionalStyles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end', // Align to bottom
+  },
+  modalOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(15, 23, 42, 0.5)',
   },
   chatContainer: {
-    height: '75%',
-    backgroundColor: 'white',
+    height: '90%', // Increased from 80%
+    backgroundColor: '#1e293b',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     overflow: 'hidden',
+    paddingBottom: Platform.OS === 'ios' ? 20 : 0, // Safe area for iOS
   },
   chatHeader: {
-    backgroundColor: '#1E40AF',
+    backgroundColor: '#1e40af', // Dark blue
     padding: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   chatTitle: {
-    color: 'white',
+    color: '#f8fafc',
     fontSize: 18,
     fontWeight: '600',
   },
-  chatMessages: {
-    flex: 1,
-    padding: 16,
-  },
   messageContainer: {
-    marginBottom: 12,
-    maxWidth: '80%',
+    marginVertical: 4,
+    paddingHorizontal: 8,
+    width: '100%',
   },
-  userMessage: {
+  userMessageContainer: {
+    alignItems: 'flex-end',
+  },
+  botMessageContainer: {
+    alignItems: 'flex-start',
+  },
+  messageBubble: {
+    maxWidth: '85%',
+    padding: 12,
+    borderRadius: 16,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  markdownContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  messageText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#f8fafc',
+    flexShrink: 1,
+    flexWrap: 'wrap',
+  },
+  inputContainer: {
+    borderTopWidth: 1,
+    borderTopColor: '#334155',
+    padding: 12,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  inputWrapper: {
+    flex: 1,
+    backgroundColor: '#334155',
+    borderRadius: 24,
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+    minHeight: 48,
+  },
+  input: {
+    color: '#f8fafc',
+    fontSize: 16,
+    paddingVertical: 8,
+    paddingRight: 8,
+  },
+  sendButton: {
+    backgroundColor: '#2563eb',
+    borderRadius: 24,
+    width: 48,
+    height: 48,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  userBubble: {
+    backgroundColor: '#2563eb',
+    borderBottomRightRadius: 4,
     alignSelf: 'flex-end',
   },
-  botMessage: {
+  botBubble: {
+    backgroundColor: '#334155',
+    borderBottomLeftRadius: 4,
     alignSelf: 'flex-start',
   },
   userText: {
-    backgroundColor: '#1E40AF',
-    color: 'white',
-    padding: 12,
-    borderRadius: 16,
-    borderBottomRightRadius: 4,
+    color: '#ffffff',
   },
   botText: {
-    backgroundColor: '#F3F4F6',
-    color: '#1F2937',
-    padding: 12,
-    borderRadius: 16,
-    borderBottomLeftRadius: 4,
+    color: '#f8fafc',
   },
-  inputContainer: {
+  typingContainer: {
     flexDirection: 'row',
-    padding: 16,
-    borderTopWidth: 1,
-    borderTopColor: '#E5E7EB',
-  },
-  input: {
-    flex: 1,
-    backgroundColor: '#F3F4F6',
-    padding: 12,
-    borderRadius: 24,
-    marginRight: 8,
-  },
-  sendButton: {
-    backgroundColor: '#1E40AF',
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  chatButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1E40AF',
     padding: 8,
-    borderRadius: 6,
-    marginLeft: 8,
-  },
-  chatButtonText: {
-    color: 'white',
-    marginLeft: 8,
-  },
-  webviewContainer: {
-    height: 400,
-    backgroundColor: '#EFF6FF',
-    borderRadius: 8,
-    overflow: 'hidden',
-    marginBottom: 16,
-  },
-  webview: {
-    flex: 1,
-    backgroundColor: 'transparent',
-  },
-  webviewInner: {
-    flex: 1,
-  },
-  loadingContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#EFF6FF',
+    minWidth: 60,
+  },
+  typingDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#60A5FA',
+    marginHorizontal: 2,
+    opacity: 0.6,
+    transform: [{ scale: 0.9 }],
+    animationName: 'typing',
+    animationDuration: '1s',
+    animationIterationCount: 'infinite',
+  },
+  chatMessages: {
+    flex: 1,
+    width: '100%',
+  },
+  chatMessagesContent: {
+    flexGrow: 1,
+    paddingVertical: 16,
+    width: '100%',
   },
   contentContainer: {
-    height: 400,
-    backgroundColor: '#EFF6FF',
+    backgroundColor: '#1e293b',
     borderRadius: 8,
     overflow: 'hidden',
-  },
-  scrollContent: {
-    flex: 1,
-    padding: 16,
+    marginTop: 8,
   },
   bulletItem: {
     flexDirection: 'row',
-    marginBottom: 16,
-    paddingRight: 16,
+    marginBottom: 12,
+    paddingRight: 8,
   },
   bulletPoint: {
-    color: '#3B82F6',
+    color: '#60a5fa',
     marginRight: 8,
     fontSize: 16,
     lineHeight: 24,
-  },
-  contentText: {
-    flex: 1,
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#1F2937',
   },
   textContainer: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-  },
-  boldText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#1E40AF',
-    fontWeight: 'bold',
-  },
-  textContent: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   regularText: {
     fontSize: 16,
     lineHeight: 24,
-    color: '#1F2937',
+    color: '#f8fafc',
+    flexShrink: 1,
+  },
+  boldText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#60a5fa',
+    fontWeight: '700',
+  },
+  italicText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#f8fafc',
+    fontStyle: 'italic',
   },
   linkText: {
     fontSize: 16,
     lineHeight: 24,
-    color: '#3B82F6',
+    color: '#3b82f6',
     textDecorationLine: 'underline',
   },
-  textPart: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    marginBottom: 4,
+  colonText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#94a3b8',
+    flexShrink: 1,
+  },
+  scrollContent: {
+    padding: 16,
   },
   lineBreak: {
     marginVertical: 8,
   },
-  regularText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#1F2937',
+  lineContainer: {
+    marginBottom: 8,
   },
-  boldText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#1E40AF',
-    fontWeight: '700',
+  bulletItemChat: {
+    flexDirection: 'row',
+    marginBottom: 4,
+    paddingRight: 8,
+    width: '100%',
   },
-  linkText: {
+  bulletPointChat: {
+    color: '#60a5fa',
+    marginRight: 8,
     fontSize: 16,
     lineHeight: 24,
-    color: '#3B82F6',
-    textDecorationLine: 'underline',
-  }
-});
-
-// Merge the new styles with existing ones
-const styles = StyleSheet.create({
-  ...existingStyles,
-  ...additionalStyles,
+  },
+  bulletTextChat: {
+    flex: 1,
+    paddingRight: 8,
+  },
+  exportButton: {
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: '#3b82f6',
+    marginLeft: 8,
+  },
+  menuOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuContainer: {
+    backgroundColor: '#1e293b',
+    borderRadius: 12,
+    padding: 8,
+    minWidth: 200,
+    marginHorizontal: 20,
+  },
+  menuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+  },
+  menuItemText: {
+    color: '#f8fafc',
+    fontSize: 16,
+    marginLeft: 12,
+  },
+  menuDivider: {
+    height: 1,
+    backgroundColor: '#334155',
+    marginHorizontal: 8,
+  },
 });
 
 export default ShowRegulations;
