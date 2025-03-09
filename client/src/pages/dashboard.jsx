@@ -80,7 +80,7 @@ const ComplianceChecker = () => {
     // Fetch countries from API
     const getCountries = async () => {
       try {
-        const response = await axios.get('https://free-horribly-perch.ngrok-free.app/api/countries');
+        const response = await axios.get(' https://free-horribly-perch.ngrok-free.app/api/countries');
         setCountries(response.data.countries);
       } catch (error) {
         console.error('Error fetching countries:', error);
@@ -125,7 +125,7 @@ const ComplianceChecker = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post('https://meerkat-welcome-remotely.ngrok-free.app/api/check_bulk_custom', formData, {
+      const response = await axios.post('http://localhost:6002/api/check_bulk_custom', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -152,7 +152,7 @@ const ComplianceChecker = () => {
   const SyntheticCheck = async (shipment) => {
     setSyntheticLoading(true);
     try {
-      const response = await axios.post('https://meerkat-welcome-remotely.ngrok-free.app/api/check_compliance', {
+      const response = await axios.post('http://localhost:6002/api/check_compliance', {
         source: shipment.source,
         destination: shipment.destination,
         shipment_details: {
@@ -203,21 +203,18 @@ const ComplianceChecker = () => {
         suggestions: response.data.results[index].compliance_result.overall_compliance.summary,
         additional_info: JSON.stringify(response.data.results[index].compliance_result) // Store additional info for pop-up
       }));
-      console.log('hertyuj')
       setCsvData(updatedCsvData);
 
-
-      console.log('hii');
       const user = JSON.parse(localStorage.getItem('signup')); 
       axios.post('https://likely-key-donkey.ngrok-free.app/api/ai_agent', { results: csvData, email: user?.email })
-        .catch(err => console.error("Error calling AI agent:", err));
-      console.log('hjdbc')
+      .catch(err => console.error("Error calling AI agent:", err));
     } catch (error) {
       console.error('Error checking compliance:', error);
     } finally {
       setLoading(false);
     }
   };
+
   // Download updated CSV with compliance results
   const downloadUpdatedCsv = () => {
     const enhancedData = csvData.map((row, index) => {
@@ -478,32 +475,23 @@ const ComplianceChecker = () => {
       }
     };
 
-    if (!results?.results || !Array.isArray(results.results)) {
-      console.warn('No valid results data for processing stats');
-      return stats;
-    }
-
     // Process results
     const countryStats = {};
     let riskCounts = { low: 0, medium: 0, high: 0 };
 
     results.results.forEach(result => {
-      if (result?.compliance_result?.overall_compliance) {
-        // Count risk levels
-        const riskLevel = result.compliance_result.overall_compliance.overall_risk_level?.toLowerCase() || 'low';
-        if (riskCounts.hasOwnProperty(riskLevel)) {
-          riskCounts[riskLevel]++;
-        }
+      // Count risk levels
+      const riskLevel = result.compliance_result.overall_compliance.overall_risk_level.toLowerCase();
+      riskCounts[riskLevel]++;
 
-        // Calculate compliance by country
-        const country = result.compliance_result.destination_country || 'Unknown';
-        if (!countryStats[country]) {
-          countryStats[country] = { total: 0, compliant: 0 };
-        }
-        countryStats[country].total++;
-        if (result.compliance_result.overall_compliance.compliant) {
-          countryStats[country].compliant++;
-        }
+      // Calculate compliance by country
+      const country = result.compliance_result.destination_country;
+      if (!countryStats[country]) {
+        countryStats[country] = { total: 0, compliant: 0 };
+      }
+      countryStats[country].total++;
+      if (result.compliance_result.overall_compliance.compliant) {
+        countryStats[country].compliant++;
       }
     });
 
@@ -516,15 +504,13 @@ const ComplianceChecker = () => {
 
     // Update country compliance rates
     Object.entries(countryStats).forEach(([country, data]) => {
-      if (country !== 'Unknown') {  // Skip unknown countries
-        stats.complianceByCountry.labels.push(country);
-        stats.complianceByCountry.datasets[0].data.push(
-          Math.round((data.compliant / data.total) * 100)
-        );
-      }
+      stats.complianceByCountry.labels.push(country);
+      stats.complianceByCountry.datasets[0].data.push(
+        (data.compliant / data.total) * 100
+      );
     });
 
-    return stats;
+    setCsvStats(stats);
   };
 
   // Update the ComplianceGraphs component styling
