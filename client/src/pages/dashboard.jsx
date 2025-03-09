@@ -54,39 +54,48 @@ const ComplianceChecker = () => {
   const [complianceStats, setComplianceStats] = useState(null);
   const [csvStats, setCsvStats] = useState(null);
   const [syntheticLoading, setSyntheticLoading] = useState(false); // Add a new loading state for synthetic check
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Mock data for shipments, country restrictions, and notifications
-    setShipments([
-      { id: 'PKG-1234', source: 'India', destination: 'Germany', contents: 'Electronics', weight: '2.5', value: '450', status: 'compliant', documents: ['invoice', 'packing-list'] },
-      { id: 'PKG-2345', source: 'United States', destination: 'Japan', contents: 'Cosmetics', weight: '1.2', value: '230', status: 'warning', documents: ['invoice'] },
-      { id: 'PKG-3456', source: 'China', destination: 'Brazil', contents: 'Books', weight: '4.0', value: '120', status: 'non-compliant', documents: [] },
-      { id: 'PKG-4567', source: 'United Kingdom', destination: 'Canada', contents: 'Clothing', weight: '3.1', value: '350', status: 'compliant', documents: ['invoice', 'packing-list', 'certificate'] }
-    ]);
-
-    setCountryRestrictions({
-      'Brazil': ['Electronics without certification', 'Cosmetics without testing'],
-      'Japan': ['Food products without labels', 'Used clothing'],
-      'Germany': ['Products without CE marking'],
-      'Australia': ['Plant materials', 'Animal products without permits']
-    });
-
-    setNotifications([
-      { id: 1, message: 'Restricted item detected for PKG-2345', type: 'warning' },
-      { id: 2, message: 'Missing documents for PKG-3456', type: 'error' },
-      { id: 3, message: 'PKG-1234 cleared for shipment', type: 'success' }
-    ]);
-
-    // Fetch countries from API
-    const getCountries = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(' https://free-horribly-perch.ngrok-free.app/api/countries');
-        setCountries(response.data.countries);
+        // Mock data for shipments, country restrictions, and notifications
+        setShipments([
+          { id: 'PKG-1234', source: 'India', destination: 'Germany', contents: 'Electronics', weight: '2.5', value: '450', status: 'compliant', documents: ['invoice', 'packing-list'] },
+          { id: 'PKG-2345', source: 'United States', destination: 'Japan', contents: 'Cosmetics', weight: '1.2', value: '230', status: 'warning', documents: ['invoice'] },
+          { id: 'PKG-3456', source: 'China', destination: 'Brazil', contents: 'Books', weight: '4.0', value: '120', status: 'non-compliant', documents: [] },
+          { id: 'PKG-4567', source: 'United Kingdom', destination: 'Canada', contents: 'Clothing', weight: '3.1', value: '350', status: 'compliant', documents: ['invoice', 'packing-list', 'certificate'] }
+        ]);
+  
+        setCountryRestrictions({
+          'Brazil': ['Electronics without certification', 'Cosmetics without testing'],
+          'Japan': ['Food products without labels', 'Used clothing'],
+          'Germany': ['Products without CE marking'],
+          'Australia': ['Plant materials', 'Animal products without permits']
+        });
+  
+        setNotifications([
+          { id: 1, message: 'Restricted item detected for PKG-2345', type: 'warning' },
+          { id: 2, message: 'Missing documents for PKG-3456', type: 'error' },
+          { id: 3, message: 'PKG-1234 cleared for shipment', type: 'success' }
+        ]);
+  
+        // Fetch countries from API
+        const countriesResponse = await axios.get('http://localhost:5000/api/countries'  , {
+          headers:{
+            "ngrok-skip-browser-warning" : "true",
+          }
+        });
+        setCountries(countriesResponse.data.countries);
+  
       } catch (error) {
-        console.error('Error fetching countries:', error);
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false); // Set loading to false after all operations are done
       }
     };
-    getCountries();
+  
+    fetchData();
   }, []);
 
   // Check compliance for a single shipment
@@ -112,6 +121,19 @@ const ComplianceChecker = () => {
       setLoading(false);
     }
   };
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-950 via-blue-950 to-gray-900">
+        <div className="flex items-center space-x-3">
+          <svg className="animate-spin h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span className="text-lg text-blue-300">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   const SyntheticCheckCsv = async () => {
     setSyntheticLoading(true);
     try {

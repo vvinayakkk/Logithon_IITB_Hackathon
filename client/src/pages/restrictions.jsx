@@ -65,9 +65,9 @@ const Restrictions = () => {
       if (!isInitialized && !initializing) {
         try {
           setInitializing(true);
-          const statusResponse = await axios.get('https://free-horribly-perch.ngrok-free.app/api/check-database');
+          const statusResponse = await axios.get('http://localhost:5000/api/check-database');
           if (statusResponse.data.status !== 'ready') {
-            await axios.get('https://free-horribly-perch.ngrok-free.app/api/process_pdf');
+            await axios.get('http://localhost:5000/api/process_pdf');
           }
           localStorage.setItem('modelInitialized', 'true');
           setModelInitialized(true);
@@ -83,7 +83,7 @@ const Restrictions = () => {
 
     const getCountries = async () => {
       try {
-        const response = await axios.get('https://free-horribly-perch.ngrok-free.app/api/countries');
+        const response = await axios.get('http://localhost:5000/api/countries');
         setCountries(response.data.countries);
       } catch (error) {
         console.error('Error fetching countries:', error);
@@ -98,7 +98,7 @@ const Restrictions = () => {
   const getProhibitedItemsByCountry = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://free-horribly-perch.ngrok-free.app/api/country/${selectedCountry}`);
+      const response = await axios.get(`http://localhost:5000/api/country/${selectedCountry}`);
       if (response.data) {
         const transformedResults = response.data.items.map((item) => ({
           country: response.data.country,
@@ -123,7 +123,7 @@ const Restrictions = () => {
   const searchItemRestrictions = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://free-horribly-perch.ngrok-free.app/api/search-item`, {
+      const response = await axios.get(`http://localhost:5000/api/search-item`, {
         params: {
           query: itemName,
           top_k: 100,
@@ -173,7 +173,7 @@ const Restrictions = () => {
     setCurrentMessage('');
 
     try {
-      const response = await axios.post('https://free-horribly-perch.ngrok-free.app/api/chat', {
+      const response = await axios.post('http://localhost:5000/api/chat', {
         query: currentMessage,
         chat_history: chatMessages,
       });
@@ -279,7 +279,7 @@ const Restrictions = () => {
       };
   
       // Get PDF from backend
-      const pdfResponse = await axios.post('https://free-horribly-perch.ngrok-free.app/generate-pdf', pdfData, {
+      const pdfResponse = await axios.post('http://localhost:5000/generate-pdf', pdfData, {
         responseType: 'blob'
       });
       
@@ -337,7 +337,7 @@ const Restrictions = () => {
       };
 
       // Get PDF from backend
-      const pdfResponse = await axios.post('https://free-horribly-perch.ngrok-free.app/generate-pdf', pdfData, {
+      const pdfResponse = await axios.post('http://localhost:5000/generate-pdf', pdfData, {
         responseType: 'blob'
       });
       
@@ -348,7 +348,7 @@ const Restrictions = () => {
       formData.append('file', new Blob([pdfResponse.data], { type: 'application/pdf' }), 'shipping-restrictions.pdf');
 
       // Send to WhatsApp
-      const response = await axios.post('https://free-horribly-perch.ngrok-free.app/send_message', formData, {
+      const response = await axios.post('http://localhost:5000/send_message', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

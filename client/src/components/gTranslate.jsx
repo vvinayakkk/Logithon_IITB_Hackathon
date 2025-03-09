@@ -28,23 +28,59 @@ const GTranslate = () => {
 
   return (
     <div
-      id="google_translate_element"
       style={{
-        position: 'fixed', // Changed from 'absolute' to 'fixed'
-        bottom: '2rem',    // Added bottom instead of top
-        right: '2rem',     // Increased right spacing
-        opacity: 0.8,      // Increased opacity slightly
+        position: "fixed",
+        bottom: "2rem",
+        right: "2rem",
         zIndex: 1000,
-        backgroundColor: 'white',
-        borderRadius: '8px',
-        padding: '0.5rem',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)', // Added shadow
-        transition: 'opacity 0.2s',              // Added hover effect
-        '&:hover': {
-          opacity: 1
-        }
       }}
-    ></div>
+    >
+      {/* Google Translate Element */}
+      <div
+        id="google_translate_element"
+        style={{
+          opacity: 0.8,
+          backgroundColor: "white",
+          borderRadius: "8px",
+          padding: "0.5rem",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          transition: "opacity 0.2s",
+        }}
+      ></div>
+
+      {/* Black Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+          opacity: 1, // Changed to 1 for full darkness (darker than 0.9)
+          zIndex: 1,
+          pointerEvents: "none",
+          borderRadius: "8px",
+        }}
+      ></div>
+
+      {/* Symbol Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)", // Centers the symbol
+          zIndex: 2, // Above the black overlay
+          pointerEvents: "none", // Ensures clicks pass through to the translate element
+          color: "white", // White color for visibility against black background
+          fontSize: "1.5rem", // Adjust size as needed
+          fontWeight: "bold",
+        }}
+      >
+        🌐 {/* Globe emoji as a simple symbol; replace with an icon or text as desired */}
+      </div>
+    </div>
   );
 };
 
