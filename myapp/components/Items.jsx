@@ -15,7 +15,7 @@ const ItemTab = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
-   const BACKEND_URL="http://192.168.80.60"
+   const BACKEND_URL="https://free-horribly-perch.ngrok-free.app"
    
   // Theme colors
   const theme = {
@@ -43,7 +43,7 @@ const ItemTab = () => {
     Keyboard.dismiss();
     
     try {
-      const response = await fetch(`${BACKEND_URL}:5000/api/search-item?query=${encodeURIComponent(itemName)}&top_k=100`);
+      const response = await fetch(`${BACKEND_URL}/api/search-item?query=${encodeURIComponent(itemName)}&top_k=100`);
       const data = await response.json();
       setResults(data.results);
       console.log(data.results);

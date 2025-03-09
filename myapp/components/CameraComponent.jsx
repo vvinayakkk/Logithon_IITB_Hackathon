@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function Camera() {
+export default function Camera({ onPhotoCapture }) {
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
@@ -47,18 +47,8 @@ export default function Camera() {
   const handleRetakePhoto = () => setPhoto(null);
 
   const handleAcceptPhoto = (photo) => {
-    if (photo) {
-      try {
-        router.replace({
-          pathname: "/ItemImageCompliance",
-          params: {
-            photoUri: photo.uri,
-            photoBase64: photo.base64
-          }
-        });
-      } catch (error) {
-        console.error("Navigation error:", error);
-      }
+    if (photo && onPhotoCapture) {
+      onPhotoCapture(photo);
     }
   };
 

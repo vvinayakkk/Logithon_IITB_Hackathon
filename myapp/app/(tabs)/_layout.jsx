@@ -20,7 +20,7 @@ export default function TabLayout() {
   const [isLoading, setIsLoading] = useState(true);
   const [dbStatus, setDbStatus] = useState({ exists: false, initialized: false });
   const [error, setError] = useState(null);
-  const BACKEND_URL = "http://192.168.80.60";
+  const BACKEND_URL = "https://free-horribly-perch.ngrok-free.app";
   
   useEffect(() => {
     const checkDatabase = async () => {
@@ -34,8 +34,10 @@ export default function TabLayout() {
         }
 
         const [checkResponse, initResponse] = await Promise.all([
-          fetch(`${BACKEND_URL}:5000/api/check-database`),
-          fetch(`${BACKEND_URL}:5000/api/process-pdf`, { method: 'POST' })
+          fetch(`${BACKEND_URL}/api/check-database`,
+            // "headers":
+          ),
+          fetch(`${BACKEND_URL}/api/process-pdf`, { method: 'POST' })
         ]);
 
         const checkData = await checkResponse.json();
@@ -78,12 +80,12 @@ export default function TabLayout() {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#1E40AF', // Deep blue for active tab (matches header)
-        tabBarInactiveTintColor: '#64748B', // Slate gray for inactive tabs
+        tabBarActiveTintColor: '#3B82F6', // Bright blue
+        tabBarInactiveTintColor: '#94A3B8', // Slate gray
         tabBarStyle: {
-          backgroundColor: '#F8FAFC', // Light slate background
+          backgroundColor: '#0F172A', // Dark blue/black background
           borderTopWidth: 1,
-          borderTopColor: '#E2E8F0', // Subtle border
+          borderTopColor: '#1E293B', // Dark border
           paddingBottom: 5,
           paddingTop: 5,
           height: 60,
@@ -94,28 +96,21 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Search',
-          tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="search-outline" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="ItemImageCompliance"
         options={{
-          title: 'Compliance',
-          tabBarIcon: ({ color }) => <Ionicons name="document-text" size={24} color={color} />,
+          title: 'Regulations',
+          tabBarIcon: ({ color }) => <Ionicons name="list-outline" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="CameraComponent"
+        name="Dashboard"
         options={{
-          title: 'Camera',
-          tabBarIcon: ({ color }) => <Ionicons name="camera" size={24} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="CombinedTab"
-        options={{
-          title: 'Combined',
-          tabBarIcon: ({ color }) => <Ionicons name="layers" size={24} color={color} />,
+          title: 'Dashboard',
+          tabBarIcon: ({ color }) => <Ionicons name="stats-chart" size={24} color={color} />,
         }}
       />
     </Tabs>
@@ -125,14 +120,14 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#1E40AF',
+    backgroundColor: '#1E3A8A', // Darker blue for header
     padding: 16,
     paddingTop: 48,
     alignItems: 'center',
     justifyContent: 'center',
   },
   headerText: {
-    color: 'white',
+    color: '#F8FAFC', // Light text
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -140,23 +135,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#0F172A', // Dark background
   },
   loadingText: {
     marginTop: 16,
     fontSize: 16,
-    color: '#333',
+    color: '#F8FAFC', // Light text
   },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#0F172A', // Dark background
     padding: 20,
   },
   errorText: {
     fontSize: 16,
-    color: 'red',
+    color: '#EF4444', // Red error text
     textAlign: 'center',
   },
 });
