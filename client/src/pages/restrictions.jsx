@@ -65,13 +65,13 @@ const Restrictions = () => {
       if (!isInitialized && !initializing) {
         try {
           setInitializing(true);
-          const statusResponse = await axios.get('https://free-horribly-perch.ngrok-free.app/api/check-database' , {
+          const statusResponse = await axios.get('https://free-horribly-perch.ngrok-free.app/api/check-database', {
             headers: {
               'ngrok-skip-browser-warning': 'true'
             }
           });
           if (statusResponse.data.status !== 'ready') {
-            await axios.get('https://free-horribly-perch.ngrok-free.app/api/process_pdf' , {
+            await axios.get('https://free-horribly-perch.ngrok-free.app/api/process_pdf', {
               headers: {
                 'ngrok-skip-browser-warning': 'true'
               }
@@ -91,7 +91,7 @@ const Restrictions = () => {
 
     const getCountries = async () => {
       try {
-        const response = await axios.get('https://free-horribly-perch.ngrok-free.app/api/countries' , {
+        const response = await axios.get('https://free-horribly-perch.ngrok-free.app/api/countries', {
           headers: {
             'ngrok-skip-browser-warning': 'true'
           }
@@ -110,7 +110,7 @@ const Restrictions = () => {
   const getProhibitedItemsByCountry = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://free-horribly-perch.ngrok-free.app/api/country/${selectedCountry}` , {
+      const response = await axios.get(`https://free-horribly-perch.ngrok-free.app/api/country/${selectedCountry}`, {
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }
@@ -144,9 +144,9 @@ const Restrictions = () => {
           query: itemName,
           top_k: 100,
         },
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
-          }
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       });
 
       if (response.data.results) {
@@ -199,8 +199,7 @@ const Restrictions = () => {
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }
-      }
-    );
+      });
 
       const botResponse = response.data.response;
       setChatMessages([
@@ -304,8 +303,7 @@ const Restrictions = () => {
   
       // Get PDF from backend
       const pdfResponse = await axios.post('https://free-horribly-perch.ngrok-free.app/generate-pdf', pdfData, {
-        responseType: 'blob'
-      } , {
+        responseType: 'blob',
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }
@@ -366,8 +364,7 @@ const Restrictions = () => {
 
       // Get PDF from backend
       const pdfResponse = await axios.post('https://free-horribly-perch.ngrok-free.app/generate-pdf', pdfData, {
-        responseType: 'blob'
-      } , {
+        responseType: 'blob',
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }
@@ -401,7 +398,7 @@ const Restrictions = () => {
       setIsExportOpen(false);
     }
   };
-
+  
   // Render tab content
   const renderTabContent = () => {
     switch (activeTab) {
@@ -430,19 +427,23 @@ const Restrictions = () => {
                       placeholder="Filter countries..."
                       className="w-full p-3 bg-gray-800/50 border-b border-blue-800/30 text-white placeholder-blue-400/70 rounded-t-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
-                    {countries.map((country) => (
-                      <div
-                        key={country}
-                        className="p-3 hover:bg-blue-800/20 cursor-pointer text-blue-100 border-b border-blue-900/30 flex items-center"
-                        onClick={() => {
-                          setSelectedCountry(country);
-                          setDropdownOpen(false);
-                        }}
-                      >
-                        <Map className="h-4 w-4 text-blue-400 mr-2" />
-                        {country}
-                      </div>
-                    ))}
+                    {countries && countries.length > 0 ? (
+                      countries.map((country) => (
+                        <div
+                          key={country}
+                          className="p-3 hover:bg-blue-800/20 cursor-pointer text-blue-100 border-b border-blue-900/30 flex items-center"
+                          onClick={() => {
+                            setSelectedCountry(country);
+                            setDropdownOpen(false);
+                          }}
+                        >
+                          <Map className="h-4 w-4 text-blue-400 mr-2" />
+                          {country}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-3 text-blue-100">No countries available</div>
+                    )}
                   </div>
                 )}
               </div>
@@ -540,73 +541,81 @@ const Restrictions = () => {
               <div className="p-2">
                 <h3 className="text-blue-300 text-xs uppercase font-medium mb-2 px-2">Chat History</h3>
                 <div className="space-y-1">
-                  {chatHistory.map((chat) => (
-                    <button
-                      key={chat.id}
-                      onClick={() => loadPreviousChat(chat.id)}
-                      className={`w-full text-left p-2 rounded-lg text-sm truncate flex items-center ${
-                        activeChatId === chat.id
-                          ? 'bg-blue-700/30 text-blue-100'
-                          : 'hover:bg-blue-800/20 text-blue-300'
-                      }`}
-                    >
-                      <Clock className="h-3 w-3 mr-2 flex-shrink-0" />
-                      <span className="truncate">{chat.title}</span>
-                    </button>
-                  ))}
+                  {chatHistory && chatHistory.length > 0 ? (
+                    chatHistory.map((chat) => (
+                      <button
+                        key={chat.id}
+                        onClick={() => loadPreviousChat(chat.id)}
+                        className={`w-full text-left p-2 rounded-lg text-sm truncate flex items-center ${
+                          activeChatId === chat.id
+                            ? 'bg-blue-700/30 text-blue-100'
+                            : 'hover:bg-blue-800/20 text-blue-300'
+                        }`}
+                      >
+                        <Clock className="h-3 w-3 mr-2 flex-shrink-0" />
+                        <span className="truncate">{chat.title}</span>
+                      </button>
+                    ))
+                  ) : (
+                    <div className="p-2 text-blue-300 text-sm">No chat history available</div>
+                  )}
                 </div>
               </div>
             </div>
 
             {/* Chat interface - update height and text color */}
             <div className="flex-1">
-              <div className="bg-gray-900/60 rounded-lg border border-blue-800/40 h-[400px] overflow-y-auto mb-4 p-4">
-                {chatMessages.map((msg, index) => (
-                  <div
-                    key={index}
-                    className={`mb-4 ${msg.role === 'user' ? 'text-right' : ''}`}
-                  >
-                    <div
-                      className={`inline-block max-w-xs sm:max-w-md rounded-lg p-3 ${
-                        msg.role === 'user'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-800 text-white' // Updated to ensure white text
-                      }`}
-                    >
-                      {formatChatResponse(msg.content)}
-                    </div>
-                  </div>
-                ))}
-              </div>
+  <div className="bg-gray-900/60 rounded-lg border border-blue-800/40 h-[400px] overflow-y-auto mb-4 p-4">
+    {chatMessages && chatMessages.length > 0 ? (
+      chatMessages.map((msg, index) => (
+        <div
+          key={index}
+          className={`mb-4 ${msg.role === 'user' ? 'text-right' : ''}`}
+        >
+          <div
+            className={`inline-block max-w-xs sm:max-w-md rounded-lg p-3 ${
+              msg.role === 'user'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-800 text-white'
+            }`}
+          >
+            {formatChatResponse(msg.content)}
+          </div>
+        </div>
+      ))
+    ) : (
+      <div className="text-blue-300 text-center">No messages yet</div>
+    )}
+  </div>
 
-              <form onSubmit={handleChatSubmit} className="flex items-center gap-2">
-                <input
-                  type="text"
-                  value={currentMessage}
-                  onChange={(e) => setCurrentMessage(e.target.value)}
-                  placeholder="Ask about shipping compliance..."
-                  className="flex-1 bg-gray-900/80 border border-blue-800/60 rounded-lg p-3 text-white placeholder-blue-400/70 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center transition-colors"
-                >
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 12h14M12 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </form>
-            </div>
+  <form onSubmit={handleChatSubmit} className="flex items-center gap-2">
+    <input
+      type="text"
+      value={currentMessage}
+      onChange={(e) => setCurrentMessage(e.target.value)}
+      placeholder="Ask about shipping compliance..."
+      className="flex-1 bg-gray-900/80 border border-blue-800/60 rounded-lg p-3 text-white placeholder-blue-400/70 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    />
+    <button
+      type="submit"
+      className="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center transition-colors"
+    >
+      <svg
+        className="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 12h14M12 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+  </form>
+</div>
           </div>
         );
 
@@ -693,131 +702,129 @@ const Restrictions = () => {
 
             {/* Results area - shared between first two tabs */}
             {(activeTab === 'country' || activeTab === 'item') && results && (
-              <div className="rounded-lg bg-gray-900/60 backdrop-blur-md border border-blue-800/40 p-4 mt-6 animate-fade-in">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-blue-300 flex items-center">
-                    <div className="flex items-center">
-                      {activeTab === 'country' ? (
-                        <>
-                          <Layers className="h-5 w-5 mr-2 text-yellow-400" />
-                          Prohibited Items for {selectedCountry}
-                        </>
-                      ) : (
-                        <>
-                          <AlertTriangle className="h-5 w-5 mr-2 text-yellow-400" />
-                          Countries Restricting "{itemName}"
-                        </>
-                      )}
-                    </div>
-                    {results.length > 0 && (
-                      <span className="text-sm font-normal bg-yellow-400/10 text-yellow-300 px-3 py-1 rounded-full">
-                        {results.length} items found
-                      </span>
-                    )}
-                  </h3>
-                  
-                  {results.length > 0 && (
-                    <div className="relative">
-                      <button
-                        onClick={() => setIsExportOpen(!isExportOpen)}
-                        className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
-                      >
-                        <Download className="h-4 w-4" />
-                        <span>Export</span>
-                      </button>
+  <div className="rounded-lg bg-gray-900/60 backdrop-blur-md border border-blue-800/40 p-4 mt-6 animate-fade-in">
+    <div className="flex items-center justify-between mb-4">
+      <h3 className="text-xl font-bold text-blue-300 flex items-center">
+        <div className="flex items-center">
+          {activeTab === 'country' ? (
+            <>
+              <Layers className="h-5 w-5 mr-2 text-yellow-400" />
+              Prohibited Items for {selectedCountry}
+            </>
+          ) : (
+            <>
+              <AlertTriangle className="h-5 w-5 mr-2 text-yellow-400" />
+              Countries Restricting "{itemName}"
+            </>
+          )}
+        </div>
+        {results.length > 0 && (
+          <span className="text-sm font-normal bg-yellow-400/10 text-yellow-300 px-3 py-1 rounded-full">
+            {results.length} items found
+          </span>
+        )}
+      </h3>
 
-                      {isExportOpen && (
-                        <div className="absolute right-0 mt-2 w-48 rounded-lg bg-gray-800 shadow-lg border border-blue-800/40 z-10">
-                          <button
-                            onClick={exportToPDF}
-                            className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2"
-                          >
-                            <Download className="h-4 w-4" />
-                            <span>Export as PDF</span>
-                          </button>
+      {results.length > 0 && (
+        <div className="relative">
+          <button
+            onClick={() => setIsExportOpen(!isExportOpen)}
+            className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+          >
+            <Download className="h-4 w-4" />
+            <span>Export</span>
+          </button>
 
-                          <CSVLink
-                            data={prepareCSVData()}
-                            filename="shipping-restrictions.csv"
-                            className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2"
-                          >
-                            <Download className="h-4 w-4" />
-                            <span>Export as CSV</span>
-                          </CSVLink>
+          {isExportOpen && (
+            <div className="absolute right-0 mt-2 w-48 rounded-lg bg-gray-800 shadow-lg border border-blue-800/40 z-10">
+              <button
+                onClick={exportToPDF}
+                className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2"
+              >
+                <Download className="h-4 w-4" />
+                <span>Export as PDF</span>
+              </button>
 
-                          <button
-                            onClick={shareOnWhatsApp}
-                            disabled={sharing}
-                            className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2 disabled:opacity-50"
-                          >
-                            <Share2 className="h-4 w-4" />
-                            <span>{sharing ? 'Sharing...' : 'Share via WhatsApp'}</span>
-                          </button>
-                        </div>
-                      )}
-                    </div>
+              <CSVLink
+                data={prepareCSVData()}
+                filename="shipping-restrictions.csv"
+                className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2"
+              >
+                <Download className="h-4 w-4" />
+                <span>Export as CSV</span>
+              </CSVLink>
+
+              <button
+                onClick={shareOnWhatsApp}
+                disabled={sharing}
+                className="w-full text-left px-4 py-2 hover:bg-blue-700/30 text-blue-100 flex items-center space-x-2 disabled:opacity-50"
+              >
+                <Share2 className="h-4 w-4" />
+                <span>{sharing ? 'Sharing...' : 'Share via WhatsApp'}</span>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+
+    {results.length === 0 ? (
+      <div className="flex items-center bg-green-900/30 text-green-300 p-4 rounded-lg border border-green-800/40">
+        <Check className="h-6 w-6 mr-3 text-green-400" />
+        <div>
+          <p className="font-medium">No specific restrictions found</p>
+          <p className="text-sm opacity-80">
+            {activeTab === 'country'
+              ? `No specific prohibited items listed for ${selectedCountry} in our database.`
+              : `The item "${itemName}" appears to be compliant for shipping to the destinations in our database.`}
+          </p>
+          <p className="text-sm opacity-80 mt-1">Always verify with local customs authorities before shipping.</p>
+        </div>
+      </div>
+    ) : (
+      <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {results.map((result, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-r from-red-900/20 to-red-800/20 border border-red-800/40 rounded-lg p-4 flex items-start hover:scale-105 transition-transform duration-300 hover:shadow-lg"
+            >
+              <AlertTriangle className="h-5 w-5 mr-3 text-red-400 flex-shrink-0 mt-1" />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center mb-1">
+                  <h4 className="font-medium text-red-300 truncate">{result.item}</h4>
+                  <span className="ml-2 px-2 py-0.5 bg-red-900/50 text-red-300 text-xs rounded-full flex-shrink-0">
+                    {result.status}
+                  </span>
+                  {activeTab === 'item' && (
+                    <span className="ml-2 px-2 py-0.5 bg-blue-900/50 text-blue-300 text-xs rounded-full flex-shrink-0">
+                      Match: {(result.score * 100).toFixed(1)}%
+                    </span>
                   )}
                 </div>
-
-                {results.length === 0 ? (
-                  <div className="flex items-center bg-green-900/30 text-green-300 p-4 rounded-lg border border-green-800/40">
-                    <Check className="h-6 w-6 mr-3 text-green-400" />
-                    <div>
-                      <p className="font-medium">No specific restrictions found</p>
-                      <p className="text-sm opacity-80">
-                        {activeTab === 'country'
-                          ? `No specific prohibited items listed for ${selectedCountry} in our database.`
-                          : `The item "${itemName}" appears to be compliant for shipping to the destinations in our database.`}
-                      </p>
-                      <p className="text-sm opacity-80 mt-1">Always verify with local customs authorities before shipping.</p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {/* Grid layout for better organization */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {results.map((result, index) => (
-                        <div
-                          key={index}
-                          className="bg-gradient-to-r from-red-900/20 to-red-800/20 border border-red-800/40 rounded-lg p-4 flex items-start hover:scale-105 transition-transform duration-300 hover:shadow-lg"
-                        >
-                          <AlertTriangle className="h-5 w-5 mr-3 text-red-400 flex-shrink-0 mt-1" />
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center mb-1">
-                              <h4 className="font-medium text-red-300 truncate">{result.item}</h4>
-                              <span className="ml-2 px-2 py-0.5 bg-red-900/50 text-red-300 text-xs rounded-full flex-shrink-0">
-                                {result.status}
-                              </span>
-                              {activeTab === 'item' && (
-                                <span className="ml-2 px-2 py-0.5 bg-blue-900/50 text-blue-300 text-xs rounded-full flex-shrink-0">
-                                  Match: {(result.score * 100).toFixed(1)}%
-                                </span>
-                              )}
-                            </div>
-                            <p className="text-sm text-red-200/80">
-                              Prohibited in <span className="font-medium">{result.country}</span>
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Additional information box */}
-                    <div className="bg-blue-900/30 border border-blue-800/40 rounded-lg p-4 mt-4">
-                      <h4 className="font-medium text-blue-300 mb-2 flex items-center">
-                        <HelpCircle className="h-4 w-4 mr-2" />
-                        Important Information
-                      </h4>
-                      <p className="text-sm text-blue-200/80">
-                        These items are strictly prohibited for import into {selectedCountry}. 
-                        Attempting to ship these items may result in delays, fines, or confiscation. 
-                        Always verify current regulations with customs authorities.
-                      </p>
-                    </div>
-                  </div>
-                )}
+                <p className="text-sm text-red-200/80">
+                  Prohibited in <span className="font-medium">{result.country}</span>
+                </p>
               </div>
-            )}
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-blue-900/30 border border-blue-800/40 rounded-lg p-4 mt-4">
+          <h4 className="font-medium text-blue-300 mb-2 flex items-center">
+            <HelpCircle className="h-4 w-4 mr-2" />
+            Important Information
+          </h4>
+          <p className="text-sm text-blue-200/80">
+            These items are strictly prohibited for import into {selectedCountry}. 
+            Attempting to ship these items may result in delays, fines, or confiscation. 
+            Always verify current regulations with customs authorities.
+          </p>
+        </div>
+      </div>
+    )}
+  </div>
+)}
           </div>
         </main>
       )}
