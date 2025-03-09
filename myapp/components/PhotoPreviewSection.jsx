@@ -1,34 +1,58 @@
 import { Fontisto } from '@expo/vector-icons';
 import React from 'react'
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text } from 'react-native';
+import * as ImageManipulator from 'expo-image-manipulator';
 
 const PhotoPreviewSection = ({
     photo,
     handleRetakePhoto,
     handleAcceptPhoto
-}) => (
-    <SafeAreaView style={styles.container}>
-        <View style={styles.box}>
-            <Image
-                style={styles.previewConatiner}
-                source={{ uri: photo.uri }} // Changed from base64 to direct uri
-            />
-        </View>
+}) => {
+    const processAndAcceptPhoto = async () => {
+        try {
+            // Resize the image to a reasonable size (e.g., 800px width)
+            const manipulatedImage = await ImageManipulator.manipulateAsync(
+                photo.uri,
+                [{ resize: { width: 800 } }],
+                { compress: 0.7, format: ImageManipulator.SaveFormat.JPEG }
+            );
 
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={handleRetakePhoto}>
-                <Fontisto name='trash' size={36} color='black' />
-            </TouchableOpacity>
-            <TouchableOpacity 
-                style={[styles.button, styles.acceptButton]} 
-                onPress={() => handleAcceptPhoto(photo)} // Pass the entire photo object
-            >
-                <Fontisto name='check' size={36} color='white' />
-                <Text style={styles.acceptButtonText}>Use Photo</Text>
-            </TouchableOpacity>
-        </View>
-    </SafeAreaView>
-);
+            // Call the original handler with the processed image
+            handleAcceptPhoto({
+                ...manipulatedImage,
+                timestamp: new Date().getTime()
+            });
+        } catch (error) {
+            console.error('Error processing image:', error);
+            // Fall back to original image if processing fails
+            handleAcceptPhoto(photo);
+        }
+    };
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <View style={styles.box}>
+                <Image
+                    style={styles.previewConatiner}
+                    source={{ uri: photo.uri }} // Changed from base64 to direct uri
+                />
+            </View>
+
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={handleRetakePhoto}>
+                    <Fontisto name='trash' size={36} color='black' />
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    style={[styles.button, styles.acceptButton]} 
+                    onPress={processAndAcceptPhoto}
+                >
+                    <Fontisto name='check' size={36} color='white' />
+                    <Text style={styles.acceptButtonText}>Use Photo</Text>
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>
+    );
+};
 
 const styles = StyleSheet.create({
     container:{

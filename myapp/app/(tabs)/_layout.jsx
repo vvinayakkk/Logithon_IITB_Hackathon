@@ -113,6 +113,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <Ionicons name="stats-chart" size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="CombinedTab"
+        options={{
+          title: 'Utilities',
+          tabBarIcon: ({ color }) => <Ionicons name="construct-online" size={24} color={color} />,
+        }}
+      />
     </Tabs>
     </KeyboardAvoidingView>
 );

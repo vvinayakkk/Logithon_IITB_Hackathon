@@ -33,9 +33,8 @@ export default function Camera({ onPhotoCapture }) {
     if (cameraRef.current) {
       try {
         const photo = await cameraRef.current.takePictureAsync({
-          quality: 1,
-          base64: true,
-          exif: false,
+          quality: 0.7,
+          skipProcessing: true,
         });
         setPhoto(photo);
       } catch (error) {
@@ -46,9 +45,17 @@ export default function Camera({ onPhotoCapture }) {
 
   const handleRetakePhoto = () => setPhoto(null);
 
-  const handleAcceptPhoto = (photo) => {
-    if (photo && onPhotoCapture) {
-      onPhotoCapture(photo);
+  const handleAcceptPhoto = (processedPhoto) => {
+    if (processedPhoto && onPhotoCapture) {
+      // Include additional metadata
+      const photoWithMetadata = {
+        ...processedPhoto,
+        timestamp: new Date().getTime(),
+        type: 'image/jpeg',
+        name: `photo_${new Date().getTime()}.jpg`
+      };
+      onPhotoCapture(photoWithMetadata);
+      setPhoto(null); // Reset the photo state
     }
   };
 

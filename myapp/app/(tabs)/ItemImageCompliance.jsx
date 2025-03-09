@@ -62,11 +62,10 @@ export default function ItemImageCompliancePage() {
 
   // Handle captured photo from camera
   const handlePhotoCapture = (capturedPhoto) => {
-    console.log(capturedPhoto);
     setSelectedFile({
       uri: capturedPhoto.uri,
       type: 'image/jpeg',
-      name: 'capture.jpg'
+      name: `photo_${capturedPhoto.timestamp}.jpg`
     });
     setPreview(capturedPhoto.uri);
     setShowCamera(false);
@@ -99,6 +98,12 @@ export default function ItemImageCompliancePage() {
 
   // Reset photo
   const handleRetakePhoto = () => {
+    setSelectedFile(null);
+    setPreview(null);
+  };
+
+  // Add a function to clear the selected image
+  const clearSelectedImage = () => {
     setSelectedFile(null);
     setPreview(null);
   };
@@ -314,13 +319,13 @@ export default function ItemImageCompliancePage() {
                   <Image 
                     source={{ uri: preview }} 
                     style={styles.previewImage} 
-                    resizeMode="cover"
+                    resizeMode="contain"
                   />
                   <TouchableOpacity 
-                    onPress={handleRetakePhoto}
-                    style={styles.removeButton}
+                    style={styles.removeImageButton}
+                    onPress={clearSelectedImage}
                   >
-                    <Text style={styles.removeButtonText}>Remove</Text>
+                    <Feather name="x" color="white" size={20} />
                   </TouchableOpacity>
                 </View>
               ) : (
@@ -761,10 +766,9 @@ const styles = StyleSheet.create({
   uploadContainer: { borderWidth: 2, borderColor: '#3b82f6', borderStyle: 'dashed', borderRadius: 8, overflow: 'hidden' },
   placeholderContainer: { alignItems: 'center', justifyContent: 'center', padding: 32 },
   uploadText: { color: '#3b82f6', fontSize: 16, marginTop: 12, textAlign: 'center' },
-  previewContainer: { position: 'relative' },
-  previewImage: { width: '100%', height: 200, borderRadius: 6 },
-  removeButton: { position: 'absolute', bottom: 8, right: 8, backgroundColor: 'rgba(15, 23, 42, 0.7)', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 4 },
-  removeButtonText: { color: 'white', fontSize: 12, fontWeight: '600' },
+  previewContainer: { position: 'relative', width: '100%', height: 200, backgroundColor: '#0f172a', borderRadius: 8, marginBottom: 16 },
+  previewImage: { width: '100%', height: '100%', borderRadius: 8 },
+  removeImageButton: { position: 'absolute', top: 8, right: 8, backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: 20, padding: 8 },
   pickerButton: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#1e3a8a', paddingHorizontal: 12, paddingVertical: 12, borderRadius: 6 },
   pickerButtonText: { color: 'white', fontSize: 16 },
   submitButton: { backgroundColor: '#3b82f6', borderRadius: 6, paddingVertical: 14, alignItems: 'center', marginTop: 8 },
