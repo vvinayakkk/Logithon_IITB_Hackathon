@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
 /* 
 body {
     font-family: 'Inter', sans-serif;

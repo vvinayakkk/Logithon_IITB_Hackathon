@@ -18,11 +18,13 @@ from composio_langchain import ComposioToolSet, App
 import tempfile
 import datetime
 import numpy as np
+from flask_cors import CORS
 
 # Set Matplotlib backend to Agg
 plt.switch_backend('Agg')
 
 app = Flask(__name__)
+CORS(app)
 
 # Configure environment variables
 os.environ["GOOGLE_API_KEY"] = "AIzaSyDqMg4cv_n04wbxo16Bpovc01LXAa96h_I"

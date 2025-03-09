@@ -53,6 +53,7 @@ const ComplianceChecker = () => {
   const [selectedShipmentDetails, setSelectedShipmentDetails] = useState(null); // To store selected shipment details
   const [complianceStats, setComplianceStats] = useState(null);
   const [csvStats, setCsvStats] = useState(null);
+  const [syntheticLoading, setSyntheticLoading] = useState(false); // Add a new loading state for synthetic check
 
   useEffect(() => {
     // Mock data for shipments, country restrictions, and notifications
@@ -79,7 +80,7 @@ const ComplianceChecker = () => {
     // Fetch countries from API
     const getCountries = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/countries');
+        const response = await axios.get(' https://free-horribly-perch.ngrok-free.app/api/countries');
         setCountries(response.data.countries);
       } catch (error) {
         console.error('Error fetching countries:', error);
@@ -92,7 +93,7 @@ const ComplianceChecker = () => {
   const checkCompliance = async (shipment) => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/api/check_financial_all', {
+      const response = await axios.post('https://sensible-emu-highly.ngrok-free.app/api/check_financial_all', {
         source: shipment.source,
         destination: shipment.destination,
         shipment_details: {
@@ -111,10 +112,8 @@ const ComplianceChecker = () => {
       setLoading(false);
     }
   };
-
-  // Check compliance for CSV data
-  const checkComplianceCsv = async () => {
-    setLoading(true);
+  const SyntheticCheckCsv = async () => {
+    setSyntheticLoading(true);
     try {
       const fileInput = document.querySelector('input[type="file"]');
       const file = fileInput.files[0];
@@ -126,7 +125,7 @@ const ComplianceChecker = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post('http://localhost:3000/api/check_bulk', formData, {
+      const response = await axios.post('http://localhost:6002/api/check_bulk_custom', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -144,6 +143,71 @@ const ComplianceChecker = () => {
         additional_info: JSON.stringify(response.data.results[index].compliance_result) // Store additional info for pop-up
       }));
       setCsvData(updatedCsvData);
+    } catch (error) {
+      console.error('Error checking compliance:', error);
+    } finally {
+      setSyntheticLoading(false);
+    }
+  }
+  const SyntheticCheck = async (shipment) => {
+    setSyntheticLoading(true);
+    try {
+      const response = await axios.post('http://localhost:6002/api/check_compliance', {
+        source: shipment.source,
+        destination: shipment.destination,
+        shipment_details: {
+          item_name: shipment.contents,
+          weight: shipment.weight,
+          value: shipment.value,
+          documents: shipment.documents
+        },
+      });
+
+      setComplianceResults(response.data);
+      processComplianceData(response.data);
+    } catch (error) {
+      console.error('Error checking compliance:', error);
+    } finally {
+      setSyntheticLoading(false);
+    }
+  };
+
+  // Check compliance for CSV data
+  const checkComplianceCsv = async () => {
+    setLoading(true);
+    try {
+      const fileInput = document.querySelector('input[type="file"]');
+      const file = fileInput.files[0];
+      if (!file) {
+        console.error('No file selected');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await axios.post('https://sensible-emu-highly.ngrok-free.app/api/check_bulk', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      setComplianceResultsCsv(response.data);
+      processCsvStats(response.data);
+
+      // Update CSV data with compliance results
+      const updatedCsvData = csvData.map((row, index) => ({
+        ...row,
+        compliance_status: response.data.results[index].compliance_result.overall_compliance.compliant ? 'Compliant' : 'Non-Compliant',
+        risk_level: response.data.results[index].compliance_result.overall_compliance.overall_risk_level,
+        suggestions: response.data.results[index].compliance_result.overall_compliance.summary,
+        additional_info: JSON.stringify(response.data.results[index].compliance_result) // Store additional info for pop-up
+      }));
+      setCsvData(updatedCsvData);
+
+      const user = JSON.parse(localStorage.getItem('signup')); 
+      axios.post('https://likely-key-donkey.ngrok-free.app/api/ai_agent', { results: csvData, email: user?.email })
+      .catch(err => console.error("Error calling AI agent:", err));
     } catch (error) {
       console.error('Error checking compliance:', error);
     } finally {
@@ -739,7 +803,7 @@ const ComplianceChecker = () => {
                     </div>
 
                     {/* Check Compliance Button */}
-                    <div className="flex justify-center">
+                    <div className="flex justify-center space-x-4">
                       <button
                         onClick={() => checkCompliance(newShipment)}
                         className="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transform transition hover:scale-105 flex items-center"
@@ -757,6 +821,27 @@ const ComplianceChecker = () => {
                           <>
                             <AlertTriangle size={20} className="mr-2" />
                             Check Compliance
+                          </>
+                        )}
+                      </button>
+                      
+                      <button
+                        onClick={() => SyntheticCheck(newShipment)}
+                        className="px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold transform transition hover:scale-105 flex items-center"
+                        disabled={syntheticLoading}
+                      >
+                        {syntheticLoading ? (
+                          <div className="flex items-center">
+                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Processing...
+                          </div>
+                        ) : (
+                          <>
+                            <AlertTriangle size={20} className="mr-2" />
+                            Synthetic Check
                           </>
                         )}
                       </button>
@@ -845,7 +930,7 @@ const ComplianceChecker = () => {
                         <div className="mt-4 space-y-4">
                           <div className="flex justify-between items-center">
                             <h3 className="text-sm font-medium text-gray-300">Uploaded CSV Data</h3>
-                            <div className="space-x-2">
+                            <div className="flex space-x-2">
                               <button
                                 onClick={checkComplianceCsv}
                                 className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm flex items-center"
@@ -866,10 +951,32 @@ const ComplianceChecker = () => {
                                   </>
                                 )}
                               </button>
+
+                              <button
+                                onClick={SyntheticCheckCsv}
+                                className="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-sm flex items-center"
+                                disabled={syntheticLoading}
+                              >
+                                {syntheticLoading ? (
+                                  <div className="flex items-center">
+                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Processing...
+                                  </div>
+                                ) : (
+                                  <>
+                                    <AlertTriangle size={16} className="mr-1" />
+                                    Synthetic Check
+                                  </>
+                                )}
+                              </button>
+
                               {complianceResultsCsv && (
                                 <button
                                   onClick={downloadUpdatedCsv}
-                                  className="px-4 mt-3 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white text-sm flex items-center"
+                                  className="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white text-sm flex items-center"
                                 >
                                   <FileDown size={16} className="mr-1" />
                                   Download Results

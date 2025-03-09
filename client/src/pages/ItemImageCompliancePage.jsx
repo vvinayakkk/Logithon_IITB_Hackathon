@@ -111,7 +111,7 @@ function ItemImageCompliancePage() {
       formData.append('file', selectedFile);
   
       // Call API endpoint
-      const response = await fetch('http://localhost:3000/api/search_items', {
+      const response = await fetch('https://sensible-emu-highly.ngrok-free.app/api/search_items', {
         method: 'POST',
         body: formData
       });
@@ -189,7 +189,7 @@ function ItemImageCompliancePage() {
       `;
 
       // Call Gemini API
-      const response = await fetch('http://localhost:5000/generate', {
+      const response = await fetch('https://free-horribly-perch.ngrok-free.app/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
