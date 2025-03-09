@@ -112,7 +112,10 @@ function ItemImageCompliancePage() {
       // Call API endpoint
       const response = await fetch('https://sensible-emu-highly.ngrok-free.app/api/search_items', {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers:{
+          'ngrok-skip-browser-warning': 'true'
+        }
       });
   
       if (!response.ok) {
@@ -192,6 +195,7 @@ function ItemImageCompliancePage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({ prompt: context }),
       });

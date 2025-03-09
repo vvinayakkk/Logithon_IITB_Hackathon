@@ -81,7 +81,7 @@ const ComplianceChecker = () => {
         ]);
   
         // Fetch countries from API
-        const countriesResponse = await axios.get('http://localhost:5000/api/countries'  , {
+        const countriesResponse = await axios.get('https://free-horribly-perch.ngrok-free.app/api/countries'  , {
           headers:{
             "ngrok-skip-browser-warning" : "true",
           }
@@ -111,6 +111,10 @@ const ComplianceChecker = () => {
           shipment_value_usd: shipment.value,
           documents: shipment.documents
         },
+      } , {
+        headers:{
+          "ngrok-skip-browser-warning" : "true",
+        }
       });
 
       setComplianceResults(response.data);
@@ -147,9 +151,10 @@ const ComplianceChecker = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post('http://localhost:6002/api/check_bulk_custom', formData, {
+      const response = await axios.post('https://meerkat-welcome-remotely.ngrok-free.app/api/check_bulk_custom', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          "ngrok-skip-browser-warning" : "true",
         }
       });
 
@@ -174,7 +179,7 @@ const ComplianceChecker = () => {
   const SyntheticCheck = async (shipment) => {
     setSyntheticLoading(true);
     try {
-      const response = await axios.post('http://localhost:6002/api/check_compliance', {
+      const response = await axios.post('https://meerkat-welcome-remotely.ngrok-free.app/api/check_compliance', {
         source: shipment.source,
         destination: shipment.destination,
         shipment_details: {
@@ -183,7 +188,11 @@ const ComplianceChecker = () => {
           value: shipment.value,
           documents: shipment.documents
         },
-      });
+      } , {
+        headers : {
+          "ngrok-skip-browser-warning" : "true",
+        } 
+     });
 
       setComplianceResults(response.data);
       processComplianceData(response.data);
@@ -210,7 +219,8 @@ const ComplianceChecker = () => {
 
       const response = await axios.post('https://sensible-emu-highly.ngrok-free.app/api/check_bulk', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          "ngrok-skip-browser-warning" : "true",
         }
       });
 
@@ -228,7 +238,11 @@ const ComplianceChecker = () => {
       setCsvData(updatedCsvData);
 
       const user = JSON.parse(localStorage.getItem('signup')); 
-      axios.post('https://likely-key-donkey.ngrok-free.app/api/ai_agent', { results: csvData, email: user?.email })
+      axios.post('https://likely-key-donkey.ngrok-free.app/api/ai_agent', { results: csvData, email: user?.email } , {
+        headers:{
+          "ngrok-skip-browser-warning" : "true",
+        }
+      })
       .catch(err => console.error("Error calling AI agent:", err));
     } catch (error) {
       console.error('Error checking compliance:', error);

@@ -506,7 +506,7 @@ const LandingPage = () => {
                 <span>Start Free Trial</span>
               </motion.button>
               
-              <Link to="/demo">
+              <Link to="/signup">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

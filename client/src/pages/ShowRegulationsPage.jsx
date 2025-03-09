@@ -116,6 +116,10 @@ const ShowRegulations = () => {
         context: regulations[currentSection]?.['Simplified Form']?.join('\n') || regulations[currentSection]?.Content,
         section: regulations[currentSection]?.Section,
         chat_id: chatId // Send the chat ID if it exists
+      } , {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       });
       
       if (data.success) {
