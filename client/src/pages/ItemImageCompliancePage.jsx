@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { CloudUpload, Send, Info, Check, X, MessageCircle, FileText, Globe as GlobeIcon, Package, AlertTriangle, Calendar, Weight, DollarSign, Truck, BoxSelect, FileCheck } from 'lucide-react';
-import GlobeVisualization from '../components/Globe';
 import Header from '../components/header';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
 
@@ -244,9 +243,6 @@ function ItemImageCompliancePage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-950 via-blue-950 to-gray-900 relative">
       {/* Header */}
       <Header />
-      <div style={{ height: '400px', width: '100%', position: 'relative', marginBottom: '2rem' }}>
-        <GlobeVisualization arcsData={arcsData}/>
-      </div>
       
       <main className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
