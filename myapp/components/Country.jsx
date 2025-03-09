@@ -18,7 +18,7 @@ const CountryTab = () => {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
 
-  const BACKEND_URL="http://192.168.80.60"
+  const BACKEND_URL="https://free-horribly-perch.ngrok-free.app"
   // Theme colors
   const theme = {
     bg: isDark ? '#121212' : '#F5F7FA',
@@ -44,7 +44,7 @@ const CountryTab = () => {
   const fetchCountries = async () => {
     setError('');
     try {
-      const response = await fetch(`${BACKEND_URL}:5000/api/countries`);
+      const response = await fetch(`${BACKEND_URL}/api/countries`);
       const data = await response.json();
       setCountries(data.countries);
     } catch (error) {
@@ -58,7 +58,7 @@ const CountryTab = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(`${BACKEND_URL}:5000/api/country/${selectedCountry}`);
+      const response = await fetch(`${BACKEND_URL}/api/country/${selectedCountry}`);
       const data = await response.json();
       setResults(data.items);
       if (data.items.length === 0) {
@@ -134,7 +134,7 @@ const CountryTab = () => {
       }));
       
       const result = await FileSystem.downloadAsync(
-        `${BACKEND_URL}:5000/generate-pdf?data=${exportData}`,
+        `${BACKEND_URL}/generate-pdf?data=${exportData}`,
         FileSystem.documentDirectory + filename
       );
       
@@ -161,12 +161,12 @@ const CountryTab = () => {
       }));
       
       const result = await FileSystem.downloadAsync(
-        `${BACKEND_URL}:5000/generate-pdf?data=${exportData}`,
+        `${BACKEND_URL}/generate-pdf?data=${exportData}`,
         FileSystem.documentDirectory + filename
       );
 
       // Send the PDF via WhatsApp
-      const response = await fetch(`${BACKEND_URL}:5000/send_message`, {
+      const response = await fetch(`${BACKEND_URL}/send_message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -205,12 +205,12 @@ const CountryTab = () => {
       }));
       
       const result = await FileSystem.downloadAsync(
-        `${BACKEND_URL}:5000/generate-country-pdf?data=${exportData}`,
+        `${BACKEND_URL}/generate-country-pdf?data=${exportData}`,
         FileSystem.documentDirectory + filename
       );
 
       // Send the PDF via SMS
-      const response = await fetch(`${BACKEND_URL}:5000/send_message`, {
+      const response = await fetch(`${BACKEND_URL}/send_message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

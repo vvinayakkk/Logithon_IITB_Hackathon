@@ -154,8 +154,9 @@ const ExportMenu = ({ visible, onClose, onExportCSV, onExportPDF }) => (
 
 const ShowRegulations = () => {
   // Update API URL with explicit protocol and port
-  const API_URL ='http://192.168.80.60:6001/api/chat'  // For Android
-  const BACKEND_URL="http://192.168.80.60:5000"
+  const API_URL ='https://saved-jackal-brief.ngrok-free.app/api/chat'  // For Android
+  const BACKEND_URL="https://free-horribly-perch.ngrok-free.app"
+
   const { source, destination } = useLocalSearchParams();
   const [regulations, setRegulations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -344,7 +345,7 @@ const ShowRegulations = () => {
     try {
       console.log('Sending request to:', API_URL); // Debug log
 
-      const response = await fetch('http://192.168.80.60:6001/api/chat', {
+      const response = await fetch('https://free-horribly-perch.ngrok-free.app/api/chat', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

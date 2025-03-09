@@ -22,17 +22,16 @@ import { Picker } from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
 import Camera from '../../components/CameraComponent';
 import PhotoPreviewSection from '@/components/PhotoPreviewSection';
+import { useLocalSearchParams } from 'expo-router';
 
 const screenWidth = Dimensions.get('window').width;
 
-export default function ItemImageCompliancePage({ initialPhoto = null }) {
+export default function ItemImageCompliancePage() {
+  const params = useLocalSearchParams();
+  
   // Main state variables
-  const [selectedFile, setSelectedFile] = useState(initialPhoto ? {
-    uri: initialPhoto.uri,
-    type: 'image/jpeg',
-    name: 'capture.jpg'
-  } : null);
-  const [preview, setPreview] = useState(initialPhoto ? initialPhoto.uri : null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState(null);
   const [sourceCountry, setSourceCountry] = useState('');
   const [destinationCountry, setDestinationCountry] = useState('');
   const [validationResults, setValidationResults] = useState(null);
@@ -63,6 +62,7 @@ export default function ItemImageCompliancePage({ initialPhoto = null }) {
 
   // Handle captured photo from camera
   const handlePhotoCapture = (capturedPhoto) => {
+    console.log(capturedPhoto);
     setSelectedFile({
       uri: capturedPhoto.uri,
       type: 'image/jpeg',
@@ -268,15 +268,21 @@ export default function ItemImageCompliancePage({ initialPhoto = null }) {
   const { relevanceData, riskData } = prepareChartData();
 
   useEffect(() => {
-    if (initialPhoto) {
+    if (params.photoUri) {
       setSelectedFile({
-        uri: initialPhoto.uri,
+        uri: params.photoUri,
         type: 'image/jpeg',
         name: 'capture.jpg'
       });
-      setPreview(initialPhoto.uri);
+      setPreview(params.photoUri);
+      setShowCamera(false); // Ensure camera is hidden
     }
-  }, [initialPhoto]);
+  }, [params.photoUri]);
+
+  const handleCameraSelect = () => {
+    setShowImageSelector(false);
+    setShowCamera(true);
+  };
 
   if (showCamera) {
     return <Camera onPhotoCapture={handlePhotoCapture} />;
@@ -632,7 +638,7 @@ export default function ItemImageCompliancePage({ initialPhoto = null }) {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Select Image</Text>
             <View style={styles.imageOptionsContainer}>
-              <TouchableOpacity style={styles.imageOption} onPress={() => { setShowImageSelector(false); setShowCamera(true); }}>
+              <TouchableOpacity style={styles.imageOption} onPress={handleCameraSelect}>
                 <View style={styles.imageOptionIcon}><Feather name="camera" color="white" size={30} /></View>
                 <Text style={styles.imageOptionText}>Camera</Text>
               </TouchableOpacity>
