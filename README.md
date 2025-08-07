@@ -1,4 +1,8 @@
 # 🚀 Rapid Compliance Checker
+
+
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/46c2f51d-a369-45c9-8355-c916e9883dfa" />
+
 ## Deployed Link: https://iitb-one.vercel.app/
 ## 🌍 Revolutionizing Cross-Border Compliance
 
